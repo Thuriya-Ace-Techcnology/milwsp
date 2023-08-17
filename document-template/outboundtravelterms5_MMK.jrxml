@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="table1" class="java.lang.String"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="481" y="30" width="50" height="50" uuid="e03d7010-4596-4947-91f7-caa975a7fbda"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="39" y="80" width="471" height="660" uuid="43a273e2-42e2-4c11-87dc-4c10484c2b75"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[MEDICAL AND EVACUATION BENEFITS
+
+•  OVERSEAS EMERGENCY MEDICAL EXPENSES
+      The Company will reimburse to the Insured all medically necessary treatment and services provided by or on the order of a Physician to the insured Person when admitted as a registered inpatient to a Hospital up to the limit specified in the Table of Benefits and medical expense sublimit section which is reasonably and customary charges incurred whilst during the trip as a direct, sole and independent result of Accident or illness suffered by the insured. or authorized hospital/medical center up to the limit specified in the schedule of benefit and medical expense sub-limit section which is reasonably and customary charges incurred whilst overseas as a direct, sole and independent result of Accident or Illness suffered by the Insured.
+     Cover includes ordinary board and room, nursing charges and other medical charge such as the diagnostic, laboratory or other medically necessary facilities and services, physician's/surgeon's fee/ anaesthetist's fees or physiotherapist's fees, operating theatre charges, surgery implants and all drugs, dressings or medications prescribed by the treating physician for inhospital; intensive care unit charges, hospital general expenses and in-hospital surgeon visit up to the limit specified in the Table of Benefits.
+The company do not pay for the costs of non-medically necessary goods or services including such items as telephone, television and newspapers; personal items such as bed sheet, urine pot, medical appliances are not covered as well.
+DEDUCTIBLE: MMK 300,000 for Sl MMK 30,000,000 , MMK 900,000 for Sl 90,000,000 and MMK 1,500,000 for Sl 150,000,000 in each claim.
+ •  OVERSEAS EMERGENCY MEDICAL EXPENSES DUE TO COVID-19
+      The company will reimburse to the insured all medically necessary treatment and services provided by or on the order of a physician to the insured person when admitted as a registered in-patient to a hospital up to the limit specified in the Table of Benefits and medical expense sub-limit section which is reasonably and customary charges incurred whilst during the Trip as a direct, sole and independent result of Covid-19 infection suffered by the insured.
+       Cover includes ordinary board and room, nursing charges and other medical charge such as the diagnostic, laboratory or other medically necessary facilities and services, physician's/ surgeon's fee/ anaesthetist's fees or physiotherapist's fees, operating theatre charges, surgery implants and all drugs, dressings or medications prescribed by the treating physician for in hospital; intensive care unit charges, hospital general expenses and in-hospital surgeon visit up to the limit specified in the table of benefits.
+       The company do not pay for the costs of non-medically necessary goods or services including such items as telephone, television and newspapers; personal items such as bed sheet, urine pot, medical appliances are not covered as well.
+DEDUCTIBLE: MMK 300,000 for Sl MMK 30,000,000 , MMK 900,000 for Sl 90,000,000 and MMK 1,500,000 for Sl 150,000,000 in each claim.
+
+•  EMERGENCY MEDICAL EVACUATION
+       In the event of an accident or sudden illness, the Company will not bear the costs of transferring or repatriating the Insured to a properly equipped health center or to his/her usual country of residence.
+
+•  FOLLOW UP TREATMENT IN REPUBLIC OF THE UNION OF MYANMAR
+       We will reimburse You, up to the limit specified in the schedule of benefit for Medical Expenses necessarily as a registered in-patient to a hospital incurred as follow-up medical treatment in Republic of the Union of Myanmar for injury which You had sustained whilst Overseas. The time limit for seeking such medical treatment is as follows:
+(i)  if prior medical treatment has not been sought Overseas, You must seek medical treatment
+(ii) as a registered in-patient to a hospital in Republic of the Union of Myanmar within 48 hours upon Your arrival in Republic of the Union of Myanmar. From the date of the first medical treatment in Republic of the Union of Myanmar, You have up to a maximum of 30 days to continue medical treatment in Republic of the Union of Myanmar up to the limit specified in the table of benefits.
+DEDUCTIBLE: MMK 300,000 for SI MMK 30,000,000 , MMK 900,000 for SI MMK 150,000,000 and MMK 1,500,000 for SI MMK 150,000,000 in each claim.
+
+(iii)if medical treatment had already been sought Overseas, you have up to a maximum of 30 days (inclusive of the period of follow-up medical treatment) upon Your arrival in the Republic of the Union of Myanmar to continue medical treatment as a registered in-patient to a hospital in the Republic of the Union of Myanmar up to the limit specified in the schedule of benefit. For covid19 disease sustained while overseas, we will reimburse you, up to the limit specified in the table of benefits, the Medical Expenses as a registered in-patient to a hospital necessarily incurred in the Republic of the Union of Myanmar for follow-up medical treatment for covid-19 disease.
+DEDUCTIBLE: MMK 300,000 for SI MMK 30,000,000 , MMK 900,000 for SI MMK 90,000,000  and MMK 1,500,000 for SI MMK 150,000,000 in each claim. ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="18f8d175-3760-46a1-8342-055df5ea6f64"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="ffd6f7bd-ee4c-41c2-8129-f6e164c0a7b9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fireOverAndUnderInformLetter" language="groovy" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="30" uuid="d8bc456a-47df-4e51-986d-e086fdd3b73e">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="305"/>
+	<detail>
+		<band height="700" splitType="Stretch">
+			<frame>
+				<reportElement x="2" y="0" width="510" height="200" uuid="ac0ddbf0-1676-4760-b192-771cff11851f"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<staticText>
+					<reportElement x="160" y="0" width="199" height="30" uuid="8bc6a8a2-7aa1-4e71-8484-713bc83b03c1"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Pyidaungsu" size="14"/>
+					</textElement>
+					<text><![CDATA[စည်းကမ်းချက်များ]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="50" width="510" height="40" uuid="1de90400-680d-4f2e-aef5-3a7dca7d56ac">
+						<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					</reportElement>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Pyidaungsu"/>
+					</textElement>
+					<text><![CDATA[၁။     တစ်ဖက်ဖော်ပြပါခရီးသွားအာမခံထားရှိသူသည် ဖော်ပြပါယာဉ်မှအမ မည်သည့် အအကြောင်း‌ကြောင့်မဆို သေဆုံးပါက အကျိုးခံစားခွင့် ငွေကျပ် ၅၀၀၀၀၀၀(ကျပ်သိန်းငါးဆယ်တိတိ) ကိုခံစားခွင့်ရှိသူအား ထုတ်ပေးမည်။]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="91" width="510" height="30" uuid="8b26c637-c612-4408-9067-6a6ced7b8e86"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Pyidaungsu"/>
+					</textElement>
+					<text><![CDATA[၂။     ထိခိုက်ဒဏ်ရာရရြိှခင်းအတွက် ဆရာဝန်ထောက်ခံချက်ဖြင့် အကျိုးခံစားခွင့်ရှိပါသည်။]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="121" width="510" height="30" uuid="f5e73131-ea7e-4e70-893f-e6874664453c"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Pyidaungsu"/>
+					</textElement>
+					<text><![CDATA[၃။     အာမခံထားသည့် ကာလအတွင်း ထိခိုက်မူဖြစ်ခြင်းကြောင့်(၃)လအတွင်းသေဆုံးခဲ့လျှင်လည်း အကျိုးခံစားခွင့်ရှိသည်။]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="0" y="151" width="510" height="30" uuid="d0b8ecb4-be2d-4a4b-a96d-2fb77087ac3b"/>
+					<textElement textAlignment="Left" verticalAlignment="Middle">
+						<font fontName="Pyidaungsu"/>
+					</textElement>
+					<text><![CDATA[၄။     အကျိုးခံစားခွင့် ကျပ်သိန်း၅၀ တိတိကိုသေဆုံးသည့်နေ့မှ(၃)လအတွင်း တောင်းခံရမည်။]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</detail>
+</jasperReport>

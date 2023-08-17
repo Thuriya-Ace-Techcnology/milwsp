@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="table1" class="java.lang.String"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="40" width="241" height="20" uuid="1fc68054-9c6a-4048-b94c-38ce529945ed"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SECTION I: COVERAGES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="80" width="440" height="320" uuid="3603999e-9aca-486e-9910-a0f8130c7762"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[ACCIDENT/ACCIDENTAL refers sudden, unintended and unforeseen mishap caused by external, violent and visible means.
+INSURED refers to a natural person or legal entity that purchases an Insurance Policy, and in some cases, an insured can be a policy owner as well as an insured person.
+EFFECTIVE DATE refers to the date of premium payment or the date of arrival in Myanmar(after passing immigration counter stationed at the arrival airport) whichever is later.
+MEDICAL EXPENSE refers to the services fee that an Authorized Hospital or Medical Center charges Insured that are considered Normal and Customary while he/she is their Inpatient.
+MEDICAL PRACTITIONER refers to a person who has a medical degree, is licensed or registered in the country which they operate and is accredited by a medical board or equivalent organization to render medical services, except of Family Members.
+LOSS OF SIGHT refers to a physical condition where the Insured is completely blind and cannot be cured.
+PERIOD OF INSURANCE refers to the period of cover shown in the Policy Schedule and/or Certificate of Insurance for which the appropriate premium has been paid.
+PERMANENT DISABLEMENT refers to Injury which:
+i.	falls into one of the categories listed in the Scale of Permanent Disablement Benefits Table.
+ii.	having lasted for a continuous period of twelve (12) calendar months from the date of the Accident entirely prevents the Insured from engaging in gainful employment of any and every kind and from which there is no hope of improvement.
+PREMIUM refers to the amount paid by an insured to an insurer under an Insurance Policy as consideration for the obligations assumed by the insurer.
+REASONABLE AND CUSTOMARY CHARGES refer to charges or fees which are generally prevailing and of normal standard for the medical condition concerned in the country and city where the insured is treated.
+THE COMPANY refers to Myanma Insurance.
+TRAVELING ROUTE refers to the journey within the Republic of the Union of Myanmar.
+TRIP refers to the period between the Commencement of Cover and Expiry of Cover.
+COVID-19 Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).
+
+
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="0" width="550" height="30" uuid="9c4c5e0e-2087-4043-8d82-f7e90215ffc4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[INBOUND TRAVEL ACCIDENT INSURANCE
+POLICY TERMS AND CONDITIONS
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="25" width="550" height="1" uuid="60901db6-fa18-49f3-81cd-84ce2cd2f78c"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="60" width="241" height="20" uuid="00773485-1720-4a3b-911f-56405a92600d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[1.	DEFINITIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="418" width="241" height="22" uuid="50557651-88ee-4098-a3bb-b7007d651fa7"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[2.	SCOPE OF COVER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="440" width="201" height="20" uuid="0cb4f7d0-a401-454f-a2a7-629ec2d44478"/>
+				<textElement>
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<text><![CDATA[ PERSONAL ACCIDENT BENEFITS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="460" width="430" height="80" uuid="06115095-fb52-4c24-af32-23a367f956a0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[• ACCIDENTAL DEATH
+The Company will pay the sum insured as stated in the Schedule of Benefit, if the Insured sustained Accident during the Trip which results in Death within 90 days from the day the incident occurred.
+• PERMANENT DISABLEMENT
+The Company will pay the sum insured as stated in the Schedule of Benefit, if the Insured sustained Accident during the Trip which results in Permanent Disablement. The disablement must be certified by a Medical Practitioner.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="50" y="540" width="430" height="240" uuid="f9e17319-d82a-4a0d-9ed8-c472d1f0b805"/>
+				<imageExpression><![CDATA[$P{table1}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="480" y="30" width="50" height="50" uuid="946dfab4-e34c-45ee-a2cb-a94560a41cca"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="b07dbfe1-5825-4c85-8981-e7c3ff93b87b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="453aa43e-f057-49b9-8a31-4c0f53207dbc"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

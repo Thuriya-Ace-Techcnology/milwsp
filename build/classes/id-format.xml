@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<id-config>
+	<branch-code code="001" name="Yangon" centralized="false"/>
+	<!-- User -->
+	<class prefix="INUSR005" name="org.ace.insurance.system.mobileUser.MobileUser"/>
+	<class prefix="INUSR006" name="org.ace.insurance.system.mobileUser.securityAnswer.SecurityAnswer"/>
+	<!-- System -->
+	<class prefix="ISSYS044" name="org.ace.insurance.system.common.securityQuestion.SecurityQuestion"/>
+	<!-- Mobile Travel Insurance -->
+	<class prefix="ISTRA017" name="org.ace.insurance.travel.MobileTravelProposal"/>
+	<class prefix="ISTRA018" name="org.ace.insurance.travel.MobileTravelInsuredPerson"/>
+	
+	<class prefix="THPR0011" name="org.ace.insurance.system.thirdparty.ThirdPartyPremiumReceipt"/>
+	<class prefix="THPR0012" name="org.ace.insurance.system.rta.RTA"/>
+	<class prefix="TWOR0014" name="org.ace.insurance.system.twoCtwoP.TwoCTwoPRecords"/>
+	<class prefix="PTREC0015" name="org.ace.insurance.system.productTypeRecords.ProductTypeRecords"/>
+	
+	<class prefix="ISRTAL001" name="org.ace.insurance.system.rta.RTALocation"/>
+	
+	<class prefix="ISOBP001" name="org.ace.insurance.onlineBiller.OnlineBillerBuyer"/>
+	
+	<class prefix="SFTH001" name="org.ace.insurance.specailForeignTravel.SpecialForeignTravelHistory"></class>
+</id-config>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="tableOfBenefit_MMK_2" class="java.lang.String"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<parameter name="tableOfBenefit_MMK_3" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="481" y="30" width="50" height="50" uuid="e03d7010-4596-4947-91f7-caa975a7fbda"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="10" y="103" width="534" height="300" uuid="5b4d279b-4491-4fd0-af55-43b5861f4c17">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{tableOfBenefit_MMK_2}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="5e42bf6a-5791-4f92-b869-efd07dcebd6a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="971c7009-f3ee-4d9d-9b22-861a04101872"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="391" width="534" height="300" uuid="7bd7a63d-152f-4309-a2da-563aab5d6d78">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{tableOfBenefit_MMK_3}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="table1" class="java.lang.String"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="481" y="30" width="50" height="50" uuid="e03d7010-4596-4947-91f7-caa975a7fbda"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="40" y="148" width="471" height="25" uuid="90372df1-d185-44f8-a1d2-2b6fc6fa850b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any Pre-existing condition which the Insured received medical treatment, diagnosis consultation or prescribed drugs for which medical advice or treatment as recommended by physician preceding the Effective Date of the contract.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="130" width="180" height="20" uuid="73531168-5d98-41c7-850c-88380bb1100c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[PRE-EXISTING CONDITION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="170" width="180" height="20" uuid="41fa4c03-75b9-47cb-b622-302a46fa7d17"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[PREGNANCY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="190" width="471" height="25" uuid="f186a866-b023-42b4-9bdd-8400bff3027f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any treatment arising from Pregnancy, Child Delivery, Abortion, Miscarriage (except accidental miscarriage), Infertility (includes Infertility Investigation and Treatment), Vasectomy or Contraception.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="215" width="180" height="20" uuid="cb5103a4-1875-4c47-9d45-36e4747298b4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[RADIOACTIVITY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="235" width="471" height="35" uuid="4e6233b5-0f8f-486c-a5d1-2c725da4de1d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Nuclear Weapons, Radiation, Radioactivity from Nuclear-Fuel or Nuclear Waste or Nuclear Radiation caused by combustion of fuel and Nuclear Fission which self-ignites. Explosion by Radioactivity Nuclear material or dangerous objects are used in a Nuclear Explosion.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="283" width="471" height="25" uuid="a4a0d41c-977b-4904-b062-5329660f2c40">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any investigation, test or treatment arising directly or indirectly from Sexually Transmitted Diseases, including Venereal Diseases, Immune Deficiency Syndrome (AIDs), any AIDs-related condition or infection by Human Immune Deficiency Virus (HIV).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="263" width="320" height="20" uuid="4db5be05-7a11-4f6e-a7cb-90dc7f8e3aae"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SEXUALLY TRANSMITTED DISEASES (STDs)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="325" width="471" height="25" uuid="8d472eac-3dc9-4103-92a9-4e4b1f88f8d6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Loss, destruction, or damage directly occasioned by pressure waves caused by aircraft and other aerial devices traveling at sonic or supersonic speeds.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="305" width="180" height="20" uuid="f1d7b516-56c8-46ac-9921-497927377987"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SONIC BANGS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="370" width="471" height="25" uuid="a717c92e-872b-4f08-983f-4ba062afb7a4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[This Insurance does not cover suicide or attempting to commit suicide, self-inflicted accidents, attempting to cause accidents to him/herself, or arranging for any third party to undertake such an act.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="350" width="180" height="20" uuid="822fafff-9ce1-4c93-b4d8-bc0036fc5d7f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SUICIDE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="60b9a74f-352a-44c4-a87a-5788f5cf889f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="0f2aa73b-66d4-4e98-be47-0a39abdc33af"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="80" width="180" height="20" uuid="803d9a80-1302-46d5-a34f-8198e364c457"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[PSYCHIATRY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="100" width="471" height="30" uuid="5e717941-df21-4deb-bb80-1727258f5a8c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any diagnosis, medical investigation, symptom, diseases or treatment relating to emotional, stress, psychiatric or psychological disorders, Insanity, Behavioral or Characteristic Disorders. This extends to Concentration Problems, Autism, Depression, Eating Disorders or Anxiety.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="395" width="180" height="20" uuid="779135b2-b45d-4dfd-b7f1-5f1ea8564b0c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[TOUR OPERATOR & AIRLINE FAILURE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="415" width="471" height="25" uuid="3ff31f01-34a5-49e4-8d7d-99c49ee29b44">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any claim that results from the tour operator, airline, or any other company, firm, or person not being able or not being willing to carry out any part of their obligation to the Insured.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="440" width="180" height="20" uuid="2442ba68-5208-49e0-92a5-7387bc1d32f7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[TRAVELLING AGAINST WHO ADVICE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="560" width="471" height="25" uuid="18459d57-ebcc-4e65-8d0a-99a023be0070">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Extraordinary natural phenomena such as floods, earthquakes, landslides, volcanic eruptions, atypical cyclonic storms, falling objects from space and aerolites, and in general any extraordinary atmospheric, meteorological, seismic or geological phenomenon.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="540" width="180" height="20" uuid="113112e7-d2de-4eed-9548-68c487111095"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[NATURAL PHENOMENA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="460" width="471" height="25" uuid="83854de0-06c7-4cac-a06f-6f47327cc359">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[The Insured travel to a country, specific area, or event when the World Health Organization (WHO) or regulatory authority in a country to/from which you are traveling has advised against all, or all but essential travel.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="505" width="471" height="35" uuid="dc57836e-dc14-4a5f-9f0f-bf9bb40b4038">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any accidents or treatment arising from the war (whether it is announced or not), invasion or execution by a foreign enemy, Civil War, Revolution, Rebellions, Demonstrations against the government, Riot, Strike, Calamity, or any political unrest having to announce martial law to control the situation, including Terrorism.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="485" width="180" height="20" uuid="87d2499a-3ec2-440f-8e9e-90a09bbe676f"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[WAR/ TERRORISM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="610" width="241" height="20" uuid="68507302-b7f3-41af-b282-764e8b8a551f"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SECTION IV: CLAIM PROCEDURE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="630" width="471" height="133" uuid="cf77b984-aa94-4d0c-a508-71428ab7ab5b"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[1.CLAIM
+In the event of any occurrence which may give rise to a claim for indemnity under this Policy, the Insured (or the Insured's Beneficiary in case of death) shall:
+(a)give notice to the Company in writing with full details within 30 consecutive days after the completion of the Trip or 24 consecutive hours from the date of Accident in the case of death or disablement if practicable,
+(b)give the Company at his/her own expense all medical evidence, certificates, reports, original receipts, proof of ownership, documentation, and any other evidence.
+(c)The reimbursement for the Treatment of eligible injury or illness will be made either up to the amount as stated in the Table of Benefit or the amount insured person have incurred for medical treatment whichever is the lower amount.
+]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

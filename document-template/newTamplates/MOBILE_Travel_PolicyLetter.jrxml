@@ -1,0 +1,745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.13.0.final using JasperReports Library version 6.13.0-46ada4d1be8f3c5985fd0b6146f3ed44caed6f05  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PA_PolicyIssue" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="130" bottomMargin="20" resourceBundle="LANGUAGE_en" uuid="86877a67-c108-4c22-887e-f3527476e161">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="2"/>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="6d68db30-db93-4983-bb1e-32e8082cc5ae">
+		<field name="fullName" class="java.lang.String"/>
+		<field name="idNo" class="java.lang.String"/>
+		<field name="ageAndDateOfBirth" class="java.lang.String"/>
+		<field name="relationshipId" class="java.lang.String"/>
+		<field name="address" class="java.lang.String"/>
+		<field name="percentage" class="java.lang.Float"/>
+	</subDataset>
+	<parameter name="policyNo" class="java.lang.String"/>
+	<parameter name="insuredPersonName" class="java.lang.String"/>
+	<parameter name="fatherName" class="java.lang.String"/>
+	<parameter name="idNo" class="java.lang.String"/>
+	<parameter name="occupation" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="sumInsured" class="java.lang.String"/>
+	<parameter name="sumInsuredInWord" class="java.lang.String"/>
+	<parameter name="premium" class="java.lang.String"/>
+	<parameter name="premiumInWord" class="java.lang.String"/>
+	<parameter name="policyStartDate" class="java.lang.String"/>
+	<parameter name="policyEndDate" class="java.lang.String"/>
+	<parameter name="period" class="java.lang.Integer"/>
+	<parameter name="agentName" class="java.lang.String"/>
+	<parameter name="beneficiaryList" class="java.util.Collection"/>
+	<parameter name="agentLicenseNo" class="java.lang.String"/>
+	<parameter name="ggimage" class="java.lang.String"/>
+	<parameter name="companyAddress" class="java.lang.String"/>
+	<parameter name="letterimage" class="java.lang.String"/>
+	<parameter name="route" class="java.lang.String"/>
+	<parameter name="unit" class="java.lang.Integer"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<parameter name="date" class="java.lang.String"/>
+	<parameter name="orderId" class="java.lang.String"/>
+	<parameter name="travelType" class="java.lang.String"/>
+	<parameter name="buyDate" class="java.lang.String"/>
+	<parameter name="durationCover" class="java.lang.String"/>
+	<parameter name="qrcode" class="java.awt.image.BufferedImage"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="652" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="141" y="-7" width="130" height="36" uuid="38bf3229-72e5-4f5f-9c60-1ba591e6d9e3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[627/635,Merchant Street, Yangon,Myanmar.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="393" y="24" width="60" height="20" uuid="200b43b0-d1c4-47aa-bb8c-5a05d74f7c48">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Print Date - ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="25" width="374" height="30" uuid="2faa2047-82f5-4bde-9d65-8616d2de7c35"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TRAVELLING INSURANCE CERTIFICATE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="74" width="125" height="30" uuid="c614949f-8f61-4f68-9fd0-5725bbfe8d0e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[POLICY NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="104" width="125" height="30" uuid="16dea971-9167-4397-b4e2-c75d736d0538"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="134" width="125" height="30" uuid="2d220980-5719-4640-8f4c-a2244019b48f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[FATHER NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="164" width="125" height="30" uuid="222c2361-1604-48d3-a675-723264f1b49a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[PERMANENT ADDRESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="224" width="125" height="30" uuid="1946a1af-da5b-4631-8e1f-8d2684dda0f5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[JOURNEY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="254" width="125" height="30" uuid="c1d2eb06-513b-47d5-b0f2-efc1bd920a35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[DURATION OF COVER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="194" width="125" height="30" uuid="3fc1ab60-092d-4445-a57a-2398e381e5bc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[PASSPORTNO./N.R.C.NO.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="330" width="125" height="30" uuid="9bfbfd3d-b21b-4a73-ba50-15cd0099c8df"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[UNIT OF COVER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="428" width="125" height="30" uuid="f47fa43c-f6a0-4d62-9b46-b40e4273e490"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[BENEFICIARY]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="458" width="125" height="30" uuid="22f77b68-27a5-4c42-9c55-39cd1acbfe37"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[NAME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="360" width="125" height="30" uuid="5eda6d14-34f6-4205-876b-a3296b13810d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[PREMIUM]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="488" width="125" height="30" uuid="8517e11f-7b18-4d82-9e24-3263cc19c422"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[RELATIONSHIP]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="518" width="125" height="30" uuid="1cb276a8-9018-45ae-8824-e065863bd9ca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[REFERENCE NO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="74" width="30" height="30" uuid="b35c35a4-9c1f-4356-86f8-37b23da6a5a2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="104" width="30" height="30" uuid="625e3d59-ac9a-46dc-8193-9889684437f2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="134" width="30" height="30" uuid="4c87b4e6-d92a-4c7d-a697-cef441d978ca"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="164" width="30" height="30" uuid="7139e1f5-65ba-40e0-8308-6860d2a54c09"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="164" width="30" height="30" uuid="80dff54e-d52a-4652-94c8-89c3c9221ac6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="194" width="30" height="30" uuid="b342eacb-85a4-4f17-9c6b-d5cee23d7553"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="224" width="30" height="30" uuid="b97fdeae-8d5a-4a2f-ab69-a91c1193a927"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="254" width="30" height="30" uuid="1ff18954-73c7-4247-8d17-05f3dd43be1e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="330" width="30" height="30" uuid="af7f9407-88e9-4c33-b1d6-65838d6c40f0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="360" width="30" height="30" uuid="06f2d7c3-9de0-4cce-85d8-7e6cb3b5d28b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="458" width="30" height="30" uuid="455485c8-bc91-4456-acae-07b83862ca79"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="488" width="30" height="30" uuid="c370e726-2319-4cc0-9e37-77da2047bb54"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="518" width="30" height="30" uuid="5cf81720-65dd-4913-8251-1a943ae57174"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="156" y="74" width="284" height="30" uuid="5905d823-6579-4716-9807-4d1578b6514f"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{policyNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="104" width="284" height="30" uuid="973266bf-8053-4ad7-b898-44d7eb6373e2"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{insuredPersonName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="134" width="284" height="30" uuid="99b491ac-0540-40a3-b022-d829ce32bad0"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fatherName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="164" width="284" height="30" uuid="10e0a029-6cfc-4eb6-88a1-dab4b657f1a1"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="194" width="284" height="30" uuid="a3265068-6591-4f62-95c2-4b56492d91ae"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{idNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="224" width="284" height="30" uuid="3cb676f0-1834-4d88-abc9-93cc4b21befa"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{route}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="254" width="284" height="30" uuid="2138680d-6ae0-4a5a-8d7f-d9b86bb9d61f"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{durationCover}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="330" width="284" height="30" uuid="6e1b7ad0-ce42-4998-a9d6-45b6587a9093"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="360" width="284" height="30" uuid="7d682d1a-bea6-479e-b108-fca8174997e3"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["KS - "+$P{premium}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="458" width="284" height="30" uuid="85a46fca-8e8c-4faa-ada2-94f83b525864"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="488" width="284" height="30" uuid="204d2a7a-6fc4-4085-a430-3ce9aa399c54"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="447" y="24" width="54" height="20" uuid="6fcf9aa6-1ea7-4494-b07d-9ca386ce3cf0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="156" y="330" width="100" height="30" uuid="60d1f02f-aa09-43d8-9c01-1a6c3ca6f284"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{unit}+ "Unit"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="358" y="-40" width="70" height="20" uuid="b4c781b7-af96-44a7-9e9d-71e588bf2120">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[Phone No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="-27" width="70" height="20" uuid="49043cb8-6081-40f3-8aa8-ff82245bb417">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[Fax No]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="358" y="-15" width="70" height="20" uuid="72037914-c4ab-4247-a140-62ebe56dce1b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[Email ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="-27" width="112" height="20" uuid="d34ffcb8-4879-45c7-955e-fd45a6db8d5c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[095-1-387247]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="-40" width="112" height="20" uuid="de3b3e94-b0eb-4704-b448-1fc17fdac91f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[379088,384880,379696,250152]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="-15" width="112" height="20" uuid="7dea18c3-a82a-4a56-9883-dadc448464e8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[md-mi@mminsurance.gov.mm]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="-2" width="112" height="20" uuid="ddce8ba8-89e9-450e-848b-bed742bc0ceb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[myanmarins@mptmail.net.com]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="4" width="6" height="20" uuid="5f3f9622-c811-4418-8e24-59bcd452bb4d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="-29" width="6" height="20" uuid="d250a793-6be9-4fc0-afa5-e7a89fe04857">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="-17" width="6" height="20" uuid="9aaf887f-d959-4d72-bcbd-71d9e75e0703">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="-4" width="6" height="20" uuid="2333219c-ab8b-4d15-a3d2-b52053aba572">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="577" width="512" height="18" uuid="b33d7275-7f03-4742-9198-0c01363b45b7">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[*Please contact +95-1-379696 for further information.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="553" width="512" height="18" uuid="52589a60-bf7b-4df8-8fa4-976b1a8ffcbe">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9" isBold="false"/>
+				</textElement>
+				<text><![CDATA[*This is computer generated documenter, hence, no signature required.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="35" y="-34" width="56" height="61" uuid="b602cc3d-2cb6-4c46-bb97-6dc60612abf9"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="115" y="-36" width="220" height="30" uuid="5d3fa4ba-0226-42b7-811b-1c999eefdd9b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[MYANMA INSURANCE]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="440" y="25" width="64" height="30" uuid="a2045cc1-e1c8-4299-a2fb-43134ee8d414"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="518" width="284" height="30" uuid="47cf6c9d-e878-4ccb-b24c-5ba4bd34f2f7">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{orderId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="518" width="284" height="30" uuid="ef8e16df-4207-4688-9fdb-51954e950cc5"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="156" y="391" width="284" height="30" uuid="d3e8c8d8-b3ff-4c04-ae3b-7bcd0a98ae9e"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{travelType}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="391" width="125" height="30" uuid="9eab514c-51d9-474d-a6aa-81abb2208fc3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[TRAVEL TYPE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="391" width="30" height="30" uuid="58f92efd-3f09-4bee-928a-84fe7a05e4b1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="94" width="125" height="18" uuid="2657e56a-a2c6-4dca-9cba-9f9f02f17b47">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီ အမှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="124" width="125" height="18" uuid="e6bc78ad-83b6-4ae6-aeaf-eab9b218486c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[အမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="154" width="125" height="18" uuid="db00aed9-fc9d-4efb-837e-280720bec76f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[အဖေအမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="184" width="125" height="18" uuid="f9f6ec62-3338-465f-ae3c-a59db8645e82">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[အမြဲတမ်းနေရပ်လိပ်စာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="214" width="125" height="18" uuid="8c41a547-4da9-486f-adba-edb647ea03f4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[နိုင်ငံသားမှတ်ပုံတင် ၊ နိုင်ငံကူး လက်မှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="244" width="125" height="18" uuid="8af05c1c-7052-4933-bfc2-631a3362e114">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[ခရီးစဉ္]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="350" width="125" height="18" uuid="4b317407-02cf-465b-ac6e-b168b151355e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[စံနှုန်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="380" width="125" height="18" uuid="0d0cf6d6-e745-4b77-83e5-a4aed3486cbf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[အာမခံကြေး]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="410" width="125" height="18" uuid="38d7bdec-0847-4cfb-8e91-5b8af0f5cc37">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[ခရီးစဉ်အမျိုးစား]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="450" width="125" height="18" uuid="e06fd44e-d315-4bf2-a90c-953e23d643ba">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[အကျိုးခံစားခွင့်ရှိသူ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="480" width="125" height="18" uuid="a972cda2-e0ea-4528-8092-e390c07bc5b7">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[အမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="510" width="125" height="18" uuid="556c6482-95e4-4076-b67a-92015411febe">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[ဆွေမျိုးတော်စပ်ပုံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="540" width="125" height="18" uuid="7e20e969-d41e-448a-95df-7400255cc7f0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[စာအမှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="126" y="285" width="30" height="30" uuid="6e8a3a89-9f6b-405a-87bd-6d3e01ea8b0c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="156" y="285" width="284" height="30" uuid="1bfa9bd0-1baa-4238-88ef-aefed909d77b"/>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{buyDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="10" y="285" width="125" height="30" uuid="f361a317-eab6-4f3e-866c-0fd4fc29bf9e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[Buy Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="10" y="270" width="125" height="18" uuid="75b54820-3ba6-42b3-8170-acd15deb82e4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[ခရီးစဉ်ကာလသက်တမ်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="302" width="125" height="18" uuid="8a35798a-c1bf-47ac-8d6f-34b9b7e4dc5e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[ဝယ်ယူသည့်နေ့စွဲ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="440" y="70" width="50" height="50" uuid="a046004e-1ac2-4c2b-9840-57d0ead98d53"/>
+				<imageExpression><![CDATA[$P{qrcode}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

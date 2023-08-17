@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="tableOfBenefit500" class="java.lang.String"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="481" y="30" width="50" height="50" uuid="e03d7010-4596-4947-91f7-caa975a7fbda"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="40" y="60" width="241" height="20" uuid="3e6f4414-2937-410a-84e2-585b7ee8ae36"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SECTION VI: ADDITIONAL GENERAL CONDITIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="100" width="471" height="620" uuid="7f4cbaa5-e655-4688-8fd7-14f704a36d81"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[1. In the case of a foreign language document, You shall at Your expense provide Us with an English translation of such document if We require.
+
+2. We may refuse to pay any claims for which You cannot provide receipts, bills or other supporting documents that We may require.
+
+3. You or your legal representative must pay for any certificates, information and evidence, which We may need. When there is a claim for injury or illness, We may ask for, and will pay for, any insured person to be medically examined on Our behalf.
+
+4. All claims will be paid in USD. For claims incurred in a foreign currency, We will convert the foreign currency amount into USD at a foreign currency exchange rate to be determined by Us.
+
+5. We shall have full discretion in the conduct of any proceeding or the settlement of any claim.
+
+6. Any person who is seeking indemnity under this policy shall give Us all the information, documents and assistance. We require to enable any claim to be validated for Us to achieve a settlement.
+
+7. You must pay Us back any amount which We have paid which You are not covered for.
+
+8. Access to and Your Doctor
+    If You make a medical or dental claim, You may be asked to supply Your Doctor's name to enable Us to access Your medical records. This will help the treating Doctors, and Us, to provide You with the most appropriate treatment and assess whether the cover applies. If You do not agree to provide this We may not deal with Your claim.
+
+9. Fraud
+    If You, or anyone acting for You, make a claim under this policy knowing the claim to be dishonest or intentionally exaggerated or fraudulent in any way, or if You give any false declaration or statement to support the claim, We will not pay the claim and all cover under the policy will end. We reserve the right to lodge a report with the Local Police about any dishonest claim.
+
+10. Your duty to take precautions
+      You must at all times take reasonable precautions to prevent and avoid losses, damages, Accident, Accidental injuries and minimise claims under the policy.
+
+11. Your duty to comply with policy conditions
+     Our provision of insurance under this policy is conditional upon You observing and fulfilling the terms, provisions, conditions and clauses of this policy.
+
+12. Burden of proof
+      The burden of proving the validity of any claim is upon You. If We deny any claim by reason of any exclusion, the burden of proving that We are legally responsible for the claim is also upon You.
+
+13. Rights of recovery
+      In the event authorisation for payment and/or payment is made by Us or an authorized service provider appointed by Us for any medical or non-medical claim for which policy liability is not engaged, We reserve the right to recover against You for the full sum.]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="5221f9ac-aec9-4ed4-8375-8b01d1053bf2"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="02c38dfc-f925-49d3-b80c-2c993ec0c72f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

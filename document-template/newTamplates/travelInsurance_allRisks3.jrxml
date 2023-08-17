@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fireOverAndUnderInformLetter" language="groovy" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="30" uuid="d8bc456a-47df-4e51-986d-e086fdd3b73e">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="305"/>
+	<detail>
+		<band height="700" splitType="Stretch">
+			<staticText>
+				<reportElement x="120" y="45" width="240" height="30" uuid="44a1f629-551d-4cde-a45b-2096177da34a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Travel Insurance (All Risks Cover )]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="256" width="20" height="30" uuid="8cf08f8a-6ad5-42ed-b78e-c0a71995c125"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[6.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="402" width="20" height="30" uuid="4c835fbe-73f3-49f3-9689-b5ae036c5921"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[b.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="121" width="490" height="30" uuid="25e0938e-0819-49b7-ad14-f518e7c699b3"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[This insurance covers all accidents expect as mentioned include 9 below.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="606" width="20" height="30" uuid="bed5a2fa-1f50-4e48-9728-53249a2f86b7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[k.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="609" width="470" height="40" uuid="b924f4da-0fbb-4fb9-8019-9368e763bb98">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[travelling outside the transition / transfer airport during the transit/transfer period.(This condition will be applied only to Air Travel Insurance.)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="297" width="470" height="30" uuid="75101fef-9bd1-4c01-be30-c08ca3f65ec1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Medical report from the Government hospital or clinic in case of injury.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="505" width="20" height="30" uuid="8be7cb54-6530-4289-9999-a4f08f55e631"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[g.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="22" width="240" height="30" uuid="6ae7f4a0-f775-4108-af2f-130f9cb18bdb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Marine Underwriting Insurance Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="177" width="490" height="30" uuid="dfab726a-ff7f-4677-9cf1-b448ffe2274a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[For bodily inhury,appropriate amount of benefits based on the extent of injury shall be paid.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="177" width="20" height="30" uuid="b00dec82-c200-4b99-b861-8e2c6e483f7c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[3.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="570" width="470" height="40" uuid="e045abb8-053d-4469-86c7-618fed12326f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[travelling in any aircraft other than as passenger in a fully licensed aircraft operated by a recognized Air line on a scheduled service;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="402" width="470" height="30" uuid="f341a0e1-4cf8-456a-b554-0c0f0cf4f89e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[isanity;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="566" width="20" height="30" uuid="34bd6792-e04b-42e6-be62-a24947e0045e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[j]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="221" width="490" height="40" uuid="3c39d515-5c22-4cfe-8253-6ac494cb25d7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Prompt notice shall be given to the insurer in case of accident which may give rise to the claim and in no later than one month from the accident.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="197" width="490" height="30" uuid="c7cc65da-1c56-4263-a348-fe1d8d168e13"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[In any case maxmium benefit out of this insurance shall not exceed Ks/USD _ _ _ _ _]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="318" width="470" height="30" uuid="53f91ae3-b456-40e6-80d0-f46735ddb960"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Death certificate in case of death.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="485" width="20" height="30" uuid="75a6652f-5040-4df4-a67d-bea9d6d28c9c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[f.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="144" width="490" height="40" uuid="4183b00f-af2e-474d-a5f2-de1239f9ad20">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Full benefits shall be to the nominated beneficiary in the event of death of the propodaer caused by assident during the duration of this cover.The Geographical limit is both within and outside Myanmar.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="545" width="470" height="30" uuid="903cdf83-c19e-4a2c-9f77-b8f88d650568"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[war,strike,riot,and civil commotion;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="362" width="490" height="30" uuid="ad455fb3-8884-41ea-9644-f28b48be8853"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[This insurance does not cover death,injury or disablement arising from:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="197" width="20" height="30" uuid="67503965-a20f-4099-8f92-874c206c99df"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[4.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="382" width="470" height="30" uuid="6523d2ab-d3d6-4ebe-a7e3-b9cd0db21cde"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[any defect or infirmity suffered by the Insured;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="362" width="20" height="30" uuid="a8245bc1-788c-44f0-9f62-54485c5db5c9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[9.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="444" width="470" height="30" uuid="1644c9a8-d9fc-4f90-a9a8-087ea3178bc9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[intentional self-injury;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="120" y="0" width="240" height="30" uuid="cbe9220e-9434-4e28-9347-8cb6ad1b8743"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Myanma Insurance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="505" width="470" height="30" uuid="10096579-5f6d-4435-862f-7c92bd3d1304"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[any breach of law with criminal intent;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="276" width="490" height="30" uuid="74bdaf00-8273-4f7d-8d0d-4362b1937c9c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[The following supporting documents are required to submit with the claim]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="545" width="20" height="30" uuid="9221d8b1-7fa2-4e2b-bc33-bb2558144433"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[i]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="140" width="20" height="30" uuid="da3f6730-2bc3-40ff-b597-504433a728ea"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[2.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="276" width="20" height="30" uuid="ee6c81f8-bbf2-4baa-834f-528691da8060"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[7.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="422" width="20" height="30" uuid="8ebe434d-aa1b-4a0c-88a2-f885d9b25af1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[c.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="318" width="20" height="30" uuid="cb4b6227-441d-449d-9379-3fde4771ccd6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[b.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="525" width="20" height="30" uuid="eca7d042-4eb4-4f1a-bb4e-d55c8e02aed9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[h.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="297" width="20" height="30" uuid="079bfee5-259c-4da0-b837-96e2b30bd452"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[a.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="121" width="20" height="30" uuid="baff294c-5917-4f90-87f8-157f9d48e704"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[1.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="464" width="20" height="30" uuid="9ed83c6e-cb79-4410-a861-faa8cc027516"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[e.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="90" width="100" height="30" uuid="83fc1e37-7b86-40a4-b68b-01006119f5ee"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CONDITOINS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="256" width="490" height="30" uuid="8b2d9d7e-ef96-4d07-b395-ec7cc794da86"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[The Burden of proof of accidental death or bodily injury for a claim is on the proposer or the beneficiary.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="382" width="20" height="30" uuid="743c76f0-f53c-4c03-8ab6-92cae4c0afd6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[a.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="217" width="20" height="30" uuid="42419da7-3559-42ba-bcf9-397c4e80d062"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[5.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="525" width="470" height="30" uuid="049a2e6a-a31c-486a-9b94-122d40d0063a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[using narcotic drugs]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="341" width="20" height="30" uuid="70197d01-6bc0-4eb4-ad45-6a197cb76ee5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[8.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="444" width="20" height="30" uuid="f83a07e6-55f0-4d76-a1b0-6daa1fac9a2d"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[d.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="341" width="490" height="30" uuid="11eeeaae-068f-41bf-8e13-8dd72bcb1c60"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[The territorial limit of cover is within the country/countries stated in the proposal form.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="464" width="470" height="30" uuid="26f05b51-0b02-4be6-a0a6-f94f927acd7d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[childbirth,miscarriage or abortion not result from the accident of vehicle;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="485" width="470" height="30" uuid="1d0ceaf5-4c7b-42ce-bfe4-e609f85859cf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[taking part in certain hazardous acticities;]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="422" width="470" height="30" uuid="6d265202-1d50-444e-bb7b-cf7f645b6971"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[suicide;]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

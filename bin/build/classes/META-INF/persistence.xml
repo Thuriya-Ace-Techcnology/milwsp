@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+	<persistence-unit name="JPA"
+		transaction-type="RESOURCE_LOCAL">
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+		<!-- Common -->
+		<class>org.ace.java.component.idgen.IDGen</class>
+		<class>org.ace.insurance.common.UserRecorder</class>
+		
+		<class>org.ace.insurance.common.FamilyInfo</class>
+		<class>org.ace.insurance.common.Qualification</class>
+		<class>org.ace.insurance.common.BankBranch</class>
+		<class>org.ace.insurance.common.Industry</class>
+		<class>org.ace.insurance.common.Bank</class>
+		<class>org.ace.insurance.agent.Agent</class>
+		<class>org.ace.insurance.common.Organization</class>
+		<class>org.ace.insurance.common.ContentInfo</class>
+		<class>org.ace.insurance.common.Religion</class>
+		<class>org.ace.insurance.common.AgentAttachment</class>
+		<class>org.ace.insurance.common.Name</class>
+		<class>org.ace.insurance.common.PermanentAddress</class>
+		<class>org.ace.insurance.common.ResidentAddress</class>
+		
+		<class>org.ace.insurance.product.NcbRate</class>
+		<class>org.ace.insurance.system.cargo.CommonCreateAndUpateMarks</class>
+		<class>org.ace.insurance.system.common.branch.Branch</class>
+		<class>org.ace.insurance.system.common.township.Township</class>
+		<class>org.ace.insurance.system.common.district.District</class>
+		<class>org.ace.insurance.system.productfaq.ProductFAQ</class>
+		<class>org.ace.insurance.system.productfaq.FAQ</class>
+		<class>org.ace.insurance.system.common.securityQuestion.SecurityQuestion</class>
+		<class>org.ace.insurance.system.productinformation.maincategory.MainCategory</class>
+		<class>org.ace.insurance.system.productinformation.photoimage.PhotoImage</class>
+		<class>org.ace.insurance.system.productinformation.subcategory.SubCategory</class>
+		<class>org.ace.insurance.system.productinformation.text.NameText</class>
+		<class>org.ace.insurance.product.Product</class>
+		<class>org.ace.insurance.productContent.ProductContent</class>
+		<class>org.ace.insurance.product.ProductGroup</class>
+		<class>org.ace.insurance.system.common.paymenttype.PaymentType</class>
+		<class>org.ace.insurance.system.common.addon.AddOn</class>
+		<class>org.ace.insurance.system.common.keyfactor.KeyFactor</class>
+		<class>org.ace.insurance.system.common.currency.Currency</class>
+		<class>org.ace.insurance.system.common.province.Province</class>
+		<class>org.ace.insurance.system.common.country.Country</class>
+		<class>org.ace.insurance.system.fire.roof.Roof</class>
+		<class>org.ace.insurance.system.fire.wall.Wall</class>
+		<class>org.ace.insurance.system.fire.floor.Floor</class>
+		<class>org.ace.insurance.system.fire.buildingclass.BuildingClass</class>
+		<class>org.ace.insurance.system.fire.buildingOccupation.BuildingOccupation</class>
+		<class>org.ace.insurance.system.fire.buildingclass.ClassValue</class>
+		<class>org.ace.insurance.system.cargo.route.Route</class>
+		<class>org.ace.insurance.system.cargo.cargoType.CargoType</class>
+		<class>org.ace.insurance.product.ProductPremiumRate</class>
+		<class>org.ace.insurance.product.ProductPremiumRateKeyFactor</class>
+		<class>org.ace.insurance.system.common.bmiChart.BMIChart</class>
+		<class>org.ace.insurance.system.thirdparty.ThirdPartyPremiumReceipt</class>
+		<class>org.ace.insurance.system.rta.RTA</class>
+		<class>org.ace.insurance.system.rta.TempRTA</class>
+		<class>org.ace.insurance.system.common.driverType.DriverType</class>
+		<class>org.ace.insurance.system.common.motorCycleType.MotorCycleType</class>
+		<class>org.ace.insurance.personalAccident.MobilePersonalAccidentProposal</class>
+		<class>org.ace.insurance.personalAccident.GInsuredPersonAddon</class>
+		<class>org.ace.insurance.personalAccident.GInsuredPersonBeneficiaries</class>
+		<class>org.ace.insurance.personalAccident.MobilePersonalAccidentInsuredPerson</class>
+		<class>org.ace.insurance.system.common.occupation.Occupation</class>
+		<class>org.ace.ws.model.onlineBiller.OnlineBiller</class>
+
+		<class>org.ace.insurance.surveyquestion.SurveyQuestion</class>
+		<class>org.ace.insurance.surveyquestion.ProductProcessQuestionLink</class>
+		<class>org.ace.insurance.productprocess.ProductProcess</class>
+		<class>org.ace.insurance.surveyquestion.ResourceQuestion</class>
+		<class>org.ace.insurance.medical.process.Process</class>
+		<class>org.ace.insurance.medical.surveyAnswer.SurveyQuestionAnswer</class>
+		<class>org.ace.insurance.medical.surveyAnswer.ResourceQuestionAnswer</class>
+		<!-- Mobile User -->
+		<class>org.ace.insurance.system.mobileUser.MobileUser</class>
+		<class>org.ace.insurance.system.mobileUser.securityAnswer.SecurityAnswer</class>
+		<!-- Mobile Medical Proposal -->
+		<class>org.ace.insurance.medical.MobileMedicalProposal</class>
+		<class>org.ace.insurance.medical.MobileMedicalProposalInsuredPerson</class>
+		<class>org.ace.insurance.medical.MobileMedicalProposalInsuredPersonAddOn</class>
+		<class>org.ace.insurance.medical.MobileMedicalProposalInsuredPersonBeneficiaries</class>
+		<!-- Mobile Travel Proposal -->
+		<class>org.ace.insurance.travel.MobileTravelProposal</class>
+		<class>org.ace.insurance.travel.MobileTravelInsuredPerson</class>
+		<class>org.ace.insurance.system.notification.Notification</class>
+		<class>org.ace.insurance.system.appversion.AppVersion</class>
+		<class>org.ace.insurance.system.paymentTransaction.Transactions</class>
+		<class>org.ace.ws.model.transaction.PaymentResponse</class>
+		<class>org.ace.insurance.system.fire.paeRate.PAEBuildingClass</class>
+		<class>org.ace.insurance.system.twoCtwoP.TwoCTwoPRecords</class>
+		<class>org.ace.insurance.system.rta.RTALocation</class>
+		<class>org.ace.insurance.system.rta.RTATownship</class>
+		<class>org.ace.insurance.system.productTypeRecords.ProductTypeRecords</class>
+		<class>org.ace.insurance.system.common.relationship.RelationShip</class>
+		<class>org.ace.insurance.onlineBiller.OnlineBillerBuyer</class>
+		
+		<class>org.ace.insurance.specailForeignTravel.SpecialForeignTravel</class>
+		<class>org.ace.insurance.specailForeignTravel.SpecialForeignTravellerInfo</class>
+		<class>org.ace.insurance.specailForeignTravel.SpecialTravellerBeneficaryInfo</class>
+		<class>org.ace.insurance.specailForeignTravel.SpecialTravellerChildInfo</class>
+		<class>org.ace.insurance.specailForeignTravel.OutboundTPAPremiumRate</class>
+		<class>org.ace.insurance.thirdPartyDriverLicense.ThirdPartyDriverInfo</class>
+		<class>org.ace.insurance.thirdPartyDriverLicense.ThirdPartyDriverProposal</class>
+		<class>org.ace.insurance.specailForeignTravel.SpecialForeignTravelHistory</class>
+		<class>org.ace.insurance.specailForeignTravel.OutboundAssociationAgent</class>
+        <class>org.ace.insurance.thirdPartyDriverLicense.TypeOfDriver</class>
+        
+        <!-- Life-->
+        <class>org.ace.insurance.life.dao.entities.LifeProposal</class>
+        <class>org.ace.insurance.life.dao.entities.Customer</class>
+        <class>org.ace.insurance.life.dao.entities.CustomerInfoStatus</class>
+        <class>org.ace.insurance.life.dao.entities.SalesPoints</class>
+        <class>org.ace.insurance.life.dao.entities.ProposalInsuredPerson</class>
+        <class>org.ace.insurance.life.dao.entities.LifePolicyAttachment</class>
+        <class>org.ace.insurance.life.dao.entities.Attachment</class>
+		<class>org.ace.insurance.life.dao.entities.LifePolicy</class>
+		<class>org.ace.insurance.life.dao.entities.LifePolicyHistory</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPerson</class>
+		<class>org.ace.insurance.life.dao.entities.Payment</class>
+		<class>org.ace.insurance.life.dao.entities.InsuredPersonAddon</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonAddon</class>
+		<class>org.ace.insurance.life.dao.entities.LifePolicyAttachmentHistory</class>
+		<class>org.ace.insurance.life.dao.entities.TypesOfSport</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonAddonHistory</class>
+		<class>org.ace.insurance.life.dao.entities.RiskyOccupation</class>
+		<class>org.ace.insurance.life.dao.entities.School</class>
+		<class>org.ace.insurance.life.dao.entities.GradeInfo</class>
+		<class>org.ace.insurance.life.dao.entities.InsuredPersonAttachment</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonAttachment</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonAttachmentHistory</class>
+		<class>org.ace.insurance.life.dao.entities.InsuredPersonKeyFactorValue</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonKeyFactorValue</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonKeyFactorValueHistory</class>
+		<class>org.ace.insurance.life.dao.entities.InsuredPersonBeneficiaries</class>
+		<class>org.ace.insurance.life.dao.entities.InsuredPersonPolicyHistoryRecord</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonBeneficiaries</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonBeneficiariesHistory</class>
+		<class>org.ace.insurance.life.dao.entities.Company</class>
+		<class>org.ace.insurance.life.dao.entities.LifeProposalAttachment</class>
+		<class>org.ace.insurance.life.dao.entities.Office</class>
+		<class>org.ace.insurance.life.dao.entities.OfficeType</class>
+		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonHistory</class>
+		<class>org.ace.insurance.life.dao.entities.Acquaintance</class>
+		
+		<class>org.ace.ws.model.MobileCountry</class>
+		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:sqlserver://localhost;databaseName=MILWSP;selectMethod=cursor;port=1433" />
+			<property name="javax.persistence.jdbc.user" value="sa" />
+			<property name="javax.persistence.jdbc.password"
+				value="123@ace" />
+			<property name="javax.persistence.jdbc.driver"
+				value="com.microsoft.sqlserver.jdbc.SQLServerDriver" />
+			<!-- <property name="javax.persistence.jdbc.url"
+				value="jdbc:mysql://localhost:3306/mminsura_miwsp" />
+			<property name="javax.persistence.jdbc.user"
+				value="mminsurance" />
+			<property name="javax.persistence.jdbc.password"
+				value="asd123!@#" />
+			<property name="javax.persistence.jdbc.driver"
+				value="com.mysql.jdbc.Driver" /> -->
+			<!-- For Performance Optimization -->
+			<property name="eclipselink.orm.throw.exceptions"
+				value="true" />
+			<property name="eclipselink.orm.throw.exceptions"
+				value="true" />
+			<property name="eclipselink.flush-clear.cache" value="Drop" />
+			<property name="eclipselink.cache.size.default" value="5000" />
+			<property name="eclipselink.jdbc.cache-statements"
+				value="true" />
+			<property name="eclipselink.jdbc.cache-statements.size"
+				value="100" />
+			<property name="eclipselink.jdbc.batch-writing"
+				value="Oracle-JDBC" />
+			<property name="eclipselink.target-database"
+				value="org.eclipse.persistence.platform.database.SQLServerPlatform" />
+			<property name="eclipselink.weaving" value="false" />
+			<property name="eclipselink.ddl-generation"
+				value="create-tables" />
+		</properties>
+	</persistence-unit>
+</persistence>

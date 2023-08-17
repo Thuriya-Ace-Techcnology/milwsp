@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="motorReceipt" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="0" bottomMargin="0" resourceBundle="LANGUAGE_en" uuid="474813db-69f0-4377-8b25-c0cb582cc70d">
+	<property name="ireport.zoom" value="2.0"/>
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.x" value="186"/>
+	<property name="ireport.y" value="333"/>
+	<parameter name="driverNo" class="java.lang.String"/>
+	<parameter name="period" class="java.lang.Integer"/>
+	<parameter name="proposalNo" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<parameter name="receiptDate" class="java.lang.String"/>
+	<parameter name="premium" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="Logo" class="java.lang.String"/>
+	<parameter name="driverLicenseNo" class="java.lang.String"/>
+	<parameter name="policyStartDate" class="java.lang.String"/>
+	<parameter name="policyEndDate" class="java.lang.String"/>
+	<detail>
+		<band height="842" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="398" y="172" width="157" height="18" uuid="86426f0e-5dcf-468e-870f-6c419a6a09f3">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptDate}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{TIMESTAMP_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="172" width="108" height="18" uuid="cd2bbc87-b32d-4100-9180-556343881b15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ေျပစာအမွတ္]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="255" y="238" width="295" height="18" uuid="e5cd42cb-391c-4b80-8ce0-eb70952a0078">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="423" y="393" width="100" height="18" uuid="a9409e47-e7f8-40bb-8098-675f67a04e41"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[တာဝန္ခံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="363" y="172" width="31" height="18" uuid="d860679e-c6ba-4eb3-a952-0c88a31862fc">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ေန႔စြဲ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="110" y="173" width="184" height="18" uuid="d154a443-8460-4280-b006-6800a6c1ff70"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{driverNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="371" y="410" width="185" height="18" uuid="9a1acf09-70fd-4786-808c-5406ee99dc07"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[လိုင္စင္ပရီမီယံဌာန]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="110" y="194" width="184" height="23" uuid="8ef778fb-d225-4249-bbe2-a59ac5313b93"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{proposalNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="2" y="193" width="108" height="23" uuid="8711cbe7-06f1-475f-9e38-0fa61eb92670"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ProposalNo]]></text>
+			</staticText>
+			<image>
+				<reportElement x="100" y="70" width="85" height="66" uuid="ba14664f-05dd-4ba4-b1e1-1788851f17fd"/>
+				<imageExpression><![CDATA[$P{Logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="68" y="238" width="186" height="18" uuid="960cdf58-ee36-4c84-9828-63cc16de727e">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ယာဥ္ ေမာင္းအမည္]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="30" y="238" width="40" height="18" uuid="4407a1b8-f21e-4630-bc80-464216d367fe">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၁)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="30" y="260" width="40" height="18" uuid="dc309d12-e325-460a-9026-5b7b58c21fdd">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၂)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="68" y="260" width="186" height="18" uuid="4ac41461-f7ee-4d8a-ae5f-9e2847164678">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[လိုင္စင္အမ်ိဴးအစား /အမွတ္]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="255" y="260" width="295" height="18" uuid="a0110524-f6aa-40e1-a98e-911a8acde060">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{type} + " / " + $P{driverLicenseNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="30" y="282" width="40" height="18" uuid="0c35c03a-91a2-4519-9fa5-bec949eae49c">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၃)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="68" y="282" width="186" height="18" uuid="dd5a9742-baf5-4659-9c4a-908ccd26ec39">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံသက္တမ္း]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="255" y="282" width="39" height="18" uuid="8163eb82-af9e-4683-a8e8-8fc6fff0dd33">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="30" y="304" width="40" height="18" uuid="a0579255-2f48-4023-82ba-32165bae7f00">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၄)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="68" y="304" width="186" height="18" uuid="1703e83d-23c5-4317-a0d9-019ae1e06a00">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံရေငြ]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="255" y="304" width="95" height="18" uuid="ba575a3c-7434-44bf-974e-4a2d65efcb4f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premium}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="297" y="282" width="72" height="18" uuid="ac154e7e-fba3-40fe-99e0-1d661c6f9d1e">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[ႏွစ္အတြက္]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="350" y="304" width="100" height="18" uuid="5c483469-4de8-468c-97fc-f1fe0815cd33">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[က်ပ္ တိတိ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="67" y="641" width="186" height="18" uuid="53262667-ebaa-42d0-91cf-d4ec3a9a9d41">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[လိုင္စင္အမ်ိဴးအစား /အမွတ္]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true">
+				<reportElement positionType="Float" x="254" y="619" width="295" height="18" uuid="366ea007-26c1-4012-b6b6-c76a189998e4">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="109" y="575" width="184" height="23" uuid="33f98c64-d225-43a9-bf5b-8f852e9b2d2c"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{proposalNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="254" y="663" width="39" height="18" uuid="2c65ffd8-be0d-4ec7-9c29-7da068f5a061">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{period}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="362" y="553" width="31" height="18" uuid="f4ee17ae-75dd-4b7e-a8f7-d50309962ac0">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ေန႔စြဲ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="67" y="619" width="186" height="18" uuid="7907a20e-ed96-4d7b-acce-9ae042044779">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ယာဥ္ ေမာင္းအမည္]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="109" y="554" width="184" height="18" uuid="2cc37d69-2ee7-4284-8f2f-51a92023af64"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{driverNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="29" y="663" width="40" height="18" uuid="a243b652-b630-45f9-9b8b-4cef264ca0f5">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၃)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="663" width="72" height="18" uuid="43e1450c-3047-4628-bdb2-28e6bf1bf7d2">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[ႏွစ္အတြက္]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="397" y="553" width="157" height="18" uuid="44bceecb-3835-475b-bcad-2a25dea4a131">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptDate}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{TIMESTAMP_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement x="370" y="792" width="185" height="18" uuid="67407893-1856-472c-9765-7544155b73ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[လိုင္စင္ပရီမီယံဌာန]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="67" y="663" width="186" height="18" uuid="4f1cd2f4-6fa2-43d7-b9a6-f3fb3c541746">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံသက္တမ္း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="67" y="685" width="186" height="18" uuid="3b84a897-9483-4ba2-b7ba-0378c5d15d34">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံရေငြ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="29" y="619" width="40" height="18" uuid="a243e15a-089a-4f98-9c95-03cc5f5326fd">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၁)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="422" y="775" width="100" height="18" uuid="9e39b6af-2759-4023-8abd-117cc67751cb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[တာဝန္ခံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="29" y="641" width="40" height="18" uuid="1c0541a1-9e50-4dc4-bcce-3c68e197681c">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၂)]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="254" y="641" width="295" height="18" uuid="91a4b259-da78-4b43-a7c2-75cb629f84a8">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{type} + " / " + $P{driverLicenseNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="254" y="685" width="95" height="18" uuid="0d130312-8beb-4cec-87c2-2e0764537429">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dashed"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premium}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="349" y="685" width="100" height="18" uuid="025a3e19-f86a-47d9-b9c0-de58fd1d344b">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+				</textElement>
+				<text><![CDATA[က်ပ္ တိတိ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="29" y="685" width="40" height="18" uuid="c87a2d13-8cae-425f-a7b9-6a3cae740d28">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[(၄)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="554" width="108" height="18" uuid="b2d40871-4560-4b98-95c7-bdd7cee0bf95"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ေျပစာအမွတ္]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="7" y="575" width="108" height="23" uuid="47a683bf-bc78-4a47-abd4-48250a1ad040"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ProposalNo]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="93" width="540" height="25" uuid="7d7f95d5-6453-4614-aa85-393004efa08e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="14"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ျမန္မာ့အာမခံလုပ္ငန္း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="119" width="540" height="25" uuid="4c1ad96f-f268-4775-9f5c-be2df34c633b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[သူတစ္ပါးထိခိုက္မူအာမခံဌာန]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="7" y="143" width="540" height="25" uuid="ba228896-7b66-4da6-a036-c1c79ddc2bd9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ယာဥ္ေမာင္းလိုင္စင္ အာမခံ ပရီမီယံ ေငြရေျပစာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="466" width="540" height="25" uuid="73845963-223a-4c8d-8c56-726eb6a40919">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="14"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ျမန္မာ့အာမခံလုပ္ငန္း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="492" width="540" height="25" uuid="45ad16cb-d361-4197-a64f-c6c67e8036e4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[သူတစ္ပါးထိခိုက္မူအာမခံဌာန]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="516" width="540" height="25" uuid="46d96d5c-7822-41bd-9e97-178df4534540">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="12"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ယာဥ္ေမာင္းလိုင္စင္ အာမခံ ပရီမီယံ ေငြရေျပစာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="430" y="469" width="100" height="18" uuid="0cc55f09-deb1-4504-b7bc-e8435e512610"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[(Copy)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="330" width="522" height="25" uuid="1c3ea24f-2eb6-44f8-a18c-727f19d7cc10">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[အတက္ေဖာ္ျပပါ ယာဥ္ေမာင္းသူထံမွ ေပးသြင္းေသာ သူတပါး ထိခိုက္မူ အာမခံေၾကး ကို လက္ခံရရွိၿပီးျဖစ္ပါသည္။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="710" width="522" height="25" uuid="660bcf6e-f6e9-4fb6-8e65-12fd1227ccef">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[အတက္ေဖာ္ျပပါ ယာဥ္ေမာင္းသူထံမွ ေပးသြင္းေသာ သူတပါး ထိခိုက္မူ အာမခံေၾကး ကို လက္ခံရရွိၿပီးျဖစ္ပါသည္။]]></text>
+			</staticText>
+			<image>
+				<reportElement x="100" y="445" width="85" height="66" uuid="4f4358e8-fc04-4aed-8e69-2bf77c49cd31"/>
+				<imageExpression><![CDATA[$P{Logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="810" width="50" height="18" uuid="ebfe26bb-c288-414c-a949-a881b6708b35"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<text><![CDATA[Print Date : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="50" y="810" width="100" height="18" uuid="34d41fd9-11f4-4a7c-a88c-01d903a10136"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new Date()]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{TIMESTAMP_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="410" width="48" height="18" uuid="6a24276c-1599-40b9-a2f9-ebd21127f94d"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[For RTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="792" width="80" height="18" uuid="24deedaf-5985-4271-86e4-a2e096fb8131"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="8"/>
+				</textElement>
+				<text><![CDATA[For Vehicle Owner]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="368" y="282" width="182" height="18" uuid="6670de55-b2fc-4315-a46f-fefe2292bdcf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Zawgyi-One"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( " + $P{policyStartDate} + " မွ "  + $P{policyEndDate} + " အထိ)"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="368" y="663" width="182" height="18" uuid="87955a98-9eb6-4791-a031-bb1c369c80b3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Zawgyi-One"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( " + $P{policyStartDate} + " မွ "  + $P{policyEndDate} + " အထိ)"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

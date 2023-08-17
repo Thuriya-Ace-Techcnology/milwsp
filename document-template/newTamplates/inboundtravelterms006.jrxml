@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="benefit" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="82" width="440" height="328" uuid="6ddc5938-5c9f-4a56-af37-07b86eb26d83">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[1. CLAIM
+In the event of any occurrence which may give rise to a claim for indemnity under this Policy, the Insured or the authorized Hospital or Medical Center (or the Insured’s beneficiary in case of death) shall:
+a)	give notice to the Company in writing with full details within 30 consecutive days after the completion of the Trip or 24 consecutive hours from the date of Accident in the case of death or disablement if practicable,
+b)	give the Company at his/her or authorized Hospital’s / Medical Centre’s own expense, all medical evidence, certificates, reports, original receipts, proof of ownership, documentation and any other evidence, verified by authorized person, which the Company may require from the Insured to support his/her claim.
+In the event of an Emergency, Serious Accident, please call the 24-hours the Company’s helpline number shown on the Certificate of Insurance, The Company’s website, or Claim Form. The Insured shall provide his/her name, policy number and details of his/her Accident, contact details of his/her attending doctor, his/her present location and how he/she can be contacted.
+2. LEGAL PROCEEDINGS
+No action at law or in equity shall be brought under this Policy against the Company prior to the expiration of 60 days after the proof of claim has been filed in accordance with the requirements of this Policy nor shall such action be brought at all unless it is brought within 2 years from the expiration of the period within which proof of claim is required under this Policy. If the Company shall disclaim liability for any claim under this Policy and no action has within five (5) calendar months from the date of such disclaimer been commenced against The Company, then the claim shall for all purposes be deemed to have been abandoned and shall not thereafter be recoverable.
+3. DISPUTE RESOLUTION
+The Parties may agree to take part in the dispute resolution or mediation in good faith and undertake to honor the terms of any settlement reached.
+Or If any dispute is not reached any settlement through dispute resolution and mediation methods, the dispute may be submitted to Insurance Business Regulatory Board (IBRB) in Republic of the Union of Myanmar and IBRB’s decision shall be final and in force to the Parties of the dispute.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="40" width="241" height="30" uuid="ae91a972-13a8-46d9-a77d-700c2fa35de1">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<text><![CDATA[SECTION IV: CLAIM PROCEDURE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="440" width="240" height="30" uuid="19de6e97-d647-497a-8286-021a139324c5">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[SECTION V: BENEFITS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="40" y="486" width="440" height="210" uuid="7214c786-1e44-4964-84a0-c868675ea76e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<imageExpression><![CDATA[$P{benefit}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="40" y="690" width="440" height="70" isPrintWhenDetailOverflows="true" uuid="153a5a38-31fa-452f-b74a-3b00da2d6b36">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[We hereby confirm that the Insured is covered for medical treatment expenses for accident,covid-19 and repatriation of dead body up to USD 50,000, subject to the terms & conditions and exclusions stated in the Policy issued by Myanma Insurance.Refund premium is subject to General Conditions and Provisions clause of No.7.Effective date refers to the date of premium payment or the date of arrival in Myanmar (after passing the immigration counter stationed at the arrival airport) whichever is later.]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

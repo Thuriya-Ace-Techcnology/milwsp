@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="39" y="40" width="241" height="20" uuid="1fc68054-9c6a-4048-b94c-38ce529945ed"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SECTION I: COVERAGES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="80" width="480" height="680" uuid="3603999e-9aca-486e-9910-a0f8130c7762">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[ACCIDENT/ACCIDENTAL refers sudden, unintended and unforeseen mishap caused by external, violent and visible means.
+
+APPOINTED ASSISTANCE COMPANY refers to a company appointed by Myanma Insurance to provide the Insured with travel assistance and medical emergency services.
+
+DEDUCTIBLE refers to the amount of any claim which Insured must pay themselves.
+
+EFFECTIVE DATE refers to the Policy Commencement Date or Date of the Insured’s first enrollment into the Policy, whichever is later.
+
+ILLNESS refers to Covid-19 disease, manifesting itself during the period of insurance, and excluding any pre-existing conditions.
+
+INSURED refers to natural person or legal entity that purchases an Insurance Policy, and in some cases an insured can be a policy owner as well as an insured person.
+
+MEDICAL EXPENSE refers to the services fee that the Hospital or Medical Center charges Insured that are considered Normal and Customary while he/she is their Inpatient.
+
+MEDICAL PRACTITIONER refers to a person who has a medical degree, is licensed or registered in the country which they operate and is accredited by a medical board or equivalent organization to render medical services, except of Family Members.
+
+LOSS OF SIGHT refers to a physical condition where the Insured is completely blind and cannot be cured.
+
+PERIOD OF INSURANCE refers to the period of cover shown in the Policy Schedule for which the appropriate premium has been paid.
+
+ISOLATION refers to Hotel quarantine and facility centers due to the infection of covid-19.
+
+HOSPITAL refers to only an establishment duly constituted and registered as a hospital or clinic for the care and treatment of sick and injured persons as bed-paying patients, and which:
+(1) has facilities for diagnosis and major surgery,
+(2) provides twenty-four (24) hours a day nursing services by registered and graduate nurses
+(3) is under the supervision of a medical practitioner
+
+DEDUCTIBLE means the accumulative total amount of medical expenses incurred by an insured person during any one policy year in excess of which the policy will indemnify or compensate the insured person for medical expenses covered by the policy.
+
+INJURY means bodily injury sustained by you during the period of insurance caused solely and directly by an accident.
+
+IN-PATIENT refers to someone who is continuously confined to a hospital and under the care of a physician for more than twenty-four (24) consecutive hours, such confinement being certified as medically necessary by the attending physician.
+
+LOSS OF A LIMB means loss by physical severance or total and permanent loss of use of a hand at or above the wrist or of a foot at or above the ankle.
+
+PRE-EXISTING CONDITIONS means any disabilities for which you have reasonable knowledge of in the twelve (12) months prior to the commencement of this policy. You are considered to have reasonable knowledge of pre-existing conditions where the condition is one for which:
+(1) you have been diagnosed; or
+(2) symptoms existed that would cause an ordinary prudent person to seek diagnosis, care or treatment; or
+(3) medical advice, diagnosis, care or treatment that has been recommended by medical practitioner, irrespective of whether such treatment was actually received prior to the commencement date of this policy; or
+(4) you have received or are receiving treatment.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="0" width="550" height="30" uuid="9c4c5e0e-2087-4043-8d82-f7e90215ffc4"/>
+				<textElement>
+					<font fontName="Times New Roman" size="10"/>
+				</textElement>
+				<text><![CDATA[OUTBOUND TRAVEL ACCIDENT INSURANCE
+POLICY WORDING
+]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="29" width="550" height="1" uuid="60901db6-fa18-49f3-81cd-84ce2cd2f78c"/>
+			</line>
+			<staticText>
+				<reportElement x="39" y="60" width="241" height="20" uuid="00773485-1720-4a3b-911f-56405a92600d"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[1.DEFINITIONS]]></text>
+			</staticText>
+			<image>
+				<reportElement x="480" y="30" width="50" height="50" uuid="946dfab4-e34c-45ee-a2cb-a94560a41cca"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="a8733a76-d966-4706-8a16-1b3e0d688244"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="7268a44c-0bb4-4a2e-83c1-3bd53291db01"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

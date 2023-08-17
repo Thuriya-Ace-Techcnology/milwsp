@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="table1" class="java.lang.String"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="481" y="30" width="50" height="50" uuid="e03d7010-4596-4947-91f7-caa975a7fbda"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="41" y="80" width="180" height="20" uuid="9f99b25f-8255-4f23-93ee-08f91ab7adc0"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[9.    DISAPPEARANCE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="41" y="100" width="471" height="80" uuid="1a22279d-542a-48e2-9e45-7704d038d69f">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[If during the period of cover and whilst on the insured Trip, an Insured disappears following the disappearance, sinking or wrecking of a conveyance in which they were traveling and their body has not been found within twelve (12) months after the date of disappearance, they will be deemed to have died as a result of an Accident at the time of disappearance, sinking or wrecking of the conveyance. If benefit under PERSONAL ACCIDENT BENEFITS is payable because of disappearance, the Company will only pay provided the Insured's beneficiary gives the Company a signed undertaking that the amounts will be repaid to the Company if the Insured is subsequently found to be alive.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="210" width="180" height="20" uuid="1dd73623-7ada-43c2-baec-6bdb72a96238"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[OUT-PATIENT SERVICES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="230" width="471" height="20" uuid="f5f05ce7-f2af-4aee-a1f2-71b0e16115f0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[All forms of outpatient treatment including doctor consultation, purchasing medication via external pharmacy, outpatient diagnosis and lab test.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="265" width="471" height="25" uuid="3c3c40c0-5dd5-4f68-9b27-9b736cefb741">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Dental conditions including dental treatment, restorative procedure (including but not limited to crowning, bridging and root canal treatment) or oral surgery.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="180" width="241" height="20" uuid="5e4b8f0e-086a-4102-a74e-a03f95079cfc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SECTION III: EXCLUSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="245" width="180" height="20" uuid="9beb2fc0-44bf-4baf-bba9-f47b6f589c63"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[DENTAL TREATMENT]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="290" width="180" height="20" uuid="a4828a08-8c06-4945-bd06-d050b7280f14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[ADDICTION/ INTOXICATION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="310" width="471" height="25" uuid="57e44efe-54d2-46ba-b64b-d02ece75fd56">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Those claims are derived from illnesses or pathological states caused by the voluntary consumption of alcohol, drugs, toxic substances, narcotics or medicines acquired without medical prescription, as well as any kind of mental illness or mental imbalance.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="355" width="471" height="25" uuid="a033ecd1-22f7-483b-9d88-b8cfb54a180e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[This Policy does not pay claims arising from flying or other aerial activity except as a fare-paying passenger in a fully licensed aircraft operated by a licensed commercial air carrier or recognized charter company.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="335" width="180" height="20" uuid="ca992dc0-4547-476b-9e93-6fa039c1032b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[AERIAL ACTIVITIES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="380" width="180" height="20" uuid="187cd0bc-5482-4a99-870a-247684ef458a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[BACTERIAL & VIRAL INFECTION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="400" width="471" height="25" uuid="d76e079f-207a-4313-9ec1-30fabb32b8f5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[The Company will not pay for claims arising from bacterial or viral infections even if contacted by accident except for bacterial infection that is the direct result of an accidental cut or wound.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="423" width="180" height="20" uuid="d38f6cda-c5d4-4a3d-907f-03dc34b8169e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[CARELESSNESS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="443" width="471" height="36" uuid="80972982-3d89-4fcd-9db3-b45382a7dca1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Those claims are caused directly or indirectly by the bad faith of the Insured, by his/her participation in criminal acts, or as a result of his/her fraudulent, seriously negligent, or reckless actions. The consequences of the actions of the Insured in a state of derangement or under psychiatric treatment are not covered either.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="497" width="471" height="35" uuid="37a6e247-bce9-4a4f-866f-19df9d073d07">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any Plastic, Elective, Reconstructive Surgery including treatments for skin, blemishes, aging spots, freckles, dandruff, hair loss, weight control, or elective surgery to improve physical appearance, except where such Surgery is necessary for the repair of damage caused solely by bodily injuries as a result of an accident.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="477" width="180" height="20" uuid="cc0500aa-9ab6-45a5-8bc5-6a365b064149"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[COSMETIC/ PLASTIC SURGERY]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="c1cbf7d9-03b6-46b7-aa3c-e338211a0a47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="5ab6ab82-3fda-4135-92b1-f8c818780d27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="549" width="471" height="120" uuid="907e0756-3898-49e5-9986-9a137e61d1cc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Any treatment or accident arising from participating in:
+      •          animal hunting (game hunting), car/ boat/ horse racing,Boxing
+      •          all Skiing for recreation or competition including Jet Skiing, Skating, and Parachuting (unless to save Insured's life)
+      •          while getting in, getting out or taxing in Balloons or Gliders
+      •          Bungee Jumping, Mountain Climbing with or without Mountain Climbing Equipment, and Divingusing Oxygen Cylinders and other Breathing Apparatus  
+      •          traveling in an aircraft not operated by a commercial airline which is taxiing, taking off, or landing.
+      •          This extends to driving a car or motorcycle without a driver's license.
+      •          Participation in competitions or tournaments organized by sporting federations or similar organizations.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="530" width="180" height="20" uuid="f9226d7d-75cd-41e7-bc59-2304d24ecfcc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[HAZARDOUS ACTIVITIES & SPORTS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="665" width="180" height="20" uuid="8d5abc8c-16f4-418c-a2b3-bbeb123d789c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[FELONY / MISDEMEANOR / BRAWLING]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="685" width="471" height="35" uuid="5aefa441-c920-46c2-988b-66d1ef8e9efa">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[      •          The Company will not indemnify the Insured in respect of any Liability or Injury arising out of criminal offenses alleged.
+      •          The Company will not pay claims for any accident occurring when the Insured is encouraging or taking part or participating in a brawling fight.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="738" width="471" height="40" uuid="74178b83-6899-4cee-9185-2aebb8ba9e7d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[Where the Insured is not fit to undertake the Trip as confirmed by his/her medical practitioner when booking the Trip or purchasing this policy.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="720" width="180" height="20" uuid="f50704eb-43e1-4112-8a5e-73923f32a9b5"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[FIT TO TRAVEL]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

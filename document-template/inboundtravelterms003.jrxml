@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.19.1-867c00bf88cd4d784d404379d6c05e1b419e8a4c  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="19" width="241" height="20" uuid="1fc68054-9c6a-4048-b94c-38ce529945ed"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[SECTION II: GENERAL CONDITIONS AND PROVISIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="40" width="440" height="740" uuid="3603999e-9aca-486e-9910-a0f8130c7762"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[1. DUTY OF DISCLOSURE
+The accuracy of the information provided over any means of electronic communications or in the Insured’s proposal form will form the basis of and be part of the contract. Before Insured enter into the Insurance contract and during the Period of Insurance, Insured must declare to The Company everything Insured know or could reasonably be expected to know which will affect The Company’s decision on the coverage and the terms of the insurance. If Insured are uncertain about whether a fact is relevant or not, Insured must declare to The Company about it. The Company will acknowledge receipt of acceptance of material information by stating these on the Policy Schedule. If Insured do not provide this information to The Company, The Company may:
+	i.   reduce the amount payable for the claim under this Policy; or
+	ii.  refuse to pay the claim that may arise; or
+	iii. cancel Insured’s Insurance Policy from inception.
+2. ELIGIBILITY
+Persons eligible for cover under this Policy are:
+	i.  It can be purchased from one year age.
+3. AMENDMENT OF THE INSURANCE POLICY
+The Amendment of the Insurance Policy will be valid when The Company accepts such agreement and it is legally binding after a formal written statement being attached to the Policy or being issued as an endorsement by the Company.
+4. CHANGE OF INSURANCE AGREEMENT
+Insured shall give The Company immediate written notice of any changes in the Country of Residence, occupation, pursuits or health of any Insured, which is likely to result in a material increase in hazard to The Company and shall pay any additional premiums that may be required by The Company. Failure to do so shall entitle The Company, in the event of a claim, to repudiate such a claim or at The Company’s discretion, adjust the benefits payable.
+The Company reserves the rights to amend the terms and provisions of this Policy on any Policy Anniversary date by giving Insured thirty (30) days’ written notice of such change. Notice can be delivered via electronic means or sent by ordinary mail to Insured’s last known correspondence address in The  records. No alteration to this Policy shall be valid unless approved in writing by The Company’s authorized representative and reflected in an endorsement. No broker or advisor has the authority to amend or waive any of the terms and conditions of this Policy.
+5. MISSTATEMENT
+	• Misstatement of Age
+If the date of birth of any Insured has been incorrectly stated on the proposal form, then the renewal premium shall be adjusted based on the correct age. Any excess premium that may have been paid as a result of any misstatement of age shall be refunded without interest. If at the correct age Insured would not have been eligible for cover under this Policy, no benefit shall be payable, and The Company’s liability shall be limited to the refund of the premium paid without interest. Proof of age of each Insured must be submitted to The Company before any claims can be made under the Policy.
+	• Misstatement or fraud
+The Company shall have no liability to pay any benefit under this Policy if Insured or any Insured:
+- fail to fully and truthfully disclose to The Company all material information known (or which could reasonably be expected to be known) before inception of this policy and upon each renewal;
+- fail to properly fulfil the terms and conditions of this policy;
+- make any untruth statement;
+- omit, suppress or incorrectly state any material information affecting the risk;
+- make any claim that is fraudulent or exaggerated or make any false declaration or statement in support of a claim.
+6. GOVERNING LAW AND JURISDICTION
+The Policy shall be governed by and interpreted in accordance with the Law of Republic of the Union of Myanmar. The jurisdiction is the competent court in Republic of the Union of Myanmar.
+7. CANCELLATION OF THE INSURANCE
+In the event the Insured cancels his/her application after the Company has issued the policy but prior to the effective date of the Policy, the Company shall refund the premium to the Insured after the deduction of cancellation administration fee; however, bank charges or any other charges or fees for the remittance of refund premium shall be incurred by the Insured. No refund shall be made after the effective date of the Policy or in the event the Insured returns home prior to the expiry of the Policy.
+(i) Eligibility for Applying Refund Premium
+- In the event of the rejection to the E-Visa application of the insured who has purchased the Inbound Travel Accident Insurance, refund premium shall be applied for within 14 days from the date of E-Visa rejection together with the evidence of E-Visa rejection.
+- In the event that the premium is paid more than once by the insured or proposer for the same policy with the same insurance period, the refund premium shall be applied for together with the evidence.
+- In no other circumstances except above two circumstances,Myanma Insurance shall be liable for the refund premium
+- The refund supporting documents shall be submitted together with the following information:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="497" y="6" width="50" height="50" uuid="2f9fbb65-2bea-4c1b-ad98-4a5ed4631f54"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="b07dbfe1-5825-4c85-8981-e7c3ff93b87b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="a43a4c3c-b280-410c-a122-0a08cf174fc4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="20" width="440" height="300" uuid="3603999e-9aca-486e-9910-a0f8130c7762"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[
+ 	 Insured’s name
+	 Passport
+	 Debit/Credit Card
+	 Original Payment Transaction Date
+	 Original Payment Transaction Amount
+	 Invoice Number
+8. CURRENCY
+The currency of the premium and any coverage amounts (benefits) will be in US Dollar. The Company accesses the claims. This Provision remain applicable unless there is a regulation to control the use of currency.
+9. CONFIDENTIALITY
+The Company shall keep all information to which Insured provided confidential either through filling the application form or via electronic communication.
+10. DISAPPEARANCE
+If during the period of cover and whilst on the insured Trip, an Insured disappears following the disappearance, sinking or wrecking of a conveyance in which they were traveling and their body has not been found within twelve (12) months after the date of disappearance, they will be deemed to have died as a result of an Accident at the time of disappearance, sinking or wrecking of the conveyance. If benefit under PERSONAL ACCIDENT BENEFITS is payable because of a disappearance, the Company will only pay provided the Insured’s beneficiary give the Company a signed undertaking that the amounts will be repaid to the Company if the Insured is subsequently found to be alive.
+11. MEDICAL AUTHORIZATION
+The Appointed Assistance Company would repatriate the Insured only when medical authorization from the attending doctor and the Appointed Assistance Company medical advisors certify that a repatriation is necessary.
+]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="320" width="241" height="30" uuid="8f1c9c54-ea64-4de6-9ef7-7d5ba7706a4a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle"/>
+				<text><![CDATA[SECTION III: EXCLUSIONS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="40" y="350" width="440" height="452" uuid="6ddc5938-5c9f-4a56-af37-07b86eb26d83"/>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[ADDICTION/ INTOXICATION
+Those claims derived from illnesses or pathological states caused by the voluntary consumption of alcohol, drugs, toxic substances, narcotics or medicines acquired without medical prescription, as well as any kind of mental illness or mental imbalance.
+
+AERIAL ACTIVITIES
+This Policy does not pay claims arising from flying or other aerial activity except as a fare paying passenger in a fully licensed aircraft operated by a licensed commercial air carrier or recognized charter company.
+
+BACTERIAL & VIRAL INFECTION
+The Company will not pay for claims arising from bacterial or viral infections even if contacted by accident except bacterial infection that is the direct result of an accidental cut or wound.
+
+CARELESSNESS
+Those claims caused directly or indirectly by the bad faith of the Insured, by his/her participation in criminal acts, or as a result of his/her fraudulent, seriously negligent or reckless actions. The consequences of the actions of the Insured in a state of derangement or under psychiatric treatment are not covered either.
+
+COSMETIC/ PLASTIC SURGERY
+Any Plastic, Elective, Reconstructive Surgery including treatments for skin, blemishes, aging spots, freckles, dandruff, hair loss, weight control or elective surgery to improve physical appearance, except where such Surgery is necessary for the repair of damage caused solely by bodily injuries as a result of an Accident.
+
+HAZARDOUS ACTIVITIES & SPORTS
+Any treatment or accident arising from participating in:
+•	animal hunting (game hunting), car/ boat/ horse racing, Boxing
+•	all Skiing for recreation or competition including Jet Skiing, Skating, and Parachuting (unless to save
+Insured’s life)
+•	while getting in, getting out or taxing in Balloons or Gliders
+•	Bungee Jumping, Mountain Climbing with or without Mountain Climbing Equipment and Diving using Oxygen Cylinders and others Breathing Apparatus
+•	travelling in an aircraft not operated by a commercial airline which is taxiing, taking off or landing.
+•	This extends to driving a car or motorcycle without a driver’s license.
+•	Participation in competitions or tournaments organised by sporting federations or similar organisations.]]></text>
+			</staticText>
+			<image>
+				<reportElement x="480" y="20" width="50" height="50" uuid="e87de5de-be88-4a5c-b55a-190c093a1b81"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="b07dbfe1-5825-4c85-8981-e7c3ff93b87b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="6bd6b570-9ec5-4b1b-adaf-53ba66ae28b0"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="fireOverAndUnderInformLetter" language="groovy" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="30" uuid="d8bc456a-47df-4e51-986d-e086fdd3b73e">
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="305"/>
+	<detail>
+		<band height="700" splitType="Stretch">
+			<staticText>
+				<reportElement x="160" y="0" width="200" height="30" uuid="80500208-048d-4c5c-b5fe-73c8e33ed496"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[စည်းကမ်းချက်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="40" width="510" height="30" uuid="fa0fee99-c5fe-4505-826a-05611aa57aee"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၁။ အသက်(၁၈)နှစ်ပြည့်ပီး အသက်(၆၀)နှစ်မ‌ကျော်သူများအားအာမခံထားခွင့်ရှိပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="56" width="510" height="40" uuid="3c4782ab-cfcb-4507-8098-3e48bf364862">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="6.0"/>
+				</textElement>
+				<text><![CDATA[၂။ အာမခံထားသူသည် အကျိုးခံစားခွင့်ကို တရားဝင်ဇနီး၊ခင်ပွန်း၊သားသမီးအရင်းအချာ၊ညီအကို၊‌မောင်နှမအရင်းချာများသို့သာလွှဲ‌ပြောင်းပေးနိုင်သည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="90" width="510" height="40" uuid="53b5bdb2-b234-4394-a8a1-8fad9b7be05d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၃။ အာမခံထားသည့်ကာလအတွင်း ဖြစ်ပေါ်လာသောမတော်တဆထိခိုက်မှုကြောင့်မဟုတ်ပဲ အာမခံထားသူ၏ ရှိပီးကိုယ်အင်ဂါချို့တဲ့မှု သို့မဟုတ် မသန်စွမ်းမှုများနှင့် တိုက်ရိုက်သော်လည်းကောင်း၊သွယ်ဝိုက်ဤသော်လည်းကောင်း ၊ဆက်စပ်ပီးဖြစ်ပေါ်သည့်ထိခိုက်မှုကြောင့်အာမခံထားသူသေဆုံးခြင်း၊မသန်စွမ်းခြင်းတို့အတွက် အကျုံးမဝင့်ပါ။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="124" width="510" height="30" uuid="4bbdfd7e-f3c5-4645-884c-e6aebfae6bf3"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၄။ အောက်ပါဖြစ်ရပ်များကြောင့်ပေါ်ပေါက်သည့်သေဆုံး ထိခိုက်မှုများအတွက် အကျိုးခံစားခွင့်မရှိပါ။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="141" width="492" height="30" uuid="b0825ba8-1297-4731-a974-68d66f495691"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(က)ပြည်တွင်း၊ပြည်ပစစ်ဘေးဒဏ်၊ထကြွပုန်ကန်ခြင်း ဆူပူသောင်းကျန်းခြင်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="158" width="492" height="40" uuid="83ae35e7-97cf-436a-aa88-e36781dd402b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(ခ)ရှုးသွပ်ခြင်း၊မိမိကိုယ်ကိုသတ်သေ ခြင်းရည်ရွယ်ချက်ဖြင့်ပြုလုပ်ခြင်း၊ဆေးကုသ ခြင်း ခွဲစိပ်ကုသ ခြင်း(အာမခံထားသည့် ကာလ အတွင်းတွေ့ကြုံရသည် မတော်တဆမှုကြောင့် ခွဲစိပ်ကုသ ခြင်းမပါဝင်ပါ)။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="192" width="492" height="30" uuid="71c26948-7f30-4479-b8be-345a0e50dee2"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(ဂ)ကိုယ်ဝန်ပျက်ခြင်း၊သား‌ လျှော ခြင်း။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="209" width="510" height="40" uuid="2c6c80bb-9364-4f82-9763-1ac55514e682">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၅။ အာမခံထားသူသေဆုံးကြောင်း (သို့) ဒဏ်ရာရကြောင်း ခိုင်လုံစေရန်လိုအပ်လျှင် အာမခံထားသူ သို့မဟုတ် အကျိုးခံစားခွင့်ရှိသူသည် မိမိစရတ်ဖြင့် သက်သေခံ လုံလောက်စွာ တင်ပြရပါမည်။ အာမခံထားသူ ပျောက်ဆုံးရုံ ဖြင့် သေဆဲုး/ဒဏ်ရာရသည်ဟု မမှတ်ယူပါ။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="245" width="510" height="30" uuid="9e1d0b4f-6751-4a86-8ced-a6c2288e09b8"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၆။ အကျိုးခံစားခွင့်များကို သေဆုံးလျှင် သေဆုံးသည့်နေ့မှ တစ်နှစ် ဒဏ်ရာရလျှင် ဖြစ်ပ္ပားသည့်နေ့မှ နှစ်နှစ်အတွင်း တောင်းခံရမည်။ ထိခိုက်မှု ဖြစ်ပ္ပားလျှင် ချက်ချင်း အကြောင်းကြားရမည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="403" width="258" height="30" uuid="36ad3d91-4371-4559-a45f-f2148fb5c3b3"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[လက်တစ်ဖက်(သို့)‌ခြေတစ်ဖက်ပြတ် ခြင်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="160" y="330" width="200" height="30" uuid="62ea27b2-07dc-4196-a1d1-1a0496b386e5"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အကျိုးခံစားခွင့်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="387" width="258" height="30" uuid="8cfdec2c-0d6c-45f2-917d-2b132e756ddf"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၂။ မျက်စိတစ်ဖက်လုံးဝကွယ် ခြင်း ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="370" width="258" height="30" uuid="3c67b6ec-a1c6-4646-8d95-5880178a7b03"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၁။ သေဆုံး ခြင်း ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="455" width="510" height="40" uuid="dfbdf1a1-e01e-4ff5-ae4a-34a7f3dc38b4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၄။ ကျန်ထိခိုက်မှာများအတွက် ဆေးစာပါ ထောက်ခံချက်အတိုင်း ဖြစ်ပါသည်။ထိခိုက်မှူအတွက် အကျိုးခံစားခွင့် ငွေစုစုပေါင်းသည် အာမခံထားငွေ၏ ၈၀ ရာခိုင်နှုန်းထက်မကျော်လွန်စေရ။အကျိုးခံစားခွင့် ငွေစုစုပေါင်းသည် အာမခံထားငွေထက်မကျော်လွန်စေရ။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="370" width="252" height="30" uuid="d7a7f469-a996-49af-b8c5-b6c7afd9853d"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားငွေ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="387" width="252" height="30" uuid="3939a22a-6e2d-487a-937a-50c612294f7f"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားငွေ၏ ၄၀ ရာခိုင်နှုန်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="421" width="258" height="30" uuid="cad3fd97-a160-4b19-8e4e-cf2a5dda4660"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၃။ မျက်စိနှစ်ဖက်လုံး ဝကွယ် ခြင်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="437" width="258" height="30" uuid="d58f0717-e174-478d-b974-8ad27603dd78"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[လက်နှစ်ဖက်(သို့)‌ခြေနှစ်ဖက်ပြတ် ခြင်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="421" width="252" height="30" uuid="961ad8f8-ee24-4f49-b6ed-972ff9a92853"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားငွေ ၈၀ ရာခိုင်နှုန်း]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

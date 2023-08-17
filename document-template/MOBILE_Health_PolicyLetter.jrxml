@@ -1,0 +1,744 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Health_PolicyIssue" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="130" bottomMargin="20" resourceBundle="LANGUAGE_en" uuid="86877a67-c108-4c22-887e-f3527476e161">
+	<property name="ireport.zoom" value="1.0000000000000004"/>
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="2"/>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="6d68db30-db93-4983-bb1e-32e8082cc5ae">
+		<field name="fullName" class="java.lang.String"/>
+		<field name="idNo" class="java.lang.String"/>
+		<field name="ageAndDateOfBirth" class="java.lang.String"/>
+		<field name="relationshipId" class="java.lang.String"/>
+		<field name="address" class="java.lang.String"/>
+		<field name="percentage" class="java.lang.Float"/>
+	</subDataset>
+	<parameter name="policyNo" class="java.lang.String"/>
+	<parameter name="insuredPersonName" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="periodMonth" class="java.lang.Integer"/>
+	<parameter name="paymentTypeId" class="java.lang.String"/>
+	<parameter name="fatherName" class="java.lang.String"/>
+	<parameter name="idNo" class="java.lang.String"/>
+	<parameter name="age" class="java.lang.Integer"/>
+	<parameter name="occupation" class="java.lang.String"/>
+	<parameter name="phoneNo" class="java.lang.String"/>
+	<parameter name="bName" class="java.lang.String"/>
+	<parameter name="bIdNo" class="java.lang.String"/>
+	<parameter name="brelationshipId" class="java.lang.String"/>
+	<parameter name="bAddress" class="java.lang.String"/>
+	<parameter name="bPhoneNo" class="java.lang.String"/>
+	<parameter name="unit" class="java.lang.Integer"/>
+	<parameter name="totalUnit" class="java.lang.String"/>
+	<parameter name="bAge" class="java.lang.String"/>
+	<parameter name="premium" class="java.lang.String"/>
+	<parameter name="sumInsured" class="java.lang.String"/>
+	<parameter name="logo_imgPath" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="692" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="px"/>
+			<staticText>
+				<reportElement x="160" y="0" width="200" height="30" uuid="a744248c-1215-469e-8955-d87b840705ae"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ကျန်းမာရေးအာမခံပေါ်လစီ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="32" width="110" height="20" uuid="149542ef-fa08-443f-97f8-219fe7e6edbe"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ကိုယ်စားလှယ်အမည်  N/A]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="32" width="64" height="20" uuid="aca72aa6-e9f0-4cf3-b270-a0f8e94d4fb1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီအမှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="52" width="110" height="20" uuid="09ddd3c3-c17f-466d-8e71-b5d14f70d4f8"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ကိုယ်စားလှယ်အမှတ်  [0]]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="334" y="52" width="64" height="20" uuid="f46ee40d-2f38-495b-a239-63a485198eb0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ရက်စွဲ့]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="72" width="110" height="20" uuid="1ee2801a-f870-43e3-b4fd-df7ac3579532"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူအမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="92" width="110" height="20" uuid="f1156491-beb0-4478-9f60-cc1fbe4b8371"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[နေရပ်လိပ်စာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="112" width="110" height="20" uuid="d5d1e350-e5d8-4fb0-8321-9b4feaf475ec"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အာမခံသက်တမ်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="132" width="110" height="20" uuid="cd1b477e-84e2-4294-9b0d-a7652b8e19bd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံပေးသွင်းသည့်စနစ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="253" width="260" height="25" uuid="8597bcca-043e-42c2-b715-ed4bbf50e9cd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[စုစုပေါင်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="153" width="260" height="25" uuid="6cf58ed9-34ee-4fec-b02c-e24808218abc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အာမခံအကာအကွယ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="203" width="260" height="25" uuid="6abed0db-8d02-4530-b469-aba1bc2b8309">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ရွေးချယ်နိုင်သည့်အာမခံအကာအကွယ်(၁)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="228" width="260" height="25" uuid="8a0dfb41-f2f4-436a-b099-11b085f6f350">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ရွေးချယ်နိုင်သည့်အာမခံအကာအကွယ်(၂)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="178" width="260" height="25" uuid="f8000281-c0c7-4009-b654-4fa4f15d2ad1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အခြေခံအာမခံအကာအကွယ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="260" y="278" width="100" height="25" uuid="38c8b3bb-0204-43d6-a982-79b02bc61314">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement>
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="178" width="100" height="25" uuid="fdc2a482-9286-4386-baa3-9945f5647a39">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{unit}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="203" width="100" height="25" uuid="11bea257-bcda-4393-bae9-b71be19efbe9">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["0"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="228" width="100" height="25" uuid="7686b5e8-5fe0-4b85-b4f2-c469d09ce88c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["0"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="253" width="100" height="25" uuid="331ffd70-3569-4084-b6ae-b59be3b41663">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalUnit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="360" y="153" width="154" height="25" uuid="1c8d27f9-3c94-4060-9cce-d3aae606ac9b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံ(ကျပ်)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="360" y="178" width="154" height="25" uuid="42d63e68-1acc-45c9-a3ed-e2d54618cafe">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sumInsured}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="253" width="154" height="25" uuid="6d8a8cd0-7c32-4982-9a09-3445d9cf1c56">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{sumInsured}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="203" width="154" height="25" uuid="ad95d9c7-ebc7-492e-97ab-3b54c01b2fb5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["0.00"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="278" width="154" height="25" uuid="28ce9e08-4b0d-405f-89e5-1a663f15f3a5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premium}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="228" width="154" height="25" uuid="456fa9fb-729a-4042-874d-74b5c4292711">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["0.00"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="278" width="260" height="25" uuid="dde95618-ff2a-4265-b27e-276cc19cdffd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["( "+ $P{periodMonth}+"  )လပရီမီယံ"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="410" width="160" height="20" uuid="1d36bef4-f50b-437a-af3a-44406819511e">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ဖုန်းနံပတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="310" width="260" height="20" uuid="2477e5ae-1ce9-4d60-8ab9-74360b31bdf0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူအချက်အလက်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="350" width="160" height="20" uuid="4b37ab95-a066-499c-ad3e-ee1716693dd1"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[နိုင်ငံသားစိစစ်ရေးအမှတ်/နိုင်ငံကူးလက်မှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="330" width="160" height="20" uuid="09806622-a1f1-4eb1-b55a-f91b5774950a"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အဘအမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="390" width="160" height="20" uuid="bc6bb6f2-8313-4b14-a970-dd371ad18533"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အလုပ်အကိုင်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="370" width="160" height="20" uuid="87e3f24c-497e-4e55-907e-3a852219ace0"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အသက်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="530" width="160" height="20" uuid="5e6cf08a-adfe-4fbc-8fac-0342cc58c280">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[နေရပ်လိပ်စာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="430" width="260" height="20" uuid="ae7c92a4-257c-4a83-94df-4474603e48be"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အကျိုးခံစားခွင့်လွှဲ့ပြောင်းခံရသူ၏အချက်အလက်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="470" width="160" height="20" uuid="f770e8ef-9014-494f-bd49-17e97f62dd6c"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[နိုင်ငံသားစိစစ်ရေးအမှတ်/နိုင်ငံကူးလက်မှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="450" width="160" height="20" uuid="87b2a040-b8d3-45ba-b664-ff4fb2722679"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="510" width="160" height="20" uuid="fa40fa2c-326d-43d2-9232-c093f8b90654"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[တော်စပ်ပုံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="490" width="160" height="20" uuid="8135d90a-3d5d-4ec4-bf45-03193388facb"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အသက်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="550" width="160" height="20" uuid="fa827e86-1eca-4c52-9445-9cb825f9f1b6">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[ဖုန်းနံပတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="580" width="514" height="70" uuid="a8c8016e-43de-42cb-b7f9-0d24e3aca0f1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူက ပေးသွင်းထားသော ပရီမီယံကိုအကြောင်းပြု၍ အာမခံထားသူသည် အထက်ဖော်ပြပါ အာမခံသက်တမ်းအတွင်း ဆေးရုံတက်ရခြင်း၊ကိုယ်ဝန်ပျက်ကျခြင်း ၊‌သေဆုံးခြင်း ၊ဆေးရုံ/ဆေးခန်း ပြသခြင်းအတွက် ၎င်းဝယ်ယူထားသော ယူနစ်အရေအတဠက်အလိုက် ကျသင့်ငွေကြေးကို ဤအာမခံစာချုပ်ပါ စည်းကမ်းများ၊ နောင်ပြုလုပ်ကောင်းပြုလုပ်မည် ပြင်ဆင်ချက် များနှင့် အညီ အာမခံထားသူ သို့မဟုတ် အကျိုးခံစားခွင့် လွှဲပြောင်းခြင်းခံရသူသို့ ပေးလျော်ရန် ဤအာမခံကုမ္ပဏီက တာဝန်ယူ ကတိပြုပါသည်။
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="398" y="32" width="116" height="20" uuid="2e62bbab-d65a-4457-86da-f80ab2fbbcd4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{policyNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="398" y="52" width="116" height="20" uuid="6ef54a5a-b4eb-4bcb-868e-4eacba6627b0"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="72" width="404" height="20" uuid="85189d01-5487-4194-84ca-964cca5baf54">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{insuredPersonName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="92" width="404" height="20" uuid="fda2b96b-017b-4917-808b-d1aac72dd471"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="112" width="404" height="20" uuid="28d99777-e8c7-44b8-94bc-963800c359d1">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{periodMonth}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="110" y="132" width="404" height="20" uuid="9e2d3e18-7368-44ae-8043-667e7253e058"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{paymentTypeId}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="260" y="153" width="100" height="25" uuid="5256d39d-2fb0-4fea-a6b4-452d009dc912">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ဝယ်ယူသည်ယူနစ်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="160" y="390" width="354" height="20" uuid="3baf284f-c6a5-4db2-97c6-5a6dfb30940c"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{occupation}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="330" width="354" height="20" uuid="34ce0c54-3eee-4d92-9034-83c8960fb38c">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fatherName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="370" width="354" height="20" uuid="e709f3b6-9f1a-47bd-8ce3-a7319bf1bbf4">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{age}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="350" width="354" height="20" uuid="53cb5337-9bb9-41ea-8769-4dc1cbeb912c"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{idNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="510" width="354" height="20" uuid="67a86c9e-753b-424c-8868-4c5a68b24620"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{brelationshipId}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="450" width="354" height="20" uuid="f79fdf39-81f4-4126-823f-612f0c4f9dfc">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="490" width="354" height="20" uuid="b0209452-5b7a-4b5f-8604-6305ad1ec9f3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bAge}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="470" width="354" height="20" uuid="3361fcab-f03f-4a55-b388-4dda9ff89dde"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bIdNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="530" width="354" height="20" uuid="6a748686-a798-4a76-82b6-8281f3916202">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bAddress}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="550" width="354" height="20" uuid="714e24f5-3dd3-4004-a090-0eac104cc109"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{bPhoneNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="160" y="410" width="354" height="20" uuid="5c23d99b-b503-448a-9f78-f9d870bdb2a2"/>
+				<box>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{phoneNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="354" y="671" width="160" height="20" uuid="7c304254-94f9-4445-8903-6ef4a8ec11e0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[အခွင့်အာဏာရအရာရှိ]]></text>
+			</staticText>
+			<image>
+				<reportElement x="30" y="2" width="50" height="32" uuid="b6ad7990-9f5b-457a-8f61-91ad4ac8a6fb"/>
+				<imageExpression><![CDATA[$P{logo_imgPath}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+</jasperReport>

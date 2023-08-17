@@ -1,0 +1,319 @@
+package org.ace.insurance.system.thirdparty.service;
+
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.annotation.Resource;
+
+import org.ace.insurance.product.service.interfaces.IPremiumCalculatorService;
+import org.ace.insurance.system.productTypeRecords.ProductTypeRecords;
+import org.ace.insurance.system.productTypeRecords.dto.ProductTypeRecordsDTO;
+import org.ace.insurance.system.thirdparty.ThirdPartyPremiumReceipt;
+import org.ace.insurance.system.thirdparty.persistence.interfaces.IThirdPartyPremiumReceiptDAO;
+import org.ace.insurance.system.thirdparty.service.interfaces.IThirdPartyPremiumReceiptSerivce;
+import org.ace.java.component.SystemException;
+import org.ace.java.component.persistence.exception.DAOException;
+import org.ace.java.component.service.BaseService;
+import org.ace.ws.factory.ThirdPartyPremiumReceiptFactory;
+import org.ace.ws.model.AceResponse;
+import org.ace.ws.model.ResponseStatus;
+import org.ace.ws.model.mobiletravelproposal.MTP001;
+import org.ace.ws.model.premiumCal.PRO001;
+import org.ace.ws.model.premiumCal.ResultPremium;
+<<<<<<< HEAD
+=======
+
+>>>>>>> c68618a3bdbc8100b887cb7cdff15709511c84cb
+import org.ace.ws.model.thirdParty.ThirdPartyPremiumReceiptDTO;
+import org.ace.ws.model.thirdParty.ThirdPartyPremiumRecordsDTO;
+import org.apache.commons.collections4.map.HashedMap;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.impl.client.HttpClients;
+import org.apache.http.util.EntityUtils;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.google.gson.Gson;
+
+@Service("ThirdPartyPremiumReceiptService")
+public class ThirdPartyPremiumReceiptService extends BaseService implements IThirdPartyPremiumReceiptSerivce {
+
+	@Resource(name = "ThirdPartyPremiumReceiptDAO")
+	private IThirdPartyPremiumReceiptDAO thirdPartyPremiumReceiptDAO;
+
+	@Resource(name = "PremiumCalculatorService")
+	private IPremiumCalculatorService premiumCalculatorService;
+
+	
+	
+	@Override
+	public ThirdPartyPremiumReceipt insert(ThirdPartyPremiumReceipt thirdPartyPremiumReceipt) throws DAOException {
+		try {
+			thirdPartyPremiumReceipt.setPrefix(getPrefix(ThirdPartyPremiumReceipt.class));
+			thirdPartyPremiumReceipt.setBuyDate(LocalDate.now().toString());
+			thirdPartyPremiumReceipt.setBook_no(""+Calendar.getInstance().getTimeInMillis());
+			return thirdPartyPremiumReceiptDAO.insert(thirdPartyPremiumReceipt);
+		} catch (DAOException e) {
+			throw new DAOException(e.getErrorCode(), e.getMessage(), new Throwable());
+		}
+	}
+
+	@Override
+	public ThirdPartyPremiumReceipt update(ThirdPartyPremiumReceipt thirdPartyPremiumReceipt) throws DAOException {
+		try {
+			return thirdPartyPremiumReceiptDAO.update(thirdPartyPremiumReceipt);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to update ThirdPartyPremiumReceipt", e);
+		}
+	}
+
+	@Override
+	public void delete(ThirdPartyPremiumReceipt thirdPartyPremiumReceipt) throws DAOException {
+		try {
+			thirdPartyPremiumReceiptDAO.delete(thirdPartyPremiumReceipt);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to delete ThirdPartyPremiumReceipt", e);
+		}
+	}
+
+	@Override
+	public ThirdPartyPremiumReceipt findById(String id) throws DAOException {
+		ThirdPartyPremiumReceipt result = null;
+		try {
+			result = thirdPartyPremiumReceiptDAO.findById(id);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to find a ThirdPartyPremiumReceipt (ID : " + id + ")",
+					e);
+		}
+		return result;
+	}
+
+	@Override
+	public ThirdPartyPremiumReceipt findRecordsByOrderId(String orderId) throws DAOException {
+		ThirdPartyPremiumReceipt result = null;
+			try {
+				 result = thirdPartyPremiumReceiptDAO.findRecordsByOrderId(orderId);
+			} catch (DAOException e) {
+				throw new SystemException(e.getErrorCode(), "Faield to find a ThirdPartyPremiumReceipt (OrederID : " + orderId + ")",
+						e);
+			}
+		return result;
+	}
+	
+	@Override
+	public ThirdPartyPremiumReceipt findByVehicleNo(String vehicle_no) throws DAOException {
+		ThirdPartyPremiumReceipt result = null;
+		try {
+			result = thirdPartyPremiumReceiptDAO.findByVehicleNo(vehicle_no);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(),
+					"Faield to find a ThirdPartyPremiumReceipt (Vehicle No : " + vehicle_no + ")", e);
+		}
+		return result;
+	}
+
+	@Override
+	public List<ThirdPartyPremiumReceipt> findAllThirdPartyPremiumReceipt() throws DAOException {
+		List<ThirdPartyPremiumReceipt> result = null;
+		try {
+			result = thirdPartyPremiumReceiptDAO.findAllThirdPartyPremiumReceipt();
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to find a ThirdPartyPremiumReceipt ", e);
+		}
+		return result;
+	}
+
+	@Override
+	public boolean checkPremiumReceipt(ThirdPartyPremiumReceipt receipt) {
+		ThirdPartyPremiumReceipt result = null;
+		if (receipt.getId() != null) {
+			result = findById(receipt.getId());
+		} else if (receipt.getVehicle_no() != null) {
+			result = findByVehicleNo(receipt.getVehicle_no());
+		}
+		LocalDate toDate = LocalDate.parse(result.getPeriod_to(), DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+		long days = ChronoUnit.DAYS.between(LocalDate.now(), toDate);
+		if (days > 90) {
+			return true;
+		}
+		return false;
+	}
+	
+    /* 2year 11 month is 35 month So month variable is 35
+     * ((month /12) * result.getPremium()) + ((month % 12) >= 10 ? result.getPremium() : ((result.getPremium() /10) * (month %12) ));
+     * (month /12) * result.getPremium()) ==> 2 year
+     * (month % 12) >= 10 check the month if month is over 9 result.getPremium()
+     * OR 
+     * premium amount is base on 10 month so 1 year premium amount is 10000. so 1 month is 1000 if 11 month is 10000.
+     * so (result.getPremium() /10) * (month %12)  
+     */
+	
+	@Override
+	public ThirdPartyPremiumReceiptDTO calculatePremiumReceipt(ThirdPartyPremiumReceipt receipt) {
+		PRO001 pro001 = new PRO001();	
+		Map<String, String> keyFactorMap = new HashedMap<>();
+		switch (receipt.getVehicle_type()) {
+		case "MOTOR_COMMERCIAL":
+			pro001.setProductId("ISPRD003001000000012218062020");
+			keyFactorMap.put("ISSYS013001000000008117062020", receipt.getCapacity());
+			keyFactorMap.put("ISSYS013001000000009118062020", "VEHICLE_COMMERCIAL");
+			pro001.setKeyFactorMap(keyFactorMap);
+			break;
+		case "MOTOR_PRIVATE":
+			pro001.setProductId("ISPRD003001000000012218062020");
+			keyFactorMap.put("ISSYS013001000000008117062020", receipt.getCapacity());
+			keyFactorMap.put("ISSYS013001000000009118062020", "VEHICLE_PRIVATE");
+			pro001.setKeyFactorMap(keyFactorMap);
+			break;
+		case "TRUCK_COMMERCIAL":
+			pro001.setProductId("ISPRD003001000000012318062020");
+			keyFactorMap.put("ISSYS0130001000000000229032013", receipt.getCapacity());
+			keyFactorMap.put("ISSYS013001000000009118062020", "VEHICLE_COMMERCIAL");
+			pro001.setKeyFactorMap(keyFactorMap);
+			break;
+		case "TURCK_PRIVATE":
+			pro001.setProductId("ISPRD003001000000012318062020");
+			keyFactorMap.put("ISSYS0130001000000000229032013", receipt.getCapacity());
+			keyFactorMap.put("ISSYS013001000000009118062020", "VEHICLE_PRIVATE");
+			pro001.setKeyFactorMap(keyFactorMap);
+			break;	
+		default:
+			pro001.setProductId("ISPRD003001000000012218062020");
+			keyFactorMap.put("ISSYS013001000000008117062020", receipt.getCapacity());
+			keyFactorMap.put("ISSYS013001000000009118062020", "VEHICLE_COMMERCIAL");
+			pro001.setKeyFactorMap(keyFactorMap);
+			break;
+		}
+		
+		List<ResultPremium> premiumResult = premiumCalculatorService.calculatePremium(pro001);
+		double premiumAmount = 0 ;
+		int month = 0;
+		for (ResultPremium result : premiumResult) {
+			LocalDate dateTo = LocalDate.parse(receipt.getPeriod_to(),DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+			int localmonth = LocalDate.now().getYear()* 12 + LocalDate.now().getMonthValue();
+		    int m2 = dateTo.getYear() * 12 + dateTo.getMonthValue();
+			if(LocalDate.now().isBefore(dateTo)) {
+				month = ((localmonth +3)== m2 ? 24 : 0);
+			}else {
+			    month =  (localmonth - m2) + 24;
+			}
+		    
+		    // explain is above the method.
+			premiumAmount += ((month /12) * result.getPremium()) + ((month % 12) >= 10 ? result.getPremium() : ((result.getPremium() /10) * (month %12) ));
+		}
+		ThirdPartyPremiumReceiptDTO premiumDTO = new ThirdPartyPremiumReceiptDTO();
+		premiumDTO.setResultPremium(premiumResult);
+		premiumDTO.setPremiumTotalAmount(premiumAmount);
+		premiumDTO.setTotal_month(month);
+		if(month >= 24 ) {
+			premiumDTO.setNextPremiumBuyDate(LocalDate.now().plusYears(2).toString());
+		}
+		return premiumDTO;
+	}
+
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<ThirdPartyPremiumRecordsDTO> findByFromToDate(String fromDate, String toDate,String branch) {
+		List<ThirdPartyPremiumRecordsDTO> receiptDTO = new ArrayList<>();
+		List<ThirdPartyPremiumReceipt> receiptList = new ArrayList<>();
+		switch (branch.toUpperCase()) {
+		case "Y":
+			branch = "District Office(West of Yangon)";
+			break;
+		case "Y1":
+			branch = "District Office(South of Yangon)";
+			break;
+		case "Y2":
+			branch = "District Office(North of Yangon)";
+			break;
+		case "Y3":
+			branch = "District Office(East of Yangon)";
+			break;
+		case "Y4":
+			branch = "Regional Office(Yoar Thar Kyi)";
+			break;	
+		default:
+			break;
+		}
+		receiptList.addAll(thirdPartyPremiumReceiptDAO.findByFromToDate(fromDate, toDate,branch));
+		
+		receiptList.stream().forEach(receipt -> {
+			receiptDTO.add(ThirdPartyPremiumReceiptFactory.convertThirdPartyPremiumDTO(receipt));
+		});
+		return receiptDTO;
+	}
+
+	@Override
+	public List<ThirdPartyPremiumReceipt> findReceiptListByVehicleNo(String vehicle_no) throws DAOException {
+		List<ThirdPartyPremiumReceipt> result = null;
+		try {
+			result = thirdPartyPremiumReceiptDAO.findReceiptListByVehicleNo(vehicle_no);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to find a ThirdPartyPremiumReceipt ", e);
+		}
+		return result;
+	}
+
+	@Override
+	public List<ThirdPartyPremiumReceipt> findByDateAndVehicleNo(String fromDate, String toDate, String vehicle_no) {
+		List<ThirdPartyPremiumReceipt> result = null;
+		try {
+			result = thirdPartyPremiumReceiptDAO.findByDateAndVehicleNo(fromDate, toDate, vehicle_no);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to find a ThirdPartyPremiumReceipt ", e);
+		}
+		return result;
+	}
+
+	@Override
+	public ThirdPartyPremiumReceipt updateByPaymentStatus(String orderId) {
+		ThirdPartyPremiumReceipt result = null;
+		try {
+			result = thirdPartyPremiumReceiptDAO.updateByPaymentStatus(orderId);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to find a ThirdPartyPremiumReceipt ", e);
+		}
+		return result;
+	}
+
+	@Override
+	public void calltoOthersServerAPIThirdPartyPremiumReceipt(ThirdPartyPremiumReceiptDTO thirdPartyPremiumReceiptDTO,ProductTypeRecords productTypeRecords)
+			throws ClientProtocolException, IOException {
+		CloseableHttpClient client = HttpClients.createDefault();
+	    HttpPost httpPost = new HttpPost("http://localhost:8899/rc/tplCloudToCore");
+	    HashMap<String, ThirdPartyPremiumReceiptDTO> map = new HashMap<String, ThirdPartyPremiumReceiptDTO>();
+	    ProductTypeRecordsDTO recordsDTO = new ProductTypeRecordsDTO(productTypeRecords);
+	    thirdPartyPremiumReceiptDTO.setRecordsDTO(recordsDTO);
+	    map.put("thirdPartyPremiumReceiptDTO", thirdPartyPremiumReceiptDTO);
+	    Gson gson = new Gson();
+	    String json = gson.toJson(map);
+	    StringEntity request = new StringEntity(json);
+	    httpPost.setEntity(request);
+	    httpPost.setHeader("Accept", "application/json");
+	    httpPost.setHeader("Content-type", "application/json");
+	    CloseableHttpResponse httpResp = client.execute(httpPost);
+	    String result = EntityUtils.toString(httpResp.getEntity());
+	    AceResponse response = gson.fromJson(result, AceResponse.class);
+	    client.close();
+	    ResponseStatus status = null;
+	    if(response.getCode() == 200) {
+	    	status = ResponseStatus.SUCCESS;
+	    }else if(response.getCode() == 500) {
+	    	status = ResponseStatus.FAIL;
+	    }	   
+		
+	}	
+	
+}

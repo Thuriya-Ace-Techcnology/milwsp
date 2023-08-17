@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="table1" class="java.lang.String"/>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band/>
+	</pageHeader>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<image>
+				<reportElement x="481" y="28" width="50" height="50" uuid="e03d7010-4596-4947-91f7-caa975a7fbda"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="39" y="80" width="442" height="544" uuid="43a273e2-42e2-4c11-87dc-4c10484c2b75">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[PERMANENT TOTAL DISABLEMENT refers to Injury which:
+
+i .   falls into one of the categories listed in the Scale of Permanent Disablement Benefits Table.
+i i . Commencing within twelve (12) months from the date of bodily injury, you are totally, continuously and permanently disabled for twelve (12) continuous months and are prevented from performing three (3) or more activities of daily living as herein defined which would normally be carried out by your daily life had such disablement not occur and for which there is no hope of recovery and entirely prevents the insured from engaging in gainful employment of any and every kind.
+
+Treatment is medically necessary if it:
+-Consistent with the diagnosis and customary medical treatment for a covered illness or injury;
+-In accordance with standards of good medical practice, consistent with current standard of professional medical care, and of proven medical benefits;
+-Not for the convenience of the insured person or the physician, and unable to be reasonably rendered out of hospital (if admitted as an inpatient)
+-Not of an observational, experimental, investigational, research, check-up, preventative or screening nature, cosmetic, elective procedures; and
+-For which the charges are fair, reasonable and customary in relation to the illness or injury.
+
+Activities of daily living means
+   (1) Transfér: Getting in and out of a chair without requiring any physical assistance.
+   (2) Mobility: the ability to move from room to room without requiring any physical assistance.
+   (3) Continence: the ability to voluntarily control bowel and bladder functions such as to maintain personal hygiene.
+   (4) Dressing: putting on and taking off all necessary items of clothing without requiring assistance of another person.
+   (5) Bathing/ Washing: the ability to wash in the bath or shower (including getting in or out of the bath or shower) or wash by any other means.
+   (6) Eating: All tasks of getting food into the body once the food has been prepared.
+
+PREMIUM refers to amount paid by an insured to an insurer under an Insurance Policy as consideration for the obligations assumed by the insurer.
+
+REASONABLE AND CUSTOMARY CHARGES refer to charges or fees which are generally prevailing and of normal standard for the medical condition concerned in the country and city where the insured is treated.
+
+THE COMPANY refers to Myanma Insurance.
+
+TRAVELING ROUTE refers to the journey between the Republic of the Union of Myanmar and the designated country that is in line with the itinerary, as the passenger of a commercial airline including scheduled transit for refueling and flight connection.
+
+TRIP refers to the period between the Commencement of Cover and Expiry of Cover.
+
+COVID-19 Coronavirus disease 2019 (COVID-19) is an infectious disease caused by severe acute respiratory syndrome coronavirus 2 (SARS-CoV-2).]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="629" width="241" height="20" uuid="bb891be7-d5f3-431c-bac9-ebaab098a0fc"/>
+				<textElement>
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[2. SCOPE OF COVER]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="39" y="644" width="471" height="126" uuid="c435266e-536a-4a6b-b068-7eaa7dadc217"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[All Benefits in this policy are subject to:
+
+(l ) The total maximum limits of your chosen plan as stated in the schedule of benefits;
+(2) The event giving rise to a claim having occurred within the period of insurance; and
+(3) All the terms, conditions and general and respective/specific exclusions set out in this policy
+
+PERSONAL ACCIDENT BENEFITS
+ ACCIDENTAL DEATH
+The Company will pay the sum insured as stated in the Schedule of Benefit, if the Insured sustained Accident during the Trip, which results in Death within 90 days from the day the incident occurred.
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="4e28b97a-0dfb-4f58-a47a-c6424a4f6989"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy hh:mm:ss").format(new Date())]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="7a313761-eb2f-4d54-9570-338d99b4f13e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="5"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

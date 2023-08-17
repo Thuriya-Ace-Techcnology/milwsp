@@ -1,0 +1,928 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.5.1  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="869d86e0-c8f8-44fd-89f7-03a215ecfcde">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<parameter name="buyDate" class="java.lang.String"/>
+	<parameter name="receiptNo" class="java.lang.String"/>
+	<parameter name="ownerName" class="java.lang.String"/>
+	<parameter name="NRCNo" class="java.lang.String"/>
+	<parameter name="vehicleNo" class="java.lang.String"/>
+	<parameter name="capacity" class="java.lang.String"/>
+	<parameter name="periodFrom" class="java.lang.String"/>
+	<parameter name="periodTo" class="java.lang.String"/>
+	<parameter name="rtaBranch" class="java.lang.String"/>
+	<parameter name="premiumAmount" class="java.lang.String"/>
+	<parameter name="qrcode" class="java.awt.image.BufferedImage"/>
+	<parameter name="logo_imgPath" class="java.lang.String"/>
+	<parameter name="made" class="java.lang.String"/>
+	<parameter name="type" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="cName" class="java.lang.String"/>
+	<parameter name="isCopy" class="java.lang.Boolean"/>
+	<parameter name="rta" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="150" y="154" width="100" height="18" uuid="10db7809-5e4c-4f2b-90a5-4d49ad822b07">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[NIC/NRC No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="170" width="100" height="18" uuid="98e86d90-d970-44c3-9ef5-86b29c06514c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Vehicle Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="186" width="100" height="18" uuid="eaddece8-d9c5-4861-9106-c96baa34c3fe">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Carrying Capacity]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="140" width="260" height="18" uuid="a71d28ca-52a2-449a-b03f-66dd90a20867">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ownerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="140" width="25" height="18" uuid="cacaa96f-ecd7-4945-951d-ee2f1e27f8cb">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="154" width="25" height="18" uuid="ed1c0d7d-1760-4812-b280-6c4bf40fce16">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="170" width="25" height="18" uuid="10317c27-9317-45cd-82b6-f9d2da8a6924">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="186" width="25" height="18" uuid="61ed6a5e-7f3c-47ca-8d7c-5740043ebcb5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="154" width="220" height="18" uuid="3eaa9bae-3d9a-4c04-8bc9-c2f126e886ec">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NRCNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="170" width="180" height="18" uuid="6dba3b5b-d333-4437-8255-057c1219af1f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="186" width="180" height="18" uuid="1a4cc4b0-d5ca-4eca-95a6-fe603a01d0fe">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{capacity}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="202" width="180" height="18" uuid="f16e9cc9-bbe6-4de3-a3cf-177aa1d66819">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{periodFrom}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="202" width="25" height="18" uuid="9370bf71-1605-4d8a-9b2c-1a3fe8633d26">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="202" width="100" height="18" uuid="070bcac1-a2fa-4e41-b910-ef4a6de052b5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Period From]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="140" width="100" height="18" uuid="595472ee-48de-4571-a2f8-327ae774dfd7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Owner's name]]></text>
+			</staticText>
+			<image>
+				<reportElement x="413" y="150" width="110" height="102" uuid="9233351d-4f62-4377-8d41-6d5c22877277"/>
+				<imageExpression><![CDATA[$P{qrcode}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="260" y="216" width="180" height="18" uuid="89ba8a31-9d34-44e7-90e2-6dbba3ec6eed">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{periodTo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="276" width="180" height="18" uuid="c2e24ca1-9ec6-4a39-8a32-c998fb9cbd66">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premiumAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="150" y="260" width="100" height="18" uuid="a69e5e3d-07b9-4c72-b7eb-3480a9912df7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="260" width="180" height="18" uuid="4ef14af0-0cb4-4167-a64a-491ac5a9b278">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="150" y="232" width="100" height="18" uuid="a8cb1ae9-d6ef-453c-b36e-6ce8774ab901">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[RTA branch]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="292" width="180" height="38" uuid="791fd84d-69b4-40a1-b381-966b6fa3fae8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="6.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="248" width="24" height="18" uuid="6b03e7eb-f129-4fb1-8c23-a0afe4345b49">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="216" width="25" height="18" uuid="53f74ae9-e7a5-4a75-8b0b-27d91874b9f4">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="232" width="180" height="18" uuid="7225d072-60dd-4f04-bd41-be139451db3c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rtaBranch}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="232" width="25" height="18" uuid="02832387-2a89-42ee-afe0-27867a8b36a5">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="276" width="25" height="18" uuid="5dce8eaf-2605-46d2-b893-5f5938ec6f2a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="292" width="100" height="18" uuid="e4a9f57a-c04c-4d98-b15d-4660ebf9f2d9">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="276" width="100" height="18" uuid="ae71159f-020f-48ef-8437-c7bcdfe45229">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Premium Kyats]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="260" y="248" width="180" height="18" uuid="8cb5bf7c-79b2-411d-817b-4c16866e65fc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{made}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="150" y="216" width="100" height="18" uuid="281f2c4c-d1b6-496a-bde4-6a201cf69f92">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Period To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="292" width="25" height="18" uuid="c2c8b351-68d0-44ef-996f-85600ffa8401">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="150" y="248" width="100" height="18" uuid="daaf83b9-9410-48cf-a6b9-a07a226e65ff">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Made]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="250" y="260" width="25" height="18" uuid="1c4cc7e7-d574-4f4e-bb3c-f3f32e5f68eb">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="340" width="220" height="18" uuid="07485ae7-280c-423f-8cd2-96d9c77a7684">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[Motor Insurance Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="325" width="220" height="18" uuid="7e7b6dee-d419-4098-a021-841c001a7092">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="370" width="132" height="18" uuid="3efbaef1-9d69-4e89-b364-139f9d7d9c42">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[01384864 , 01250275      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="355" width="79" height="18" uuid="bb06df78-3bf9-4045-b8df-60a877399f1d">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[Hot Line:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="355" width="135" height="18" uuid="fdc283db-aab3-4b3b-bc6b-4b1c6695a4fb">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[01384873 , 01384875      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="461" width="551" height="25" uuid="50f6d102-b833-494a-a94b-170726af62f4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14"/>
+				</textElement>
+				<text><![CDATA[Motor Insurance Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="479" width="551" height="25" uuid="ca236b8e-d096-48b9-bdbc-8ebbe56f1b8b">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14"/>
+				</textElement>
+				<text><![CDATA[Third Party Liability Premium Certificate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="448" width="551" height="25" uuid="c199aacf-f635-45fb-8d64-24ba91f9cf6b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14"/>
+				</textElement>
+				<text><![CDATA[Myanma Insurance]]></text>
+			</staticText>
+			<image>
+				<reportElement x="241" y="390" width="72" height="58" uuid="b8de1f5f-8015-47cb-b84b-ff3f90646bfa"/>
+				<imageExpression><![CDATA[$P{logo_imgPath}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="483" y="506" width="71" height="18" uuid="d2456f41-6bab-4ba3-8084-2d4e6dc5d8e8">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{buyDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="393" y="506" width="110" height="18" uuid="05cbc996-7de8-4078-a989-23c37e065fd9">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="506" width="293" height="18" uuid="0592c6c5-935c-4528-9755-1a04ef4436c2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="38" y="524" width="485" height="18" uuid="89a4049c-7bd1-4608-8a8c-2ac3a945969b"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[A third party liability premium as shown below is received with thanks.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="38" y="506" width="70" height="18" uuid="d4a22d81-e8fe-4016-b3d0-0d18cf14eba1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Receipt No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="621" width="25" height="18" uuid="377de063-d036-468e-ba0f-c0fbf508c524">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="545" width="25" height="18" uuid="f83ad452-1d62-43aa-8b09-959eb28723f1">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="665" width="100" height="18" uuid="6edaca58-f75b-43f8-badd-91a8d4a7a370">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Type]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="621" width="180" height="18" uuid="39ecdcd3-7b77-4885-933e-3ccdb10438ec">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{periodTo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="653" width="180" height="18" uuid="72a39a69-eee9-4b8b-8f32-080752dbf63b">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{made}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="681" width="100" height="18" uuid="589f8bf0-6d7d-418a-9a63-dd80cd010456">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Premium Kyats]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="591" width="180" height="18" uuid="39adb596-0e3e-4e58-9bf1-057413b98a9f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{capacity}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="575" width="100" height="18" uuid="39a30501-a6e9-46c3-b098-d3672ae5a5b7">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Vehicle Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="545" width="100" height="18" uuid="3491da88-bc1d-4e8b-9e39-d02c31fa8afa">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Owner's name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="607" width="100" height="18" uuid="be80717c-fe60-48c8-81be-726361a7647e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Period From]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="559" width="25" height="18" uuid="5dea02e0-522a-472b-8137-89fd5d9e2978">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="575" width="25" height="18" uuid="20e9c867-fefc-401e-97b5-c0a872e157ea">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="559" width="100" height="18" uuid="59258398-7b58-4636-80f0-80ba33edfcbd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[NIC/NRC No.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="637" width="25" height="18" uuid="a8dec67d-1478-44e6-898e-5cc1eb93ed23">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="575" width="180" height="18" uuid="a5df42da-4e50-4c45-b98b-6a308a072eaf">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{vehicleNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="697" width="100" height="18" uuid="5134a303-e3ed-4850-8156-1166709126ec">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Address]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="697" width="180" height="32" uuid="3b14c875-c227-49fd-99fa-e7493f45d9dc">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+					<paragraph lineSpacing="Fixed" lineSpacingSize="6.0"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="255" y="681" width="25" height="18" uuid="5765c23d-8bef-4a59-b2e2-1f4369949230">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="607" width="180" height="18" uuid="b8ac8e81-9a03-47ab-8f3d-e6165fc3c69f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{periodFrom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="681" width="180" height="18" uuid="b1d594d0-7cc2-49e1-8737-6321e6330d24">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premiumAmount}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="255" y="665" width="25" height="18" uuid="9d4876ec-bb57-4bf2-bda7-2bdfa7eac6bf">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="591" width="100" height="18" uuid="c98d394a-3601-41ab-a203-d78ac13a028c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Carrying Capacity]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="665" width="180" height="18" uuid="3c275b07-37a3-4311-bc90-aca28ceac080">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{type}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="621" width="100" height="18" uuid="e63db3f8-8f0d-4cfc-85c4-541edffc7dc9">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Period To]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="653" width="24" height="18" uuid="d4287b22-2e9e-4612-aa94-afc6e5c13453">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="591" width="25" height="18" uuid="d0421e57-c9cc-4575-a256-3a93d6d7b69a">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="637" width="180" height="18" uuid="fa29bba7-b895-4d50-acb7-22f3762e1806">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{rtaBranch}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="155" y="653" width="100" height="18" uuid="9e31b26a-7300-43a3-8a43-39e41aa3c792">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Made]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="155" y="637" width="100" height="18" uuid="b7db8591-b28a-4a10-af60-9614c504c416">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[RTA branch]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="607" width="25" height="18" uuid="63bb1843-470a-47af-9d4a-06571567c5f8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="255" y="697" width="25" height="18" uuid="63f361bf-e9b8-4088-b3a9-29481f9308b3">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top"/>
+				<text><![CDATA[:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="265" y="545" width="260" height="18" uuid="99490a6b-210e-439e-b271-e0054aa28fbf">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ownerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="265" y="559" width="220" height="18" uuid="173d2052-a38b-4d24-abd2-e9e6decc5bad">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NRCNo}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="413" y="554" width="110" height="102" uuid="8f81cc5a-a646-483b-869e-7134a4a27dfe"/>
+				<imageExpression><![CDATA[$P{qrcode}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement x="488" y="101" width="71" height="18" uuid="5353ffaa-d129-437d-a260-0a1c56b54eac">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{buyDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="5" y="53" width="551" height="25" uuid="f321e847-39dc-43ec-93ed-bedd4b330688"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14"/>
+				</textElement>
+				<text><![CDATA[Motor Insurance Department]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="105" y="101" width="293" height="18" uuid="403aabda-d04a-432d-8dc8-141a26fed759">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="43" y="119" width="485" height="18" uuid="8574e27e-4d16-47c3-a9ee-2f07d1188120"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[A third party liability premium as shown below is received with thanks.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="71" width="551" height="25" uuid="00e265f7-49e4-4cfd-a1e0-f2c7fb914a17">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14"/>
+				</textElement>
+				<text><![CDATA[Third Party Liability Premium Certificate]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="43" y="101" width="70" height="18" uuid="18abeaa0-cc0f-49f1-9a1a-7af3999c9b1d">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Receipt No:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="246" y="-15" width="72" height="58" uuid="7a96b78e-e2c5-4ca3-8f33-76ec77157ee5"/>
+				<imageExpression><![CDATA[$P{logo_imgPath}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="398" y="101" width="110" height="18" uuid="0ac70b20-47ca-4466-ab00-987670b5354b">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[Date :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="5" y="40" width="551" height="25" uuid="7dac9dfc-cb9c-4aab-b0e2-fb9117fb1681"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14"/>
+				</textElement>
+				<text><![CDATA[Myanma Insurance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="415" y="759" width="135" height="18" uuid="7d2e306a-0745-4242-ab23-f89f8d5d05f2">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[01384873 , 01384875      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="356" y="759" width="79" height="18" uuid="000f7cfd-31fd-47f4-8d02-a577599098a3">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[Hot Line:  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="744" width="220" height="18" uuid="5f175496-d5bd-4d2e-a06d-d81c8bab04bd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[Motor Insurance Department]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="331" y="729" width="220" height="18" uuid="2f25998b-0ef0-4eee-a471-e4e9351528e8">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[Manager]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="774" width="132" height="18" uuid="b67665a4-f795-4cad-891c-2784eee4c1dd">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[01384864 , 01250275      ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="772" width="210" height="20" uuid="5179dc1e-ba2b-4962-a90b-be8b36b732b5">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[For RTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="369" width="210" height="20" uuid="cb0dd189-b240-4f05-bdb0-ffa0ca0a0b52">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Pyidaungsu" size="9"/>
+				</textElement>
+				<text><![CDATA[For Motor Vehicle's Owner]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="20" y="30" width="220" height="28" uuid="0e564de7-2296-48cb-b638-80d1df3504ed"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidungsu"/>
+				</textElement>
+				<text><![CDATA[For Motor Vehicle's Owner]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

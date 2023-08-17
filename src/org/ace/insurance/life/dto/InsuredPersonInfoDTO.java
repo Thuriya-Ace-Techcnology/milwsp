@@ -1,0 +1,2082 @@
+package org.ace.insurance.life.dto;
+
+import java.util.*;
+
+import org.ace.insurance.common.AbstractMynNumConvertor;
+import org.ace.insurance.common.Gender;
+import org.ace.insurance.common.IdType;
+import org.ace.insurance.common.Name;
+import org.ace.insurance.common.Qualification;
+import org.ace.insurance.common.ResidentAddress;
+import org.ace.insurance.life.KeyFactorChecker;
+import org.ace.insurance.life.dao.entities.Attachment;
+import org.ace.insurance.life.dao.entities.Customer;
+import org.ace.insurance.life.dao.entities.GradeInfo;
+import org.ace.insurance.life.dao.entities.InsuredPersonAddon;
+import org.ace.insurance.life.dao.entities.InsuredPersonAttachment;
+import org.ace.insurance.life.dao.entities.InsuredPersonBeneficiaries;
+import org.ace.insurance.life.dao.entities.InsuredPersonKeyFactorValue;
+import org.ace.insurance.life.dao.entities.InsuredPersonPolicyHistoryRecord;
+import org.ace.insurance.life.dao.entities.Office;
+import org.ace.insurance.life.dao.entities.PolicyInsuredPerson;
+import org.ace.insurance.life.dao.entities.PolicyInsuredPersonAddon;
+import org.ace.insurance.life.dao.entities.PolicyInsuredPersonAttachment;
+import org.ace.insurance.life.dao.entities.PolicyInsuredPersonBeneficiaries;
+import org.ace.insurance.life.dao.entities.PolicyInsuredPersonKeyFactorValue;
+import org.ace.insurance.life.dao.entities.ProposalInsuredPerson;
+import org.ace.insurance.life.dao.entities.RiskyOccupation;
+import org.ace.insurance.life.dao.entities.School;
+import org.ace.insurance.life.dao.entities.TypesOfSport;
+import org.ace.insurance.life.enums.ClaimStatus;
+import org.ace.insurance.life.enums.ClassificationOfHealth;
+import org.ace.insurance.life.enums.EndorsementStatus;
+import org.ace.insurance.life.enums.IdConditionTypeMM;
+import org.ace.insurance.life.enums.SumInsuredType;
+import org.ace.insurance.medical.surveyAnswer.SurveyQuestionAnswer;
+import org.ace.insurance.product.Product;
+import org.ace.insurance.system.common.country.Country;
+import org.ace.insurance.system.common.currency.Currency;
+import org.ace.insurance.system.common.keyfactor.KeyFactor;
+import org.ace.insurance.system.common.occupation.Occupation;
+import org.ace.insurance.system.common.relationship.RelationShip;
+import org.primefaces.model.TreeNode;
+
+public class InsuredPersonInfoDTO {
+	private int periodMonth;
+	private boolean existsEntity;
+	private boolean approve;
+	private boolean needMedicalCheckup;
+	private Boolean isPaidPremiumForPaidup;
+	private int age;
+	private double premium;
+	private double approvedSumInsured;
+	private double interest;
+	private int weight;
+	private double premiumRate;
+	private int height;
+	private int feets;
+	private int inches;
+	private int pounds;
+	private int dangerousOccupation;
+	private double basicTermPremium;
+	private double addOnTermPremium;
+	private double endorsementAddonPremium;
+	private double endorsementBasicPremium;
+	private boolean isRiskyOccupation;
+	private String phone;
+	private Double sumInsuredInfo;
+	private String tempId;
+	private String fatherName;
+	private String insPersonCodeNo;
+	private String inPersonGroupCodeNo;
+	private String initialId;
+	private String rejectReason;
+	private String idNo;
+	private String provinceCode;
+	private String townshipCodeENG;
+	private String townshipCode;
+	private String idConditionType;
+	private String seamanFullIdNo;
+	private String fullIdNo;
+	private String fullIdNoMM;
+	private Date dateOfBirth;
+	private Product product;
+	private Occupation occupation;
+	private Office office;
+	private RiskyOccupation riskyOccupation;
+	private Customer customer;
+	private Name name;
+	private String id;
+	private int periodOfYears;
+	private Gender gender;
+	private IdType idType;
+	private TypesOfSport typesOfSport;
+	private RelationShip relationship;
+	private ResidentAddress residentAddress;
+	private ClassificationOfHealth classificationOfHealth;
+	private EndorsementStatus endorsementStatus;
+	private ClaimStatus claimStatus;
+	private List<InsuredPersonAttachment> perAttachmentList;
+	private List<InsuredPersonKeyFactorValue> keyFactorValueList;
+	private List<BeneficiariesInfoDTO> beneficiariesInfoDTOList;
+	private Map<String, InsuredPersonAddOnDTO> insuredPersonAddOnDTOMap = new HashMap<String, InsuredPersonAddOnDTO>();
+	private List<InsuredPersonAddOnDTO> insuredPersonAddOnDTOList;
+	private List<SurveyQuestionAnswer> surveyQuestionAnswerList;
+	private List<InsuredPersonPolicyHistoryRecord> insuredPersonPolicyHistoryRecordList;
+
+	private List<PolicyInsuredPersonAttachment> policyPerAttachmentList;
+	private List<PolicyInsuredPersonKeyFactorValue> policyKeyFactorValueList;
+	private List<Attachment> birthCertificateAttachments;
+	private AcquaintanceDTO acquaintanceDTO;
+
+	private int unit;
+	private int approvedUnit;
+	private Date startDate;
+	private Date endDate;
+
+	private String parentName;
+	private Date parentDOB;
+	private IdType parentIdType;
+
+	private String parentFullIdNo;
+	private String parentIdNo;
+	private String parentProvinceCode;
+	private String parentTownshipCode;
+	private String parentIdConditionType;
+	
+	private String parentFullIdNoMM;
+	private String parentIdNoMM;
+	private String parentProvinceCodeMM;
+	private String parentTownshipCodeMM;
+	private String parentTownshipCodeENG;
+
+	private String parentIdConditionTypeMM;
+	
+
+	private School school;
+	private GradeInfo gradeInfo;
+	
+	private String birthAddress;
+	private String personalId;
+	private String email;
+	private double salary;
+	private String visibleIdentification;
+	
+	private SumInsuredType sumInsuredType;
+
+	private String cdcNo;
+	private String position;
+
+	private String labourCardNo;
+	private String identificationCardNo;
+	private Date issueOfLabourDate;
+	private Qualification qualification;
+	private String factoryAddress;
+	private Date issueDateOfIdCard;
+	private String placeOfPassport;
+	private Country country;
+	private Currency currency;
+	private String passportNo;
+	private Date issueDateOfPassport;
+	
+	private String oceanlinerName;
+	private String vesselName;
+	
+	private String generatedPolicyNo;
+	
+	private String seamanNrc;
+	
+	private TreeNode[] selectedNode;
+	private TreeNode root;
+
+	private static Map<String,Qualification> tempQualificationMap=new HashMap<>();
+	private static Map<String,Occupation> tempOccupationMap=new HashMap<>();
+
+	private int version;
+	private boolean isEdit;
+	private boolean isReplace;
+	private boolean isSeaman;
+	private boolean isArmyOfficer;
+	private boolean valid;
+	private int insuredId;
+	private String policyNumber;
+	private String provinceCodeMM;
+	private String townshipCodeMM;
+	private String idNoMM;
+	private String idConditionTypeMM;
+
+
+	public boolean isApprove() {
+		return approve;
+	}
+
+	public void setApprove(boolean approve) {
+		this.approve = approve;
+	}
+
+	public InsuredPersonInfoDTO() {
+		tempId = System.nanoTime() + "";
+	}
+
+	public InsuredPersonInfoDTO(ProposalInsuredPerson proposal) {
+		if (proposal.getId() == null) {
+			this.tempId = System.nanoTime() + "";
+		} else {
+			existsEntity = true;
+			this.approve = proposal.isApproved();
+			this.tempId = proposal.getId();
+			this.version = proposal.getVersion();
+		}
+
+		if (this.isPaidPremiumForPaidup == null) {
+			this.isPaidPremiumForPaidup = false;
+		}
+		
+		
+
+		this.periodMonth = proposal.getLifeProposal().getPeriodMonth();
+		this.startDate = proposal.getLifeProposal().getStartDate();
+		this.endDate = proposal.getLifeProposal().getEndDate();
+		this.needMedicalCheckup = proposal.isNeedMedicalCheckup();
+		this.product = proposal.getProduct();
+		this.periodOfYears = proposal.getLifeProposal().getPeriodMonth() / 12;
+		this.age = proposal.getAge();
+		this.sumInsuredInfo = proposal.getProposedSumInsured();
+		this.premium = proposal.getProposedPremium();
+		this.approvedSumInsured = proposal.getApprovedSumInsured();
+		this.basicTermPremium = proposal.getBasicTermPremium();
+		this.addOnTermPremium = proposal.getAddOnTermPremium();
+		this.endorsementBasicPremium = proposal.getEndorsementNetBasicPremium();
+		this.endorsementAddonPremium = proposal.getEndorsementNetAddonPremium();
+		this.interest = proposal.getInterest();
+		this.weight = proposal.getWeight();
+		this.height = proposal.getHeight();
+		this.premiumRate = proposal.getPremiumRate();
+		this.feets = proposal.getHeight() / 12;
+		this.inches = proposal.getHeight() % 12;
+		this.rejectReason = proposal.getRejectReason();
+		this.insPersonCodeNo = proposal.getInsPersonCodeNo();
+		this.inPersonGroupCodeNo = proposal.getInPersonGroupCodeNo();
+		this.initialId = proposal.getInitialId();
+		this.idType = proposal.getIdType();
+		this.fullIdNo = proposal.getIdNo();
+		this.fullIdNoMM = proposal.getIdNoMM();
+		isSeaman=KeyFactorChecker.isSeaMenLife(proposal.getProduct().getId());
+		if(isSeaman) {
+			this.seamanFullIdNo = proposal.getSeamanNrc();
+			loadSeamanFullIdNo();
+		}
+		loadFullIdNo();
+		loadFullIdNoMM();		
+		if(this.fullIdNoMM != null) {
+		this.townshipCode = this.townshipCodeENG+"/"+this.townshipCodeMM;
+		}else {
+			this.townshipCode = this.townshipCodeENG;
+		}
+		this.generatedPolicyNo = proposal.getGeneratedPolicyNo();
+		this.fatherName = proposal.getFatherName();
+		this.dateOfBirth = proposal.getDateOfBirth();
+		this.endorsementStatus = proposal.getEndorsementStatus();
+		this.classificationOfHealth = proposal.getClsOfHealth();
+		this.gender = proposal.getGender();
+		this.residentAddress = proposal.getResidentAddress();
+		this.name = proposal.getName();
+		this.id = proposal.getId();
+		this.typesOfSport = proposal.getTypesOfSport();
+		this.occupation = proposal.getOccupation();
+		this.customer = proposal.getCustomer();
+		this.unit = proposal.getUnit();
+		this.approvedUnit = proposal.getApprovedUnit();
+		this.relationship = proposal.getRelationship();
+		this.surveyQuestionAnswerList = proposal.getSurveyQuestionAnswerList();
+		this.phone = proposal.getPhone();
+		this.relationship = proposal.getRelationship();
+		this.parentDOB = proposal.getParentDOB();
+		this.parentFullIdNo = proposal.getParentIdNo();
+		this.parentIdNo = proposal.getParentIdNo();
+		this.parentIdType = proposal.getParentIdType();
+		this.parentName = proposal.getParentName();
+		this.school = proposal.getSchool();
+		this.gradeInfo = proposal.getGradeInfo();
+		this.birthAddress = proposal.getBirthAddress();
+		this.personalId = proposal.getPersonalId();
+		this.email = proposal.getEmail();
+		this.salary = proposal.getSalary();
+		this.labourCardNo = proposal.getLabourCardNo();
+		this.identificationCardNo = proposal.getIdentificationCardNo();
+		this.issueOfLabourDate = proposal.getIssueOfLabourDate();
+		this.qualification = proposal.getQualification();
+		this.factoryAddress = proposal.getFactoryAddress();
+		this.issueDateOfIdCard = proposal.getIssueDateOfIdCard();
+		this.placeOfPassport = proposal.getPlaceOfPassport();
+		this.country = proposal.getCountry();
+		this.currency = proposal.getCurrency();
+		this.passportNo = proposal.getPassportNo();
+		this.issueDateOfPassport = proposal.getIssueDateOfPassport();
+		this.visibleIdentification = proposal.getVisibleIdentification();
+		this.sumInsuredType = proposal.getSumInsuredType();
+		this.cdcNo=proposal.getCdcNo();
+		this.position=proposal.getPosition();
+		this.oceanlinerName=proposal.getOceanlinerName();
+		this.vesselName=proposal.getVesselName();
+		this.seamanNrc=proposal.getSeamanNrc();
+		this.isArmyOfficer = proposal.isArmyOfficer();
+		this.office = proposal.getOffice();
+		if(proposal.getAcquaintance() != null) {
+			this.acquaintanceDTO = new AcquaintanceDTO(proposal.getAcquaintance());
+			
+		}		
+		for (Attachment attach : proposal.getBirthCertificateAttachment()) {
+			addBirthCertificateAttachment(attach);
+		}
+		for (InsuredPersonAttachment attach : proposal.getAttachmentList()) {
+			addInsuredPersonAttachment(attach);
+		}
+		for (InsuredPersonKeyFactorValue kfv : proposal.getKeyFactorValueList()) {
+			addInsuredPersonKeyFactorValue(kfv);
+		}
+		for (InsuredPersonBeneficiaries beneficiary : proposal.getInsuredPersonBeneficiariesList()) {
+			addBeneficiariesInfoDTO(new BeneficiariesInfoDTO(beneficiary));
+		}
+		if (proposal.getInsuredPersonAddOnList() != null) {
+			for (InsuredPersonAddon addOn : proposal.getInsuredPersonAddOnList()) {
+				insuredPersonAddOnDTOMap.put(addOn.getId(), new InsuredPersonAddOnDTO(addOn));
+			}
+		}
+		if (proposal.getInsuredPersonPolicyHistoryRecordList() != null) {
+			for (InsuredPersonPolicyHistoryRecord record : proposal.getInsuredPersonPolicyHistoryRecordList()) {
+				addInsuredPersonPolicyHistoryRecord(record);
+			}
+		}
+	}
+
+	public InsuredPersonInfoDTO(InsuredPersonInfoDTO proposal) {
+		if (proposal.getId() == null) {
+			this.tempId = proposal.getTempId();
+		} else {
+			existsEntity = true;
+			this.approve = proposal.isApprove();
+			this.tempId = proposal.getId();
+			this.version = proposal.getVersion();
+		}
+
+		if (this.isPaidPremiumForPaidup == null) {
+			this.isPaidPremiumForPaidup = false;
+		}
+		this.generatedPolicyNo = proposal.getPolicyNumber();
+		this.periodMonth = proposal.getPeriodMonth();
+		this.startDate = proposal.getStartDate();
+		this.needMedicalCheckup = proposal.isNeedMedicalCheckup();
+		this.product = proposal.getProduct();
+		this.age = proposal.getAge();
+		this.sumInsuredInfo = proposal.getSumInsuredInfo();
+		this.premium = proposal.getPremium();
+		this.approvedSumInsured = proposal.getApprovedSumInsured();
+		this.basicTermPremium = proposal.getBasicTermPremium();
+		this.addOnTermPremium = proposal.getAddOnTermPremium();
+		this.endorsementBasicPremium = proposal.getEndorsementNetBasicPremium();
+		this.endorsementAddonPremium = proposal.getEndorsementNetAddonPremium();
+		this.interest = proposal.getInterest();
+		this.weight = proposal.getWeight();
+		this.height = proposal.getHeight();
+		this.premiumRate = proposal.getPremiumRate();
+		this.feets = proposal.getHeight() / 12;
+		this.inches = proposal.getHeight() % 12;
+		this.rejectReason = proposal.getRejectReason();
+		this.insPersonCodeNo = proposal.getInsPersonCodeNo();
+		this.inPersonGroupCodeNo = proposal.getInPersonGroupCodeNo();
+		this.initialId = proposal.getInitialId();
+		this.fullIdNo = proposal.getFullIdNo();
+		this.fullIdNoMM = proposal.getFullIdNoMM();
+		this.insuredId = proposal.getInsuredId();
+		isSeaman=KeyFactorChecker.isSeaMenLife(proposal.getProduct().getId());
+		if(isSeaman) {
+			this.seamanFullIdNo = proposal.getSeamanFullIdNo();
+			this.seamanNrc = proposal.getSeamanNrc();
+		}
+		this.position = proposal.getPosition();
+		this.cdcNo = proposal.getCdcNo();
+		this.idNo = proposal.getIdNo();
+		this.fatherName = proposal.getFatherName();
+		this.dateOfBirth = proposal.getDateOfBirth();
+		this.endorsementStatus = proposal.getEndorsementStatus();
+		this.classificationOfHealth = proposal.getClassificationOfHealth();
+		this.gender = proposal.getGender();
+		this.idType = proposal.getIdType();
+		this.provinceCode = proposal.getProvinceCode();
+		this.townshipCode = proposal.getTownshipCode();
+		this.idConditionType = proposal.getIdConditionType();
+		this.residentAddress = proposal.getResidentAddress();
+		this.name = proposal.getName();
+		this.id = proposal.getId();
+		this.typesOfSport = proposal.getTypesOfSport();
+		this.occupation = proposal.getOccupation();
+		this.customer = proposal.getCustomer();
+		this.unit = proposal.getUnit();
+		this.approvedUnit = proposal.getApprovedUnit();
+		this.relationship = proposal.getRelationship();
+		this.surveyQuestionAnswerList = proposal.getSurveyQuestionAnswerList();
+		this.isRiskyOccupation = proposal.getIsRiskyOccupation();
+		this.phone = proposal.getPhone();
+		this.parentDOB = proposal.getParentDOB();
+		this.parentFullIdNo = proposal.getParentFullIdNo();
+		this.parentFullIdNoMM = proposal.getParentFullIdNoMM();
+		this.parentIdNo = proposal.getParentIdNo();
+		this.parentIdType = proposal.getParentIdType();
+		this.parentTownshipCode = proposal.getParentTownshipCode();
+		this.parentName = proposal.getParentName();
+		this.school = proposal.getSchool();
+		this.gradeInfo = proposal.getGradeInfo();
+		this.birthAddress = proposal.getBirthAddress();
+		this.personalId = proposal.getPersonalId();
+		this.email = proposal.getEmail();
+		this.salary = proposal.getSalary();
+		this.labourCardNo = proposal.getLabourCardNo();
+		this.identificationCardNo = proposal.getIdentificationCardNo();
+		this.issueOfLabourDate = proposal.getIssueOfLabourDate();
+		this.qualification = proposal.getQualification();
+		this.factoryAddress = proposal.getFactoryAddress();
+		this.issueDateOfIdCard = proposal.getIssueDateOfIdCard();
+		this.placeOfPassport = proposal.getPlaceOfPassport();
+		this.country = proposal.getCountry();
+		this.currency = proposal.getCurrency();
+		this.passportNo = proposal.getPassportNo();
+		this.issueDateOfPassport = proposal.getIssueDateOfPassport();
+		this.visibleIdentification = proposal.getVisibleIdentification();
+		this.visibleIdentification = proposal.getVisibleIdentification();
+		this.sumInsuredType = proposal.getSumInsuredType();
+		this.oceanlinerName=proposal.getOceanlinerName();
+		this.vesselName=proposal.getVesselName();
+		this.isArmyOfficer=proposal.isArmyOfficer();
+		this.selectedNode = proposal.getSelectedNode();
+		this.root = proposal.getRoot();
+		this.setSeamanNrc(proposal.getSeamanNrc());
+		this.valid = proposal.isValid();
+		this.insuredId = proposal.getInsuredId();
+		this.acquaintanceDTO = proposal.getAcquaintanceDTO();
+		for (Attachment attach : proposal.getBirthCertificateAttachments()) {
+			addBirthCertificateAttachment(attach);
+		}
+		for (InsuredPersonAttachment attach : proposal.getPerAttachmentList()) {
+			addInsuredPersonAttachment(attach);
+		}
+		for (InsuredPersonKeyFactorValue kfv : proposal.getKeyFactorValueList()) {
+			addInsuredPersonKeyFactorValue(kfv);
+		}
+		for (BeneficiariesInfoDTO beneficiary : proposal.getBeneficiariesInfoDTOList()) {
+			addBeneficiariesInfoDTO(new BeneficiariesInfoDTO(beneficiary));
+		}
+		if (proposal.getInsuredPersonAddOnDTOList() != null) {
+			for (InsuredPersonAddOnDTO addOn : proposal.getInsuredPersonAddOnDTOList()) {
+				insuredPersonAddOnDTOMap.put(addOn.getTempId(), new InsuredPersonAddOnDTO(addOn));
+			}
+		}
+		if (proposal.getInsuredPersonPolicyHistoryRecordList() != null) {
+			for (InsuredPersonPolicyHistoryRecord record : proposal.getInsuredPersonPolicyHistoryRecordList()) {
+				addInsuredPersonPolicyHistoryRecord(record);
+			}
+		}
+	}
+
+	public InsuredPersonInfoDTO(PolicyInsuredPerson pi) {
+		if (pi.getId() == null) {
+			this.tempId = System.nanoTime() + "";
+		} else {
+			existsEntity = true;
+			this.tempId = pi.getId();
+			this.version = pi.getVersion();
+		}
+		this.startDate = pi.getLifePolicy().getActivedPolicyStartDate();
+		this.age = pi.getAge();
+		this.sumInsuredInfo = pi.getSumInsured();
+		this.premium = pi.getPremium();
+		this.basicTermPremium = pi.getBasicTermPremium();
+		this.addOnTermPremium = pi.getAddOnTermPremium();
+		this.endorsementBasicPremium = pi.getEndorsementNetBasicPremium();
+		this.endorsementAddonPremium = pi.getEndorsementNetAddonPremium();
+		this.interest = pi.getInterest();
+		this.weight = pi.getWeight();
+		this.height = pi.getHeight();
+		this.premiumRate = pi.getPremiumRate();
+		this.feets = pi.getHeight() / 12;
+		this.inches = pi.getHeight() % 12;
+		this.insPersonCodeNo = pi.getInsPersonCodeNo();
+		this.inPersonGroupCodeNo = pi.getInPersonGroupCodeNo();
+		this.initialId = pi.getInitialId();
+		this.fatherName = pi.getFatherName();
+		this.dateOfBirth = pi.getDateOfBirth();
+		this.gender = pi.getGender();
+		this.idType = pi.getIdType();
+		this.fullIdNo = pi.getIdNo();
+		this.fullIdNoMM = pi.getIdNoMM();
+		this.insuredId = pi.getGroupCount();
+		loadFullIdNo();		
+		isSeaman=KeyFactorChecker.isSeaMenLife(pi.getProduct().getId());
+		if(isSeaman) {
+			this.seamanFullIdNo = pi.getSeamanNrc();
+			loadSeamanFullIdNo();
+		}		
+		loadFullIdNoMM();		
+		if(this.fullIdNoMM != null) {
+		this.townshipCode = this.townshipCodeENG+"/"+this.townshipCodeMM;
+		}else {
+			this.townshipCode = this.townshipCodeENG;
+		}
+		this.endorsementStatus = pi.getEndorsementStatus();
+		this.claimStatus = pi.getClaimStatus();
+		this.classificationOfHealth = pi.getClsOfHealth();
+		this.residentAddress = pi.getResidentAddress();
+		this.name = pi.getName();
+		this.product = pi.getProduct();
+		this.occupation = pi.getOccupation();
+		this.riskyOccupation = pi.getRiskyOccupation();
+		this.customer = pi.getCustomer();
+		this.typesOfSport = pi.getTypesOfSport();
+		this.unit = pi.getUnit();
+		this.approvedUnit = pi.getUnit();
+		this.relationship = pi.getRelationship();
+		this.phone = pi.getPhone();
+		this.parentDOB = pi.getParentDOB();
+		this.parentFullIdNo = pi.getParentIdNo();
+		this.parentIdNo = pi.getParentIdNo();
+		this.parentIdType = pi.getParentIdType();
+		this.parentName = pi.getParentName();
+		this.school = pi.getSchool();
+		this.gradeInfo = pi.getGradeInfo();
+		this.sumInsuredType = pi.getSumInsuredType();
+		this.labourCardNo = pi.getLabourCardNo();
+		this.identificationCardNo = pi.getIdentificationCardNo();
+		this.issueOfLabourDate = pi.getIssueOfLabourDate();
+		this.qualification = pi.getQualification();
+		this.factoryAddress = pi.getFactoryAddress();
+		this.issueDateOfIdCard = pi.getIssueDateOfIdCard();
+		this.placeOfPassport = pi.getPlaceOfPassport();
+		this.country = pi.getCountry();
+		this.currency = pi.getCurrency();
+		this.passportNo = pi.getPassportNo();
+		this.personalId = pi.getPersonalId();
+		this.issueDateOfPassport = pi.getIssueDateOfPassport();
+		this.visibleIdentification = pi.getVisibleIdentification();
+		this.isEdit=pi.isEdit();
+		this.isReplace=pi.isReplace();
+		this.oceanlinerName=pi.getOceanlinerName();
+		this.vesselName=pi.getVesselName();
+		this.cdcNo = pi.getCdcNo();
+		this.position = pi.getPosition();
+		this.isArmyOfficer= pi.isArmyOfficer();
+		this.office = pi.getOffice();		
+		for (Attachment attach : pi.getBirthCertificateAttachment()) {
+			addBirthCertificateAttachment(attach);
+		}
+		for (PolicyInsuredPersonAttachment attach : pi.getAttachmentList()) {
+			addPolicyInsuredPersonAttachment(attach);
+		}
+		for (PolicyInsuredPersonKeyFactorValue kfv : pi.getPolicyInsuredPersonkeyFactorValueList()) {
+			addPolicyInsuredPersonKeyFactorValue(kfv);
+		}
+		for (PolicyInsuredPersonBeneficiaries beneficiary : pi.getPolicyInsuredPersonBeneficiariesList()) {
+			addBeneficiariesInfoDTO(new BeneficiariesInfoDTO(beneficiary));
+		}
+		for (PolicyInsuredPersonAddon addOn : pi.getPolicyInsuredPersonAddOnList()) {
+			insuredPersonAddOnDTOMap.put(addOn.getId(), new InsuredPersonAddOnDTO(addOn));
+		}
+	}
+
+	public InsuredPersonInfoDTO(Customer customer) {
+		this.initialId = customer.getInitialId();
+		this.fatherName = customer.getFatherName();
+		this.dateOfBirth = customer.getDateOfBirth();
+		this.gender = customer.getGender();
+		this.idType = customer.getIdType();
+		this.fullIdNo = customer.getFullIdNo();
+		loadFullIdNo();
+		this.name = customer.getName();
+		this.residentAddress = customer.getResidentAddress();
+		// this.residentAddress.getTownship() =
+		// customer.getResidentAddress().get
+		this.occupation = customer.getOccupation();
+		this.customer = customer;
+
+	}
+
+	public String getIdentificationCardNo() {
+		return identificationCardNo;
+	}
+
+	public void setIdentificationCardNo(String identificationCardNo) {
+		this.identificationCardNo = identificationCardNo;
+	}
+
+	public String getTempId() {
+		return tempId;
+	}
+
+	public void setTempId(String tempId) {
+		this.tempId = tempId;
+	}
+
+	public Double getSumInsuredInfo() {
+		if (sumInsuredInfo == null) {
+			sumInsuredInfo = new Double(0.0);
+		}
+		return sumInsuredInfo;
+	}
+
+	public void setSumInsuredInfo(Double sumInsuredInfo) {
+		this.sumInsuredInfo = sumInsuredInfo;
+	}
+
+	public Number getSumInsuredInfoNum() {
+		if (sumInsuredInfo == null) {
+			sumInsuredInfo = new Double(0.0);
+		}
+		return sumInsuredInfo;
+	}
+
+	public void setSumInsuredInfoNum(Number sumInsuredInfo) {
+		if (sumInsuredInfo != null) {
+			this.sumInsuredInfo = sumInsuredInfo.doubleValue();
+		}
+	}
+
+	public double getPremium() {
+		return premium;
+	}
+
+	public void setPremium(double premium) {
+		this.premium = premium;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+		loadKeyFactor(product);
+	}
+
+	private void loadKeyFactor(Product product) {
+		keyFactorValueList = new ArrayList<InsuredPersonKeyFactorValue>();
+		if (product.getKeyFactorList() != null) {
+			for (KeyFactor kf : product.getKeyFactorList()) {
+				InsuredPersonKeyFactorValue insKf = new InsuredPersonKeyFactorValue(kf);
+				insKf.setKeyFactor(kf);
+				keyFactorValueList.add(insKf);
+			}
+		}
+	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getInPersonGroupCodeNo() {
+		return inPersonGroupCodeNo;
+	}
+
+	public void setInPersonGroupCodeNo(String inPersonGroupCodeNo) {
+		this.inPersonGroupCodeNo = inPersonGroupCodeNo;
+	}
+
+	public List<InsuredPersonAddOnDTO> getInsuredPersonAddOnDTOList() {
+		return insuredPersonAddOnDTOList;
+	}
+
+	public List<InsuredPersonBeneficiaries> getBeneficiariesInfoList(ProposalInsuredPerson proposalInsuredPerson) {
+		List<InsuredPersonBeneficiaries> result = null;
+		if (beneficiariesInfoDTOList != null && !beneficiariesInfoDTOList.isEmpty()) {
+			result = new ArrayList<InsuredPersonBeneficiaries>();
+			for (BeneficiariesInfoDTO beneficiairesInfoDTO : beneficiariesInfoDTOList) {
+				InsuredPersonBeneficiaries insPesBenf = new InsuredPersonBeneficiaries(beneficiairesInfoDTO.getBeneficiaryNo(), beneficiairesInfoDTO.getAge(),
+						beneficiairesInfoDTO.getPercentage(), beneficiairesInfoDTO.getInitialId(), beneficiairesInfoDTO.getIdNo(), beneficiairesInfoDTO.getGender(),
+						beneficiairesInfoDTO.getIdType(), beneficiairesInfoDTO.getResidentAddress(), beneficiairesInfoDTO.getName(), beneficiairesInfoDTO.getRelationship());
+				;
+				insPesBenf.setProposalInsuredPerson(proposalInsuredPerson);
+				result.add(insPesBenf);
+			}
+		}
+		return result;
+
+	}
+
+	public List<PolicyInsuredPersonBeneficiaries> getBeneficiariesInfoList(PolicyInsuredPerson policyInsuredPerson) {
+		List<PolicyInsuredPersonBeneficiaries> result = null;
+		if (beneficiariesInfoDTOList != null && !beneficiariesInfoDTOList.isEmpty()) {
+			result = new ArrayList<PolicyInsuredPersonBeneficiaries>();
+			for (BeneficiariesInfoDTO beneficiairesInfoDTO : beneficiariesInfoDTOList) {
+				PolicyInsuredPersonBeneficiaries insPesBenf = new PolicyInsuredPersonBeneficiaries(beneficiairesInfoDTO);
+				insPesBenf.setPolicyInsuredPerson(policyInsuredPerson);
+				result.add(insPesBenf);
+			}
+		}
+		return result;
+
+	}
+
+	public List<InsuredPersonAddon> getInsuredPersonAddOnList(ProposalInsuredPerson proposalInsuredPerson) {
+		List<InsuredPersonAddon> result = new ArrayList<InsuredPersonAddon>();
+		if (insuredPersonAddOnDTOList != null && !insuredPersonAddOnDTOList.isEmpty()) {
+			for (InsuredPersonAddOnDTO insuredPersonAddonDTO : insuredPersonAddOnDTOList) {
+				InsuredPersonAddon insAddOn = new InsuredPersonAddon(insuredPersonAddonDTO.getAddOn(), insuredPersonAddonDTO.getAddOnSumInsured());
+				insAddOn.setProposalInsuredPerson(proposalInsuredPerson);
+				result.add(insAddOn);
+			}
+		}
+		return result;
+	}
+
+	public List<PolicyInsuredPersonAddon> getInsuredPersonAddOnList(PolicyInsuredPerson policyInsuredPerson) {
+		List<PolicyInsuredPersonAddon> result = new ArrayList<PolicyInsuredPersonAddon>();
+		if (insuredPersonAddOnDTOMap.values() != null) {
+			for (InsuredPersonAddOnDTO insuredPersonAddonDTO : insuredPersonAddOnDTOMap.values()) {
+				PolicyInsuredPersonAddon insAddOn = new PolicyInsuredPersonAddon(insuredPersonAddonDTO.getAddOn(), insuredPersonAddonDTO.getAddOnSumInsured());
+				insAddOn.setPolicyInsuredPerson(policyInsuredPerson);
+				result.add(insAddOn);
+			}
+		}
+		return result;
+	}
+
+	public List<InsuredPersonKeyFactorValue> getKeyFactorValueList(ProposalInsuredPerson proposalInsuredPerson) {
+		if (proposalInsuredPerson.getKeyFactorValueList() == null || keyFactorValueList == null) {
+			return new ArrayList<InsuredPersonKeyFactorValue>();
+		} else {
+			for (InsuredPersonKeyFactorValue inskf : keyFactorValueList) {
+				inskf.setProposalInsuredPerson(proposalInsuredPerson);
+			}
+			return keyFactorValueList;
+		}
+
+	}
+
+	public int getAgeForNextYear() {
+		Date date = null;
+		Calendar cal_1 = Calendar.getInstance();
+		if (startDate != null) {
+			cal_1.setTime(startDate);
+			date = startDate;
+		} else {
+			date = new Date();
+		}
+		int currentYear = cal_1.get(Calendar.YEAR);
+		Calendar cal_2 = Calendar.getInstance();
+		cal_2.setTime(dateOfBirth);
+		cal_2.set(Calendar.YEAR, currentYear);
+		if (date.after(cal_2.getTime())) {
+			Calendar cal_3 = Calendar.getInstance();
+			cal_3.setTime(dateOfBirth);
+			int year_1 = cal_3.get(Calendar.YEAR);
+			int year_2 = cal_1.get(Calendar.YEAR) + 1;
+			return year_2 - year_1;
+		} else {
+			Calendar cal_3 = Calendar.getInstance();
+			cal_3.setTime(dateOfBirth);
+			int year_1 = cal_3.get(Calendar.YEAR);
+			int year_2 = cal_1.get(Calendar.YEAR);
+			return year_2 - year_1;
+		}
+	}
+
+	public boolean isExistsEntity() {
+		return existsEntity;
+	}
+
+	public int getVersion() {
+		return version;
+	}
+
+	public void setVersion(int version) {
+		this.version = version;
+	}
+
+	public double getInterest() {
+		return interest;
+	}
+
+	public void setInterest(double interest) {
+		this.interest = interest;
+	}
+
+	public int getWeight() {
+		return weight;
+	}
+
+	public void setWeight(int weight) {
+		this.weight = weight;
+	}
+
+	public int getHeight() {
+		return height;
+	}
+
+	public void setHeight(int height) {
+		this.height = height;
+	}
+
+	public double getPremiumRate() {
+		return premiumRate;
+	}
+
+	public void setPremiumRate(double premiumRate) {
+		this.premiumRate = premiumRate;
+	}
+
+	public int getFeets() {
+		return feets;
+	}
+
+	public void setFeets(int feets) {
+		this.feets = feets;
+	}
+
+	public int getInches() {
+		return inches;
+	}
+
+	public void setInches(int inches) {
+		this.inches = inches;
+	}
+
+	public int getPounds() {
+		return pounds;
+	}
+
+	public int getDangerousOccupation() {
+		return dangerousOccupation;
+	}
+
+	public void setDangerousOccupation(int dangerousOccupation) {
+		this.dangerousOccupation = dangerousOccupation;
+	}
+
+	public void setPounds(int pounds) {
+		int calPound;
+		if (pounds > 0) {
+			if (weight == pounds) {
+				pounds = weight - pounds;
+			} else if (weight > pounds) {
+				calPound = pounds * 20 / 100;
+				calPound = pounds + calPound;
+				if (calPound >= weight) {
+					pounds = 0;
+				} else {
+					pounds = weight - calPound;
+				}
+			} else {
+				calPound = pounds * 15 / 100;
+				calPound = pounds - calPound;
+				if (calPound <= weight) {
+					pounds = 0;
+				} else {
+					pounds = weight - calPound;
+				}
+				pounds = calPound - weight;
+			}
+		}
+		pounds = Math.abs(pounds);
+		pounds = (int) Math.ceil(pounds);
+		this.pounds = pounds;
+	}
+
+	public double getEndorsementNetAddonPremium() {
+		return endorsementAddonPremium;
+	}
+
+	public void setEndorsementNetAddonPremium(double endorsementAddonPremium) {
+		this.endorsementAddonPremium = endorsementAddonPremium;
+	}
+
+	public double getEndorsementNetBasicPremium() {
+		return endorsementBasicPremium;
+	}
+
+	public void setEndorsementNetBasicPremium(double endorsementBasicPremium) {
+		this.endorsementBasicPremium = endorsementBasicPremium;
+	}
+
+	public String getInsPersonCodeNo() {
+		return insPersonCodeNo;
+	}
+
+	public void setInsPersonCodeNo(String insPersonCodeNo) {
+		this.insPersonCodeNo = insPersonCodeNo;
+	}
+
+	public EndorsementStatus getEndorsementStatus() {
+		return endorsementStatus;
+	}
+
+	public void setEndorsementStatus(EndorsementStatus endorsementStatus) {
+		this.endorsementStatus = endorsementStatus;
+	}
+
+	public String getInitialId() {
+		return initialId;
+	}
+
+	public void setInitialId(String initialId) {
+		this.initialId = initialId;
+	}
+
+	public String getIdNo() {
+		return idNo;
+	}
+
+	public void setIdNo(String idNo) {
+		this.idNo = idNo;
+	}
+
+	public Gender getGender() {
+		return gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	public IdType getIdType() {
+		return idType;
+	}
+
+	public void setIdType(IdType idType) {
+		this.idType = idType;
+	}
+
+	public ResidentAddress getResidentAddress() {
+		if (residentAddress == null) {
+			residentAddress = new ResidentAddress();
+		}
+		return residentAddress;
+	}
+
+	public void setResidentAddress(ResidentAddress residentAddress) {
+		this.residentAddress = residentAddress;
+	}
+
+	public String getFullAddress() {
+		String result = "";
+		
+		if(residentAddress != null) {
+			if (Objects.nonNull(residentAddress.getResidentAddress())) {
+				if (residentAddress.getResidentAddress() != null && !residentAddress.getResidentAddress().isEmpty()) {
+					result = residentAddress.getResidentAddress();
+				}
+	
+				if (residentAddress.getTownship() != null && residentAddress.getTownship().getName() != null &&  !residentAddress.getTownship().getName().isEmpty()) {
+					result = result + " " + residentAddress.getTownship().getName();
+				}
+			}
+		}
+		return result;
+	}
+
+	public Name getName() {
+		if (name == null) {
+			name = new Name();
+		}
+		return name;
+	}
+
+	public void setName(Name name) {
+		this.name = name;
+	}
+
+	public String getFullName() {
+		String result = "";
+		if (name != null) {
+			if (initialId != null && !initialId.isEmpty()) {
+				result = initialId;
+			}
+			if (name.getFirstName() != null && !name.getFirstName().isEmpty()) {
+				result = result + " " + name.getFirstName();
+			}
+			if (name.getMiddleName() != null && !name.getMiddleName().isEmpty()) {
+				result = result + " " + name.getMiddleName();
+			}
+			if (name.getLastName() != null && !name.getLastName().isEmpty()) {
+				result = result + " " + name.getLastName();
+			}
+		}
+		return result;
+	}
+
+	public void loadFullIdNo() {
+		if (idType.equals(IdType.NRCNO) && fullIdNo != null) {
+			StringTokenizer token = new StringTokenizer(fullIdNo, "/()");
+			provinceCode = token.nextToken();
+			townshipCodeENG = token.nextToken();
+			idConditionType = token.nextToken();
+			idNo = token.nextToken();
+			fullIdNo = provinceCode.equals("null") ? "" : fullIdNo;
+		} else if (idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) {
+			idNo = fullIdNo == null ? "" : fullIdNo;
+		}
+	}
+	
+	public void loadFullIdNoForExcel() {		
+		if (idType.equals(IdType.NRCNO) && fullIdNo != null) {
+			StringTokenizer token = new StringTokenizer(fullIdNo, "/()");
+			provinceCode = token.nextToken();
+			townshipCodeENG = token.nextToken();
+			townshipCodeMM = token.nextToken();
+			idConditionType = token.nextToken();
+			idNo = token.nextToken();
+			fullIdNo = provinceCode.equals("null") ? "" : provinceCode + "/" + townshipCodeENG + "(" + idConditionType + ")" + idNo;
+			
+		} else if((idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO) && !seamanNrc.isEmpty()&& seamanNrc != null)) {
+			StringTokenizer token = new StringTokenizer(seamanNrc, "/()");
+			provinceCode = token.nextToken();
+			townshipCodeENG = token.nextToken();
+			townshipCodeMM = token.nextToken();
+			idConditionType = token.nextToken();
+			seamanNrc = token.nextToken();
+			seamanFullIdNo = provinceCode.equals("null") ? "" : provinceCode + "/" + townshipCodeENG + "(" + idConditionType + ")" + seamanNrc;
+		}
+	}
+	
+	public void loadFullIdNoMM() {
+		if(fullIdNoMM != null) {
+			StringTokenizer token = new StringTokenizer(fullIdNoMM, "/()");
+			provinceCodeMM = token.nextToken();
+			townshipCodeMM = token.nextToken();
+			idConditionTypeMM = token.nextToken();
+			idNoMM = token.nextToken();
+			fullIdNoMM = provinceCodeMM.equals("null") ? "" : fullIdNoMM;
+		}
+	}
+	
+	public String setFullIdNo() {
+		if (idType.equals(IdType.NRCNO)) {
+			fullIdNo = provinceCode + "/" + townshipCodeENG + "(" + idConditionType + ")" + idNo;
+		} else if (idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) {
+			fullIdNo = idNo;
+		}else {
+			fullIdNo = null;
+		}
+		return fullIdNo;
+	}
+	
+	
+	public String setFullIdNoMM() {		
+		if(IdType.NRCNO.equals(idType)) {
+			idNoMM = AbstractMynNumConvertor.getAmountWithMyanmar(idNo);
+			provinceCodeMM = AbstractMynNumConvertor.getAmountWithMyanmar(provinceCode);
+			idConditionTypeMM = IdConditionTypeMM.valueOf(idConditionType).getLabel();
+			fullIdNoMM = provinceCodeMM+"/"+townshipCodeMM+"("+idConditionTypeMM+")"+idNoMM;	
+		}else {
+			fullIdNoMM = null;
+		}
+		return fullIdNoMM;
+	}
+	
+	public String setFullIdNoPolicyEnquiry() {
+		return idNo;
+	}
+	
+	public void loadSeamanFullIdNo() {			
+		if ((idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) && seamanFullIdNo != null && !seamanFullIdNo.isEmpty()) {
+			StringTokenizer token = new StringTokenizer(seamanFullIdNo, "/()");
+			provinceCode = token.nextToken();
+			townshipCodeENG = token.nextToken();
+			idConditionType = token.nextToken();
+			seamanNrc = token.nextToken();
+			seamanFullIdNo = provinceCode.equals("null") ? "" : seamanFullIdNo;
+		} else if(idType.equals(IdType.NRCNO) && seamanFullIdNo != null && !seamanFullIdNo.isEmpty()) {
+			StringTokenizer token = new StringTokenizer(seamanFullIdNo, "/()");
+			provinceCode = token.nextToken();
+			townshipCodeENG = token.nextToken();
+			idConditionType = token.nextToken();
+			idNo = token.nextToken();
+			seamanFullIdNo = provinceCode.equals("null") ? "" : seamanFullIdNo;
+		} else if (idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) {
+			seamanNrc = seamanFullIdNo == null ? "" : seamanFullIdNo;
+		}
+	}
+	
+	public String setSeamanFullIdNo() {
+			//nrc only
+			if(IdType.NRCNO.equals(idType)) {
+				seamanFullIdNo = idNo;
+			// pass + nrc then - nrc
+			} else if ((idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) && (null != idNo && seamanNrc.equals(""))) {
+				seamanFullIdNo = null;
+			//pass + nrc
+			} else if (idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) {
+				seamanFullIdNo = provinceCode + "/" + townshipCodeENG + "(" + idConditionType + ")" + seamanNrc ;
+			}
+			
+		return seamanFullIdNo;
+	}
+	
+	public String setSeamanFullIdPolicyEnquiry() {	
+		
+		if(IdType.NRCNO.equals(idType)) {
+			seamanFullIdNo = provinceCode + "/" + townshipCodeENG + "(" + idConditionType + ")" + idNo;
+		
+		} else if ((idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) && (seamanNrc.equals("") || seamanNrc == null )) {
+			seamanFullIdNo = null;
+		
+		} else if (idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO)) {
+			seamanFullIdNo = provinceCode + "/" + townshipCodeENG + "(" + idConditionType + ")" + seamanNrc ;
+		}
+		
+		return seamanFullIdNo;
+	}
+	
+	public void loadSeamanFullIdPolicyEnquiry() {	
+		 	if (seamanFullIdNo != null && !seamanFullIdNo.isEmpty() && !seamanFullIdNo.equals("null/null(null)")) {
+				StringTokenizer token = new StringTokenizer(seamanFullIdNo, "/()");
+				provinceCode = token.nextToken();
+				townshipCodeENG = token.nextToken();
+				idConditionType = token.nextToken();
+				seamanNrc = token.nextToken();
+				seamanFullIdNo = provinceCode.equals("null") ? "" : seamanFullIdNo;
+			}else {
+				seamanNrc = seamanFullIdNo == null ? "" : seamanFullIdNo;
+			}
+	}
+	
+
+	public Occupation getOccupation() {
+		return occupation;
+	}
+
+	public void setOccupation(Occupation occupation) {
+		this.occupation = occupation;
+	}
+
+	public String getFatherName() {
+		return fatherName;
+	}
+
+	public void setFatherName(String fatherName) {
+		this.fatherName = fatherName;
+	}
+
+	public ClassificationOfHealth getClassificationOfHealth() {
+		return classificationOfHealth;
+	}
+
+	public void setClassificationOfHealth(ClassificationOfHealth classificationOfHealth) {
+		this.classificationOfHealth = classificationOfHealth;
+	}
+
+	public Boolean getIsPaidPremiumForPaidup() {
+		return isPaidPremiumForPaidup;
+	}
+
+	public void setIsPaidPremiumForPaidup(Boolean isPaidPremiumForPaidup) {
+		this.isPaidPremiumForPaidup = isPaidPremiumForPaidup;
+	}
+
+	public TypesOfSport getTypesOfSport() {
+		return typesOfSport;
+	}
+
+	public void setTypesOfSport(TypesOfSport typesOfSport) {
+		this.typesOfSport = typesOfSport;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(Customer customer) {
+		this.customer = customer;
+	}
+
+	public double getBasicTermPremium() {
+		return basicTermPremium;
+	}
+
+	public void setBasicTermPremium(double basicTermPremium) {
+		this.basicTermPremium = basicTermPremium;
+	}
+
+	public double getAddOnTermPremium() {
+		return addOnTermPremium;
+	}
+
+	public void setAddOnTermPremium(double addOnTermPremium) {
+		this.addOnTermPremium = addOnTermPremium;
+	}
+
+	public int getAge() {
+		return age;
+	}
+
+	public void setAge(int age) {
+		this.age = age;
+	}
+
+	public double getApprovedSumInsured() {
+		return approvedSumInsured;
+	}
+
+	public void setApprovedSumInsured(double approvedSumInsured) {
+		this.approvedSumInsured = approvedSumInsured;
+	}
+
+	public double getEndorsementAddonPremium() {
+		return endorsementAddonPremium;
+	}
+
+	public void setEndorsementAddonPremium(double endorsementAddonPremium) {
+		this.endorsementAddonPremium = endorsementAddonPremium;
+	}
+
+	public double getEndorsementBasicPremium() {
+		return endorsementBasicPremium;
+	}
+
+	public void setEndorsementBasicPremium(double endorsementBasicPremium) {
+		this.endorsementBasicPremium = endorsementBasicPremium;
+	}
+
+	public String getRejectReason() {
+		return rejectReason;
+	}
+
+	public void setRejectReason(String rejectReason) {
+		this.rejectReason = rejectReason;
+	}
+
+	public ClaimStatus getClaimStatus() {
+		return claimStatus;
+	}
+
+	public void setClaimStatus(ClaimStatus claimStatus) {
+		this.claimStatus = claimStatus;
+	}
+
+	public boolean isNeedMedicalCheckup() {
+		return needMedicalCheckup;
+	}
+
+	public void setNeedMedicalCheckup(boolean needMedicalCheckup) {
+		this.needMedicalCheckup = needMedicalCheckup;
+	}
+
+	public void addInsuredPersonAddOn(InsuredPersonAddOnDTO insuPersonAddOnDTO) {
+		boolean flag = true;
+		for (InsuredPersonAddOnDTO fa : insuredPersonAddOnDTOMap.values()) {
+			if (insuPersonAddOnDTO.getAddOn().getId().equals(fa.getAddOn().getId())) {
+				flag = false;
+				break;
+			}
+		}
+		if (flag) {
+			insuredPersonAddOnDTOMap.put(insuPersonAddOnDTO.getTempId(), insuPersonAddOnDTO);
+		}
+	}
+
+	public void removeInsuredPersonAddOn(InsuredPersonAddOnDTO insuPersonAddOnDTO) {
+		insuredPersonAddOnDTOList.remove(insuPersonAddOnDTO);
+		// insuredPersonAddOnDTOMap.remove(insuPersonAddOnDTO.getTempId());
+	}
+
+	public List<InsuredPersonPolicyHistoryRecord> getInsuredPersonPolicyHistoryRecordList() {
+		if (insuredPersonPolicyHistoryRecordList == null) {
+			insuredPersonPolicyHistoryRecordList = new ArrayList<InsuredPersonPolicyHistoryRecord>();
+		}
+		return insuredPersonPolicyHistoryRecordList;
+	}
+
+	public void setInsuredPersonPolicyHistoryRecordList(List<InsuredPersonPolicyHistoryRecord> insuredPersonPolicyHistoryRecordList) {
+		this.insuredPersonPolicyHistoryRecordList = insuredPersonPolicyHistoryRecordList;
+	}
+
+	public List<InsuredPersonAttachment> getPerAttachmentList() {
+		if (perAttachmentList == null) {
+			perAttachmentList = new ArrayList<InsuredPersonAttachment>();
+		}
+		return perAttachmentList;
+	}
+
+	public void setPerAttachmentList(List<InsuredPersonAttachment> perAttachmentList) {
+		this.perAttachmentList = perAttachmentList;
+	}
+
+	public void addInsuredPersonAttachment(InsuredPersonAttachment attach) {
+		getPerAttachmentList().add(attach);
+	}
+
+	public void addInsuredPersonPolicyHistoryRecord(InsuredPersonPolicyHistoryRecord record) {
+		getInsuredPersonPolicyHistoryRecordList().add(record);
+	}
+
+	public List<InsuredPersonKeyFactorValue> getKeyFactorValueList() {
+		if (keyFactorValueList == null) {
+			keyFactorValueList = new ArrayList<InsuredPersonKeyFactorValue>();
+		}
+		return keyFactorValueList;
+	}
+
+	public void setKeyFactorValueList(List<InsuredPersonKeyFactorValue> keyFactorValueList) {
+		this.keyFactorValueList = keyFactorValueList;
+	}
+
+	public void addInsuredPersonKeyFactorValue(InsuredPersonKeyFactorValue kfv) {
+		getKeyFactorValueList().add(kfv);
+	}
+
+	public List<BeneficiariesInfoDTO> getBeneficiariesInfoDTOList() {
+		if (beneficiariesInfoDTOList == null) {
+			beneficiariesInfoDTOList = new ArrayList<BeneficiariesInfoDTO>();
+		}
+		return beneficiariesInfoDTOList;
+	}
+
+	public void setBeneficiariesInfoDTOList(List<BeneficiariesInfoDTO> beneficiariesInfoDTO1List) {
+		this.beneficiariesInfoDTOList = beneficiariesInfoDTO1List;
+	}
+
+	public void addBeneficiariesInfoDTO(BeneficiariesInfoDTO dto) {
+		getBeneficiariesInfoDTOList().add(dto);
+	}
+
+	public Map<String, InsuredPersonAddOnDTO> getInsuredPersonAddOnDTOMap() {
+		if (insuredPersonAddOnDTOMap == null) {
+			insuredPersonAddOnDTOMap = new HashMap<String, InsuredPersonAddOnDTO>();
+		}
+		return insuredPersonAddOnDTOMap;
+	}
+
+	public List<PolicyInsuredPersonAttachment> getPrePolicyAttachmentList() {
+		if (policyPerAttachmentList == null) {
+			policyPerAttachmentList = new ArrayList<PolicyInsuredPersonAttachment>();
+		}
+		return policyPerAttachmentList;
+	}
+
+	public void setPrePolicyAttachmentList(List<PolicyInsuredPersonAttachment> perAttachmentList) {
+		this.policyPerAttachmentList = perAttachmentList;
+	}
+
+	public List<SurveyQuestionAnswer> getSurveyQuestionAnswerList() {
+		if (surveyQuestionAnswerList == null) {
+			surveyQuestionAnswerList = new ArrayList<SurveyQuestionAnswer>();
+		}
+		return surveyQuestionAnswerList;
+	}
+
+	public void setSurveyQuestionAnswerList(List<SurveyQuestionAnswer> surveyQuestionAnswerList) {
+		this.surveyQuestionAnswerList = surveyQuestionAnswerList;
+	}
+
+	public void addPolicyInsuredPersonAttachment(PolicyInsuredPersonAttachment attach) {
+		getPrePolicyAttachmentList().add(attach);
+	}
+
+	public List<PolicyInsuredPersonKeyFactorValue> getPolicyKeyFactorValueList() {
+		if (policyKeyFactorValueList == null) {
+			policyKeyFactorValueList = new ArrayList<PolicyInsuredPersonKeyFactorValue>();
+		}
+		return policyKeyFactorValueList;
+	}
+
+	public void setPolicyKeyFactorValueList(List<PolicyInsuredPersonKeyFactorValue> policyKeyFactorValueList) {
+		this.policyKeyFactorValueList = policyKeyFactorValueList;
+	}
+
+	public void addPolicyInsuredPersonKeyFactorValue(PolicyInsuredPersonKeyFactorValue kfv) {
+		getPolicyKeyFactorValueList().add(kfv);
+	}
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public int getUnit() {
+		return unit;
+	}
+
+	public void setUnit(int unit) {
+		this.unit = unit;
+	}
+
+	public int getApprovedUnit() {
+		return approvedUnit;
+	}
+
+	public void setApprovedUnit(int approvedUnit) {
+		this.approvedUnit = approvedUnit;
+	}
+
+	public String getProvinceCode() {
+		return provinceCode;
+	}
+
+	public void setProvinceCode(String provinceCode) {
+		this.provinceCode = provinceCode;
+	}
+
+	public String getTownshipCode() {
+		return townshipCode;
+	}
+
+	public void setTownshipCode(String townshipCode) {
+		this.townshipCode = townshipCode;
+	}
+
+	public String getIdConditionType() {
+		return idConditionType;
+	}
+
+	public void setIdConditionType(String idConditionType) {
+		this.idConditionType = idConditionType;
+	}
+
+	public void setInsuredPersonAddOnDTOList(List<InsuredPersonAddOnDTO> insuredPersonAddOnDTOList) {
+		this.insuredPersonAddOnDTOList = insuredPersonAddOnDTOList;
+	}
+
+	public RelationShip getRelationship() {
+		return relationship;
+	}
+
+	public void setRelationship(RelationShip relationship) {
+		this.relationship = relationship;
+	}
+
+	public String getFullIdNo() {
+		return fullIdNo;
+	}
+
+	public void setFullIdNo(String fullIdNo) {
+		this.fullIdNo = fullIdNo;
+	}
+
+	public boolean getIsRiskyOccupation() {
+		return isRiskyOccupation;
+	}
+
+	public void setIsRiskyOccupation(boolean isRiskyOccupation) {
+		this.isRiskyOccupation = isRiskyOccupation;
+	}
+
+	public RiskyOccupation getRiskyOccupation() {
+		return riskyOccupation;
+	}
+
+	public void setRiskyOccupation(RiskyOccupation riskyOccupation) {
+		this.riskyOccupation = riskyOccupation;
+	}
+
+	public Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public List<PolicyInsuredPersonAttachment> getPolicyPerAttachmentList() {
+		return policyPerAttachmentList;
+	}
+
+	public void setPolicyPerAttachmentList(List<PolicyInsuredPersonAttachment> policyPerAttachmentList) {
+		this.policyPerAttachmentList = policyPerAttachmentList;
+	}
+
+	public List<Attachment> getBirthCertificateAttachments() {
+		if (birthCertificateAttachments == null) {
+			birthCertificateAttachments = new ArrayList<Attachment>();
+		}
+		return birthCertificateAttachments;
+	}
+
+	public void setBirthCertificateAttachments(List<Attachment> birthCertificateAttachments) {
+		this.birthCertificateAttachments = birthCertificateAttachments;
+	}
+
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	public Date getParentDOB() {
+		return parentDOB;
+	}
+
+	public void setParentDOB(Date parentDOB) {
+		this.parentDOB = parentDOB;
+	}
+
+	public IdType getParentIdType() {
+		return parentIdType;
+	}
+
+	public void setParentIdType(IdType parentIdType) {
+		this.parentIdType = parentIdType;
+	}
+
+	public String getParentFullIdNo() {
+		return parentFullIdNo;
+	}
+
+	public void setParentFullIdNo(String parentFullIdNo) {
+		this.parentFullIdNo = parentFullIdNo;
+	}
+
+	public String getParentIdNo() {
+		return parentIdNo;
+	}
+
+	public void setParentIdNo(String parentIdNo) {
+		this.parentIdNo = parentIdNo;
+	}
+
+	public String getParentProvinceCode() {
+		return parentProvinceCode;
+	}
+
+	public void setParentProvinceCode(String parentProvinceCode) {
+		this.parentProvinceCode = parentProvinceCode;
+	}
+
+	public String getParentTownshipCode() {
+		return parentTownshipCode;
+	}
+
+	public void setParentTownshipCode(String parentTownshipCode) {
+		this.parentTownshipCode = parentTownshipCode;
+	}
+
+	public String getParentIdConditionType() {
+		return parentIdConditionType;
+	}
+
+	public void setParentIdConditionType(String parentIdConditionType) {
+		this.parentIdConditionType = parentIdConditionType;
+	}
+
+	public String setParentFullIdNo() {
+		if (parentIdType.equals(IdType.NRCNO)) {
+			parentFullIdNo = parentProvinceCode + "/" + parentTownshipCodeENG + "(" + parentIdConditionType + ")" + parentIdNo;
+		} else if (parentIdType.equals(IdType.FRCNO) || parentIdType.equals(IdType.PASSPORTNO)) {
+			parentFullIdNo = parentIdNo;
+		}
+		return parentFullIdNo;
+	}
+	
+	public String setParentFullIdNoMM() {
+		if (parentIdType.equals(IdType.NRCNO)) {
+			parentIdNoMM = AbstractMynNumConvertor.getAmountWithMyanmar(parentIdNo);
+			parentProvinceCodeMM = AbstractMynNumConvertor.getAmountWithMyanmar(parentProvinceCode);
+			parentIdConditionTypeMM = IdConditionTypeMM.valueOf(parentIdConditionType).getLabel();			
+			parentFullIdNoMM = parentProvinceCodeMM + "/" + parentTownshipCodeMM + "(" + parentIdConditionTypeMM + ")" + parentIdNoMM;
+		} else  {
+			parentFullIdNoMM = null;
+			 
+		}
+		return parentFullIdNo;
+	}
+
+	public void loadParentFullIdNo() {
+		if (parentIdType.equals(IdType.NRCNO) && parentFullIdNo != null && !parentFullIdNo.isEmpty()) {
+			StringTokenizer token = new StringTokenizer(parentFullIdNo, "/()");
+			parentProvinceCode = token.nextToken();
+			parentTownshipCodeENG = token.nextToken();
+			parentIdConditionType = token.nextToken();
+			parentIdNo = token.nextToken();
+			parentFullIdNo = parentProvinceCode.equals("null") ? "" : parentFullIdNo;
+		} else if (parentIdType.equals(IdType.FRCNO) || parentIdType.equals(IdType.PASSPORTNO)) {
+			parentIdNo = parentFullIdNo == null ? "" : parentFullIdNo;
+		}
+	}
+
+	public int getPeriodOfYears() {
+		return Math.abs(periodOfYears);
+	}
+
+	public void setPeriodOfYears(int periodOfYears) {
+		this.periodOfYears = periodOfYears;
+	}
+
+	public int getPeriodOfMonths() {
+		return periodOfYears * 12;
+	}
+
+	public void addBirthCertificateAttachment(Attachment attach) {
+		if (birthCertificateAttachments == null) {
+			birthCertificateAttachments = new ArrayList<Attachment>();
+		}
+		birthCertificateAttachments.add(attach);
+	}
+
+	public School getSchool() {
+		return school;
+	}
+
+	public void setSchool(School school) {
+		this.school = school;
+	}
+
+	public GradeInfo getGradeInfo() {
+		return gradeInfo;
+	}
+
+	public void setGradeInfo(GradeInfo gradeInfo) {
+		this.gradeInfo = gradeInfo;
+	}
+
+	public int getPeriodMonth() {
+		return periodMonth;
+	}
+
+	public void setPeriodMonth(int periodMonth) {
+		this.periodMonth = periodMonth;
+	}
+
+	public String getPeriod() {
+		periodMonth = getPeriodOfMonths();
+		if (periodMonth / 12 < 1) {
+			return periodMonth + " - Months";
+		} else {
+			return periodMonth / 12 + " - Year";
+		}
+	}
+
+	public int getPremiumTerm() {
+		return periodOfYears - 3;
+	}
+
+	public String getBirthAddress() {
+		return birthAddress;
+	}
+
+	public void setBirthAddress(String birthAddress) {
+		this.birthAddress = birthAddress;
+	}
+
+	public String getPersonalId() {
+		return personalId;
+	}
+
+	public void setPersonalId(String personalId) {
+		this.personalId = personalId;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public double getSalary() {
+		return salary;
+	}
+
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+
+	public String getLabourCardNo() {
+		return labourCardNo;
+	}
+
+	public void setLabourCardNo(String labourCardNo) {
+		this.labourCardNo = labourCardNo;
+	}
+
+	public Date getIssueOfLabourDate() {
+		return issueOfLabourDate;
+	}
+
+	public void setIssueOfLabourDate(Date issueOfLabourDate) {
+		this.issueOfLabourDate = issueOfLabourDate;
+	}
+
+	public Qualification getQualification() {
+		return qualification;
+	}
+
+	public void setQualification(Qualification qualification) {
+		this.qualification = qualification;
+	}
+
+	public String getFactoryAddress() {
+		return factoryAddress;
+	}
+
+	public void setFactoryAddress(String factoryAddress) {
+		this.factoryAddress = factoryAddress;
+	}
+
+	public Date getIssueDateOfIdCard() {
+		return issueDateOfIdCard;
+	}
+
+	public void setIssueDateOfIdCard(Date issueDateOfIdCard) {
+		this.issueDateOfIdCard = issueDateOfIdCard;
+	}
+
+	public String getPlaceOfPassport() {
+		return placeOfPassport;
+	}
+
+	public void setPlaceOfPassport(String placeOfPassport) {
+		this.placeOfPassport = placeOfPassport;
+	}
+
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	public Currency getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(Currency currency) {
+		this.currency = currency;
+	}
+
+	public String getPassportNo() {
+		return passportNo;
+	}
+
+	public void setPassportNo(String passportNo) {
+		this.passportNo = passportNo;
+	}
+
+	public Date getIssueDateOfPassport() {
+		return issueDateOfPassport;
+	}
+
+	public void setIssueDateOfPassport(Date issueDateOfPassport) {
+		this.issueDateOfPassport = issueDateOfPassport;
+	}
+
+	public String getVisibleIdentification() {
+		return visibleIdentification;
+	}
+
+	public void setVisibleIdentification(String visibleIdentification) {
+		this.visibleIdentification = visibleIdentification;
+	}
+	
+	public SumInsuredType getSumInsuredType() {
+		return sumInsuredType;
+	}
+
+	public void setSumInsuredType(SumInsuredType sumInsuredType) {
+		this.sumInsuredType = sumInsuredType;
+	}
+
+	public String getCdcNo() {
+		return cdcNo;
+	}
+
+	public void setCdcNo(String cdcNo) {
+		this.cdcNo = cdcNo;
+	}
+
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public Office getOffice() {
+		return office;
+	}
+
+	public void setOffice(Office office) {
+		this.office = office;
+	}
+
+	/** in shore job's excel upload , if there is no already exist in db ,  to save these temp qualifications as new object **/
+	public static void prepareTempQualificationMap(String tempId,Qualification qualification){
+		tempQualificationMap.put(tempId,qualification);
+	}
+
+	public static Map<String,Qualification> getTempQualificationMap(){
+		return tempQualificationMap;
+	}
+
+	public static void clearTempQualificationMap(){
+		tempQualificationMap.clear();
+	}
+
+	/** in shore job's excel upload , if there is no already exist in db ,  to save these temp occupations as new object **/
+	public static void prepareTempOccupationMap(String tempId,Occupation occupation){
+		tempOccupationMap.put(tempId,occupation);
+	}
+
+	public static Map<String,Occupation> getTempOccupationMap(){
+		return tempOccupationMap;
+	}
+
+	public static void clearTempOccupationMap(){
+		tempOccupationMap.clear();
+	}
+
+	public String getGeneratedPolicyNo() {
+		return generatedPolicyNo;
+	}
+
+	public void setGeneratedPolicyNo(String generatedPolicyNo) {
+		this.generatedPolicyNo = generatedPolicyNo;
+	}
+
+	public boolean isEdit() {
+		return isEdit;
+	}
+
+	public void setEdit(boolean isEdit) {
+		this.isEdit = isEdit;
+	}
+
+	public boolean isReplace() {
+		return isReplace;
+	}
+
+	public void setReplace(boolean isReplace) {
+		this.isReplace = isReplace;
+	}
+
+	public String getOceanlinerName() {
+		return oceanlinerName;
+	}
+
+	public void setOceanlinerName(String oceanlinerName) {
+		this.oceanlinerName = oceanlinerName;
+	}
+
+	public String getVesselName() {
+		return vesselName;
+	}
+
+	public void setVesselName(String vesselName) {
+		this.vesselName = vesselName;
+	}
+
+
+	public String getSeamanFullIdNo() {
+		return seamanFullIdNo;
+	}
+
+	public void setSeamanFullIdNo(String seamanFullIdNo) {
+		this.seamanFullIdNo = seamanFullIdNo;
+	}
+
+	public boolean isSeaman() {
+		return isSeaman;
+	}
+
+	public void setSeaman(boolean isSeaman) {
+		this.isSeaman = isSeaman;
+	}
+	
+
+	public String getSeamanNrc() {
+		return seamanNrc;
+		
+	}
+
+	public void setSeamanNrc(String seamanNrc) {
+		this.seamanNrc = seamanNrc;
+		
+	}
+
+	public boolean isArmyOfficer() {
+		return isArmyOfficer;
+	}
+
+	public void setArmyOfficer(boolean isArmyOfficer) {
+		this.isArmyOfficer = isArmyOfficer;
+	}	
+
+	public boolean isValid() {
+		return valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
+
+	public int getInsuredId() {
+		return insuredId;
+	}
+
+	public void setInsuredId(int insuredId) {
+		this.insuredId = insuredId;
+	}
+	
+	public String getFullIdNoMM() {
+		return fullIdNoMM;
+		
+	}
+
+	public void setFullIdNoMM(String fullIdNoMM) {
+		this.fullIdNoMM = fullIdNoMM;
+		
+	}
+
+	public TreeNode[] getSelectedNode() {
+		return selectedNode;
+		
+	}
+
+	public void setSelectedNode(TreeNode[] selectedNode) {
+		this.selectedNode = selectedNode;
+		
+	}
+
+	public TreeNode getRoot() {
+		return root;
+		
+	}
+
+	public void setRoot(TreeNode root) {
+		this.root = root;
+		
+	}
+
+	public String getPolicyNumber() {
+		return policyNumber;
+		
+	}
+
+	public void setPolicyNumber(String policyNumber) {
+		this.policyNumber = policyNumber;
+		
+	}
+
+	public String getProvinceCodeMM() {
+		return provinceCodeMM;
+		
+	}
+
+	public void setProvinceCodeMM(String provinceCodeMM) {
+		this.provinceCodeMM = provinceCodeMM;
+		
+	}
+
+	public String getTownshipCodeMM() {
+		return townshipCodeMM;
+		
+	}
+
+	public void setTownshipCodeMM(String townshipCodeMM) {
+		this.townshipCodeMM = townshipCodeMM;
+		
+	}
+
+	public String getIdNoMM() {
+		return idNoMM;
+		
+	}
+
+	public void setIdNoMM(String idNoMM) {
+		this.idNoMM = idNoMM;
+		
+	}
+
+	public String getIdConditionTypeMM() {
+		return idConditionTypeMM;
+		
+	}
+
+	public void setIdConditionTypeMM(String idConditionTypeMM) {
+		this.idConditionTypeMM = idConditionTypeMM;
+		
+	}
+	public String getTownshipCodeENG() {
+		return townshipCodeENG;
+	}
+
+	public void setTownshipCodeENG(String townshipCodeENG) {
+		this.townshipCodeENG = townshipCodeENG;
+	}
+
+	public String getParentFullIdNoMM() {
+		return parentFullIdNoMM;
+		
+	}
+
+	public void setParentFullIdNoMM(String parentFullIdNoMM) {
+		this.parentFullIdNoMM = parentFullIdNoMM;
+		
+	}
+
+	public String getParentIdNoMM() {
+		return parentIdNoMM;
+		
+	}
+
+	public void setParentIdNoMM(String parentIdNoMM) {
+		this.parentIdNoMM = parentIdNoMM;
+		
+	}
+
+	public String getParentProvinceCodeMM() {
+		return parentProvinceCodeMM;
+		
+	}
+
+	public void setParentProvinceCodeMM(String parentProvinceCodeMM) {
+		this.parentProvinceCodeMM = parentProvinceCodeMM;
+		
+	}
+
+	public String getParentIdConditionTypeMM() {
+		return parentIdConditionTypeMM;
+		
+	}
+
+	public void setParentIdConditionTypeMM(String parentIdConditionTypeMM) {
+		this.parentIdConditionTypeMM = parentIdConditionTypeMM;
+		
+	}
+
+	public String getParentTownshipCodeMM() {
+		return parentTownshipCodeMM;
+		
+	}
+
+	public void setParentTownshipCodeMM(String parentTownshipCodeMM) {
+		this.parentTownshipCodeMM = parentTownshipCodeMM;
+		
+	}
+	
+	public String getParentTownshipCodeENG() {
+		return parentTownshipCodeENG;
+	}
+
+	public void setParentTownshipCodeENG(String parentTownshipCodeENG) {
+		this.parentTownshipCodeENG = parentTownshipCodeENG;
+	}
+	
+
+	public AcquaintanceDTO getAcquaintanceDTO() {
+		return acquaintanceDTO;
+	}
+
+	public void setAcquaintanceDTO(AcquaintanceDTO acquaintanceDTO) {
+		this.acquaintanceDTO = acquaintanceDTO;
+	}
+
+
+
+	
+	
+	
+}

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.10.0.final using JasperReports Library version 6.10.0-unknown  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4_5" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f68a0c16-aad5-4653-8ec3-9a98f48bda12">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<subDataset name="Dataset1" uuid="7fd7efe8-4a34-4795-a438-de5f9e7878f3">
+		<queryString>
+			<![CDATA[]]>
+		</queryString>
+	</subDataset>
+	<parameter name="milogo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="802" splitType="Stretch">
+			<staticText>
+				<reportElement x="40" y="47" width="440" height="720" uuid="6ddc5938-5c9f-4a56-af37-07b86eb26d83">
+					<property name="com.jaspersoft.studio.unit.y" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Times New Roman" size="8"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[FELONY / MISDEMEANOR / BRAWLING
+•	The Company will not indemnify the Insured in respect of any Liability or Injury arising out of criminal offences alleged.
+•	The Company will not pay claims for any accident occurring when the Insured is encouraging or taking part or participating in a brawling fight.
+
+FIT TO TRAVEL
+Where the Insured or his/her travelling companion were not fit to undertake the Trip as confirmed by his/her medical practitioner when booking the Trip or purchasing this policy.
+
+PSYCHIATRY
+Any diagnosis, medical investigation, symptom, diseases or treatment relating to emotional, stress, psychiatric or psychological disorders, Insanity, Behavioral or Characteristic Disorders. This extends to Concentration Problems, Autism, Depression, Eating Disorders or Anxiety.
+
+PRE-EXISTING CONDITION
+Any Pre-existing condition which the Insured received medical treatment, diagnosis consultation or prescribed drugs for which medical advice or treatment as recommended by physician preceding the Effective Date of the contract.
+
+PREGNANCY
+Any treatment arising from Pregnancy, Child Delivery, Abortion, Miscarriage (except accidental miscarriage), Infertility (includes Infertility Investigation and Treatment), Vasectomy or Contraception.
+
+RADIOACTIVITY
+Nuclear Weapons, Radiation, Radioactivity from Nuclear-Fuel or Nuclear Waste or Nuclear Radiation caused by combustion of fuel and Nuclear Fission which self-ignites. Explosion by Radioactivity Nuclear material or dangerous objects used in a Nuclear Explosion.
+
+SEXUALLY TRANSMITTED DISEASES (STDs)
+Any investigation, test or treatment arising directly or indirectly from Sexually Transmitted Diseases, including Venereal Diseases, Immune Deficiency Syndrome (AIDs), any AIDs-related condition or infection by Human Immune Deficiency Virus (HIV).
+
+SONIC BANGS
+Loss, destruction or damage directly occasioned by pressure waves caused by aircraft and other aerial devices travelling at sonic or supersonic speeds.
+
+SUICIDE
+This Insurance does not cover suicide or attempting to commit suicide, self-inflicted accidents, attempting to cause accidents to him/herself or arranging for any third party to undertake such an act.
+
+TOUR OPERATOR & AIRLINE FAILURE
+Any claim that results from the tour operator, airline or any other company, firm or person not being able or not being willing to carry out any part of their obligation to the Insured.
+
+TRAVELLING AGAINST WHO ADVICE
+The Insured travel to a specific area or event when the World Health Organization (WHO) or regulatory authority in the country to/from which you are travelling has advised against all, or all but essential travel.
+
+WAR/ TERRORISM
+Any accidents or treatment arising from war (whether it is announced or not), invasion or execution by foreign enemy, Civil War, Revolution, Rebellions, Demonstrations against the government, Riot, Strike, Calamity or any political unrest having to announce martial law to control the situation, including Terrorism.
+
+NATURAL PHENOMENA
+Extraordinary natural phenomena such as floods, earthquakes, landslides, volcanic eruptions, atypical cyclonic storms, falling objects from space and aerolites, and in general any extraordinary atmospheric, meteorological, seismic or geological phenomenon.
+]]></text>
+			</staticText>
+			<image>
+				<reportElement x="480" y="20" width="50" height="50" uuid="527f7ef6-26a4-46ad-bb80-b1f7da66337d"/>
+				<imageExpression><![CDATA[$P{milogo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="390" y="770" width="100" height="30" uuid="b07dbfe1-5825-4c85-8981-e7c3ff93b87b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<text><![CDATA[Print Date :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="450" y="770" width="117" height="30" uuid="f98ff9c0-3c1c-442a-897c-baa42b3df567"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Times New Roman" size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new SimpleDateFormat("dd MMM yyyy").format(new Date())]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
