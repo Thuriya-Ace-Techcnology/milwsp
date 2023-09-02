@@ -1,4 +1,4 @@
-package org.ace.insurance.system.cargo;
+package org.ace.insurance.common;
 
 import java.util.Date;
 

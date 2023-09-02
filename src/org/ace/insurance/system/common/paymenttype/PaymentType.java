@@ -10,9 +10,9 @@ package org.ace.insurance.system.common.paymenttype;
 
 import java.io.Serializable;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,11 +20,11 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.ace.insurance.common.TableName;
-import org.ace.java.component.FormatID;
+import org.ace.insurance.common.UserRecorder;
+import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
 @Table(name = TableName.PAYMENTTYPE)
@@ -32,18 +32,17 @@ import org.ace.java.component.FormatID;
 @NamedQueries(value = { @NamedQuery(name = "PaymentType.findAll", query = "SELECT p FROM PaymentType p ORDER BY p.name ASC"),
 		@NamedQuery(name = "PaymentType.findByName", query = "SELECT p FROM PaymentType p WHERE p.name=:name"),
 		@NamedQuery(name = "PaymentType.findById", query = "SELECT p FROM PaymentType p WHERE p.id = :id") })
-@Access(value = AccessType.FIELD)
+@EntityListeners(IDInterceptor.class)
 public class PaymentType implements Serializable {
-	@Transient
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PAYMENTTYPE_GEN")
 	private String id;
-
-	@Transient
-	private String prefix;
 
 	private String name;
 	private String description;
 	private int month;
-
+	@Embedded
+	private UserRecorder recorder;
 	@Version
 	private int version;
 
@@ -58,17 +57,12 @@ public class PaymentType implements Serializable {
 	public PaymentType() {
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PAYMENTTYPE_GEN")
-	@Access(value = AccessType.PROPERTY)
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
-		if (id != null) {
-			this.id = FormatID.formatId(id, getPrefix(), 10);
-		}
+		this.id = id;
 	}
 
 	public int getMonth() {
@@ -95,12 +89,12 @@ public class PaymentType implements Serializable {
 		this.version = version;
 	}
 
-	public String getPrefix() {
-		return prefix;
+	public UserRecorder getRecorder() {
+		return recorder;
 	}
 
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
+	public void setRecorder(UserRecorder recorder) {
+		this.recorder = recorder;
 	}
 
 	@Override
@@ -111,7 +105,7 @@ public class PaymentType implements Serializable {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + month;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((prefix == null) ? 0 : prefix.hashCode());
+		result = prime * result + ((recorder == null) ? 0 : recorder.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -142,10 +136,10 @@ public class PaymentType implements Serializable {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (prefix == null) {
-			if (other.prefix != null)
+		if (recorder == null) {
+			if (other.recorder != null)
 				return false;
-		} else if (!prefix.equals(other.prefix))
+		} else if (!recorder.equals(other.recorder))
 			return false;
 		if (version != other.version)
 			return false;

@@ -35,6 +35,7 @@ public class FamilyInfo implements Serializable {
 
 	private String initialId;
 	private String idNo;
+	private String idNoMM;
 	@Transient
 	private String stateCode;
 	@Transient
@@ -69,13 +70,13 @@ public class FamilyInfo implements Serializable {
 		tempId = System.nanoTime() + "";
 	}
 
-	public FamilyInfo(String initialId, String idNo, IdType idType, Date dateOfBirth, Name name, RelationShip relationShip, Industry industry, Occupation occupation) {
+	public FamilyInfo(String initialId, String idNo, String idNoMM, IdType idType, Date dateOfBirth, Name name, RelationShip relationShip, Industry industry, Occupation occupation) {
 		this.initialId = initialId;
 		this.idNo = idNo;
+		this.idNoMM = idNoMM;
 		this.idType = idType;
 		this.dateOfBirth = dateOfBirth;
 		this.name = name;
-		this.idType = idType;
 		this.relationShip = relationShip;
 		this.industry = industry;
 		this.occupation = occupation;
@@ -196,6 +197,16 @@ public class FamilyInfo implements Serializable {
 	@Override
 	public int hashCode() {
 		return HashCodeBuilder.reflectionHashCode(this);
+	}
+
+	public String getIdNoMM() {
+		return idNoMM;
+		
+	}
+
+	public void setIdNoMM(String idNoMM) {
+		this.idNoMM = idNoMM;
+		
 	}
 
 }

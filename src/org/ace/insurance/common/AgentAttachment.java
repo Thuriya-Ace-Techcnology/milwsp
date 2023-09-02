@@ -18,6 +18,8 @@ import javax.persistence.TableGenerator;
 import javax.persistence.Version;
 
 import org.ace.insurance.agent.Agent;
+import org.ace.insurance.common.TableName;
+import org.ace.insurance.common.UserRecorder;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
@@ -30,7 +32,7 @@ public class AgentAttachment implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "AGENT_ATT_GEN")
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "LPRL_GEN")
 	private String id;
 
 	private String name;

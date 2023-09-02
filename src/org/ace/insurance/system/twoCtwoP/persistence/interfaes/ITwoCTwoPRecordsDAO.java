@@ -2,7 +2,7 @@ package org.ace.insurance.system.twoCtwoP.persistence.interfaes;
 
 import java.util.List;
 
-import org.ace.insurance.system.thirdparty.ThirdPartyPremiumReceipt;
+
 import org.ace.insurance.system.twoCtwoP.TwoCTwoPRecords;
 import org.ace.java.component.persistence.exception.DAOException;
 

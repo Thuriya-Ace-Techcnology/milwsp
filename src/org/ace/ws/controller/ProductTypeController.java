@@ -7,25 +7,14 @@ import javax.annotation.Resource;
 
 import org.ace.insurance.common.DateUtils;
 import org.ace.insurance.common.TourismType;
-import org.ace.insurance.medical.service.interfaces.IMobileMedicalProposalService;
-import org.ace.insurance.personalAccident.service.interfaces.IMobilePersonalAccidentProposalService;
-import org.ace.insurance.specailForeignTravel.service.interfaces.ISpecialForeignTravelService;
 import org.ace.insurance.system.productTypeRecords.ProductTypeRecords;
 import org.ace.insurance.system.productTypeRecords.service.interfaces.IProductTypeRecordsService;
-import org.ace.insurance.system.thirdparty.service.interfaces.IThirdPartyPremiumReceiptSerivce;
-import org.ace.insurance.thirdPartyDriverLicense.service.interfaces.IThirdPartyDriverService;
-import org.ace.insurance.travel.service.interfaces.IMobileTravelProposalService;
 import org.ace.ws.client.URIConstants;
 import org.ace.ws.controller.common.BaseController;
 import org.ace.ws.model.AceResponse;
 import org.ace.ws.model.TwoCTwoPDTO.OnlineProductRecordListDTO;
 import org.ace.ws.model.TwoCTwoPDTO.PaymentOrderConfirmDTO;
-import org.ace.ws.model.mobileMedicalproposal.MedicalProposalDTO;
 import org.ace.ws.model.mobilePersonalAccidentproposal.MPAP001;
-import org.ace.ws.model.mobiletravelproposal.MTP001;
-import org.ace.ws.model.specialForeignTravel.SpecialForeignTravelDTO;
-import org.ace.ws.model.thirdParty.TPDProposalDTO;
-import org.ace.ws.model.thirdParty.ThirdPartyPremiumRecordsDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -45,23 +34,23 @@ public class ProductTypeController extends BaseController {
 	@Resource(name = "ProductTypeRecordsService")
 	private IProductTypeRecordsService productTypeRecordsService;
 
-	@Resource(name = "MobilePersonalAccidentProposalService")
-	private IMobilePersonalAccidentProposalService mobilePersonalAccidentProposalService;
+	/*
+	 * @Resource(name = "MobilePersonalAccidentProposalService") private
+	 * IMobilePersonalAccidentProposalService mobilePersonalAccidentProposalService;
+	 */
 
-	@Resource(name = "MobileTravelProposalService")
-	private IMobileTravelProposalService mobileTravelProposalService;
 
-	@Resource(name = "ThirdPartyPremiumReceiptService")
-	private IThirdPartyPremiumReceiptSerivce thirdPartyPremiumReceiptSerivce;
+	/*
+	 * @Resource(name = "ThirdPartyPremiumReceiptService") private
+	 * IThirdPartyPremiumReceiptSerivce thirdPartyPremiumReceiptSerivce;
+	 */
 
-	@Resource(name = "MobileMedicalProposalService")
-	private IMobileMedicalProposalService mobileMedicalProposalService;
+	/*
+	 * @Resource(name = "MobileMedicalProposalService") private
+	 * IMobileMedicalProposalService mobileMedicalProposalService;
+	 */
 
-	@Resource(name = "SpecialForeignTravelService")
-	private ISpecialForeignTravelService specialForeignTravellerService;
 
-	@Resource(name = "ThirdPartyDriverService")
-	private IThirdPartyDriverService thirdPartyDriverService;
 
 	AceResponse aceResponse = new AceResponse();
 	private RestTemplate restTemplate = new RestTemplate();
@@ -77,46 +66,50 @@ public class ProductTypeController extends BaseController {
 			return new ResponseEntity<>("Date format wrong.(eg,'2020-01-30').", HttpStatus.BAD_REQUEST);
 		}
 		List<OnlineProductRecordListDTO> productRecordDTO = new ArrayList<>();
-		List<ThirdPartyPremiumRecordsDTO> premiumDTO = null;
-		List<MTP001> travelDTO = null;
+		
+		
 		List<MPAP001> personalAccidenDTO = null;
-		List<MedicalProposalDTO> medicalProposalDTO = null;
-		List<SpecialForeignTravelDTO> specialForeignTravellerDTO = null;
-		List<TPDProposalDTO> thirdPartyDriverDTO = null;
+		/* List<MedicalProposalDTO> medicalProposalDTO = null; */
+		
 		switch (productType) {
-		case "TPL Online":
-			premiumDTO = thirdPartyPremiumReceiptSerivce.findByFromToDate(fromDate, toDate, branch, convert);
-			break;
-		case "Travel":
-			travelDTO = mobileTravelProposalService.findByFromToDate(fromDate, toDate, convert);
-			break;
-		case "PA":
-			personalAccidenDTO = mobilePersonalAccidentProposalService.fndByFromToDate(fromDate, toDate, convert);
-			break;
-		case "Health":
-			medicalProposalDTO = mobileMedicalProposalService.fndByFromToDate(fromDate, toDate, convert);
-			break;
-		case "SPECAILFOREIGNTRAVELLER":
-			specialForeignTravellerDTO = specialForeignTravellerService.finByFromToDate(fromDate, toDate,
-					TourismType.INBOUND);
-			break;
-		case "OUTBOUND":
-			specialForeignTravellerDTO = specialForeignTravellerService.finByFromToDate(fromDate, toDate,
-					TourismType.OUTBOUND);
-			break;
+		/*
+		 * case "TPL Online": premiumDTO =
+		 * thirdPartyPremiumReceiptSerivce.findByFromToDate(fromDate, toDate, branch,
+		 * convert); break; 
+		
+		
+		 * case "PA": personalAccidenDTO =
+		 * mobilePersonalAccidentProposalService.fndByFromToDate(fromDate, toDate,
+		 * convert); break;
+		 */
+		/*
+		 * case "Health": medicalProposalDTO =
+		 * mobileMedicalProposalService.fndByFromToDate(fromDate, toDate, convert);
+		 * break;
+		 */
 		case "THIRDPARTYDRIVER":
 			return getThirdPartyDriverBetweenDateRange(fromDate, toDate);
 		default:
-			premiumDTO = thirdPartyPremiumReceiptSerivce.findByFromToDate(fromDate, toDate, branch, convert);
-			travelDTO = mobileTravelProposalService.findByFromToDate(fromDate, toDate, convert);
-			personalAccidenDTO = mobilePersonalAccidentProposalService.fndByFromToDate(fromDate, toDate, convert);
-			medicalProposalDTO = mobileMedicalProposalService.fndByFromToDate(fromDate, toDate, convert);
-			specialForeignTravellerDTO = specialForeignTravellerService.finByFromToDate(fromDate, toDate,
-					TourismType.INBOUND);
+			/*
+			 * premiumDTO = thirdPartyPremiumReceiptSerivce.findByFromToDate(fromDate,
+			 * toDate, branch, convert);
+			 */
+			/*
+			 * personalAccidenDTO =
+			 * mobilePersonalAccidentProposalService.fndByFromToDate(fromDate, toDate,
+			 * convert);
+			 */
+			/*
+			 * medicalProposalDTO = mobileMedicalProposalService.fndByFromToDate(fromDate,
+			 * toDate, convert);
+			 */
 			break;
 		}
-		productRecordDTO = productTypeRecordsService.collectAllProduct(premiumDTO, travelDTO, personalAccidenDTO,
-				specialForeignTravellerDTO, thirdPartyDriverDTO);
+		/*
+		 * productRecordDTO = productTypeRecordsService.collectAllProduct(premiumDTO,
+		 * travelDTO, personalAccidenDTO, specialForeignTravellerDTO,
+		 * thirdPartyDriverDTO);
+		 */
 		aceResponse.setStatus(HttpStatus.OK);
 		aceResponse.setMessage("Success");
 		aceResponse.setData(productRecordDTO);
@@ -141,18 +134,19 @@ public class ProductTypeController extends BaseController {
 		ProductTypeRecords typeRecords = productTypeRecordsService
 				.findByOrderId(paymentOrderConfirm.getPaymentOrder().get(0).getOrderId());
 		switch (typeRecords.getProductType()) {
-		case "TPL Online":
-			thirdPartyPremiumReceiptSerivce.updateCovertedStatusByOderId(paymentOrderConfirm);
-			break;
-		case "Travel":
-			mobileTravelProposalService.updateCovertedStatusByOderId(paymentOrderConfirm);
-			break;
-		case "PA":
-			mobilePersonalAccidentProposalService.updateCovertedStatusByOderId(paymentOrderConfirm);
-			break;
-		case "Medical":
-			mobileMedicalProposalService.updateCovertedStatusByOderId(paymentOrderConfirm);
-			break;
+		/*
+		 * case "TPL Online":
+		 * thirdPartyPremiumReceiptSerivce.updateCovertedStatusByOderId(
+		 * paymentOrderConfirm); break;
+		 * case "PA":
+		 * mobilePersonalAccidentProposalService.updateCovertedStatusByOderId(
+		 * paymentOrderConfirm); break;
+		 */
+		/*
+		 * case "Medical":
+		 * mobileMedicalProposalService.updateCovertedStatusByOderId(paymentOrderConfirm
+		 * ); break;
+		 */
 		default:
 			break;
 		}

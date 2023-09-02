@@ -16,6 +16,8 @@ import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -31,6 +33,7 @@ import javax.persistence.Version;
 
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
+import org.ace.insurance.life.enums.SumInsuredType;
 import org.ace.insurance.system.common.addon.AddOn;
 import org.ace.insurance.system.common.keyfactor.KeyFactor;
 import org.ace.java.component.idgen.service.IDInterceptor;
@@ -65,6 +68,8 @@ public class ProductPremiumRate implements Serializable, Comparable<ProductPremi
 	private AddOn addOn;
 	@Embedded
 	private UserRecorder recorder;
+	@Enumerated(value = EnumType.STRING)
+	private SumInsuredType sumInsuredType;
 	@Version
 	private int version;
 
@@ -137,6 +142,14 @@ public class ProductPremiumRate implements Serializable, Comparable<ProductPremi
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+	
+	public SumInsuredType getSumInsuredType() {
+		return sumInsuredType;
+	}
+
+	public void setSumInsuredType(SumInsuredType sumInsuredType) {
+		this.sumInsuredType = sumInsuredType;
 	}
 
 	public List<KeyFactor> getKeyFactorList() {

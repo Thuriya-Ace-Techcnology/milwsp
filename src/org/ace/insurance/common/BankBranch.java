@@ -24,6 +24,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Version;
+
 import org.ace.insurance.system.common.township.Township;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
@@ -40,7 +41,6 @@ public class BankBranch implements Serializable {
 	@GeneratedValue(strategy = GenerationType.TABLE, generator = "BANKBRANCH_GEN")
 	private String id;
 
-	/* Bank Branch Name */
 	private String name;
 	private String description;
 	private String branchCode;

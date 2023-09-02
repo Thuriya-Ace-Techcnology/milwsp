@@ -7,7 +7,6 @@
  *    
  ***************************************************************************************/
 package org.ace.insurance.agent;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,13 +37,12 @@ import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.persistence.Version;
 
+import org.ace.insurance.common.AgentAttachment;
+import org.ace.insurance.common.BankBranch;
 import org.ace.insurance.common.ContentInfo;
 import org.ace.insurance.common.FamilyInfo;
 import org.ace.insurance.common.Gender;
 import org.ace.insurance.common.IdType;
-import org.ace.insurance.common.AgentAttachment;
-import org.ace.insurance.common.AgentType;
-import org.ace.insurance.common.BankBranch;
 import org.ace.insurance.common.MaritalStatus;
 import org.ace.insurance.common.Name;
 import org.ace.insurance.common.Organization;
@@ -57,16 +55,13 @@ import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
 import org.ace.insurance.system.common.branch.Branch;
 import org.ace.insurance.system.common.country.Country;
-
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
 @Table(name = TableName.AGENT)
 @TableGenerator(name = "AGENT_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "AGENT_GEN", allocationSize = 10)
 @NamedQueries(value = { @NamedQuery(name = "Agent.findAll", query = "SELECT a FROM Agent a ORDER BY a.name.firstName ASC"),
-		@NamedQuery(name = "Agent.findById", query = "SELECT a FROM Agent a WHERE a.id = :id"),
-		@NamedQuery(name = "Agent.findAgentByLiscenceNoAndDateOfBirth", query = "SELECT a FROM Agent a WHERE a.liscenseNo = :liscenceNo AND a.dateOfBirth = :dob")
-		})
+		@NamedQuery(name = "Agent.findById", query = "SELECT a FROM Agent a WHERE a.id = :id") })
 @EntityListeners(IDInterceptor.class)
 public class Agent implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -88,6 +83,8 @@ public class Agent implements Serializable {
 	private String training;
 	private String outstandingEvent;
 	private String fullIdNo;
+	private String fullIdNoMM;
+	private String nameMM;
 	@Embedded
 	private Name name;
 
@@ -96,9 +93,6 @@ public class Agent implements Serializable {
 
 	@Enumerated(value = EnumType.STRING)
 	private MaritalStatus maritalStatus;
-	
-	@Enumerated(value = EnumType.STRING)
-	private AgentType agentType;
 
 	@Temporal(TemporalType.DATE)
 	private Date appointedDate;
@@ -160,10 +154,21 @@ public class Agent implements Serializable {
 	@Transient
 	private String stateCode;
 	@Transient
+	private String stateCodeMM;
+	@Transient
 	private String townshipCode;
 	@Transient
+	private String townshipCodeMM;
+	@Transient
+	private String townshipCodeENG;
+	@Transient
 	private String idConditionType;
+	@Transient
+	private String idConditionTypeMM;
+	@Transient
+	private String idNoMM;
 
+	
 	public Agent() {
 	}
 
@@ -267,18 +272,9 @@ public class Agent implements Serializable {
 	}
 
 	public String getFullName() {
-		String result = "";
-		if (this.initialId != null)
-			result += initialId + " ";
-		if (this.name != null) {
-			result += name.getFullName() + " ";
-		}
-		return result;
+		return initialId.trim() + " " + name.getFullName();
 	}
 
-	public void setFullName(String fullName) {
-		
-	}
 	public void loadTransientIdNo() {
 		if (idType != null && idType.equals(IdType.NRCNO) && fullIdNo != null) {
 			String[] NRC = new String[4];
@@ -289,12 +285,24 @@ public class Agent implements Serializable {
 				i++;
 			}
 			stateCode = NRC[0];
-			townshipCode = NRC[1];
+			townshipCodeENG = NRC[1];
 			idConditionType = NRC[2];
 			idNo = NRC[3];
 		} else if (idType != null && (idType.equals(IdType.FRCNO) || idType.equals(IdType.PASSPORTNO))) {
 			idNo = fullIdNo;
 		}
+	}
+	
+	public void loadTransientIdNoMM() {
+		if (fullIdNoMM != null) {			
+			StringTokenizer token = new StringTokenizer(fullIdNoMM, "/()");
+			stateCodeMM = token.nextToken();
+			townshipCodeMM = token.nextToken();
+			idConditionTypeMM = token.nextToken();
+			idNoMM = token.nextToken();
+			fullIdNoMM = stateCodeMM.equals("null") ? "" : fullIdNoMM;
+		}	
+
 	}
 
 	public String getFullAddress() {
@@ -370,14 +378,6 @@ public class Agent implements Serializable {
 
 	public void setMaritalStatus(MaritalStatus maritalStatus) {
 		this.maritalStatus = maritalStatus;
-	}	
-
-	public AgentType getAgentType() {
-		return agentType;
-	}
-
-	public void setAgentType(AgentType agentType) {
-		this.agentType = agentType;
 	}
 
 	public Date getAppointedDate() {
@@ -518,10 +518,19 @@ public class Agent implements Serializable {
 		this.fullIdNo = fullIdNo;
 	}
 
-	public String getFullIdNoStr() {
-		if (fullIdNo != null)
-			return fullIdNo;
-		return "-";
+	public String getNameMM() {
+		return nameMM;
+	}
+
+	public void setNameMM(String nameMM) {
+		this.nameMM = nameMM;
+	}
+
+	/****** System Generated Method ****/
+	public String getAccountNoForView() {
+		if (accountNo == null || accountNo.isEmpty())
+			return " - ";
+		return accountNo;
 	}
 
 	@Override
@@ -551,7 +560,6 @@ public class Agent implements Serializable {
 		result = prime * result + ((liscenseExpiredDate == null) ? 0 : liscenseExpiredDate.hashCode());
 		result = prime * result + ((liscenseNo == null) ? 0 : liscenseNo.hashCode());
 		result = prime * result + ((maritalStatus == null) ? 0 : maritalStatus.hashCode());
-		result = prime * result + ((agentType == null) ? 0 : agentType.hashCode());		
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((organization == null) ? 0 : organization.hashCode());
 		result = prime * result + ((outstandingEvent == null) ? 0 : outstandingEvent.hashCode());
@@ -680,8 +688,6 @@ public class Agent implements Serializable {
 			return false;
 		if (maritalStatus != other.maritalStatus)
 			return false;
-			if (agentType != other.agentType)
-				return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -746,5 +752,56 @@ public class Agent implements Serializable {
 			return false;
 		return true;
 	}
+
+	public String getFullIdNoMM() {
+		return fullIdNoMM;
+		
+	}
+
+	public void setFullIdNoMM(String fullIdNoMM) {
+		this.fullIdNoMM = fullIdNoMM;
+		
+	}
+	
+	public String getStateCodeMM() {
+		return stateCodeMM;
+	}
+
+	public void setStateCodeMM(String stateCodeMM) {
+		this.stateCodeMM = stateCodeMM;
+	}
+
+	public String getTownshipCodeMM() {
+		return townshipCodeMM;
+	}
+
+	public void setTownshipCodeMM(String townshipCodeMM) {
+		this.townshipCodeMM = townshipCodeMM;
+	}
+
+	public String getTownshipCodeENG() {
+		return townshipCodeENG;
+	}
+
+	public void setTownshipCodeENG(String townshipCodeENG) {
+		this.townshipCodeENG = townshipCodeENG;
+	}
+
+	public String getIdConditionTypeMM() {
+		return idConditionTypeMM;
+	}
+
+	public void setIdConditionTypeMM(String idConditionTypeMM) {
+		this.idConditionTypeMM = idConditionTypeMM;
+	}
+
+	public String getIdNoMM() {
+		return idNoMM;
+	}
+
+	public void setIdNoMM(String idNoMM) {
+		this.idNoMM = idNoMM;
+	}
+
 
 }

@@ -22,8 +22,6 @@ import org.ace.insurance.system.rta.service.interfaces.IRTAService;
 import org.ace.java.component.SystemException;
 import org.ace.java.component.persistence.exception.DAOException;
 import org.ace.java.component.service.BaseService;
-import org.ace.ws.factory.RTAConverter;
-import org.ace.ws.model.thirdParty.RTADTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -93,61 +91,41 @@ public class RTAService extends BaseService implements IRTAService {
 		rta.setPrefix(parentPrefix);
 	}
 
-	public List<RTADTO> accessFileRead(File file) {
-		List<RTADTO> rtaDTOList = new ArrayList<>();
-		try {
-			Database db = DatabaseBuilder.open(file);
-			db.getTableNames().stream().filter(names -> names != null).forEach(tableName -> {
-				Table table = null;
-				try {
-					table = db.getTable(tableName);
-					if (!tableName.equals("Insurance")) {
-						return;
-					}
-					for (Row row : table) {
-						if (!checkNull(row.get("LOCATION")).equals("A4")) {
-							continue;
-						}
-						RTADTO rta = new RTADTO();
-						rta.setRegNo(checkNull(row.get("REG_NO")));
-						rta.setMakeModel(checkNull(row.get("MAKE_MODEL")));
-						rta.setType(checkNull(row.get("TYPE")));
-						rta.setType8(checkNull(row.get("TYPE_8")));
-						rta.setOwner(checkNull(row.get("OWNER")));
-						rta.setLocation(checkNull(row.get("LOCATION")));
-						rta.setName(checkNull(row.get("NAME")));
-						rta.setNrcNo(checkNull(row.get("NRC_NO")));
-						rta.setHouseNo(checkNull(row.get("HOUSE_NO")));
-						rta.setRdSt(checkNull(row.get("RD_ST")));
-						rta.setQtr(checkNull(row.get("QTR")));
-						rta.setTsp(checkNull(row.get("TSP")));
-						rta.setPayload(checkNull(row.get("PAYLOAD")));
-						rta.setiRg(changeDateFormat(row.get("I_RG")));
-						rta.setDe(changeDateFormat(row.get("D_E")));
-						if (tableName.equals("Y3")) {
-							rta.setStatus(checkNull(row.get("STATUS")));
-						}
-						if (rta.getRegNo() == "" || rta.getDe() == "") {
-							throw new IOException("RegNo or Data of Expired cann't be null or empty.");
-						} else {
-							rtaDTOList.add(rta);
-						}
-					}
-					List<TempRTA> rtaList = RTAConverter.rtaDTOToTempModelConverter(rtaDTOList);
-					rtaDAO.insertRTATempList(rtaList);
-					System.out.println("Table : " + tableName + " is finish insert");
-
-				} catch (IOException e) {
-					System.out.println("Problem at Table : " + tableName + " ,row (" + table.getRowCount() + "");
-					System.out.println(e.getMessage());
-				}
-			});
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		return rtaDTOList;
-	}
+	/*
+	 * public List<RTADTO> accessFileRead(File file) { List<RTADTO> rtaDTOList = new
+	 * ArrayList<>(); try { Database db = DatabaseBuilder.open(file);
+	 * db.getTableNames().stream().filter(names -> names != null).forEach(tableName
+	 * -> { Table table = null; try { table = db.getTable(tableName); if
+	 * (!tableName.equals("Insurance")) { return; } for (Row row : table) { if
+	 * (!checkNull(row.get("LOCATION")).equals("A4")) { continue; } RTADTO rta = new
+	 * RTADTO(); rta.setRegNo(checkNull(row.get("REG_NO")));
+	 * rta.setMakeModel(checkNull(row.get("MAKE_MODEL")));
+	 * rta.setType(checkNull(row.get("TYPE")));
+	 * rta.setType8(checkNull(row.get("TYPE_8")));
+	 * rta.setOwner(checkNull(row.get("OWNER")));
+	 * rta.setLocation(checkNull(row.get("LOCATION")));
+	 * rta.setName(checkNull(row.get("NAME")));
+	 * rta.setNrcNo(checkNull(row.get("NRC_NO")));
+	 * rta.setHouseNo(checkNull(row.get("HOUSE_NO")));
+	 * rta.setRdSt(checkNull(row.get("RD_ST")));
+	 * rta.setQtr(checkNull(row.get("QTR"))); rta.setTsp(checkNull(row.get("TSP")));
+	 * rta.setPayload(checkNull(row.get("PAYLOAD")));
+	 * rta.setiRg(changeDateFormat(row.get("I_RG")));
+	 * rta.setDe(changeDateFormat(row.get("D_E"))); if (tableName.equals("Y3")) {
+	 * rta.setStatus(checkNull(row.get("STATUS"))); } if (rta.getRegNo() == "" ||
+	 * rta.getDe() == "") { throw new
+	 * IOException("RegNo or Data of Expired cann't be null or empty."); } else {
+	 * rtaDTOList.add(rta); } } List<TempRTA> rtaList =
+	 * RTAConverter.rtaDTOToTempModelConverter(rtaDTOList);
+	 * rtaDAO.insertRTATempList(rtaList); System.out.println("Table : " + tableName
+	 * + " is finish insert");
+	 * 
+	 * } catch (IOException e) { System.out.println("Problem at Table : " +
+	 * tableName + " ,row (" + table.getRowCount() + "");
+	 * System.out.println(e.getMessage()); } });
+	 * 
+	 * } catch (IOException e) { e.printStackTrace(); } return rtaDTOList; }
+	 */
 
 	public static String checkNull(Object object) {
 		if (object == null) {

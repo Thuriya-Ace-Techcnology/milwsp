@@ -61,8 +61,6 @@ public class Organization implements Serializable {
 	private int activePolicy;
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date activedDate;
-	@Column(name = "GEN_NO")
-	private String genNo;
 
 	@Embedded
 	@AttributeOverride(name = "permanentAddress", column = @Column(name = "ADDRESS"))
@@ -157,6 +155,12 @@ public class Organization implements Serializable {
 		return OwnerName;
 	}
 
+	public String getOwnerNameForView() {
+		if (OwnerName == null || OwnerName.isEmpty())
+			return "-";
+		return OwnerName;
+	}
+
 	public void setOwnerName(String ownerName) {
 		OwnerName = ownerName;
 	}
@@ -176,11 +180,7 @@ public class Organization implements Serializable {
 	public void setActivedDate(Date activedDate) {
 		this.activedDate = activedDate;
 	}
-	public String getPhoneNo() {
-		if (contentInfo != null)
-			return contentInfo.getPhoneOrMoblieNo();
-		return "-";
-	}
+
 	public String getFullAddress() {
 		String fullAddress = "";
 		if (address != null) {
@@ -266,13 +266,5 @@ public class Organization implements Serializable {
 
 	public void setActivePolicy(int activePolicy) {
 		this.activePolicy = activePolicy;
-	}
-
-	public String getGenNo() {
-		return genNo;
-	}
-
-	public void setGenNo(String genNo) {
-		this.genNo = genNo;
 	}
 }

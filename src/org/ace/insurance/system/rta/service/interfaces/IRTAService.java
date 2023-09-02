@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.ace.insurance.system.rta.RTA;
 import org.ace.java.component.persistence.exception.DAOException;
-import org.ace.ws.model.thirdParty.RTADTO;
 
 public interface IRTAService {
 	public RTA insert(RTA rta) throws DAOException;
@@ -24,7 +23,7 @@ public interface IRTAService {
 
 	public List<RTA> findAllRTA() throws DAOException;
 
-	public List<RTADTO> accessFileRead(File destinationFile);
+	/* public List<RTADTO> accessFileRead(File destinationFile); */
 	
 	public String findKgByVehicleNo(String vehicleNo)throws DAOException;
 }

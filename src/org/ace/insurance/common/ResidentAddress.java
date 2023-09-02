@@ -26,6 +26,7 @@ public class ResidentAddress implements Serializable {
 	private Township township;
 
 	public ResidentAddress() {
+		township = new Township();
 	}
 
 	public ResidentAddress(ResidentAddress residentAddress) {

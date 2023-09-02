@@ -24,13 +24,13 @@ public class NearbyService extends BaseService implements INearByService{
 		List<Branch> branchList = new ArrayList<Branch>();
 		Location customerLocation = new Location(nearByDTO.getLatitude(), nearByDTO.getLongitude());
 		List<Branch> resultList = branchService.findAllBranch();
-		resultList.stream().filter(result -> result.getLatitude() != 0.0 && result.getLongitude() != 0.0).forEach(result ->{
-			Location branchLocation = new Location(result.getLatitude(),result.getLongitude());
-			double resultRange = NearestBranchCalculater.distance(customerLocation, branchLocation);
-			if(resultRange <= nearByDTO.getRange()) {
-				branchList.add(result);
-			}
-		});
+		/*
+		 * resultList.stream().filter(result -> result.getLatitude() != 0.0 &&
+		 * result.getLongitude() != 0.0).forEach(result ->{ Location branchLocation =
+		 * new Location(result.getLatitude(),result.getLongitude()); double resultRange
+		 * = NearestBranchCalculater.distance(customerLocation, branchLocation);
+		 * if(resultRange <= nearByDTO.getRange()) { branchList.add(result); } });
+		 */
 		return branchList;
 	}
 	

@@ -31,7 +31,7 @@ public class PaymentTypeService extends BaseService implements IPaymentTypeServi
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addNewPaymentType(PaymentType paymentType) {
 		try {
-			paymentType.setPrefix(getPrefix(PaymentType.class));
+			/* paymentType.setPrefix(getPrefix(PaymentType.class)); */
 			paymentTypeDAO.insert(paymentType);
 		} catch (DAOException e) {
 			throw new SystemException(e.getErrorCode(), "Faield to add a new PaymentType", e);

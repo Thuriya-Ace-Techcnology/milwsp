@@ -23,11 +23,9 @@ public class Name implements Serializable {
 	}
 
 	public Name(Name name) {
-	
 		this.firstName = name.getFirstName();
 		this.middleName = name.getMiddleName();
 		this.lastName = name.getLastName();
-
 	}
 
 	public String getFirstName() {

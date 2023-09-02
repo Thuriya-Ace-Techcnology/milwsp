@@ -7,7 +7,6 @@ import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
 import org.ace.insurance.common.TableName;
-import org.ace.insurance.system.thirdparty.ThirdPartyPremiumReceipt;
 import org.ace.insurance.system.twoCtwoP.TwoCTwoPRecords;
 import org.ace.insurance.system.twoCtwoP.persistence.interfaes.ITwoCTwoPRecordsDAO;
 import org.ace.java.component.persistence.BasicDAO;

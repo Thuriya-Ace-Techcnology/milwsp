@@ -15,9 +15,11 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Transient;
@@ -27,7 +29,13 @@ import org.ace.insurance.common.ClaimType;
 import org.ace.insurance.common.SurveyType;
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
+import org.ace.insurance.common.ValidationUtil;
+import org.ace.insurance.productprocess.ProductProcess;
 import org.ace.insurance.surveyquestion.InputType;
+import org.ace.insurance.surveyquestion.ProductProcessQuestionLink;
+import org.ace.insurance.surveyquestion.ResourceQuestion;
+import org.ace.insurance.surveyquestion.ResourceQuestionDTO;
+import org.ace.insurance.surveyquestion.SurveyQuestionDTO;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
@@ -67,11 +75,9 @@ public class SurveyQuestionAnswer {
 	@Enumerated(EnumType.STRING)
 	private InputType inputType;
 
-	private String productProcessId;
-
-	// @OneToOne
-	// @JoinColumn(name = "PRODUCTPROCESSID")
-	// private ProductProcess productProcess;
+	@OneToOne
+	@JoinColumn(name = "PRODUCTPROCESSID")
+	private ProductProcess productProcess;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "surveyQuestionAnswer", orphanRemoval = true)
 	private List<ResourceQuestionAnswer> resourceQuestionList;
@@ -91,7 +97,38 @@ public class SurveyQuestionAnswer {
 		super();
 	}
 
-	public SurveyQuestionAnswer(SurveyQuestionAnswerDTO surveyQuestionDTO) {
+	public SurveyQuestionAnswer(ProductProcessQuestionLink ppQLink) {
+		this.option = ppQLink.isOption();
+		this.priority = ppQLink.getPriority();
+		this.deleteFlag = ppQLink.getSurveyQuestion().isDeleteFlag();
+		this.description = ppQLink.getSurveyQuestion().getDescription();
+		this.frontLabel = ppQLink.getSurveyQuestion().getFrontLabel();
+		this.behindLabel = ppQLink.getSurveyQuestion().getBehindLabel();
+		this.tureLabel = ppQLink.getSurveyQuestion().getTureLabel();
+		this.falseLabel = ppQLink.getSurveyQuestion().getFalseLabel();
+		this.inputType = ppQLink.getSurveyQuestion().getInputType();
+		this.productProcess = ppQLink.getProductProcess();
+		if (inputType.equals(InputType.TEXT) || inputType.equals(InputType.NUMBER) || inputType.equals(InputType.DATE)) {
+			ResourceQuestionAnswer answer = new ResourceQuestionAnswer();
+			addResourceQuestionList(answer);
+		}
+		if (inputType.equals(InputType.BOOLEAN)) {
+			ResourceQuestionAnswer answerTrue = new ResourceQuestionAnswer();
+			answerTrue.setName(ppQLink.getSurveyQuestion().getTureLabel());
+			answerTrue.setValue(0);
+			ResourceQuestionAnswer answerFalse = new ResourceQuestionAnswer();
+			answerFalse.setName(ppQLink.getSurveyQuestion().getFalseLabel());
+			answerFalse.setValue(1);
+			addResourceQuestionList(answerTrue);
+			addResourceQuestionList(answerFalse);
+		}
+		for (ResourceQuestion resourceQuestion : ppQLink.getSurveyQuestion().getResourceQuestionList()) {
+			ResourceQuestionAnswer rqa = new ResourceQuestionAnswer(resourceQuestion.getName());
+			addResourceQuestionList(rqa);
+		}
+	}
+
+	public SurveyQuestionAnswer(SurveyQuestionDTO surveyQuestionDTO) {
 		this.deleteFlag = surveyQuestionDTO.isDeleteFlag();
 		this.description = surveyQuestionDTO.getDescription();
 		this.frontLabel = surveyQuestionDTO.getFrontLabel();
@@ -99,8 +136,7 @@ public class SurveyQuestionAnswer {
 		this.tureLabel = surveyQuestionDTO.getTureLabel();
 		this.falseLabel = surveyQuestionDTO.getFalseLabel();
 		this.inputType = surveyQuestionDTO.getInputType();
-		this.questionId = surveyQuestionDTO.getQuestionId();
-		this.id = surveyQuestionDTO.getId();
+
 		if (inputType.equals(InputType.TEXT) || inputType.equals(InputType.NUMBER) || inputType.equals(InputType.DATE)) {
 			ResourceQuestionAnswer answer = new ResourceQuestionAnswer();
 			addResourceQuestionList(answer);
@@ -111,8 +147,8 @@ public class SurveyQuestionAnswer {
 			addResourceQuestionList(answerTrue);
 			addResourceQuestionList(answerFalse);
 		}
-		for (ResourceQuestionAnswerDTO resourceQuestion : surveyQuestionDTO.getResourceQuestionList()) {
-			ResourceQuestionAnswer rqa = new ResourceQuestionAnswer(resourceQuestion);
+		for (ResourceQuestionDTO resourceQuestion : surveyQuestionDTO.getResourceQuestionList()) {
+			ResourceQuestionAnswer rqa = new ResourceQuestionAnswer(resourceQuestion.getName());
 			addResourceQuestionList(rqa);
 		}
 	}
@@ -221,12 +257,12 @@ public class SurveyQuestionAnswer {
 		this.inputType = inputType;
 	}
 
-	public String getProductProcessId() {
-		return productProcessId;
+	public ProductProcess getProductProcess() {
+		return productProcess;
 	}
 
-	public void setProductProcessId(String productProcessId) {
-		this.productProcessId = productProcessId;
+	public void setProductProcess(ProductProcess productProcess) {
+		this.productProcess = productProcess;
 	}
 
 	public List<ResourceQuestionAnswer> getResourceQuestionList() {
@@ -235,11 +271,11 @@ public class SurveyQuestionAnswer {
 		}
 		return resourceQuestionList;
 	}
-//
+
 	public void setResourceQuestionList(List<ResourceQuestionAnswer> resourceQuestionList) {
 		this.resourceQuestionList = resourceQuestionList;
 	}
-//
+
 	public void addResourceQuestionList(ResourceQuestionAnswer resourceAnswer) {
 		resourceAnswer.setSurveyQuestionAnswer(this);
 		getResourceQuestionList().add(resourceAnswer);
@@ -295,39 +331,39 @@ public class SurveyQuestionAnswer {
 		this.answerDate = answerDate;
 	}
 
-//	public String getAnswer() {
-//		StringBuffer sb = new StringBuffer();
-//		if (InputType.TEXT.equals(this.inputType) || InputType.NUMBER.equals(this.inputType) || InputType.DATE.equals(this.inputType)) {
-//			if (getResourceQuestionList() != null && !getResourceQuestionList().isEmpty()) {
-//				this.answer = getResourceQuestionList().get(0).getResult();
-//			}
-//		} else {
-//			for (ResourceQuestionAnswer resQA : getResourceQuestionList()) {
-//				if (resQA.getValue() == 1) {
-//					if (sb.length() > 0) {
-//						sb.append(",");
-//					}
-//					sb.append(resQA.getName());
-//				}
-//			}
-//			this.answer = sb.toString();
-//		}
-//
-//		if (ValidationUtil.isStringEmpty(this.answer)) {
-//			if (InputType.NONE.equals(this.inputType)) {
-//				this.answer = "";
-//			} else if (InputType.TEXT.equals(this.inputType)) {
-//				this.answer = "\" \"";
-//			} else if (InputType.NUMBER.equals(this.inputType)) {
-//				this.answer = "0";
-//			} else if (InputType.DATE.equals(this.inputType)) {
-//				this.answer = "No Answer";
-//			} else {
-//				this.answer = "No Answer";
-//			}
-//		}
-//		return answer;
-//	}
+	public String getAnswer() {
+		StringBuffer sb = new StringBuffer();
+		if (InputType.TEXT.equals(this.inputType) || InputType.NUMBER.equals(this.inputType) || InputType.DATE.equals(this.inputType)) {
+			if (getResourceQuestionList() != null && !getResourceQuestionList().isEmpty()) {
+				this.answer = getResourceQuestionList().get(0).getResult();
+			}
+		} else {
+			for (ResourceQuestionAnswer resQA : getResourceQuestionList()) {
+				if (resQA.getValue() == 1) {
+					if (sb.length() > 0) {
+						sb.append(",");
+					}
+					sb.append(resQA.getName());
+				}
+			}
+			this.answer = sb.toString();
+		}
+
+		if (ValidationUtil.isStringEmpty(this.answer)) {
+			if (InputType.NONE.equals(this.inputType)) {
+				this.answer = "";
+			} else if (InputType.TEXT.equals(this.inputType)) {
+				this.answer = "\" \"";
+			} else if (InputType.NUMBER.equals(this.inputType)) {
+				this.answer = "0";
+			} else if (InputType.DATE.equals(this.inputType)) {
+				this.answer = "No Answer";
+			} else {
+				this.answer = "No Answer";
+			}
+		}
+		return answer;
+	}
 
 	public void setAnswer(String answer) {
 		this.answer = answer;
@@ -348,7 +384,7 @@ public class SurveyQuestionAnswer {
 		result = prime * result + ((inputType == null) ? 0 : inputType.hashCode());
 		result = prime * result + (option ? 1231 : 1237);
 		result = prime * result + priority;
-
+		result = prime * result + ((productProcess == null) ? 0 : productProcess.hashCode());
 		result = prime * result + ((questionId == null) ? 0 : questionId.hashCode());
 		result = prime * result + ((surveyType == null) ? 0 : surveyType.hashCode());
 		result = prime * result + ((tureLabel == null) ? 0 : tureLabel.hashCode());
@@ -406,7 +442,11 @@ public class SurveyQuestionAnswer {
 			return false;
 		if (priority != other.priority)
 			return false;
-
+		if (productProcess == null) {
+			if (other.productProcess != null)
+				return false;
+		} else if (!productProcess.equals(other.productProcess))
+			return false;
 		if (questionId == null) {
 			if (other.questionId != null)
 				return false;

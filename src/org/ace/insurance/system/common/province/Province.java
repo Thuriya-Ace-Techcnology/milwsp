@@ -9,11 +9,10 @@
 package org.ace.insurance.system.common.province;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,67 +23,67 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.ace.insurance.common.TableName;
+import org.ace.insurance.common.UserRecorder;
 import org.ace.insurance.system.common.country.Country;
-import org.ace.java.component.FormatID;
+import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
 @Table(name = TableName.PROVINCE)
-@TableGenerator(name = "PROVINCE_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "PROVINCE_GEN", allocationSize = 10)
-@NamedQueries(value = { @NamedQuery(name = "Province.findAll", query = "SELECT p FROM Province p ORDER BY p.name ASC"),
-		@NamedQuery(name = "Province.findById", query = "SELECT p FROM Province p WHERE p.id = :id") })
-@Access(value = AccessType.FIELD)
+@TableGenerator(name = "PROVINCE_GEN", table = "id_gen", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "PROVINCE_GEN", allocationSize = 10)
+@NamedQueries(value = { @NamedQuery(name = "Province.findAll", query = "SELECT p FROM Province p ORDER BY p.provinceNo ASC"),
+		@NamedQuery(name = "Province.findById", query = "SELECT p FROM Province p WHERE p.id = :id"),
+		@NamedQuery(name = "Province.findAllProvinceNo", query = "SELECT DISTINCT p.provinceNo FROM Province p ORDER BY p.provinceNo"),
+		@NamedQuery(name = "Province.deleteById", query = "DELETE FROM Province p WHERE p.id = :id") })
+@EntityListeners(IDInterceptor.class)
 public class Province implements Serializable {
-	@Transient
+
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PROVINCE_GEN")
 	private String id;
-	@Transient
-	private String prefix;
-
-	public String getPrefix() {
-		return prefix;
-	}
-
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
-	}
 	private String provinceNo;
-	
 	private String name;
+	private String code;
 	private String description;
 
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "COUNTRYID", referencedColumnName = "ID")
 	private Country country;
+
+	@Embedded
+	private UserRecorder recorder;
 
 	@Version
 	private int version;
 
-	@Temporal(TemporalType.DATE)
-	private Date createdDate;
-	@Temporal(TemporalType.DATE)
-	private Date updatedDate;
-	private String createdUserId;
-	private String updatedUserId;
-
 	public Province() {
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "PROVINCE_GEN")
-	@Access(value = AccessType.PROPERTY)
 	public String getId() {
 		return id;
 	}
 
+	public String getProvinceNo() {
+		return provinceNo;
+	}
+
+	public void setProvinceNo(String provinceNo) {
+		this.provinceNo = provinceNo;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public void setId(String id) {
-		if (id != null) {
-			this.id = FormatID.formatId(id, getPrefix(), 10);
-		}
+		this.id = id;
 	}
 
 	public String getName() {
@@ -95,20 +94,28 @@ public class Province implements Serializable {
 		this.name = name;
 	}
 
-	public String getProvinceNo() {
-		return provinceNo;
+	public String getCode() {
+		return code;
 	}
 
-	public void setProvinceNo(String provinceNo) {
-		this.provinceNo = provinceNo;
+	public void setCode(String code) {
+		this.code = code;
 	}
-	
+
 	public Country getCountry() {
 		return this.country;
 	}
 
 	public void setCountry(Country country) {
 		this.country = country;
+	}
+
+	public UserRecorder getRecorder() {
+		return recorder;
+	}
+
+	public void setRecorder(UserRecorder recorder) {
+		this.recorder = recorder;
 	}
 
 	public int getVersion() {
@@ -123,58 +130,17 @@ public class Province implements Serializable {
 		return name + "," + country.getName();
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public Date getUpdatedDate() {
-		return updatedDate;
-	}
-
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
-	}
-	public String getFullProvince() {
-		return name + "," + country.getName();
-	}
-	public String getCreatedUserId() {
-		return createdUserId;
-	}
-
-	public void setCreatedUserId(String createdUserId) {
-		this.createdUserId = createdUserId;
-	}
-
-	public String getUpdatedUserId() {
-		return updatedUserId;
-	}
-
-	public void setUpdatedUserId(String updatedUserId) {
-		this.updatedUserId = updatedUserId;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		result = prime * result + ((recorder == null) ? 0 : recorder.hashCode());
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((provinceNo == null) ? 0 : provinceNo.hashCode());
-		result = prime * result + ((prefix == null) ? 0 : prefix.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -188,6 +154,16 @@ public class Province implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Province other = (Province) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		if (recorder == null) {
+			if (other.recorder != null)
+				return false;
+		} else if (!recorder.equals(other.recorder))
+			return false;
 		if (country == null) {
 			if (other.country != null)
 				return false;
@@ -197,11 +173,6 @@ public class Province implements Serializable {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
-			return false;
-		if (provinceNo == null) {
-			if (other.provinceNo != null)
-				return false;
-		} else if (!provinceNo.equals(other.provinceNo))
 			return false;
 		if (id == null) {
 			if (other.id != null)
@@ -213,13 +184,14 @@ public class Province implements Serializable {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (prefix == null) {
-			if (other.prefix != null)
+		if (provinceNo == null) {
+			if (other.provinceNo != null)
 				return false;
-		} else if (!prefix.equals(other.prefix))
+		} else if (!provinceNo.equals(other.provinceNo))
 			return false;
 		if (version != other.version)
 			return false;
 		return true;
 	}
+
 }

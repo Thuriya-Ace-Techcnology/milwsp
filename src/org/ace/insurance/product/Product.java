@@ -36,9 +36,9 @@ import javax.persistence.TableGenerator;
 import javax.persistence.Version;
 
 import org.ace.insurance.common.InsuranceType;
+import org.ace.insurance.common.PeriodType;
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
-import org.ace.insurance.common.PeriodType;
 import org.ace.insurance.productContent.ProductContent;
 import org.ace.insurance.system.common.addon.AddOn;
 import org.ace.insurance.system.common.currency.Currency;

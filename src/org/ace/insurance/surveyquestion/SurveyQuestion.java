@@ -24,6 +24,7 @@ import javax.persistence.Version;
 
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
+import org.ace.insurance.life.interfaces.ISorter;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
@@ -32,7 +33,7 @@ import org.ace.java.component.idgen.service.IDInterceptor;
 @NamedQueries(value = { @NamedQuery(name = "SurveyQuestion.findAll", query = "SELECT a FROM SurveyQuestion a WHERE a.deleteFlag = false"),
 		@NamedQuery(name = "SurveyQuestion.findById", query = "SELECT a FROM SurveyQuestion a WHERE a.id = :id") })
 @EntityListeners(IDInterceptor.class)
-public class SurveyQuestion implements Serializable {
+public class SurveyQuestion implements Serializable, ISorter {
 	private static final long serialVersionUID = 1L;
 	private boolean deleteFlag;
 	@Version
@@ -275,6 +276,11 @@ public class SurveyQuestion implements Serializable {
 		if (version != other.version)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String getRegistrationNo() {
+		return this.id;
 	}
 
 }

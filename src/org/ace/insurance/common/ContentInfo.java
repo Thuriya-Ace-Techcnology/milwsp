@@ -15,10 +15,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class ContentInfo implements Serializable {
 	private static final long serialVersionUID = 1L;
-	/* Office Phone */
 	private String phone;
 	private String fax;
-	/* Call Center Phone */
 	private String mobile;
 	private String email;
 
@@ -61,14 +59,8 @@ public class ContentInfo implements Serializable {
 		if (phone == null && mobile == null) {
 			return "-";
 		} else {
-			if (phone == null) {
-				if (mobile != null) {
-					return mobile;
-				}
-				return "-";
-			}
-			if (phone.isEmpty() && phone == "") {
-				if (mobile != null) {
+			if (phone.isEmpty() || phone == "") {
+				if (mobile != null && !mobile.isEmpty()) {
 					return mobile;
 				}
 				return "-";

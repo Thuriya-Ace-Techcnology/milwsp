@@ -9,7 +9,7 @@ public class RelationShipDTO {
 	private String description;
 	public RelationShipDTO(RelationShip rs) {
 		this.id = rs.getId();
-		this.prefix = rs.getPrefix();
+		/* this.prefix = rs.getPrefix(); */
 		this.name = rs.getName();
 		this.description = rs.getDescription();
 	}

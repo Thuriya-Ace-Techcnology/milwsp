@@ -19,7 +19,6 @@ import org.ace.java.component.service.PasswordCodecHandler;
 import org.ace.ws.model.AceResponse;
 import org.ace.ws.model.ResponseStatus;
 import org.ace.ws.model.mobileUser.MU001;
-import org.ace.ws.model.mobiletravelproposal.MTP001;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpPost;

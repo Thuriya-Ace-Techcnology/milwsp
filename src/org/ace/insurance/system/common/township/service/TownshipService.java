@@ -8,19 +8,20 @@
  ***************************************************************************************/
 package org.ace.insurance.system.common.township.service;
 
+import java.util.Collections;
 import java.util.List;
 
 import javax.annotation.Resource;
 
 import org.ace.insurance.system.common.province.Province;
+import org.ace.insurance.system.common.township.TSP001;
+import org.ace.insurance.system.common.township.TSP002;
 import org.ace.insurance.system.common.township.Township;
 import org.ace.insurance.system.common.township.persistence.interfaces.ITownshipDAO;
 import org.ace.insurance.system.common.township.service.interfaces.ITownshipService;
 import org.ace.java.component.SystemException;
 import org.ace.java.component.persistence.exception.DAOException;
 import org.ace.java.component.service.BaseService;
-import org.ace.ws.controller.LocationSetUpController;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,22 +31,22 @@ public class TownshipService extends BaseService implements ITownshipService {
 
 	@Resource(name = "TownshipDAO")
 	private ITownshipDAO townshipDAO;
-	
-	private static final Logger logger = Logger.getLogger(TownshipService.class);
-	/*
-	 * @Transactional(propagation = Propagation.REQUIRED) public void
-	 * addNewTownship(Township township) { try {
-	 * township.setPrefix(getPrefix(Township.class)); townshipDAO.insert(township);
-	 * } catch (DAOException e) { throw new SystemException(e.getErrorCode(),
-	 * "Faield to add a new Township", e); } }
-	 */
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void addNewTownship(Township township) {
+		try {
+			townshipDAO.insert(township);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to add a new Township", e);
+		}
+	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void updateTownship(Township township) {
 		try {
 			townshipDAO.update(township);
 		} catch (DAOException e) {
-			throw new SystemException(e.getErrorCode(), "Faield to update a Township", e);
+			throw new SystemException(e.getErrorCode(), "Failed to update a Township", e);
 		}
 	}
 
@@ -54,7 +55,7 @@ public class TownshipService extends BaseService implements ITownshipService {
 		try {
 			townshipDAO.delete(township);
 		} catch (DAOException e) {
-			throw new SystemException(e.getErrorCode(), "Faield to delete a Township", e);
+			throw new SystemException(e.getErrorCode(), "Failed to delete a Township", e);
 		}
 	}
 
@@ -64,7 +65,7 @@ public class TownshipService extends BaseService implements ITownshipService {
 		try {
 			result = townshipDAO.findAll();
 		} catch (DAOException e) {
-			throw new SystemException(e.getErrorCode(), "Faield to find all of Township)", e);
+			throw new SystemException(e.getErrorCode(), "Failed to find all of Township)", e);
 		}
 		return result;
 	}
@@ -74,7 +75,7 @@ public class TownshipService extends BaseService implements ITownshipService {
 		try {
 			result = townshipDAO.findByProvince(province);
 		} catch (DAOException e) {
-			throw new SystemException(e.getErrorCode(), "Faield to find Township by province " + province.getName(), e);
+			throw new SystemException(e.getErrorCode(), "Failed to find Township by province " + province.getName(), e);
 		}
 		return result;
 	}
@@ -85,30 +86,64 @@ public class TownshipService extends BaseService implements ITownshipService {
 		try {
 			result = townshipDAO.findById(id);
 		} catch (DAOException e) {
-			throw new SystemException(e.getErrorCode(), "Faield to find a Township (ID : " + id + ")", e);
+			throw new SystemException(e.getErrorCode(), "Failed to find a Township (ID : " + id + ")", e);
+		}
+		return result;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public List<TSP001> findAll_TSP001() {
+		List<TSP001> result = null;
+		try {
+			result = townshipDAO.findAll_TSP001();
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to find  all TSP001", e);
+		}
+		return result;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public List<TSP002> findAll_TSP002() {
+		List<TSP002> result = null;
+		try {
+			result = townshipDAO.findAll_TSP002();
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to find  all TSP001", e);
+		}
+		return result != null ? result : Collections.EMPTY_LIST;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<String> findTspShortNameByProvinceNo(String provinceNo) {
+		List<String> result = null;
+		try {
+			result = townshipDAO.findTspShortNameByProvinceNo(provinceNo);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to find TownshipShortName by provinceNo " + provinceNo, e);
+		}
+		return result;
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<String> findTspShortNameENGByProvinceNo(String provinceNo) {
+		List<String> result = null;
+		try {
+			result = townshipDAO.findTspShortNameENGByProvinceNo(provinceNo);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to find TownshipShortName by provinceNo " + provinceNo, e);
 		}
 		return result;
 	}
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Township> findByCriteria(String criteria) {
-		List<Township> result = null;
+	public Township findTownshipByName(String name) {
+		Township result = null;
 		try {
-			result = townshipDAO.findByCriteria(criteria);
+			result = townshipDAO.findTownshipByName(name);
 		} catch (DAOException e) {
-			throw new SystemException(e.getErrorCode(), "Faield to find Township by criteria " + criteria, e);
+			throw new SystemException(e.getErrorCode(), "Failed to find a Township (Name : " + name + ")", e);
 		}
 		return result;
-	}
-
-	@Override
-	@Transactional(propagation = Propagation.REQUIRED)
-	public Township addNewTownship(Township township) {
-		try {
-			township = townshipDAO.insert(township);
-		} catch (DAOException e) {
-			throw new SystemException(e.getErrorCode(), "Faield to add a Township", e);
-		}
-		return township;
 	}
 }

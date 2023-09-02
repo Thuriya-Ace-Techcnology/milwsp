@@ -5,7 +5,6 @@ import javax.xml.rpc.ServiceException;
 
 import org.ace.insurance.system.paymentTransaction.Transactions;
 import org.ace.insurance.system.paymentTransaction.persistence.interfaces.ITransactionsDAO;
-import org.ace.insurance.travel.service.interfaces.IMobileTravelProposalService;
 import org.ace.java.component.StatusType;
 import org.ace.java.component.SystemException;
 import org.ace.java.component.persistence.interfaces.IDataRepository;
@@ -40,8 +39,6 @@ public class PaymentTransactionsController extends BaseController {
 	@Resource(name = "TransactionsDAO")
 	private ITransactionsDAO transactionsDAO;
 
-	@Resource(name = "MobileTravelProposalService")
-	private IMobileTravelProposalService mobileTravelProposalService;
 
 	@RequestMapping(value = URIConstants.OK$_PAYMENT, method = RequestMethod.POST)
 	@ResponseBody
@@ -154,7 +151,7 @@ public class PaymentTransactionsController extends BaseController {
 			String xmlString = PKCS7.decrypt(Constants.getPrivateKey(), Constants.getPrivateKeyPwd(), Base64.decode(encrypted), Constants.getBksPassword());
 			JSONObject xmlJSONObj = XML.toJSONObject(xmlString);
 			TwoC2P001 twoC2P = gson.fromJson(xmlJSONObj.toString(), TwoC2P001.class);
-			mobileTravelProposalService.updateTravelProposal(twoC2P);
+			
 			response = responseManager.getResponseString(ResponseStatus.SUCCESS.getLabel());
 		} catch (SystemException e) {
 			e.printStackTrace();

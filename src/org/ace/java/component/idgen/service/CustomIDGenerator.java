@@ -8,7 +8,6 @@ import java.util.Properties;
 import javax.annotation.Resource;
 
 import org.ace.insurance.system.common.branch.Branch;
-import org.ace.insurance.travel.service.MobileTravelProposalService;
 import org.ace.java.component.idgen.IDGen;
 import org.ace.java.component.idgen.exception.CustomIDGeneratorException;
 import org.ace.java.component.idgen.persistence.interfaces.IDGenDAOInf;

@@ -9,25 +9,13 @@ import javax.annotation.Resource;
 
 import org.ace.insurance.common.KeyFactorIDConfig;
 import org.ace.insurance.common.ProposalStatus;
-import org.ace.insurance.medical.MobileMedicalProposal;
-import org.ace.insurance.medical.service.interfaces.IMobileMedicalProposalService;
 import org.ace.insurance.onlineBiller.OnlineBillerBuyer;
 import org.ace.insurance.onlineBiller.service.interfaces.IOnlineBillerProposalService;
-import org.ace.insurance.personalAccident.MobilePersonalAccidentProposal;
-import org.ace.insurance.personalAccident.service.interfaces.IMobilePersonalAccidentProposalService;
 import org.ace.insurance.product.PaymentStatus;
-import org.ace.insurance.specailForeignTravel.SpecialForeignTravel;
-import org.ace.insurance.specailForeignTravel.service.interfaces.ISpecialForeignTravelService;
 import org.ace.insurance.system.productTypeRecords.ProductTypeRecords;
 import org.ace.insurance.system.productTypeRecords.service.interfaces.IProductTypeRecordsService;
-import org.ace.insurance.system.thirdparty.ThirdPartyPremiumReceipt;
-import org.ace.insurance.system.thirdparty.service.interfaces.IThirdPartyPremiumReceiptSerivce;
 import org.ace.insurance.system.twoCtwoP.TwoCTwoPRecords;
 import org.ace.insurance.system.twoCtwoP.service.interfaces.ITwoCTwoPRecordsService;
-import org.ace.insurance.thirdPartyDriverLicense.ThirdPartyDriverProposal;
-import org.ace.insurance.thirdPartyDriverLicense.service.interfaces.IThirdPartyDriverService;
-import org.ace.insurance.travel.MobileTravelProposal;
-import org.ace.insurance.travel.service.interfaces.IMobileTravelProposalService;
 import org.ace.ws.controller.common.BaseController;
 import org.ace.ws.model.AceResponse;
 import org.ace.ws.model.TwoCTwoPDTO.HmaceGenerator;
@@ -49,27 +37,24 @@ public class TwoCTwoPController extends BaseController {
 
 	@Resource(name = "ProductTypeRecordsService")
 	private IProductTypeRecordsService productTypeRecordsService;
+	/*
+	 * @Resource(name = "MobileTravelProposalService") private
+	 * IMobileTravelProposalService mobileTravelProposalService;
+	 */
 
-	@Resource(name = "MobilePersonalAccidentProposalService")
-	private IMobilePersonalAccidentProposalService mobilePersonalAccidentProposalService;
+	/*
+	 * @Resource(name = "ThirdPartyPremiumReceiptService") private
+	 * IThirdPartyPremiumReceiptSerivce thirdPartyPremiumReceiptSerivce;
+	 */
 
-	@Resource(name = "MobileTravelProposalService")
-	private IMobileTravelProposalService mobileTravelProposalService;
+	/*
+	 * @Resource(name = "MobileMedicalProposalService") private
+	 * IMobileMedicalProposalService mobileMedicalProposalService;
+	 */
 
-	@Resource(name = "ThirdPartyPremiumReceiptService")
-	private IThirdPartyPremiumReceiptSerivce thirdPartyPremiumReceiptSerivce;
-
-	@Resource(name = "MobileMedicalProposalService")
-	private IMobileMedicalProposalService mobileMedicalProposalService;
-
-	@Resource(name = "SpecialForeignTravelService")
-	private ISpecialForeignTravelService specialForeignTravelService;
 
 	@Resource(name = "OnlineBillerProposalService")
 	private IOnlineBillerProposalService onlineBillerProposalService;
-
-	@Resource(name = "ThirdPartyDriverService")
-	private IThirdPartyDriverService thirdPartyDriverService;
 
 	private static final Logger logger = Logger.getLogger(TwoCTwoPController.class);
 
@@ -160,72 +145,43 @@ public class TwoCTwoPController extends BaseController {
 			twoC2PRecords.setCheckHashStatus("Fail");
 		}
 		twoC2pRecordsService.insert(twoC2PRecords);
-		ThirdPartyPremiumReceipt receipt = null;
-		MobileTravelProposal mobileTravelProposal = null;
-		MobilePersonalAccidentProposal mobilePersonalAccidentProposal = null;
-		MobileMedicalProposal mobileMedicalProposal = null;
+		/* ThirdPartyPremiumReceipt receipt = null; */
+		/* MobilePersonalAccidentProposal mobilePersonalAccidentProposal = null; */
+		/* MobileMedicalProposal mobileMedicalProposal = null; */
 		OnlineBillerBuyer onlineBuyer = null;
-		SpecialForeignTravel specailForeignTravel = null;
-		ThirdPartyDriverProposal thirdPartyDriver = null;
+		
 		ProductTypeRecords typeRecords = productTypeRecordsService.findByOrderId(order_id);
 		if (twoC2PRecords.getPayment_status().equals("000")) {
 			logger.info("Product Type : " + typeRecords.getProductType());
 			switch (typeRecords.getProductType()) {
-			case "TPL Online":
-				receipt = thirdPartyPremiumReceiptSerivce.updateByPaymentStatus(order_id);
-				if (receipt.getPaymentStatus().equals(PaymentStatus.SUCCESS)) {
-					Runnable tpRun = () -> thirdPartyPremiumReceiptSerivce.postDataSyncProcess(order_id);
-					new Thread(tpRun).start();
-				}
-				break;
-			case "Travel":
-				mobileTravelProposal = mobileTravelProposalService.updateByPaymentStatus(order_id);
-				if (mobileTravelProposal.getProposalStatus().equals(ProposalStatus.ISSUED)) {
-					Runnable tvRun = () -> {
-						try {
-							mobileTravelProposalService.postDataSyncProcess(order_id);
-						} catch (UnsupportedEncodingException e) {
-							e.printStackTrace();
-						}
-					};
-					new Thread(tvRun).start();
-				}
-				break;
-			case "PA":
-				mobilePersonalAccidentProposal = mobilePersonalAccidentProposalService.updateByPaymentStatus(order_id);
-				if (mobilePersonalAccidentProposal.getProposalStatus().equals(ProposalStatus.ISSUED)) {
-					Runnable paRun = () -> {
-						try {
-							mobilePersonalAccidentProposalService.postDataSyncProcess(order_id);
-						} catch (UnsupportedEncodingException e1) {
-							e1.printStackTrace();
-						}
-					};
-					new Thread(paRun).start();
-				}
-				break;
-			case "Medical":
-				mobileMedicalProposal = mobileMedicalProposalService.updateByPaymentStatus(order_id);
-				if (mobileMedicalProposal.getProposalStatus().equals(ProposalStatus.ISSUED)) {
-					Runnable meRun = () -> {
-						try {
-							mobileMedicalProposalService.postDataSyncProcess(order_id);
-						} catch (UnsupportedEncodingException e) {
-							e.printStackTrace();
-						}
-					};
-					new Thread(meRun).start();
-				}
-				break;
-			case "SPECAILFOREIGNTRAVELLER":
-				specailForeignTravel = specialForeignTravelService.updateByPaymentStatus(order_id, process_by);
-				break;
-			case "OUTBOUNDSPECAILFOREIGNTRAVELLER":
-				specailForeignTravel = specialForeignTravelService.outboundUpdateByPaymentStatus(order_id, process_by);
-				break;
-			case "THIRDPARTYDRIVER":
-				thirdPartyDriver = thirdPartyDriverService.updateByPaymentStatus(order_id);
-				break;
+			/*
+			 * case "TPL Online": receipt =
+			 * thirdPartyPremiumReceiptSerivce.updateByPaymentStatus(order_id); if
+			 * (receipt.getPaymentStatus().equals(PaymentStatus.SUCCESS)) { Runnable tpRun =
+			 * () -> thirdPartyPremiumReceiptSerivce.postDataSyncProcess(order_id); new
+			 * Thread(tpRun).start(); } break;
+			 */
+			
+			/*
+			 * case "PA": mobilePersonalAccidentProposal =
+			 * mobilePersonalAccidentProposalService.updateByPaymentStatus(order_id); if
+			 * (mobilePersonalAccidentProposal.getProposalStatus().equals(ProposalStatus.
+			 * ISSUED)) { Runnable paRun = () -> { try {
+			 * mobilePersonalAccidentProposalService.postDataSyncProcess(order_id); } catch
+			 * (UnsupportedEncodingException e1) { e1.printStackTrace(); } }; new
+			 * Thread(paRun).start(); } break;
+			 */
+			/*
+			 * case "Medical": mobileMedicalProposal =
+			 * mobileMedicalProposalService.updateByPaymentStatus(order_id); if
+			 * (mobileMedicalProposal.getProposalStatus().equals(ProposalStatus.ISSUED)) {
+			 * Runnable meRun = () -> { try {
+			 * mobileMedicalProposalService.postDataSyncProcess(order_id); } catch
+			 * (UnsupportedEncodingException e) { e.printStackTrace(); } }; new
+			 * Thread(meRun).start(); } break;
+			 */
+			
+			
 			default:
 				logger.info("Start update Online Biller Product");
 				onlineBuyer = onlineBillerProposalService.updateByPaymentStatus(order_id);
@@ -249,43 +205,26 @@ public class TwoCTwoPController extends BaseController {
 		dto.setPrintReceipt(true);
 		ProductTypeRecords typeRecords = productTypeRecordsService.findByOrderId(order_id);
 		switch (typeRecords.getProductType()) {
-		case "TPL Online":
-			ThirdPartyPremiumReceipt tpResult = thirdPartyPremiumReceiptSerivce.findRecordsByOrderId(order_id);
-			ps = tpResult.getPaymentStatus();
-			if (tpResult != null) {
-				dto.setVehicleNo(tpResult.getVehicle_no());
-			}
-			break;
-		case "Travel":
-			MobileTravelProposal travelPropo = mobileTravelProposalService.findByOrderId(order_id).get(0);
-			ps = travelPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
-					: PaymentStatus.PENDING;
-			break;
-		case "PA":
-			MobilePersonalAccidentProposal pAPropo = mobilePersonalAccidentProposalService.findByOrderId(order_id)
-					.get(0);
-			ps = pAPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
-					: PaymentStatus.PENDING;
-			break;
-		case "Medical":
-			MobileMedicalProposal medicalPropo = mobileMedicalProposalService.findByOrderId(order_id).get(0);
-			ps = medicalPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
-					: PaymentStatus.PENDING;
-			break;
-		case "SPECAILFOREIGNTRAVELLER":
-		case "OUTBOUNDSPECAILFOREIGNTRAVELLER":
-			SpecialForeignTravel specialForeignTravel = specialForeignTravelService.findByOrderId(order_id).get(0);
-			ps = specialForeignTravel.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
-					: PaymentStatus.PENDING;
-			dto.setPayment_channel("");//specialForeignTravel.getPaymentGateway().getLabel()
-			dto.setId(specialForeignTravel.getId());
-			break;
-		case "THIRDPARTYDRIVER":
-			ThirdPartyDriverProposal thirdPartyDriver = thirdPartyDriverService.findByOrderId(order_id).get(0);
-			ps = thirdPartyDriver.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
-					: PaymentStatus.PENDING;
-			dto.setId(String.valueOf(thirdPartyDriver.getId()));
-			break;
+		/*
+		 * case "TPL Online": ThirdPartyPremiumReceipt tpResult =
+		 * thirdPartyPremiumReceiptSerivce.findRecordsByOrderId(order_id); ps =
+		 * tpResult.getPaymentStatus(); if (tpResult != null) {
+		 * dto.setVehicleNo(tpResult.getVehicle_no()); } break;
+		 */
+		
+		/*
+		 * case "PA": MobilePersonalAccidentProposal pAPropo =
+		 * mobilePersonalAccidentProposalService.findByOrderId(order_id) .get(0); ps =
+		 * pAPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ?
+		 * PaymentStatus.SUCCESS : PaymentStatus.PENDING; break;
+		 */
+		/*
+		 * case "Medical": MobileMedicalProposal medicalPropo =
+		 * mobileMedicalProposalService.findByOrderId(order_id).get(0); ps =
+		 * medicalPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ?
+		 * PaymentStatus.SUCCESS : PaymentStatus.PENDING; break;
+		 */
+		
 		default:
 			OnlineBillerBuyer onlineBillerPropo = onlineBillerProposalService.findByOrderId(order_id);
 			ps = onlineBillerPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS

@@ -11,16 +11,16 @@ package org.ace.insurance.system.common.township.service.interfaces;
 import java.util.List;
 
 import org.ace.insurance.system.common.province.Province;
+import org.ace.insurance.system.common.township.TSP001;
+import org.ace.insurance.system.common.township.TSP002;
 import org.ace.insurance.system.common.township.Township;
 
 public interface ITownshipService {
-//	public void addNewTownship(Township township);
-	
-	public Township addNewTownship(Township township);
+	public void addNewTownship(Township Township);
 
-	public void updateTownship(Township township);
+	public void updateTownship(Township Township);
 
-	public void deleteTownship(Township township);
+	public void deleteTownship(Township Township);
 
 	public Township findTownshipById(String id);
 
@@ -28,5 +28,13 @@ public interface ITownshipService {
 
 	public List<Township> findAllTownship();
 
-	public List<Township> findByCriteria(String criteria);
+	public List<TSP001> findAll_TSP001();
+
+	public List<TSP002> findAll_TSP002();
+
+	public List<String> findTspShortNameByProvinceNo(String provinceNo);
+	
+	public List<String> findTspShortNameENGByProvinceNo(String provinceNo);
+	
+	public Township findTownshipByName(String name);
 }

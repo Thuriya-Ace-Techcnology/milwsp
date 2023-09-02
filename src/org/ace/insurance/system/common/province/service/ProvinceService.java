@@ -31,7 +31,7 @@ public class ProvinceService extends BaseService implements IProvinceService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addNewProvince(Province province) {
 		try {
-			province.setPrefix(getPrefix(Province.class));
+			/* province.setPrefix(getPrefix(Province.class)); */
 			provinceDAO.insert(province);
 		} catch (DAOException e) {
 			throw new SystemException(e.getErrorCode(), "Faield to add a new Province", e);

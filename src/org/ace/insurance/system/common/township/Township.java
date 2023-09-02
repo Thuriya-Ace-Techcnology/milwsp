@@ -9,11 +9,10 @@
 package org.ace.insurance.system.common.township;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -24,70 +23,65 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.ace.insurance.common.TableName;
+import org.ace.insurance.common.UserRecorder;
 import org.ace.insurance.system.common.district.District;
-import org.ace.insurance.system.common.province.Province;
-import org.ace.java.component.FormatID;
-import org.ace.ws.model.location.TownshipDTO;
+import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
 @Table(name = TableName.TOWNSHIP)
-@TableGenerator(name = "TOWNSHIP_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "TOWNSHIP_GEN", allocationSize = 10)
+@TableGenerator(name = "TOWNSHIP_GEN", table = "id_gen", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "TOWNSHIP_GEN", allocationSize = 10)
 @NamedQueries(value = { @NamedQuery(name = "Township.findAll", query = "SELECT t FROM Township t ORDER BY t.name ASC"),
+		@NamedQuery(name = "Township.findByDistrict", query = "SELECT t FROM Township t WHERE t.district.id = :districtId"),
+		@NamedQuery(name = "Township.deleteById", query = "DELETE FROM Township t WHERE t.id = :id"),
 		@NamedQuery(name = "Township.findById", query = "SELECT t FROM Township t WHERE t.id = :id") })
-@Access(value = AccessType.FIELD)
+@EntityListeners(IDInterceptor.class)
 public class Township implements Serializable {
-	@Transient
+	private static final long serialVersionUID = 1L;
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TOWNSHIP_GEN")
 	private String id;
-	@Transient
-	private String prefix;
+
 	private String name;
 	private String shortName;
+	private String shortNameMM;
 	private String code;
 	private String description;
+
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "DISTRICTID", referencedColumnName = "ID")
+	private District district;
 	
-    @OneToOne(fetch = FetchType.LAZY)	  
-	@JoinColumn(name = "DISTRICTID", referencedColumnName = "ID") private
-	District district;
+	@Embedded
+	private UserRecorder recorder;
 
 	@Version
 	private int version;
 
-	@Temporal(TemporalType.DATE)
-	private Date createdDate;
-	@Temporal(TemporalType.DATE)
-	private Date updatedDate;
-	private String createdUserId;
-	private String updatedUserId;
-
 	public Township() {
-		//province = new Province();
-	}
-	
-	public Township(TownshipDTO townshipDTO) {		
-		this.id = townshipDTO.getId();
-		this.name = townshipDTO.getName();
-		this.shortName = townshipDTO.getShortName();
-		this.code = townshipDTO.getCode();
-		this.description = townshipDTO.getDescription();		
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "TOWNSHIP_GEN")
-	@Access(value = AccessType.PROPERTY)
+	public Township(String id, String name, String shortName, String code, String description, District district, int version, String shortNameMM) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.shortName = shortName;
+		this.code = code;
+		this.description = description;
+		this.district = district;
+		this.version = version;
+		this.shortNameMM = shortNameMM;
+	}
+
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
-		if (id != null) {
-			this.id = FormatID.formatId(id, getPrefix(), 10);
-		}
+		this.id = id;
 	}
 
 	public String getName() {
@@ -96,7 +90,7 @@ public class Township implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}	
+	}
 
 	public String getShortName() {
 		return shortName;
@@ -114,33 +108,6 @@ public class Township implements Serializable {
 		this.code = code;
 	}
 
-	
-	public District getDistrict() { 
-		return district; 	
-	}
-	  
-	public void setDistrict(District district) { 
-		this.district = district;
-    }
-	 
-	public int getVersion() {
-		return version;
-	}
-
-	public void setVersion(int version) {
-		this.version = version;
-	}
-
-	
-   	 public String getFullTownShip() { 
-   		 String fullAddress = name; 
-   	     if (district != null && !district.getFullDistrict().isEmpty()) { 
-   			 fullAddress = name + ", " +  district.getFullDistrict(); 
-   			 }
-   		 return fullAddress; 
-   	}
-	 
-
 	public String getDescription() {
 		return description;
 	}
@@ -149,57 +116,49 @@ public class Township implements Serializable {
 		this.description = description;
 	}
 
-	public String getPrefix() {
-		return prefix;
+	public UserRecorder getRecorder() {
+		return recorder;
 	}
 
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
+	public void setRecorder(UserRecorder recorder) {
+		this.recorder = recorder;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	public District getDistrict() {
+		return district;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setDistrict(District district) {
+		this.district = district;
 	}
 
-	public Date getUpdatedDate() {
-		return updatedDate;
+	public int getVersion() {
+		return version;
 	}
 
-	public void setUpdatedDate(Date updatedDate) {
-		this.updatedDate = updatedDate;
+	public void setVersion(int version) {
+		this.version = version;
 	}
 
-	public String getCreatedUserId() {
-		return createdUserId;
+	public String getFullTownShip() {
+		String fullAddress = name;
+		if (district != null && !district.getFullDistrict().isEmpty()) {
+			fullAddress = name + ", " + district.getFullDistrict();
+		}
+		return fullAddress;
 	}
 
-	public void setCreatedUserId(String createdUserId) {
-		this.createdUserId = createdUserId;
-	}
-
-	public String getUpdatedUserId() {
-		return updatedUserId;
-	}
-
-	public void setUpdatedUserId(String updatedUserId) {
-		this.updatedUserId = updatedUserId;
-	}
-
-	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((code == null) ? 0 : code.hashCode());
+		result = prime * result + ((recorder == null) ? 0 : recorder.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());		
+		result = prime * result + ((district == null) ? 0 : district.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((shortName == null) ? 0 : shortName.hashCode());
-		result = prime * result + ((prefix == null) ? 0 : prefix.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -213,16 +172,31 @@ public class Township implements Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Township other = (Township) obj;
+		if (code == null) {
+			if (other.code != null)
+				return false;
+		} else if (!code.equals(other.code))
+			return false;
+		if (recorder == null) {
+			if (other.recorder != null)
+				return false;
+		} else if (!recorder.equals(other.recorder))
+			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
+		if (district == null) {
+			if (other.district != null)
+				return false;
+		} else if (!district.equals(other.district))
+			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;			 
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
@@ -233,21 +207,26 @@ public class Township implements Serializable {
 				return false;
 		} else if (!shortName.equals(other.shortName))
 			return false;
-		if (code == null) {
-			if (other.code != null)
-				return false;
-		} else if (!code.equals(other.code))
-			return false;
-		if (prefix == null) {
-			if (other.prefix != null)
-				return false;
-		} else if (!prefix.equals(other.prefix))
-			return false;
 		if (version != other.version)
 			return false;
 		return true;
-		
+	}
+
+	@Override
+	public String toString() {
+		return name ;
+	}
+
+	public String getShortNameMM() {
+		return shortNameMM;
 		
 	}
+
+	public void setShortNameMM(String shortNameMM) {
+		this.shortNameMM = shortNameMM;
+		
+	}
+	
+	
 
 }

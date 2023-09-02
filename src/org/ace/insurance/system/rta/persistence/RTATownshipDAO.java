@@ -6,7 +6,6 @@ import javax.persistence.Query;
 
 import org.ace.insurance.system.rta.RTATownship;
 import org.ace.insurance.system.rta.persistence.interfaces.IRTATownshipDAO;
-import org.ace.insurance.system.thirdparty.ThirdPartyPremiumReceipt;
 import org.ace.java.component.persistence.BasicDAO;
 import org.ace.java.component.persistence.exception.DAOException;
 import org.springframework.stereotype.Repository;

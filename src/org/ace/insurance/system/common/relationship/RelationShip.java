@@ -10,10 +10,10 @@ package org.ace.insurance.system.common.relationship;
 
 import java.io.Serializable;
 
-import javax.persistence.Access;
-import javax.persistence.AccessType;
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,46 +21,44 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
-import javax.persistence.Transient;
 import javax.persistence.Version;
 
 import org.ace.insurance.common.TableName;
-import org.ace.java.component.FormatID;
+import org.ace.insurance.common.UserRecorder;
+import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
 @Table(name = TableName.RELATIONSHIP)
 @TableGenerator(name = "RELATIONSHIP_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "RELATIONSHIP_GEN", allocationSize = 10)
 @NamedQueries(value = { @NamedQuery(name = "RelationShip.findAll", query = "SELECT r FROM RelationShip r ORDER BY r.name ASC"),
 		@NamedQuery(name = "RelationShip.findById", query = "SELECT r FROM RelationShip r WHERE r.id = :id") })
-@Access(value = AccessType.FIELD)
+@EntityListeners(IDInterceptor.class)
 public class RelationShip implements Serializable {
 
-	@Transient
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "RELATIONSHIP_GEN")
 	private String id;
-	@Transient
-	private String prefix;
 	private String name;
-	private String description;
+	
 	@Column (name ="NAMEMM")
 	private String nameMM;
-
+	
+	private String description;
+	@Embedded
+	private UserRecorder recorder;
 	@Version
 	private int version;
 
 	public RelationShip() {
 	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.TABLE, generator = "RELATIONSHIP_GEN")
-	@Access(value = AccessType.PROPERTY)
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
-		if (id != null) {
-			this.id = FormatID.formatId(id, getPrefix(), 10);
-		}
+		this.id = id;
 	}
 
 	public String getName() {
@@ -87,12 +85,12 @@ public class RelationShip implements Serializable {
 		this.version = version;
 	}
 
-	public String getPrefix() {
-		return prefix;
+	public UserRecorder getRecorder() {
+		return recorder;
 	}
 
-	public void setPrefix(String prefix) {
-		this.prefix = prefix;
+	public void setRecorder(UserRecorder recorder) {
+		this.recorder = recorder;
 	}
 
 	@Override
@@ -102,7 +100,7 @@ public class RelationShip implements Serializable {
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((prefix == null) ? 0 : prefix.hashCode());
+		result = prime * result + ((recorder == null) ? 0 : recorder.hashCode());
 		result = prime * result + version;
 		return result;
 	}
@@ -131,10 +129,10 @@ public class RelationShip implements Serializable {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (prefix == null) {
-			if (other.prefix != null)
+		if (recorder == null) {
+			if (other.recorder != null)
 				return false;
-		} else if (!prefix.equals(other.prefix))
+		} else if (!recorder.equals(other.recorder))
 			return false;
 		if (version != other.version)
 			return false;
@@ -152,5 +150,5 @@ public class RelationShip implements Serializable {
 		this.nameMM = nameMM;
 		
 	}
-	
+
 }

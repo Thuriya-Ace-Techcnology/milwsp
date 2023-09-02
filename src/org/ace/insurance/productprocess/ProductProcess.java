@@ -26,7 +26,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
-import org.ace.insurance.common.BuildingOccupationType;
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
 import org.ace.insurance.medical.process.Process;
@@ -54,9 +53,8 @@ public class ProductProcess implements Serializable {
 	@JoinColumn(name = "PROCESSID", referencedColumnName = "ID")
 	private Process process;
 
-	/** only for fire's surveyQuestion */
-	@Enumerated(EnumType.STRING)
-	private BuildingOccupationType buildingOccupationType;
+	@Embedded
+	private ProductProcessCriteria productProcessCriteria;
 
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "productProcess", orphanRemoval = true)
 	private List<ProductProcessQuestionLink> productProcessQuestionLinkList;
@@ -102,6 +100,17 @@ public class ProductProcess implements Serializable {
 
 	public void setProcess(Process process) {
 		this.process = process;
+	}
+
+	public ProductProcessCriteria getProductProcessCriteria() {
+		if (productProcessCriteria == null) {
+			productProcessCriteria = new ProductProcessCriteria();
+		}
+		return productProcessCriteria;
+	}
+
+	public void setProductProcessCriteria(ProductProcessCriteria productProcessCriteria) {
+		this.productProcessCriteria = productProcessCriteria;
 	}
 
 	public List<ProductProcessQuestionLink> getProductProcessQuestionLinkList() {

@@ -14,6 +14,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Version;
+
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
 import org.ace.java.component.idgen.service.IDInterceptor;
@@ -46,13 +47,6 @@ public class ResourceQuestionAnswer {
 
 	public ResourceQuestionAnswer(String name) {
 		this.name = name;
-	}
-
-	public ResourceQuestionAnswer(ResourceQuestionAnswerDTO resourceQuestion) {
-		this.id = resourceQuestion.getId();
-		this.value = resourceQuestion.getValue();
-		this.result = resourceQuestion.getResult();
-		this.name = resourceQuestion.getName();
 	}
 
 	public String getId() {

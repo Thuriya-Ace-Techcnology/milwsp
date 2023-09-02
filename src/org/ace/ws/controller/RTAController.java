@@ -36,7 +36,7 @@ public class RTAController extends BaseController {
 			    String originalFilename = inputFile.getOriginalFilename();
 			    File destinationFile = new File(context.getRealPath("/WEB-INF/uploaded")+  File.separator + originalFilename);
 			    inputFile.transferTo(destinationFile);
-			    rtaService.accessFileRead(destinationFile);
+				/* rtaService.accessFileRead(destinationFile); */
 			    return new ResponseEntity<>(responseManager.getResponseString("Successfully Inserted."), HttpStatus.OK);
 			   } catch (Exception e) {    
 			    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
@@ -52,7 +52,7 @@ public class RTAController extends BaseController {
 		 
 			   try {
 			    File destinationFile = new File("D:\\TAT\\TAT\\MI\\ThirdParty\\RTA data\\Yangon_Vehicle_7-2021.mdb");
-			    rtaService.accessFileRead(destinationFile);
+				/* rtaService.accessFileRead(destinationFile); */
 			    return new ResponseEntity<>(responseManager.getResponseString("Successfully Inserted."), HttpStatus.OK);
 			   } catch (Exception e) {    
 			    return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

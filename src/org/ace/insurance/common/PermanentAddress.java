@@ -17,8 +17,6 @@ import org.ace.insurance.system.common.township.Township;
 
 @Embeddable
 public class PermanentAddress implements Serializable {
-	private static final long serialVersionUID = 1L;
-
 	private String permanentAddress;
 
 	@JoinColumn(name = "PERMANENTTOWNSHIPID", referencedColumnName = "ID")

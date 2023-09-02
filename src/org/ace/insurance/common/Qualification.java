@@ -22,8 +22,6 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Version;
 
-import org.ace.insurance.common.TableName;
-import org.ace.insurance.common.UserRecorder;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity

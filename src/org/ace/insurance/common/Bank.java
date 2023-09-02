@@ -14,21 +14,15 @@ import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 import javax.persistence.Version;
 
-import org.ace.insurance.common.TableName;
-import org.ace.insurance.common.UserRecorder;
-import org.ace.insurance.system.common.branch.Branch;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
@@ -52,9 +46,6 @@ public class Bank implements Serializable {
 	private UserRecorder recorder;
 	@Version
 	private int version;
-	@OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
-	private Branch branch;
 
 	public Bank() {
 	}
@@ -113,21 +104,6 @@ public class Bank implements Serializable {
 
 	public void setCscBankCode(String cscBankCode) {
 		this.cscBankCode = cscBankCode;
-	}
-
-	public Branch getBranch() {
-		return branch;
-	}
-
-	public void setBranch(Branch branch) {
-		this.branch = branch;
-	}
-
-	public String getBranchName() {
-		if (branch != null)
-			return branch.getName();
-		else
-			return "-";
 	}
 
 	@Override

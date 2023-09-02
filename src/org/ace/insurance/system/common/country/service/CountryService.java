@@ -31,7 +31,7 @@ public class CountryService extends BaseService implements ICountryService {
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void addNewCountry(Country country) {
 		try {
-			country.setPrefix(getPrefix(Country.class));
+			/* country.setPrefix(getPrefix(Country.class)); */
 			countryDAO.insert(country);
 		} catch (DAOException e) {
 			throw new SystemException(e.getErrorCode(), "Faield to add a new Country", e);

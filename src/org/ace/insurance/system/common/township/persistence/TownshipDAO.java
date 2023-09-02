@@ -13,34 +13,35 @@ import java.util.List;
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
-import org.ace.insurance.common.TableName;
 import org.ace.insurance.system.common.province.Province;
+import org.ace.insurance.system.common.township.TSP001;
+import org.ace.insurance.system.common.township.TSP002;
 import org.ace.insurance.system.common.township.Township;
 import org.ace.insurance.system.common.township.persistence.interfaces.ITownshipDAO;
-import org.ace.insurance.system.common.township.service.TownshipService;
 import org.ace.java.component.persistence.BasicDAO;
 import org.ace.java.component.persistence.exception.DAOException;
-import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository("TownshipDAO")
+@SuppressWarnings("unchecked")
 public class TownshipDAO extends BasicDAO implements ITownshipDAO {
 
-	/*
-	 * @Transactional(propagation = Propagation.REQUIRED) public void
-	 * insert(Township township) throws DAOException { try { em.persist(township);
-	 * insertProcessLog(TableName.TOWNSHIP, township.getId()); em.flush(); } catch
-	 * (PersistenceException pe) { throw translate("Failed to insert Township", pe);
-	 * } }
-	 */
-	private static final Logger logger = Logger.getLogger(TownshipDAO.class);
+	@Transactional(propagation = Propagation.REQUIRED)
+	public void insert(Township township) throws DAOException {
+		try {
+			em.persist(township);
+			em.flush();
+		} catch (PersistenceException pe) {
+			throw translate("Failed to insert Township", pe);
+		}
+	}
+
 	@Transactional(propagation = Propagation.REQUIRED)
 	public void update(Township township) throws DAOException {
 		try {
 			em.merge(township);
-			updateProcessLog(TableName.TOWNSHIP, township.getId());
 			em.flush();
 		} catch (PersistenceException pe) {
 			throw translate("Failed to update Township", pe);
@@ -74,17 +75,9 @@ public class TownshipDAO extends BasicDAO implements ITownshipDAO {
 	public List<Township> findByProvince(Province province) throws DAOException {
 		List<Township> result = null;
 		try {
-			StringBuffer sb = new StringBuffer("SELECT t.* FROM township t WHERE 1=1 ");
-			if(province.getId() != null && province.getId() != "") {
-				sb.append(" and t.DISTRICTID in (select d.ID from district d where d.PROVINCEID = '"+province.getId()+"')");
-			}
-			if(province.getId() == null && province.getProvinceNo() !=  null && province.getProvinceNo() != "") {
-				sb.append(" and t.DISTRICTID in (select d.ID from district d where d.PROVINCEID = ");
-				sb.append("(select p.id from province p where p.provinceNo = '"+province.getProvinceNo()+"'))");
-			}
-			logger.info("Query :"+sb.toString());
-			Query q = em.createNativeQuery(sb.toString(),Township.class);
-			result = q.getResultList();
+			Query query = em.createNamedQuery("Township.findByProvince");
+			query.setParameter("provinceId", province.getId());
+			result = query.getResultList();
 			em.flush();
 		} catch (PersistenceException pe) {
 			throw translate("Failed to find Township", pe);
@@ -106,17 +99,32 @@ public class TownshipDAO extends BasicDAO implements ITownshipDAO {
 		return result;
 	}
 
-	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Township> findByCriteria(String criteria) throws DAOException {
-		List<Township> result = null;
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public List<TSP001> findAll_TSP001() throws DAOException {
+		List<TSP001> result = null;
 		try {
-			// Query q = em.createNamedQuery("Township.findByCriteria");
-			Query q = em.createQuery("Select t from Township t where t.name Like '" + criteria + "%'");
-			// q.setParameter("criteriaValue", "%" + criteria + "%");
+			StringBuffer buffer = new StringBuffer("SELECT NEW " + TSP001.class.getName());
+			buffer.append("(t.id, t.name, t.district.name, t.district.province.name) FROM Township t ORDER BY t.district.name ASC");
+			Query q = em.createQuery(buffer.toString());
 			result = q.getResultList();
 			em.flush();
 		} catch (PersistenceException pe) {
-			throw translate("Failed to find by criteria of Township.", pe);
+			throw translate("Failed to find all TSP001.", pe);
+		}
+		return result;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public List<TSP002> findAll_TSP002() throws DAOException {
+		List<TSP002> result = null;
+		try {
+			StringBuffer buffer = new StringBuffer("SELECT NEW " + TSP002.class.getName());
+			buffer.append("(t.id, t.name, t.code, t.shortName, t.district.name, t.description, t.shortNameMM) FROM Township t ORDER BY t.code ASC");
+			Query q = em.createQuery(buffer.toString());
+			result = q.getResultList();
+			em.flush();
+		} catch (PersistenceException pe) {
+			throw translate("Failed to find all TSP001.", pe);
 		}
 		return result;
 	}
@@ -135,15 +143,61 @@ public class TownshipDAO extends BasicDAO implements ITownshipDAO {
 		return name;
 	}
 
-	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public Township insert(Township township) throws DAOException {
+	public List<String> findTspShortNameByProvinceNo(String provinceNo) throws DAOException {
+		List<String> result = null;
 		try {
-			em.persist(township);
+			StringBuffer str = new StringBuffer();
+			str.append("SELECT distinct concat(t.shortName,'/',t.shortNameMM) ");
+			str.append("FROM Township t inner join t.district as d inner join d.province as p ");
+			str.append("WHERE p.provinceNo = :provinceNo AND t.shortName !='' AND t.shortName != null AND t.shortNameMM != null");
+			//str.append("ORDER BY t.shortName");
+			Query q = em.createQuery(str.toString());
+			q.setParameter("provinceNo", provinceNo);
+			result = q.getResultList();
 			em.flush();
 		} catch (PersistenceException pe) {
-			throw translate("Failed to insert township(id = " + township.getId() + ")", pe);
+			throw translate("Failed to find by criteria of ProvinceNo.", pe);
 		}
-		return township;
+		return result;
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public List<String> findTspShortNameENGByProvinceNo(String provinceNo) throws DAOException {
+		List<String> result = null;
+		try {
+			StringBuffer str = new StringBuffer();
+			str.append("SELECT distinct t.shortName ");
+			str.append("FROM Township t inner join t.district as d inner join d.province as p ");
+			str.append("WHERE p.provinceNo = :provinceNo AND t.shortName !='' ");
+			str.append("ORDER BY t.shortName");
+			Query q = em.createQuery(str.toString());
+			q.setParameter("provinceNo", provinceNo);
+			result = q.getResultList();
+			em.flush();
+		} catch (PersistenceException pe) {
+			throw translate("Failed to find by criteria of ProvinceNo.", pe);
+		}
+		return result;
+	}
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Township findTownshipByName(String name) {
+		Township result = null;
+		List<Township> townshipList = null;
+		try {
+			Query query = em.createQuery("SELECT t FROM Township t where t.name = :name");
+			query.setParameter("name", name);
+			townshipList = query.getResultList();
+			if (townshipList.isEmpty()) {
+				result = null;
+			} else {
+				result = townshipList.get(0);
+			}
+			em.flush();
+		} catch (PersistenceException pe) {
+			throw translate("Failed to find Township", pe);
+		}
+		return result;
 	}
 }

@@ -19,6 +19,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
@@ -59,6 +60,11 @@ public class ProductPremiumRateKeyFactor implements Serializable {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "KEYFACTORID", referencedColumnName = "ID")
 	private KeyFactor keyFactor;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "PRODUCTPREMIUMRATEID", referencedColumnName = "ID")
+	private ProductPremiumRate productPremiumRate;
+	
 	@Embedded
 	private UserRecorder recorder;
 	@Version
@@ -73,6 +79,7 @@ public class ProductPremiumRateKeyFactor implements Serializable {
 		this.value = value;
 		this.referenceName = referenceName;
 		this.keyFactor = keyFactor;
+		this.productPremiumRate = productPremiumRate;
 	}
 
 	public String getId() {
@@ -137,6 +144,14 @@ public class ProductPremiumRateKeyFactor implements Serializable {
 
 	public void setVersion(int version) {
 		this.version = version;
+	}
+	
+	public ProductPremiumRate getProductPremiumRate() {
+		return this.productPremiumRate;
+	}
+
+	public void setProductPremiumRate(ProductPremiumRate productPremiumRate) {
+		this.productPremiumRate = productPremiumRate;
 	}
 
 	@Override
