@@ -35,4 +35,16 @@ public class RelationShipService extends BaseService implements IRelationShipSer
 		}
 		return result;
 	}
+
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public RelationShip findById(String id) {
+		RelationShip result = null;
+		try {
+		 result = relationShipDAO.findById(id);
+
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to find   RelationShip)", e);
+		}
+		return result;
+	}
 }

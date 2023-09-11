@@ -34,6 +34,7 @@ import javax.persistence.Version;
 import org.ace.insurance.common.Gender;
 import org.ace.insurance.common.IdType;
 import org.ace.insurance.common.Name;
+import org.ace.insurance.common.Plans;
 import org.ace.insurance.common.Qualification;
 import org.ace.insurance.common.ResidentAddress;
 import org.ace.insurance.common.TableName;
@@ -256,293 +257,53 @@ public class ProposalInsuredPerson {
 	
 	
 	private boolean armyOfficer;
+	
+	@Enumerated(value = EnumType.STRING)
+	private Plans plans;
+
 
 	public ProposalInsuredPerson() {
 
 	}
 
 	public ProposalInsuredPerson(InsuredPersonInfoDTO dto) {
-		this.approved = dto.isApprove();
-		this.needMedicalCheckup = dto.isNeedMedicalCheckup();
-		this.age = dto.getAgeForNextYear();
+		this.age = dto.getAge();
 		this.proposedPremium = dto.getPremium();
-		this.proposedSumInsured = dto.getSumInsuredInfo();
-		this.approvedSumInsured = dto.getApprovedSumInsured();
-		this.basicTermPremium = dto.getBasicTermPremium();
-		this.addOnTermPremium = dto.getAddOnTermPremium();
-		this.endorsementNetAddonPremium = dto.getEndorsementAddonPremium();
-		this.endorsementNetBasicPremium = dto.getEndorsementBasicPremium();
-		this.interest = dto.getInterest();
-		this.weight = dto.getWeight();
-		this.height = dto.getHeight();
-		this.premiumRate = dto.getPremiumRate();
-		this.rejectReason = dto.getRejectReason();
-		this.insPersonCodeNo = dto.getInsPersonCodeNo();
-		this.inPersonGroupCodeNo = dto.getInPersonGroupCodeNo();
-		this.initialId = dto.getInitialId();
+		this.proposedSumInsured = dto.getSumInsured();
+		this.approvedSumInsured = dto.getSumInsured();
+		this.basicTermPremium = dto.getPremium();
 		this.idNo = dto.getFullIdNo();
-		this.idNoMM = dto.getFullIdNoMM();
-		this.seamanNrc = dto.getSeamanFullIdNo() == null ? "" : dto.getSeamanFullIdNo();
 		this.fatherName = dto.getFatherName();
-		this.dateOfBirth = dto.getDateOfBirth();
-		this.endorsementStatus = dto.getEndorsementStatus();
-		this.clsOfHealth = dto.getClassificationOfHealth();
+		this.dateOfBirth = new Date(dto.getDateOfBirth());
 		this.gender = dto.getGender();
 		this.idType = dto.getIdType();
 		this.residentAddress = dto.getResidentAddress();
 		this.name = dto.getName();
 		this.product = dto.getProduct();
-		this.typesOfSport = dto.getTypesOfSport();
-		this.occupation = dto.getOccupation();
-		this.unit = dto.getUnit();
-		this.approvedUnit = dto.getApprovedUnit();
-		this.riskyOccupation = dto.getRiskyOccupation();
-		this.surveyQuestionAnswerList = dto.getSurveyQuestionAnswerList();
-		// override
-		this.customer = dto.getCustomer();
-		this.phone = dto.getPhone();
-		this.relationship = dto.getRelationship();
-		this.parentName = dto.getParentName();
-		this.parentDOB = dto.getParentDOB();
-		this.parentIdType = dto.getParentIdType();
-		this.parentIdNo = dto.getParentIdNo();
-		this.school = dto.getSchool();
-		this.gradeInfo = dto.getGradeInfo();
-		
-		this.birthAddress= dto.getBirthAddress();
-		this.personalId = dto.getPersonalId();
-		this.email = dto.getEmail();
-		this.salary = dto.getSalary();
-		this.visibleIdentification = dto.getVisibleIdentification();
-		this.sumInsuredType = dto.getSumInsuredType();
 		this.cdcNo = dto.getCdcNo();
-		this.position = dto.getPosition();
-		this.office  = dto.getOffice();
-
-		this.labourCardNo = dto.getLabourCardNo();
-		this.identificationCardNo = dto.getIdentificationCardNo();
-		this.issueOfLabourDate = dto.getIssueOfLabourDate();
-		this.qualification = dto.getQualification();
-		this.factoryAddress = dto.getFactoryAddress();
-		this.issueDateOfIdCard = dto.getIssueDateOfIdCard();
-		this.placeOfPassport = dto.getPlaceOfPassport();
-		this.country = dto.getCountry();
-		this.currency = dto.getCurrency();
+		this.position = dto.getPosition();;
 		this.passportNo = dto.getPassportNo();
-		this.issueDateOfPassport = dto.getIssueDateOfPassport();
-		this.generatedPolicyNo = dto.getGeneratedPolicyNo();
 		this.oceanlinerName=dto.getOceanlinerName();
 		this.vesselName=dto.getVesselName();
-		this.seamanNrc=dto.getSeamanNrc();
-		this.armyOfficer = dto.isArmyOfficer();
-		this.insuredId = dto.getInsuredId();
-		if(dto.getAcquaintanceDTO() != null) {
-			this.acquaintance = new Acquaintance(dto.getAcquaintanceDTO());
-			this.acquaintance.setProposalInsuredPerson(this);			
-		}		
-		
-		for (Attachment attach : dto.getBirthCertificateAttachments()) {
-			addBirthCertificateAttachment(attach);
-		}
-		for (InsuredPersonAttachment attach : dto.getPerAttachmentList()) {
-			addAttachment(attach);
-		}
+		this.plans = dto.getPlans();
+
 		for (InsuredPersonKeyFactorValue kfv : dto.getKeyFactorValueList()) {
 			addLifeKeyFactorValue(new InsuredPersonKeyFactorValue(kfv.getValue(), kfv.getKeyFactor()));
 		}
 		for (BeneficiariesInfoDTO beneficiary : dto.getBeneficiariesInfoDTOList()) {
 			addBeneficiaries(new InsuredPersonBeneficiaries(beneficiary));
 		}
-		if (dto.getInsuredPersonAddOnDTOList() != null) {
-			for (InsuredPersonAddOnDTO addOn : dto.getInsuredPersonAddOnDTOList()) {
-				addInsuredPersonAddon(new InsuredPersonAddon(addOn));
-			}
-		}
-		if (dto.getInsuredPersonPolicyHistoryRecordList() != null) {
-			for (InsuredPersonPolicyHistoryRecord record : dto.getInsuredPersonPolicyHistoryRecordList()) {
-				addInsuredPersonPolicyHistoryRecord(record);
-			}
-		}
 
-		if (dto.isExistsEntity()) {
-			this.id = dto.getTempId();
-			this.version = dto.getVersion();
-		}
 	}
 
-	public ProposalInsuredPerson(InsuredPersonInfoDTO dto, LifeProposal lifeProposal) {
-		this.lifeProposal = lifeProposal;
-		this.approved = dto.isApprove();
-		this.needMedicalCheckup = dto.isNeedMedicalCheckup();
-		this.age = dto.getAgeForNextYear();
-		this.proposedPremium = dto.getPremium();
-		this.proposedSumInsured = dto.getSumInsuredInfo();
-		this.approvedSumInsured = dto.getApprovedSumInsured();
-		this.basicTermPremium = dto.getBasicTermPremium();
-		this.addOnTermPremium = dto.getAddOnTermPremium();
-		this.endorsementNetAddonPremium = dto.getEndorsementAddonPremium();
-		this.endorsementNetBasicPremium = dto.getEndorsementBasicPremium();
-		this.interest = dto.getInterest();
-		this.weight = dto.getWeight();
-		this.height = dto.getHeight();
-		this.premiumRate = dto.getPremiumRate();
-		this.rejectReason = dto.getRejectReason();
-		this.insPersonCodeNo = dto.getInsPersonCodeNo();
-		this.inPersonGroupCodeNo = dto.getInPersonGroupCodeNo();
-		this.initialId = dto.getInitialId();
-		this.idNo = dto.getFullIdNo();
-		this.idNoMM = dto.getFullIdNoMM();
-		this.seamanNrc = dto.getSeamanFullIdNo() == null ? "" : dto.getSeamanFullIdNo();
-		this.fatherName = dto.getFatherName();
-		this.dateOfBirth = dto.getDateOfBirth();
-		this.endorsementStatus = dto.getEndorsementStatus();
-		this.clsOfHealth = dto.getClassificationOfHealth();
-		this.gender = dto.getGender();
-		this.idType = dto.getIdType();
-		this.residentAddress = dto.getResidentAddress();
-		this.name = dto.getName();
-		this.product = dto.getProduct();
-		this.typesOfSport = dto.getTypesOfSport();
-		this.occupation = dto.getOccupation();
-		this.unit = dto.getUnit();
-		this.approvedUnit = dto.getApprovedUnit();
-		this.riskyOccupation = dto.getRiskyOccupation();
-		this.surveyQuestionAnswerList = dto.getSurveyQuestionAnswerList();
-		this.relationship = dto.getRelationship();
-		this.parentName = dto.getParentName();
-		this.parentDOB = dto.getParentDOB();
-		this.parentIdType = dto.getParentIdType();
-		this.parentIdNo = dto.getParentFullIdNo();
-		this.parentIdNoMM = dto.getParentFullIdNoMM();
-		this.school = dto.getSchool();
-		this.gradeInfo = dto.getGradeInfo();
-		
-		this.birthAddress= dto.getBirthAddress();
-		this.personalId = dto.getPersonalId();
-		this.email = dto.getEmail();
-		this.salary = dto.getSalary();
-		this.visibleIdentification = dto.getVisibleIdentification();
-		this.sumInsuredType = dto.getSumInsuredType();
-		// override
-		this.customer = dto.getCustomer();
-		this.phone = dto.getPhone();
 
-		this.labourCardNo = dto.getLabourCardNo();
-		this.identificationCardNo = dto.getIdentificationCardNo();
-		this.issueOfLabourDate = dto.getIssueOfLabourDate();
-		this.qualification = dto.getQualification();
-		this.factoryAddress = dto.getFactoryAddress();
-		this.issueDateOfIdCard = dto.getIssueDateOfIdCard();
-		this.placeOfPassport = dto.getPlaceOfPassport();
-		this.country = dto.getCountry();
-		this.currency = dto.getCurrency();
-		this.passportNo = dto.getPassportNo();
-		this.issueDateOfPassport = dto.getIssueDateOfPassport();
-		this.generatedPolicyNo = dto.getGeneratedPolicyNo();
-		this.armyOfficer = dto.isArmyOfficer();
-		if(dto.getAcquaintanceDTO() != null) {
-			this.acquaintance = new Acquaintance(dto.getAcquaintanceDTO());
-			this.acquaintance.setProposalInsuredPerson(this);			
-		}
 
-		for (Attachment attach : dto.getBirthCertificateAttachments()) {
-			addBirthCertificateAttachment(attach);
-		}
-		for (InsuredPersonAttachment attach : dto.getPerAttachmentList()) {
-			addAttachment(attach);
-		}
-		for (InsuredPersonKeyFactorValue kfv : dto.getKeyFactorValueList()) {
-			addLifeKeyFactorValue(new InsuredPersonKeyFactorValue(kfv.getValue(), kfv.getKeyFactor()));
-		}
-		for (BeneficiariesInfoDTO beneficiary : dto.getBeneficiariesInfoDTOList()) {
-			addBeneficiaries(new InsuredPersonBeneficiaries(beneficiary));
-		}
-		if (dto.getInsuredPersonAddOnDTOList() != null) {
-			for (InsuredPersonAddOnDTO addOn : dto.getInsuredPersonAddOnDTOList()) {
-				addInsuredPersonAddon(new InsuredPersonAddon(addOn));
-			}
-		}
-		if (dto.getInsuredPersonPolicyHistoryRecordList() != null) {
-			for (InsuredPersonPolicyHistoryRecord record : dto.getInsuredPersonPolicyHistoryRecordList()) {
-				addInsuredPersonPolicyHistoryRecord(record);
-			}
-		}
-
-		if (dto.isExistsEntity()) {
-			this.id = dto.getTempId();
-			this.version = dto.getVersion();
-		}
-	}
-
-	// public ProposalInsuredPerson(Date dateOfBirth, double proposedSumInsured,
-	// Product product, LifeProposal lifeproposal, double proposedPremium,
-	// String initialId, String idNo,
-	// IdType idType, Name name, Gender gender, ResidentAddress residentAddress,
-	// Occupation occupation, String fatherName, double
-	// endorsementNetBasicPremium,
-	// double endorsementNetAddonPremium, double interest, int weight, int
-	// height, double premiumRate, EndorsementStatus status, String
-	// insPersonCodeNo,
-	// Boolean isPaidPremiumForPaidup, Customer customer, int age, String
-	// inPersonGroupCodeNo) {
-	// this.dateOfBirth = dateOfBirth;
-	// this.proposedSumInsured = proposedSumInsured;
-	// this.product = product;
-	// this.lifeProposal = lifeproposal;
-	// this.customer = customer;
-	// this.proposedPremium = proposedPremium;
-	// this.initialId = initialId;
-	// this.idNo = idNo;
-	// this.idType = idType;
-	// this.name = name;
-	// this.residentAddress = residentAddress;
-	// this.gender = gender;
-	// this.occupation = occupation;
-	// this.fatherName = fatherName;
-	// this.endorsementNetBasicPremium = endorsementNetBasicPremium;
-	// this.endorsementNetAddonPremium = endorsementNetAddonPremium;
-	// this.interest = interest;
-	// this.weight = weight;
-	// this.height = height;
-	// this.premiumRate = premiumRate;
-	// this.endorsementStatus = status;
-	// this.insPersonCodeNo = insPersonCodeNo;
-	// this.isPaidPremiumForPaidup = isPaidPremiumForPaidup;
-	// this.age = age;
-	// this.inPersonGroupCodeNo = inPersonGroupCodeNo;
-	// }
-
-	// public ProposalInsuredPerson(Date dateOfBirth, double proposedSumInsured,
-	// Product product, LifeProposal lifeproposal, double proposedPremium,
-	// double endorsementNetBasicPremium,
-	// double endorsementNetAddonPremium, double interest, int weight, int
-	// height, double premiumRate, EndorsementStatus status, String
-	// insPersonCodeNo,
-	// String inPersonGroupCodeNo) {
-	// this.dateOfBirth = dateOfBirth;
-	// this.proposedSumInsured = proposedSumInsured;
-	// this.product = product;
-	// this.lifeProposal = lifeproposal;
-	// this.proposedPremium = proposedPremium;
-	// this.endorsementStatus = status;
-	// this.endorsementNetBasicPremium = endorsementNetBasicPremium;
-	// this.endorsementNetAddonPremium = endorsementNetAddonPremium;
-	// this.insPersonCodeNo = insPersonCodeNo;
-	// this.interest = interest;
-	// this.weight = weight;
-	// this.height = height;
-	// this.premiumRate = premiumRate;
-	// this.inPersonGroupCodeNo = inPersonGroupCodeNo;
-	//
-	// }
-
+	
 	public ProposalInsuredPerson(PolicyInsuredPerson policyInsuredPerson) {
 		this.clsOfHealth = policyInsuredPerson.getClsOfHealth();
 		this.dateOfBirth = policyInsuredPerson.getDateOfBirth();
 		this.product = policyInsuredPerson.getProduct();
 		this.proposedSumInsured = policyInsuredPerson.getSumInsured();
-		// this.proposedPremium = policyInsuredPerson.getPremium();
-		// this.approvedSumInsured = policyInsuredPerson.getSumInsured();
 		this.insPersonCodeNo = policyInsuredPerson.getInsPersonCodeNo();
 		this.initialId = policyInsuredPerson.getInitialId();
 		this.idNo = policyInsuredPerson.getIdNo();
@@ -1794,6 +1555,20 @@ public class ProposalInsuredPerson {
 	public void setAcquaintance(Acquaintance acquaintance) {
 		this.acquaintance = acquaintance;
 	}
+	
+
+
+	public Plans getPlans() {
+		return plans;
+	}
+
+	public void setPlan(Plans plans) {
+		this.plans = plans;
+	}
+
+	
+
+
 
 	
 	

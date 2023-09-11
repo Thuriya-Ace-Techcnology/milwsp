@@ -27,6 +27,8 @@ public enum PolicyReferenceType {
 	
 	SEAMAN_LIFE_POLICY("Seaman Policy"),
 	
+	SEAMANONLINE_POLICY("SeamanOnline Policy"),
+	
 	SHORE_JOB_LIFE_POLICY("Shore Job Policy"),
 	
 	SHORT_ENDOWMENT_LIFE_BILL_COLLECTION("Short Term Endowment Bill Collection"),

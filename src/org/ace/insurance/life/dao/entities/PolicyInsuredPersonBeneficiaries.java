@@ -96,21 +96,13 @@ public class PolicyInsuredPersonBeneficiaries implements Serializable {
 	}
 
 	public PolicyInsuredPersonBeneficiaries(InsuredPersonBeneficiaries insuredPersonBeneficiaries) {
-		this.beneficiaryNo = insuredPersonBeneficiaries.getBeneficiaryNo();
-		this.dateOfBirth = insuredPersonBeneficiaries.getDateOfBirth();
-		this.age = insuredPersonBeneficiaries.getAge();
 		this.percentage = insuredPersonBeneficiaries.getPercentage();
 		this.relationship = insuredPersonBeneficiaries.getRelationship();
-		this.initialId = insuredPersonBeneficiaries.getInitialId();
 		this.idNo = insuredPersonBeneficiaries.getIdNo();
 		this.gender = insuredPersonBeneficiaries.getGender();
 		this.idType = insuredPersonBeneficiaries.getIdType();
 		this.residentAddress = insuredPersonBeneficiaries.getResidentAddress();
 		this.name = insuredPersonBeneficiaries.getName();
-		this.relationship = insuredPersonBeneficiaries.getRelationship();
-		this.phone = insuredPersonBeneficiaries.getPhone();
-		this.idNoMM = insuredPersonBeneficiaries.getIdNoMM();
-		this.email = insuredPersonBeneficiaries.getEmail();
 	}
 
 	public PolicyInsuredPersonBeneficiaries(PolicyInsuredPersonBeneficiariesHistory insuredPersonBeneficiaries) {
@@ -130,28 +122,6 @@ public class PolicyInsuredPersonBeneficiaries implements Serializable {
 		this.phone = insuredPersonBeneficiaries.getPhone();
 	}
 
-	public PolicyInsuredPersonBeneficiaries(BeneficiariesInfoDTO dto) {
-		// this.id = beneficiariesInfoDTO.getTempId();
-		this.beneficiaryNo = dto.getBeneficiaryNo();
-		this.dateOfBirth = dto.getDateOfBirth();
-		this.age = dto.getAge();
-		this.percentage = dto.getPercentage();
-		this.initialId = dto.getInitialId();
-		this.idNo = dto.getFullIdNo();		
-		this.gender = dto.getGender();
-		this.idType = dto.getIdType();
-		this.idNoMM = dto.getFullIdNoMM();
-		this.residentAddress = dto.getResidentAddress();
-		this.name = dto.getName();
-		this.relationship = dto.getRelationship();
-		this.email = dto.getEmail();
-		// this.version = beneficiariesInfoDTO.getVersion();
-		this.phone = dto.getPhone();
-		if (dto.isExistEntity()) {
-			this.id = dto.getTempId();
-			this.version = dto.getVersion();
-		}
-	}
 
 	public String getId() {
 		return id;

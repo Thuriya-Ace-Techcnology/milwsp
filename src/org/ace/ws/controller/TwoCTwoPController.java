@@ -1,6 +1,7 @@
 package org.ace.ws.controller;
 
 import java.io.UnsupportedEncodingException;
+
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
@@ -9,6 +10,8 @@ import javax.annotation.Resource;
 
 import org.ace.insurance.common.KeyFactorIDConfig;
 import org.ace.insurance.common.ProposalStatus;
+import org.ace.insurance.life.dao.entities.LifeProposal;
+import org.ace.insurance.life.lifeProposal.service.interfaces.ILifeProposalService;
 import org.ace.insurance.onlineBiller.OnlineBillerBuyer;
 import org.ace.insurance.onlineBiller.service.interfaces.IOnlineBillerProposalService;
 import org.ace.insurance.product.PaymentStatus;
@@ -37,20 +40,10 @@ public class TwoCTwoPController extends BaseController {
 
 	@Resource(name = "ProductTypeRecordsService")
 	private IProductTypeRecordsService productTypeRecordsService;
-	/*
-	 * @Resource(name = "MobileTravelProposalService") private
-	 * IMobileTravelProposalService mobileTravelProposalService;
-	 */
+	
+	@Resource(name = "LifeProposalService")
+	private ILifeProposalService lifeProposalService;
 
-	/*
-	 * @Resource(name = "ThirdPartyPremiumReceiptService") private
-	 * IThirdPartyPremiumReceiptSerivce thirdPartyPremiumReceiptSerivce;
-	 */
-
-	/*
-	 * @Resource(name = "MobileMedicalProposalService") private
-	 * IMobileMedicalProposalService mobileMedicalProposalService;
-	 */
 
 
 	@Resource(name = "OnlineBillerProposalService")
@@ -144,44 +137,22 @@ public class TwoCTwoPController extends BaseController {
 		} else {
 			twoC2PRecords.setCheckHashStatus("Fail");
 		}
-		twoC2pRecordsService.insert(twoC2PRecords);
-		/* ThirdPartyPremiumReceipt receipt = null; */
-		/* MobilePersonalAccidentProposal mobilePersonalAccidentProposal = null; */
-		/* MobileMedicalProposal mobileMedicalProposal = null; */
-		OnlineBillerBuyer onlineBuyer = null;
+		twoC2pRecordsService.insert(twoC2PRecords);		
+		LifeProposal lifeProposal = null;
+		if(order_id != null && !order_id.isEmpty()) {
+			lifeProposal = lifeProposalService.findLifeProposalByOrderId(order_id);	
+		}
+		OnlineBillerBuyer onlineBuyer = null;	
 		
 		ProductTypeRecords typeRecords = productTypeRecordsService.findByOrderId(order_id);
 		if (twoC2PRecords.getPayment_status().equals("000")) {
 			logger.info("Product Type : " + typeRecords.getProductType());
-			switch (typeRecords.getProductType()) {
-			/*
-			 * case "TPL Online": receipt =
-			 * thirdPartyPremiumReceiptSerivce.updateByPaymentStatus(order_id); if
-			 * (receipt.getPaymentStatus().equals(PaymentStatus.SUCCESS)) { Runnable tpRun =
-			 * () -> thirdPartyPremiumReceiptSerivce.postDataSyncProcess(order_id); new
-			 * Thread(tpRun).start(); } break;
-			 */
-			
-			/*
-			 * case "PA": mobilePersonalAccidentProposal =
-			 * mobilePersonalAccidentProposalService.updateByPaymentStatus(order_id); if
-			 * (mobilePersonalAccidentProposal.getProposalStatus().equals(ProposalStatus.
-			 * ISSUED)) { Runnable paRun = () -> { try {
-			 * mobilePersonalAccidentProposalService.postDataSyncProcess(order_id); } catch
-			 * (UnsupportedEncodingException e1) { e1.printStackTrace(); } }; new
-			 * Thread(paRun).start(); } break;
-			 */
-			/*
-			 * case "Medical": mobileMedicalProposal =
-			 * mobileMedicalProposalService.updateByPaymentStatus(order_id); if
-			 * (mobileMedicalProposal.getProposalStatus().equals(ProposalStatus.ISSUED)) {
-			 * Runnable meRun = () -> { try {
-			 * mobileMedicalProposalService.postDataSyncProcess(order_id); } catch
-			 * (UnsupportedEncodingException e) { e.printStackTrace(); } }; new
-			 * Thread(meRun).start(); } break;
-			 */
-			
-			
+			switch (typeRecords.getProductType()) {		
+				case "SEAMEN LIFE INSURANCE(Online)":
+					if(lifeProposal != null) {
+						lifeProposalService.paymentLifeProposal(lifeProposal);
+					}
+						
 			default:
 				logger.info("Start update Online Biller Product");
 				onlineBuyer = onlineBillerProposalService.updateByPaymentStatus(order_id);

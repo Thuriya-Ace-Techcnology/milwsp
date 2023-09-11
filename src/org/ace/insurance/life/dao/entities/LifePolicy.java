@@ -30,7 +30,9 @@ import javax.persistence.TemporalType;
 import javax.persistence.Version;
 
 import org.ace.insurance.agent.Agent;
+import org.ace.insurance.agent.OutboundAssociationAgent;
 import org.ace.insurance.common.BankBranch;
+import org.ace.insurance.common.BuyerPlatForm;
 import org.ace.insurance.common.InsuranceType;
 import org.ace.insurance.common.Organization;
 import org.ace.insurance.common.ProposalStatus;
@@ -50,6 +52,7 @@ import org.ace.insurance.life.interfaces.ISorter;
 import org.ace.insurance.product.ProductGroup;
 import org.ace.insurance.system.common.branch.Branch;
 import org.ace.insurance.system.common.paymenttype.PaymentType;
+import org.ace.insurance.user.User;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
@@ -144,7 +147,9 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 	private Organization organization;
 
 	
-	private String approvedBy;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "APPROVERID", referencedColumnName = "ID")
+	private User approvedBy;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
@@ -161,6 +166,10 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "AGENTID", referencedColumnName = "ID")
 	private Agent agent;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "AUTHORIZEASSOCIATIONID", referencedColumnName = "ID")
+    private OutboundAssociationAgent associationAgent;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "SALEBANKID", referencedColumnName = "ID")
@@ -185,36 +194,29 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 	private int version;
 	@Enumerated(EnumType.STRING)
 	private PaymentChannel paymentChannel;
+	
+	private String orderId;
+	
+	private BuyerPlatForm buyerPlatForm;
 
 	public LifePolicy() {
 	}
 
-	public LifePolicy(LifeProposal lifeProposal) {
-		this.customer = lifeProposal.getCustomer();
-		this.organization = lifeProposal.getOrganization();
+	public LifePolicy(LifeProposal lifeProposal) {		
+		this.orderId = lifeProposal.getOrderId();
+		this.buyerPlatForm = lifeProposal.getBuyerPlatForm();
 		this.branch = lifeProposal.getBranch();
-		this.salesPoints = lifeProposal.getSalesPoints();
 		this.paymentType = lifeProposal.getPaymentType();
-		this.saleBank = lifeProposal.getSaleBank();
-		this.saleChannelType = lifeProposal.getSaleChannelType();
-		this.agent = lifeProposal.getAgent();
 		this.lifeProposal = lifeProposal;
 		this.periodMonth = lifeProposal.getPeriodMonth();
-		this.lastPaymentTerm = lifeProposal.getPaymentTerm();
 		this.isEndorsementApplied = false;
-		this.isNonFinancialEndorse = lifeProposal.isNonFinancialEndorse();
 		this.specialDiscount = lifeProposal.getSpecialDiscount();
 		this.currencyRate = lifeProposal.getCurrencyRate();
-		this.paymentChannel = lifeProposal.getPaymentChannel();
+		this.activedPolicyStartDate = lifeProposal.getStartDate();
+		this.activedPolicyEndDate = lifeProposal.getEndDate();
+		this.associationAgent = lifeProposal.getAssociationAgent();
 		for (ProposalInsuredPerson person : lifeProposal.getProposalInsuredPersonList()) {
 			addInsuredPerson(new PolicyInsuredPerson(person));
-		}
-
-		for (LifeProposalAttachment attach : lifeProposal.getAttachmentList()) {
-			addLifePolicyAttachment(new LifePolicyAttachment(attach));
-		}
-		for (Attachment medicalAttach : lifeProposal.getCustomerMedicalCheckUpAttachmentList()) {
-			addCustomerMedicalChkUpAttachment(new Attachment(medicalAttach));
 		}
 	}
 
@@ -239,7 +241,7 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 		this.policyStatus = history.getPolicyStatus();
 		this.customer = history.getCustomer();
 		this.organization = history.getOrganization();
-		this.approvedBy = "";
+		this.approvedBy = history.getApprovedBy();
 		this.branch = history.getBranch();
 		this.salesPoints = history.getSalesPoints();
 		this.paymentType = history.getPaymentType();
@@ -299,11 +301,13 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 		this.organization = organization;
 	}
 
-	public String getApprovedBy() {
+	
+
+	public User getApprovedBy() {
 		return approvedBy;
 	}
 
-	public void setApprovedBy(String approvedBy) {
+	public void setApprovedBy(User approvedBy) {
 		this.approvedBy = approvedBy;
 	}
 
@@ -1296,6 +1300,33 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 			buffer.append(Utils.formattedDate(cal.getTime(), "dd"));
 		return buffer.toString();
 	}
+
+	public OutboundAssociationAgent getAssociationAgent() {
+		return associationAgent;
+	}
+
+	public void setAssociationAgent(OutboundAssociationAgent associationAgent) {
+		this.associationAgent = associationAgent;
+	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public BuyerPlatForm getBuyerPlatForm() {
+		return buyerPlatForm;
+	}
+
+	public void setBuyerPlatForm(BuyerPlatForm buyerPlatForm) {
+		this.buyerPlatForm = buyerPlatForm;
+	}
+	
+	
+	
 	
 	
 	

@@ -15,4 +15,6 @@ import org.ace.insurance.system.common.branch.Branch;
 public interface IBranchService {
 
 	public List<Branch> findAllBranch();
+	
+	public Branch findBranchById(String brachId);
 }

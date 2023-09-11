@@ -39,6 +39,7 @@ import org.ace.insurance.life.enums.PolicyStatus;
 import org.ace.insurance.product.ProductGroup;
 import org.ace.insurance.system.common.branch.Branch;
 import org.ace.insurance.system.common.paymenttype.PaymentType;
+import org.ace.insurance.user.User;
 import org.ace.java.component.idgen.service.IDInterceptor;
 
 @Entity
@@ -118,7 +119,9 @@ public class LifePolicyHistory implements Serializable {
 	@JoinColumn(name = "ORGANIZATIONID", referencedColumnName = "ID")
 	private Organization organization;
 
-	private String approvedBy;
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "APPROVERID", referencedColumnName = "ID")
+	private User approvedBy;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "BRANCHID", referencedColumnName = "ID")
@@ -208,11 +211,13 @@ public class LifePolicyHistory implements Serializable {
 		this.organization = organization;
 	}
 
-	public String getApprovedBy() {
+    
+
+	public User getApprovedBy() {
 		return approvedBy;
 	}
 
-	public void setApprovedBy(String approvedBy) {
+	public void setApprovedBy(User approvedBy) {
 		this.approvedBy = approvedBy;
 	}
 

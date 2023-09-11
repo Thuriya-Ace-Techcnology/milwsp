@@ -16,6 +16,7 @@
 		<class>org.ace.insurance.common.Industry</class>
 		<class>org.ace.insurance.common.Bank</class>
 		<class>org.ace.insurance.agent.Agent</class>
+		<class>org.ace.insurance.agent.OutboundAssociationAgent</class>		
 		<class>org.ace.insurance.common.Organization</class>
 		<class>org.ace.insurance.common.ContentInfo</class>
 		<class>org.ace.insurance.common.Religion</class>

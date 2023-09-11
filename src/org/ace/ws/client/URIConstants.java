@@ -141,4 +141,8 @@ public interface URIConstants {
 	public static final String THIRDPARTY_DRIVER_CALLER = "/driver/buyThirdPartyDriver";
 	public static final String GET_THIRD_PARTY_DRIVER_CALLER = "/driver/getThirdPartyDriver";
 	public static final String GET_THIRD_PARTY_DRIVER_RECEIPT_CALLER = "/driver/getThirdPartyDriverReceipt";
+	
+	/** Seaman Product**/
+	
+	public static final String ADD_SEAMAN_PROPOSAL  ="/addSeamanProposal";
 }

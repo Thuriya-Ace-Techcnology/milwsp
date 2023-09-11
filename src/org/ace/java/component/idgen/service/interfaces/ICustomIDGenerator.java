@@ -27,6 +27,8 @@ public interface ICustomIDGenerator {
 	public String getNextIdForAutoRenewal(String key);
 
 	public String getPrefixForAutoRenewal(Class cla);
+	
+	public String getCustomNextId(String key, String productId) throws CustomIDGeneratorException;
 
 	public String getNextIdWithBranchCode(String key, String productCode, Branch branch) throws CustomIDGeneratorException;
 }

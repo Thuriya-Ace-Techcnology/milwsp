@@ -50,5 +50,23 @@ public class BranchDAO extends BasicDAO implements IBranchDAO {
 		}
 		return result;
 	}
+	
+
+	@Transactional(propagation = Propagation.REQUIRED)
+	public Branch findById(String id) throws DAOException {
+		Branch result = null;
+		try {
+			Query q = em.createNamedQuery("Branch.findById");
+			q.setParameter("id", id);
+			result = (Branch) q.getSingleResult();
+			em.flush();
+		} catch (PersistenceException pe) {
+			throw translate("Failed to find Branch", pe);
+		}
+		return result;
+	}
+
+	
+	
 
 }

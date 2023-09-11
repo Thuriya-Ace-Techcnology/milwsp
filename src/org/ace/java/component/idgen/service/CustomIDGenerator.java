@@ -7,6 +7,7 @@ import java.util.Properties;
 
 import javax.annotation.Resource;
 
+import org.ace.insurance.common.SystemConstants;
 import org.ace.insurance.system.common.branch.Branch;
 import org.ace.java.component.idgen.IDGen;
 import org.ace.java.component.idgen.exception.CustomIDGeneratorException;
@@ -20,7 +21,7 @@ import org.springframework.stereotype.Service;
 
 @Service("CustomIDGenerator")
 public class CustomIDGenerator implements ICustomIDGenerator {
-	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyMM");
+	private static SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-yyyy");
 	private static SimpleDateFormat simpleDateFormat2 = new SimpleDateFormat("yy");
 	
 	@Resource(name = "ID_CONFIG")
@@ -127,15 +128,14 @@ public class CustomIDGenerator implements ICustomIDGenerator {
 		int maxLength = idGen.getLength();
 		String branchCode = null;
 		if (idConfigLoader.isCentralizedSystem()) {
-			// branchCode =
-			// userProcessService.getLoginUser().getBranch().getBranchCode();
+			//branchCode = userProcessService.getLoginUser().getBranch().getPreFix();
 		} else {
 			branchCode = idConfigLoader.getBranchCode();
 		}
 		int idLength = id.length();
 		for (; (maxLength - idLength) > 0; idLength++) {
 			id = '0' + id;
-		}
+		} 
 		if (suffix == null) {
 			suffix = "";
 		}
@@ -143,23 +143,8 @@ public class CustomIDGenerator implements ICustomIDGenerator {
 			productCode = "";
 		}
 		// TODO need to validate isDateBased
-		if(prefix.equals("TI") && productCode.equals("T")) {
-			String branch = "";
-			switch(branchCode) {
-				case "001" :
-					branch = "YGN";
-					break;
-				default :
-					 branch = "YGN";
-			}
-			id = prefix+"/"+id+"/"+branch+"/"+getYearMonthDateString();
-		}else if(prefix.equals("ITA")) {
-			id = prefix + "/" + getDateString() + "/" + id ;
-		}
-		else {
-			id = prefix + productCode + "/" + getDateString() + "/" + id + "/" + branchCode + suffix;
-		}
-		
+		id = SystemConstants.MI + "-" + branchCode + "/" + prefix + "/" + id + "/" + getDateString() + suffix;
+
 		return id;
 	}
 
@@ -304,4 +289,39 @@ public class CustomIDGenerator implements ICustomIDGenerator {
 		}
 		return id;
 	}
+	
+	public String getCustomNextId(String key, String productId) throws CustomIDGeneratorException {
+		String id = null;
+		try {
+			String genName = (String) properties.getProperty(key);
+			id = formatCustomNo(idGenDAO.getCustomNextNo(genName, productId));			
+		} catch (DAOException e) {
+			throw new CustomIDGeneratorException(e.getErrorCode(), "Failed to generate a ID", e);
+		}
+		return id;
+	}
+	
+	private String formatCustomNo(IDGen idGen) {
+		String id = idGen.getMaxValue() + "";
+		String prefix = idGen.getPrefix();
+		String suffix = idGen.getSuffix();
+		int maxLength = idGen.getLength();
+		int idLength = id.length();
+		for (; (maxLength - idLength) > 0; idLength++) {
+			id = '0' + id;
+		}
+		if (suffix == null) {
+			suffix = "";
+		}
+
+		// TODO need to validate isDateBased
+		//MI-B1/PL/000000/2-2022
+		//id = SystemConstants.MI + "-" + branchCode + "/" + prefix + "/" + id + "/" + getDateString() + suffix;
+		id = prefix + id + "/" + getDateString() + suffix;
+		return id;
+	}
+	
+
+	
+	
 }

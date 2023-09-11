@@ -22,6 +22,7 @@ public class KeyFactorChecker {
 	private static String RISKYOCCUPATION = "RISKYOCCUPATION";
 	private static String PAID_TERM = "PAIDTERM";
 	private static String AGE_FROM_TO = "AGE_FROM_TO";
+	private static String PLAN = "PLAN";
 
 	private static String POLICY_PERIOD = "POLICY_PERIOD";
 	private static String PAYMENT_YEAR = "PAYMENT_YEAR";
@@ -36,6 +37,7 @@ public class KeyFactorChecker {
 	private static String SHORT_TERM_ENDOWMNENT = "SHORT_TERM_ENDOWMNENT";
 	private static String GOVERNMENT_SHORT_TERM_ENDOWMNENT = "GOVERNMENT_SHORT_TERM_ENDOWMNENT";
 	private static String SEAMEN_LIFE = "SEAMEN_LIFE";
+	private static String SEAMAN_ONLINE = "SEAMAN_ONLINE";
 	private static String SHOREJOB_LIFE = "SHOREJOB_LIFE";
 	private static String PERSONAL_ACCIDENT_KYT = "PERSONAL_ACCIDENT_KYT";
 	private static String PERSONAL_ACCIDENT_USD = "PERSONAL_ACCIDENT_USD";
@@ -76,6 +78,14 @@ public class KeyFactorChecker {
 
 	public static boolean isSumInsured(KeyFactor kf) {
 		if (kf.getId().trim().equals(idConfig.getProperty(SUM_INSURED).trim())) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public static boolean isPlan(KeyFactor kf) {
+		if (kf.getId().trim().equals(idConfig.getProperty(PLAN).trim())) {
 			return true;
 		}
 		return false;
@@ -168,6 +178,14 @@ public class KeyFactorChecker {
 
 	public static boolean isSeaMenLife(String productId) {
 		if (productId.trim().equals(idConfig.getProperty(SEAMEN_LIFE).trim())) {
+			return true;
+		}
+		return false;
+	}
+	
+	
+	public static boolean isSeamanOnline(String productId) {
+		if (productId.trim().equals(idConfig.getProperty(SEAMAN_ONLINE).trim())) {
 			return true;
 		}
 		return false;
@@ -452,6 +470,10 @@ public class KeyFactorChecker {
 		
 	public static List<String> getSurrenderProductId() {
 		return Arrays.asList(idConfig.getProperty(LIFE_SURRENDER_PRODUCT), idConfig.getProperty(SHORTTERM_SURRENDER_PRODUCT));
+	}
+	
+	public static String getSemanOnlineId() {
+		return idConfig.getProperty(SEAMAN_ONLINE);
 	}
 	
 	

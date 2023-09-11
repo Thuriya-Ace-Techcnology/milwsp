@@ -106,25 +106,15 @@ public class InsuredPersonBeneficiaries {
 		this.email = pinsuredPersonBeneficiaries.getEmail();
 	}
 
-	public InsuredPersonBeneficiaries(BeneficiariesInfoDTO dto) {
-		this.age = dto.getAge();
-		this.dateOfBirth = dto.getDateOfBirth();		
+	public InsuredPersonBeneficiaries(BeneficiariesInfoDTO dto) {	
 		this.percentage = dto.getPercentage();
-		this.beneficiaryNo = dto.getBeneficiaryNo();
-		this.initialId = dto.getInitialId();
 		this.idNo = dto.getFullIdNo();
-		this.idNoMM = dto.getFullIdNoMM();
 		this.gender = dto.getGender();
 		this.idType = dto.getIdType();
 		this.residentAddress = dto.getResidentAddress();
 		this.name = dto.getName();
-		this.relationship = dto.getRelationship();
-		this.phone = dto.getPhone();
-		this.email = dto.getEmail();
-		if (dto.isExistEntity()) {
-			this.id = dto.getTempId();
-			this.version = dto.getVersion();
-		}
+		this.relationship = dto.getRelationShip();
+
 	}
 
 	public InsuredPersonBeneficiaries(String beneficiaryNo, int age, float percentage, String initialId, String idNo, Gender gender, IdType idType, ResidentAddress residentAddress,

@@ -34,6 +34,7 @@ import javax.persistence.Version;
 import org.ace.insurance.common.Gender;
 import org.ace.insurance.common.IdType;
 import org.ace.insurance.common.Name;
+import org.ace.insurance.common.Plans;
 import org.ace.insurance.common.Qualification;
 import org.ace.insurance.common.ResidentAddress;
 import org.ace.insurance.common.TableName;
@@ -249,88 +250,33 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "OFFICE_ID")
 	private Office office;
+	
+	@Enumerated(value = EnumType.STRING
+			)
+	private Plans plans;
 
 	public PolicyInsuredPerson() {
 	}
 
 	public PolicyInsuredPerson(ProposalInsuredPerson insuredPerson) {
 		this.dateOfBirth = insuredPerson.getDateOfBirth();
-		this.clsOfHealth = insuredPerson.getClsOfHealth();
 		this.sumInsured = insuredPerson.getProposedSumInsured();
 		this.product = insuredPerson.getProduct();
 		this.premium = insuredPerson.getProposedPremium();
 		this.basicTermPremium = insuredPerson.getBasicTermPremium();
-		this.addOnTermPremium = insuredPerson.getAddOnTermPremium();
-		this.endorsementNetBasicPremium = insuredPerson.getEndorsementNetBasicPremium();
-		this.endorsementNetAddonPremium = insuredPerson.getEndorsementNetAddonPremium();
-		this.interest = insuredPerson.getInterest();
-		this.weight = insuredPerson.getWeight();
-		this.height = insuredPerson.getHeight();
-		this.premiumRate = insuredPerson.getPremiumRate();
-		this.insPersonCodeNo = insuredPerson.getInsPersonCodeNo();
-		this.endorsementStatus = insuredPerson.getEndorsementStatus();
-		this.initialId = insuredPerson.getInitialId();
 		this.idNo = insuredPerson.getIdNo();
 		this.idType = insuredPerson.getIdType();
-		this.seamanNrc = insuredPerson.getSeamanNrc() == null ? "" : insuredPerson.getSeamanNrc();
 		this.name = insuredPerson.getName();
 		this.gender = insuredPerson.getGender();
 		this.residentAddress = insuredPerson.getResidentAddress();
-		this.occupation = insuredPerson.getOccupation();
 		this.fatherName = insuredPerson.getFatherName();
-		this.customer = insuredPerson.getCustomer();
-		this.age = insuredPerson.getAge();
-		this.inPersonGroupCodeNo = insuredPerson.getInPersonGroupCodeNo();
-		this.typesOfSport = insuredPerson.getTypesOfSport();
-		this.unit = insuredPerson.getUnit();
-		this.relationship = insuredPerson.getRelationship();
-		this.riskyOccupation = insuredPerson.getRiskyOccupation();
-		this.phone = insuredPerson.getPhone();
-		this.relationship = insuredPerson.getRelationship();
-		this.parentName = insuredPerson.getParentName();
-		this.parentDOB = insuredPerson.getParentDOB();
-		this.parentIdType = insuredPerson.getParentIdType();
-		this.parentIdNo = insuredPerson.getParentIdNo();
-		this.parentIdNoMM = insuredPerson.getParentIdNoMM();
-		this.school = insuredPerson.getSchool();
-		this.gradeInfo = insuredPerson.getGradeInfo();
-		
-		this.birthAddress= insuredPerson.getBirthAddress();
-		this.personalId = insuredPerson.getPersonalId();
-		this.email = insuredPerson.getEmail();
-		this.salary = insuredPerson.getSalary();
-		this.visibleIdentification = insuredPerson.getVisibleIdentification();
-		this.sumInsuredType = insuredPerson.getSumInsuredType();
-
-		this.labourCardNo = insuredPerson.getLabourCardNo();
-		this.identificationCardNo = insuredPerson.getIdentificationCardNo();
-		this.issueOfLabourDate = insuredPerson.getIssueOfLabourDate();
-		this.qualification = insuredPerson.getQualification();
-		this.factoryAddress = insuredPerson.getFactoryAddress();
-		this.issueDateOfIdCard = insuredPerson.getIssueDateOfIdCard();
-		this.placeOfPassport = insuredPerson.getPlaceOfPassport();
-		this.country = insuredPerson.getCountry();
-		this.currency = insuredPerson.getCurrency();
+		this.age = insuredPerson.getAge();		
 		this.passportNo = insuredPerson.getPassportNo();
-		this.issueDateOfPassport = insuredPerson.getIssueDateOfPassport();
 		this.cdcNo=insuredPerson.getCdcNo();
 		this.position=insuredPerson.getPosition();
 		this.oceanlinerName=insuredPerson.getOceanlinerName();
 		this.vesselName=insuredPerson.getVesselName();
-		this.seamanNrc=insuredPerson.getSeamanNrc();
-		this.armyOfficer=insuredPerson.isArmyOfficer();
-		this.office = insuredPerson.getOffice();
-		this.idNoMM = insuredPerson.getIdNoMM();
-		
-		for (Attachment attachment : insuredPerson.getBirthCertificateAttachment()) {
-			addBirthCertificateAttachment(new Attachment(attachment));
-		}
-		for (InsuredPersonAttachment attachment : insuredPerson.getAttachmentList()) {
-			addAttachment(new PolicyInsuredPersonAttachment(attachment));
-		}
-		for (InsuredPersonAddon addOn : insuredPerson.getInsuredPersonAddOnList()) {
-			addInsuredPersonAddOn(new PolicyInsuredPersonAddon(addOn));
-		}
+		this.plans = insuredPerson.getPlans();
 		for (InsuredPersonKeyFactorValue keyFactorValue : insuredPerson.getKeyFactorValueList()) {
 			addPolicyInsuredPersonKeyFactorValue(new PolicyInsuredPersonKeyFactorValue(keyFactorValue));
 		}
@@ -408,93 +354,6 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 
 	}
 
-	public PolicyInsuredPerson(InsuredPersonInfoDTO dto) {
-		this.age = dto.getAge();
-		this.sumInsured = dto.getSumInsuredInfo();
-		this.premium = dto.getPremium();
-		this.basicTermPremium = dto.getBasicTermPremium();
-		this.addOnTermPremium = dto.getAddOnTermPremium();
-		this.endorsementNetBasicPremium = dto.getEndorsementBasicPremium();
-		this.endorsementNetAddonPremium = dto.getEndorsementAddonPremium();
-		this.interest = dto.getInterest();
-		this.insPersonCodeNo = dto.getInsPersonCodeNo();
-		this.inPersonGroupCodeNo = dto.getInPersonGroupCodeNo();
-		this.initialId = dto.getInitialId();
-		this.idNo = dto.getFullIdNo();
-		this.seamanNrc =dto.getSeamanFullIdNo();
-		this.fatherName = dto.getFatherName();
-		this.dateOfBirth = dto.getDateOfBirth();
-		this.gender = dto.getGender();
-		this.idType = dto.getIdType();
-		this.endorsementStatus = dto.getEndorsementStatus();
-		this.claimStatus = dto.getClaimStatus();
-		this.clsOfHealth = dto.getClassificationOfHealth();
-		this.residentAddress = dto.getResidentAddress();
-		this.name = dto.getName();
-		this.product = dto.getProduct();
-		this.occupation = dto.getOccupation();
-		this.customer = dto.getCustomer();
-		this.typesOfSport = dto.getTypesOfSport();
-		this.relationship = dto.getRelationship();
-		this.riskyOccupation = dto.getRiskyOccupation();
-		this.relationship = dto.getRelationship();
-		this.parentName = dto.getParentName();
-		this.parentDOB = dto.getParentDOB();
-		this.parentIdType = dto.getParentIdType();
-		this.parentIdNo = dto.getParentIdNo();
-		this.school = dto.getSchool();
-		this.gradeInfo = dto.getGradeInfo();
-		this.phone = dto.getPhone();
-		this.birthAddress= dto.getBirthAddress();
-		this.personalId = dto.getPersonalId();
-		this.email = dto.getEmail();
-		this.salary = dto.getSalary();
-		this.visibleIdentification = dto.getVisibleIdentification();
-		this.sumInsuredType = dto.getSumInsuredType();
-		
-		this.labourCardNo = dto.getLabourCardNo();
-		this.identificationCardNo = dto.getIdentificationCardNo();
-		this.issueOfLabourDate = dto.getIssueOfLabourDate();
-		this.qualification = dto.getQualification();
-		this.factoryAddress = dto.getFactoryAddress();
-		this.issueDateOfIdCard = dto.getIssueDateOfIdCard();
-		this.placeOfPassport = dto.getPlaceOfPassport();
-		this.country = dto.getCountry();
-		this.currency = dto.getCurrency();
-		this.passportNo = dto.getPassportNo();
-		this.issueDateOfPassport = dto.getIssueDateOfPassport();
-		this.cdcNo=dto.getCdcNo();
-		this.position=dto.getPosition();
-		this.unit=dto.getUnit();
-		this.isEdit=dto.isEdit();
-		this.isReplace=dto.isReplace();
-		this.oceanlinerName=dto.getOceanlinerName();
-		this.vesselName=dto.getVesselName();
-		this.armyOfficer=dto.isArmyOfficer();
-		this.idNoMM=dto.getFullIdNoMM();
-		this.office = dto.getOffice();
-		this.groupCount = dto.getInsuredId();
-		
-		for (Attachment attachment : dto.getBirthCertificateAttachments()) {
-			addBirthCertificateAttachment(new Attachment(attachment));
-		}
-		for (PolicyInsuredPersonAttachment attach : dto.getPrePolicyAttachmentList()) {
-			addAttachment(attach);
-		}
-		for (PolicyInsuredPersonKeyFactorValue kfv : dto.getPolicyKeyFactorValueList()) {
-			addPolicyInsuredPersonKeyFactorValue(kfv);
-		}
-		for (BeneficiariesInfoDTO beneficiary : dto.getBeneficiariesInfoDTOList()) {
-			addInsuredPersonBeneficiaries(new PolicyInsuredPersonBeneficiaries(beneficiary));
-		}
-		for (InsuredPersonAddOnDTO addOn : dto.getInsuredPersonAddOnDTOMap().values()) {
-			addInsuredPersonAddOn(new PolicyInsuredPersonAddon(addOn));
-		}
-		if (dto.isExistsEntity()) {
-			this.id = dto.getTempId();
-			this.version = dto.getVersion();
-		}
-	}
 
 	public PolicyInsuredPerson(Date dateOfBirth, double sumInsured, Product product, LifePolicy lifePolicy, int periodMonth, Date startDate, Date endDate, double premium,
 			double endorsementNetBasicPremium, double endorsementNetAddonPremium, double interest, String insPersonCodeNo, EndorsementStatus endorsementStatus,
@@ -1661,6 +1520,16 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 		this.groupCount = groupCount;
 		
 	}
+
+	public Plans getPlans() {
+		return plans;
+	}
+
+	public void setPlans(Plans plans) {
+		this.plans = plans;
+	}
+	
+	
 
 	
 	

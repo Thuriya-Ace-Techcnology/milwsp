@@ -127,4 +127,28 @@ public class IDGenDAO extends BasicDAO implements IDGenDAOInf {
 		}
 		return idGen;
 	}
+	
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public IDGen getCustomNextNo(String generateItem, String productId) {
+		IDGen idGen = null;
+		StringBuffer queryBffer = new StringBuffer();
+		queryBffer.append("SELECT g FROM IDGen g WHERE g.generateItem = :generateItem ");
+		if (productId != null) {
+			queryBffer.append("AND :product MEMBER OF g.productList ");
+		}
+		Query selectQuery = em.createQuery(queryBffer.toString());
+		selectQuery.setLockMode(LockModeType.PESSIMISTIC_WRITE);
+		selectQuery.setHint("javax.persistence.lock.timeout", 30000);
+		selectQuery.setParameter("generateItem", generateItem);
+		if (productId != null) {
+			selectQuery.setParameter("product", productId);
+		}
+		idGen = (IDGen) selectQuery.getSingleResult();
+		idGen.setMaxValue(idGen.getMaxValue() + 1);
+		idGen = em.merge(idGen);
+		em.flush();
+		return idGen;
+	}
+
 }

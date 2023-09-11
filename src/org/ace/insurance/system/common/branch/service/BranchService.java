@@ -38,5 +38,17 @@ public class BranchService extends BaseService implements IBranchService {
 		}
 		return result;
 	}
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = false)
+	public Branch findBranchById(String branchId) {
+		Branch result = null;
+		try {
+			result = branchDAO.findById(branchId);
+		}catch(DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Faield to find Branch)", e);
+		}
+		
+		return result;
+	}
 
 }

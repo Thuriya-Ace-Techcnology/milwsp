@@ -14,4 +14,6 @@ public interface IDGenDAOInf {
 	public IDGen updateIDGen(IDGen idGen) throws DAOException;
 
 	public IDGen getIDGenForAutoRenewal(String genName) throws DAOException;
+	
+	public IDGen getCustomNextNo(String generateItem, String productId) throws DAOException;
 }

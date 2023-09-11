@@ -20,4 +20,9 @@
 	<class prefix="ISOBP001" name="org.ace.insurance.onlineBiller.OnlineBillerBuyer"/>
 	
 	<class prefix="SFTH001" name="org.ace.insurance.specailForeignTravel.SpecialForeignTravelHistory"></class>
+	
+	<class prefix="ISLIF001" name="org.ace.insurance.life.dao.entities.LifeProposal"/>
+	<class prefix="ISLIF004" name="org.ace.insurance.life.dao.entities.InsuredPersonBeneficiaries"/>
+	<class prefix="ISLIF005" name="org.ace.insurance.life.dao.entities.InsuredPersonKeyFactorValue"/>
+	<class prefix="ISLIF008" name="org.ace.insurance.life.dao.entities.ProposalInsuredPerson"/>
 </id-config>

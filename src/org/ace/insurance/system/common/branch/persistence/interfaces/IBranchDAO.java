@@ -16,6 +16,9 @@ import org.ace.java.component.persistence.exception.DAOException;
 public interface IBranchDAO {
 
 	public Branch findByCode(String code) throws DAOException;
+	
+	public Branch findById(String id) throws DAOException;
+
 
 	public List<Branch> findAll() throws DAOException;
 }

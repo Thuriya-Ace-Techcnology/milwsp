@@ -10,7 +10,9 @@ import java.util.Map;
 import javax.persistence.*;
 
 import org.ace.insurance.agent.Agent;
+import org.ace.insurance.agent.OutboundAssociationAgent;
 import org.ace.insurance.common.BankBranch;
+import org.ace.insurance.common.BuyerPlatForm;
 import org.ace.insurance.common.Organization;
 import org.ace.insurance.common.ProposalStatus;
 import org.ace.insurance.common.ProposalType;
@@ -19,6 +21,8 @@ import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
 import org.ace.insurance.common.Utils;
 import org.ace.insurance.life.KeyFactorChecker;
+import org.ace.insurance.life.dto.InsuredPersonInfoDTO;
+import org.ace.insurance.life.dto.LifeProposalDTO;
 import org.ace.insurance.life.enums.ClassificationOfHealth;
 import org.ace.insurance.life.enums.EndorsementStatus;
 import org.ace.insurance.life.enums.PaymentChannel;
@@ -34,6 +38,7 @@ import org.ace.java.component.idgen.service.IDInterceptor;
 @Table(name = TableName.LIFEPROPOSAL)
 @TableGenerator(name = "LIFEPROPOSAL_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "LIFEPROPOSAL_GEN", allocationSize = 10)
 @NamedQueries(value = { @NamedQuery(name = "LifeProposal.findAll", query = "SELECT m FROM LifeProposal m "),
+		@NamedQuery(name = "LifeProposal.findByOrderId", query = "SELECT m FROM LifeProposal m WHERE m.orderId = :orderId"),  
 		@NamedQuery(name = "LifeProposal.findByDate", query = "SELECT m FROM LifeProposal m WHERE m.submittedDate BETWEEN :startDate AND :endDate"),
 		@NamedQuery(name = "LifeProposal.updateCompleteStatus", query = "UPDATE LifeProposal m SET m.complete = :complete WHERE m.id = :id") })
 @EntityListeners(IDInterceptor.class)
@@ -119,6 +124,10 @@ public class LifeProposal implements Serializable, IDataModel, IProposal {
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "SALEBANKID", referencedColumnName = "ID")
 	private BankBranch saleBank;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "AUTHORIZEASSOCIATIONID", referencedColumnName = "ID")
+	private OutboundAssociationAgent associationAgent;
 
 	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "LIFEPOLICYID", referencedColumnName = "ID")
@@ -145,6 +154,22 @@ public class LifeProposal implements Serializable, IDataModel, IProposal {
 	private UserRecorder recorder;
 	@Version
 	private int version;
+	
+	private String orderId;
+	
+	public String getOrderId() {
+		return orderId;
+	}
+
+
+
+	public void setBuyerPlatForm(BuyerPlatForm buyerPlatForm) {
+		this.buyerPlatForm = buyerPlatForm;
+	}
+
+	@Enumerated(EnumType.STRING)
+	private BuyerPlatForm buyerPlatForm;
+
 
 	public LifeProposal() {
 	}
@@ -175,6 +200,25 @@ public class LifeProposal implements Serializable, IDataModel, IProposal {
 			addAttachment(new LifeProposalAttachment(attachment));
 		}
 	}
+	
+	public LifeProposal(LifeProposalDTO proposalDTO) {
+		this.submittedDate = new Date (proposalDTO.getSubmittedDate());
+		this.startDate = new Date( proposalDTO.getStartDate());
+		this.endDate = new Date( proposalDTO.getEndDate());
+		this.associationAgent = proposalDTO.getAuthorizeAssociation();				
+		this.orderId = proposalDTO.getOrderId();
+		this.buyerPlatForm = proposalDTO.getBuyerPlatForm();
+		this.paymentType = proposalDTO.getPaymentType();
+		this.branch = proposalDTO.getBranch();		
+		this.associationAgent = proposalDTO.getAuthorizeAssociation();
+		for(InsuredPersonInfoDTO personInfoDTO : proposalDTO.getProposalInsuredPersonDTOList()) {
+			addInsuredPerson(new ProposalInsuredPerson(personInfoDTO));
+		}	
+		
+	}
+	
+	
+	
 
 	public String getId() {
 		return id;
@@ -1089,6 +1133,28 @@ public class LifeProposal implements Serializable, IDataModel, IProposal {
 	public void setAgentCommission(boolean isAgentCommission) {
 		this.isAgentCommission = isAgentCommission;
 	}
+	
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
+	public BuyerPlatForm getBuyerPlatForm() {
+		return buyerPlatForm;
+	}
+
+
+
+	public OutboundAssociationAgent getAssociationAgent() {
+		return associationAgent;
+	}
+
+
+
+	public void setAssociationAgent(OutboundAssociationAgent associationAgent) {
+		this.associationAgent = associationAgent;
+	}
+	
+	
 	
 	
 	
