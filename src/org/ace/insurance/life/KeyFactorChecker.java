@@ -85,7 +85,7 @@ public class KeyFactorChecker {
 	
 	
 	public static boolean isPlan(KeyFactor kf) {
-		if (kf.getId().trim().equals(idConfig.getProperty(PLAN).trim())) {
+ 		if (kf.getId().trim().equals(idConfig.getProperty(PLAN).trim())) {
 			return true;
 		}
 		return false;

@@ -28,18 +28,15 @@ public class LifePolicyService implements ILifePolicyService {
 	@Resource(name="CustomIDGenerator")	
 	private ICustomIDGenerator customIDGenerator;
 
-	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void addNewLifePolicy(LifePolicy lifePolicy) throws SystemException {
-		// TODO Auto-generated method stub
+		try {
+			lifePolicyDAO.insert(lifePolicy);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to add a new LifePolicy", e);
+		}
 		
 	}
-
-	@Override
-	public LifePolicy findPolicyByProposalId(String lifeProposaId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
 	
 	@Transactional(propagation = Propagation.REQUIRED)
 	public LifePolicy activateLifePolicy(LifeProposal lifeProposal) {

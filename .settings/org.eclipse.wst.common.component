@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="milwsp">
+                
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/resources"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/aop"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes/document-template" source-path="/document-template"/>
+                
+        <property name="java-output-path" value="/milwsp/build/classes"/>
+        <property name="context-root" value="milwsp"/>
+            
+    </wb-module>
+    
+</project-modules>

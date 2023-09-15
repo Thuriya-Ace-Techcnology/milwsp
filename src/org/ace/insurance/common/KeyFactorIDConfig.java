@@ -135,6 +135,12 @@ public class KeyFactorIDConfig {
 	private static String MOTOR_CYCLE_USD = "MOTOR_CYCLE_USD";
 	private static String PRIVATE_CAR_USD = "PRIVATE_CAR_USD";
 	private static String GOOD_CARRYING = "GOOD_CARRYING";
+	
+	private static String TRCREDIT = "TRCREDIT";
+	private static String TRDEBIT = "TRDEBIT";
+	private static String CSCREDIT = "CSCREDIT";
+	private static String CSDEBIT = "CSDEBIT";
+	
 
 	private static Properties idConfig;
 
@@ -682,5 +688,26 @@ public class KeyFactorIDConfig {
 		}
 		return false;
 	}
+	
+	
+	public static String getTRCredit() {
+		return idConfig.getProperty(TRCREDIT);
+	}
+	
+	
+	public static String getTRDebit() {
+		return idConfig.getProperty(TRDEBIT);
+	}
+	
+	public static String getCSCredit() {
+		return idConfig.getProperty(CSCREDIT);
+	}
+
+	public static String getCSDebit() {
+		return idConfig.getProperty(CSDEBIT);
+	}
+
+	
+
 
 }

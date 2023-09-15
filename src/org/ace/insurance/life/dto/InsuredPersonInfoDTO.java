@@ -2,53 +2,33 @@ package org.ace.insurance.life.dto;
 
 import java.util.*;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
-import org.ace.insurance.common.AbstractMynNumConvertor;
 import org.ace.insurance.common.Gender;
 import org.ace.insurance.common.IdType;
 import org.ace.insurance.common.Name;
-import org.ace.insurance.common.Plans;
-import org.ace.insurance.common.Qualification;
 import org.ace.insurance.common.ResidentAddress;
-import org.ace.insurance.life.KeyFactorChecker;
-import org.ace.insurance.life.dao.entities.Attachment;
-import org.ace.insurance.life.dao.entities.Customer;
-import org.ace.insurance.life.dao.entities.GradeInfo;
-import org.ace.insurance.life.dao.entities.InsuredPersonAddon;
-import org.ace.insurance.life.dao.entities.InsuredPersonAttachment;
+import org.ace.insurance.common.plans.Plans;
+
 import org.ace.insurance.life.dao.entities.InsuredPersonBeneficiaries;
 import org.ace.insurance.life.dao.entities.InsuredPersonKeyFactorValue;
-import org.ace.insurance.life.dao.entities.InsuredPersonPolicyHistoryRecord;
-import org.ace.insurance.life.dao.entities.Office;
+
+
 import org.ace.insurance.life.dao.entities.PolicyInsuredPerson;
-import org.ace.insurance.life.dao.entities.PolicyInsuredPersonAddon;
-import org.ace.insurance.life.dao.entities.PolicyInsuredPersonAttachment;
+
 import org.ace.insurance.life.dao.entities.PolicyInsuredPersonBeneficiaries;
 import org.ace.insurance.life.dao.entities.PolicyInsuredPersonKeyFactorValue;
 import org.ace.insurance.life.dao.entities.ProposalInsuredPerson;
-import org.ace.insurance.life.dao.entities.RiskyOccupation;
-import org.ace.insurance.life.dao.entities.School;
-import org.ace.insurance.life.dao.entities.TypesOfSport;
-import org.ace.insurance.life.enums.ClaimStatus;
-import org.ace.insurance.life.enums.ClassificationOfHealth;
-import org.ace.insurance.life.enums.EndorsementStatus;
-import org.ace.insurance.life.enums.IdConditionTypeMM;
-import org.ace.insurance.life.enums.SumInsuredType;
-import org.ace.insurance.medical.surveyAnswer.SurveyQuestionAnswer;
+
 import org.ace.insurance.product.Product;
-import org.ace.insurance.system.common.country.Country;
-import org.ace.insurance.system.common.currency.Currency;
 import org.ace.insurance.system.common.keyfactor.KeyFactor;
-import org.ace.insurance.system.common.occupation.Occupation;
-import org.ace.insurance.system.common.relationship.RelationShip;
-import org.primefaces.model.TreeNode;
+
 
 public class InsuredPersonInfoDTO {
 	private String productId;
 	private Product product;
+	private String planId;
 	private Plans plans;
+	private String planType;
 	private double premium;
 	private double sumInsured;
 	private Name name;
@@ -73,7 +53,8 @@ public class InsuredPersonInfoDTO {
 
 	public InsuredPersonInfoDTO(ProposalInsuredPerson proposalInsuredPerson) {
 		this.productId = proposalInsuredPerson.getProduct().getId();
-		this.plans = proposalInsuredPerson.getPlans();
+		this.planId = proposalInsuredPerson.getPlans().getId();
+		this.planType = proposalInsuredPerson.getPlans().getPlanType();
 		this.premium = proposalInsuredPerson.getTermPremium();
 		this.sumInsured = proposalInsuredPerson.getApprovedSumInsured();
 		this.insuredName = proposalInsuredPerson.getName().getFirstName();		
@@ -141,21 +122,6 @@ public class InsuredPersonInfoDTO {
 		this.dateOfBirth = dateOfBirth;
 	}
 
-
-
-	public List<PolicyInsuredPersonBeneficiaries> getBeneficiariesInfoList(PolicyInsuredPerson policyInsuredPerson) {
-		List<PolicyInsuredPersonBeneficiaries> result = null;
-		if (beneficiariesInfoDTOList != null && !beneficiariesInfoDTOList.isEmpty()) {
-			result = new ArrayList<PolicyInsuredPersonBeneficiaries>();
-			for (BeneficiariesInfoDTO beneficiairesInfoDTO : beneficiariesInfoDTOList) {
-				PolicyInsuredPersonBeneficiaries insPesBenf = new PolicyInsuredPersonBeneficiaries(beneficiairesInfoDTO);
-				insPesBenf.setPolicyInsuredPerson(policyInsuredPerson);
-				result.add(insPesBenf);
-			}
-		}
-		return result;
-
-	}
 
 
 
@@ -356,14 +322,6 @@ public class InsuredPersonInfoDTO {
 	public void setProductId(String productId) {
 		this.productId = productId;
 	}
-	
-	public Plans getPlans() {
-		return plans;
-	}
-
-	public void setPlans(Plans plans) {
-		this.plans = plans;
-	}
 
 	public Product getProduct() {
 		return product;
@@ -409,5 +367,37 @@ public class InsuredPersonInfoDTO {
 	public void setSumInsured(double sumInsured) {
 		this.sumInsured = sumInsured;
 	}
+
+	public String getPlanId() {
+		return planId;
+	}
+
+	public void setPlanId(String planId) {
+		this.planId = planId;
+	}
+
+	public Plans getPlans() {
+		return plans;
+	}
+
+	public void setPlans(Plans plans) {
+		this.plans = plans;
+	}
+
+	public void setInsuredName(String insuredName) {
+		this.insuredName = insuredName;
+	}
+	
+	public String getPlanType() {
+		return planType;
+	}
+
+	public void setPlanType(String planType) {
+		this.planType = planType;
+	}
+	
+	
+	
+	
 
 }

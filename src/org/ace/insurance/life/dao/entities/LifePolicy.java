@@ -197,6 +197,7 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 	
 	private String orderId;
 	
+	@Enumerated(EnumType.STRING)
 	private BuyerPlatForm buyerPlatForm;
 
 	public LifePolicy() {
@@ -1323,6 +1324,10 @@ public class LifePolicy implements IPolicy, Serializable, ISorter {
 
 	public void setBuyerPlatForm(BuyerPlatForm buyerPlatForm) {
 		this.buyerPlatForm = buyerPlatForm;
+	}
+	
+	public String getInsuredPersonName() {	
+		return policyInsuredPersonList.get(0).getFullName();		
 	}
 	
 	

@@ -13,6 +13,7 @@ import org.ace.insurance.common.BuyerPlatForm;
 import org.ace.insurance.common.Name;
 import org.ace.insurance.common.OutboundAgentInfo;
 import org.ace.insurance.common.ResidentAddress;
+import org.ace.insurance.common.plans.services.interfaces.IPlansService;
 import org.ace.insurance.life.KeyFactorChecker;
 import org.ace.insurance.life.dao.entities.InsuredPersonBeneficiaries;
 import org.ace.insurance.life.dao.entities.InsuredPersonKeyFactorValue;
@@ -70,6 +71,9 @@ public class AddSeamanProposalController extends BaseController {
 	@Resource(name = "RelationShipService")
 	private IRelationShipService relationShipService;
 	
+	@Resource(name = "PlansService")
+	private IPlansService plansService;
+	
 	@Resource(name = "AssociationAgentService")
 	private  IAssociationAgentService associationAgentService;
 	
@@ -108,6 +112,8 @@ public class AddSeamanProposalController extends BaseController {
 			personInfoDTO.setDateOfBirth(concatLongDate(personInfoDTO.getDateOfBirth()));
 			personInfoDTO.setCdcNo(personInfoDTO.getCdcNo().trim());
 			personInfoDTO.setProduct(productService.findProductById(personInfoDTO.getProductId()));
+			personInfoDTO.setPlans(plansService.findById(personInfoDTO.getPlanId()));
+			personInfoDTO.setSumInsured(personInfoDTO.getPlans().getSI());
 			productName = personInfoDTO.getProduct().getName();
 			setKeyFactorValue(personInfoDTO);		
 			for(BeneficiariesInfoDTO beneficiariesInfoDTO : personInfoDTO.getBeneficiariesInfoDTOList()) {	
@@ -169,7 +175,7 @@ public class AddSeamanProposalController extends BaseController {
 		for (InsuredPersonKeyFactorValue vehKF : personInfoDTO.getKeyFactorValueList()) {
 			KeyFactor kf = vehKF.getKeyFactor();
 			if (KeyFactorChecker.isPlan(kf)) {
-				vehKF.setValue(personInfoDTO.getPlans() + "");
+				vehKF.setValue(personInfoDTO.getPlans().getPlanType() + "");
 			} else if (KeyFactorChecker.isAge(kf)) {
 				vehKF.setValue(personInfoDTO.getAge() + "");
 			}

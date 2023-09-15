@@ -155,6 +155,13 @@ public interface IPolicy {
 	public Customer getCustomer();
 
 	/**
+	 * Accessor to retrieve the name of insuredPerson to whom this policy belongs to.
+	 * 
+	 * @return the name of insuredPerson to whom this policy belongs to
+	 */
+	public String getInsuredPersonName();
+	
+	/**
 	 * Accessor to retrieve the name of customer to whom this policy belongs to.
 	 * 
 	 * @return the name of customer to whom this policy belongs to

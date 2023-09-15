@@ -24,7 +24,7 @@ public class Utils {
 	}
 
 	/**
-	 * Return value with two decimal point. Round mode.
+	 * Return value with twdecimal point. Round mode.
 	 * 
 	 * @param value
 	 * @return two decimal point value
@@ -133,5 +133,10 @@ public class Utils {
     public static String formattedDate(Date date) {
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
         return sdf.format(date);
+    }
+    
+    public static double nagate(double value) {
+        BigDecimal bigValue = new BigDecimal(value);
+        return bigValue.negate().doubleValue();
     }
 }

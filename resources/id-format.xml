@@ -21,8 +21,23 @@
 	
 	<class prefix="SFTH001" name="org.ace.insurance.specailForeignTravel.SpecialForeignTravelHistory"></class>
 	
+	
+	<!-- LifeProposal -->
 	<class prefix="ISLIF001" name="org.ace.insurance.life.dao.entities.LifeProposal"/>
 	<class prefix="ISLIF004" name="org.ace.insurance.life.dao.entities.InsuredPersonBeneficiaries"/>
 	<class prefix="ISLIF005" name="org.ace.insurance.life.dao.entities.InsuredPersonKeyFactorValue"/>
 	<class prefix="ISLIF008" name="org.ace.insurance.life.dao.entities.ProposalInsuredPerson"/>
+	
+	<!-- LifePolicy -->
+	<class prefix="ISLIF009" name="org.ace.insurance.life.dao.entities.LifePolicy"/>
+	<class prefix="ISLIF011" name="org.ace.insurance.life.dao.entities.PolicyInsuredPerson"/>
+	<class prefix="ISLIF014" name="org.ace.insurance.life.dao.entities.PolicyInsuredPersonBeneficiaries"/>
+	<class prefix="ISLIF015" name="org.ace.insurance.life.dao.entities.PolicyInsuredPersonKeyFactorValue"/>
+	<class prefix="ISLIF037" name="org.ace.insurance.life.dao.entities.LifePolicyTimeLineLog"/>
+	<class prefix="ISLIF039" name="org.ace.insurance.life.dao.entities.LifePolicyIdLog"/>
+	
+	<!--  Payment -->
+	<class prefix="ISPMT001" name="org.ace.insurance.life.dao.entities.Payment"/>
+	<class prefix="ISPMT002" name="org.ace.insurance.life.dao.entities.AgentCommission"/>
+	<class prefix="ISPMT003" name="org.ace.insurance.life.dao.entities.TLF"/>
 </id-config>

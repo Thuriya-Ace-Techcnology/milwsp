@@ -1,6 +1,7 @@
 package org.ace.insurance.life.dao.entities;
 
 import java.io.Serializable;
+
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -34,12 +35,12 @@ import javax.persistence.Version;
 import org.ace.insurance.common.Gender;
 import org.ace.insurance.common.IdType;
 import org.ace.insurance.common.Name;
-import org.ace.insurance.common.Plans;
 import org.ace.insurance.common.Qualification;
 import org.ace.insurance.common.ResidentAddress;
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
 import org.ace.insurance.common.Utils;
+import org.ace.insurance.common.plans.Plans;
 import org.ace.insurance.life.dto.BeneficiariesInfoDTO;
 import org.ace.insurance.life.dto.InsuredPersonAddOnDTO;
 import org.ace.insurance.life.dto.InsuredPersonInfoDTO;
@@ -175,6 +176,10 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 	
 	@Enumerated(value = EnumType.STRING)
 	private SumInsuredType sumInsuredType;
+	
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PLANSID", referencedColumnName = "ID")
+    private Plans plans; 
 
 	@Embedded
 	private Name name;
@@ -251,9 +256,6 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 	@JoinColumn(name = "OFFICE_ID")
 	private Office office;
 	
-	@Enumerated(value = EnumType.STRING
-			)
-	private Plans plans;
 
 	public PolicyInsuredPerson() {
 	}

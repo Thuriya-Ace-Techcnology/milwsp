@@ -9,6 +9,13 @@
 		<!-- Common -->
 		<class>org.ace.java.component.idgen.IDGen</class>
 		<class>org.ace.insurance.common.UserRecorder</class>
+		<class>org.ace.insurance.user.User</class>
+		<class>org.ace.accounting.system.chartaccount.BfRate</class>
+ 		<class>org.ace.accounting.system.chartaccount.BfSrcRate</class>
+		<class>org.ace.accounting.system.chartaccount.LymSrcRate</class>
+		<class>org.ace.accounting.system.chartaccount.MSrcRate</class>
+		<class>org.ace.accounting.system.chartaccount.MonthlyRate</class>
+		<class>org.ace.accounting.system.chartaccount.MrevRate</class>
 		
 		<class>org.ace.insurance.common.FamilyInfo</class>
 		<class>org.ace.insurance.common.Qualification</class>
@@ -25,6 +32,12 @@
 		<class>org.ace.insurance.common.PermanentAddress</class>
 		<class>org.ace.insurance.common.ResidentAddress</class>
 		<class>org.ace.insurance.common.CommonCreateAndUpateMarks</class>
+		<class>org.ace.insurance.common.Hospital</class>
+		<class>org.ace.insurance.common.COASetup</class>
+		<class>org.ace.insurance.common.Coa</class>
+		<class>org.ace.insurance.common.CCOA</class>
+		<class>org.ace.insurance.common.plans.Plans</class>
+		
 		
 		<class>org.ace.insurance.product.NcbRate</class>		
 		<class>org.ace.insurance.system.common.branch.Branch</class>
@@ -54,6 +67,15 @@
 		<class>org.ace.insurance.system.rta.TempRTA</class>
 		<class>org.ace.insurance.system.common.occupation.Occupation</class>
 		<class>org.ace.ws.model.onlineBiller.OnlineBiller</class>
+		<class>org.ace.insurance.role.Role</class>
+		<class>org.ace.insurance.user.Authority</class>
+		<class>org.ace.insurance.user.AuthorityPermission</class>
+		<class>org.ace.insurance.menu.MainMenuValue</class>
+		<class>org.ace.insurance.menu.MainMenu</class>
+		<class>org.ace.insurance.menu.SubMenu</class>
+		<class>org.ace.insurance.menu.SubMenuValue</class>
+		<class>org.ace.insurance.menu.MenuItemValue</class>
+		<class>org.ace.insurance.menu.MenuItem</class>
 
 		<class>org.ace.insurance.surveyquestion.SurveyQuestion</class>
 		<class>org.ace.insurance.surveyquestion.ProductProcessQuestionLink</class>
@@ -114,6 +136,13 @@
 		<class>org.ace.insurance.life.dao.entities.OfficeType</class>
 		<class>org.ace.insurance.life.dao.entities.PolicyInsuredPersonHistory</class>
 		<class>org.ace.insurance.life.dao.entities.Acquaintance</class>
+		<class>org.ace.insurance.life.dao.entities.TLF</class>
+		<class>org.ace.insurance.life.dao.entities.LifePolicyIdLog</class>
+		<class>org.ace.insurance.life.dao.entities.LifePolicyTimeLineLog</class>
+	
+		
+		<class>org.ace.insurance.life.dao.entities.AgentCommission</class>
+		<class>org.ace.insurance.life.claim.ClaimMedicalFees</class>
 		
 		<class>org.ace.ws.model.MobileCountry</class>
 		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>

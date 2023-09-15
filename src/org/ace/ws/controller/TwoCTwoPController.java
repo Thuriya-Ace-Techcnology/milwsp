@@ -1,7 +1,5 @@
 package org.ace.ws.controller;
 
-import java.io.UnsupportedEncodingException;
-
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 import java.security.SignatureException;
@@ -152,11 +150,11 @@ public class TwoCTwoPController extends BaseController {
 					if(lifeProposal != null) {
 						lifeProposalService.paymentLifeProposal(lifeProposal);
 					}
-						
-			default:
-				logger.info("Start update Online Biller Product");
-				onlineBuyer = onlineBillerProposalService.updateByPaymentStatus(order_id);
-				break;
+					break;
+				default:
+					logger.info("Start update Online Biller Product");
+					onlineBuyer = onlineBillerProposalService.updateByPaymentStatus(order_id);
+					break;
 			}
 		}
 	}

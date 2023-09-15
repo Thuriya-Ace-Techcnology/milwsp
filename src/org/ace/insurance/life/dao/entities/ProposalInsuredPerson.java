@@ -34,12 +34,12 @@ import javax.persistence.Version;
 import org.ace.insurance.common.Gender;
 import org.ace.insurance.common.IdType;
 import org.ace.insurance.common.Name;
-import org.ace.insurance.common.Plans;
 import org.ace.insurance.common.Qualification;
 import org.ace.insurance.common.ResidentAddress;
 import org.ace.insurance.common.TableName;
 import org.ace.insurance.common.UserRecorder;
 import org.ace.insurance.common.Utils;
+import org.ace.insurance.common.plans.Plans;
 import org.ace.insurance.life.dto.BeneficiariesInfoDTO;
 import org.ace.insurance.life.dto.InsuredPersonAddOnDTO;
 import org.ace.insurance.life.dto.InsuredPersonInfoDTO;
@@ -245,7 +245,9 @@ public class ProposalInsuredPerson {
 	@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "proposalInsuredPerson", orphanRemoval = true)
 	private Acquaintance acquaintance;
 
-
+	@OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "PLANSID", referencedColumnName = "ID")
+    private Plans plans; 
 	
 	
 	private String generatedPolicyNo;
@@ -258,10 +260,6 @@ public class ProposalInsuredPerson {
 	
 	private boolean armyOfficer;
 	
-	@Enumerated(value = EnumType.STRING)
-	private Plans plans;
-
-
 	public ProposalInsuredPerson() {
 
 	}
@@ -1555,16 +1553,19 @@ public class ProposalInsuredPerson {
 	public void setAcquaintance(Acquaintance acquaintance) {
 		this.acquaintance = acquaintance;
 	}
-	
-
 
 	public Plans getPlans() {
 		return plans;
 	}
 
-	public void setPlan(Plans plans) {
+	public void setPlans(Plans plans) {
 		this.plans = plans;
 	}
+	
+	
+	
+
+
 
 	
 

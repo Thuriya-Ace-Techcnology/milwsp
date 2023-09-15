@@ -153,4 +153,20 @@ public class TableName {
 	public static final String MENUITEMVALUE = "MENUITEMVALUE";
 	public static final String SUBMENU = "SUBMENU";
 	public static final String SUBMENUVALUE = "SUBMENUVALUE";
+	
+	public static final String AGENTCOMMISSION = "AGENTCOMMISSION";
+	public static final String CLAIMMEDICALFEES = "CLAIMMEDICALFEES";
+	public static final String HOSPITAL = "HOSPITAL";
+	public static final String TLF = "TLF";
+	
+	public static final String COASETUP = "COASETUP";
+	public static final String COA = "COA";
+	public static final String CCOA = "CCOA";
+	
+	
+	public static final String PLANS = "PLANS";
+	
+	/* Life Policy log */
+	public static final String LIFE_POLICY_TIMELINE_LOG = "LIFE_POLICY_TIMELINE_LOG ";
+	public static final String LIFE_POLICY_ID_LOG = "LIFE_POLICY_ID_LOG";
 }

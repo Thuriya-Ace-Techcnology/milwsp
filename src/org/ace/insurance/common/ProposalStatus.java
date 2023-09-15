@@ -2,6 +2,8 @@ package org.ace.insurance.common;
 
 public enum ProposalStatus {
 	PENDING("Pending"),
+	
+	UNDERWRITING("UNDERWRITING"),
 
 	PAYMENT_PENDING("PAYMENT_PENDING"),
 	

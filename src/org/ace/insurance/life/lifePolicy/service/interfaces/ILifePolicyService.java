@@ -8,8 +8,6 @@ public interface ILifePolicyService {
 	
 	public void addNewLifePolicy(LifePolicy lifePolicy) throws SystemException;
 	
-	public LifePolicy findPolicyByProposalId(String lifeProposaId);
-	
 	public LifePolicy activateLifePolicy(LifeProposal lifeProposal);
 
 }

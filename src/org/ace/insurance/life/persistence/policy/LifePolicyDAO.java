@@ -1,6 +1,7 @@
 package org.ace.insurance.life.persistence.policy;
 
 import javax.persistence.NoResultException;
+
 import javax.persistence.PersistenceException;
 import javax.persistence.Query;
 
@@ -15,9 +16,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Repository("LifePolicyDAO")
 public class LifePolicyDAO extends BasicDAO implements ILifePolicyDAO{
 
-	@Override
+	@Transactional(propagation = Propagation.REQUIRED)
 	public void insert(LifePolicy lifePolicy) throws DAOException {
-		// TODO Auto-generated method stub
+		try {
+			em.persist(lifePolicy);
+			em.flush();
+		} catch (PersistenceException pe) {
+			throw translate("failed to insert LifePolicy", pe);
+		}
 		
 	}
 	
