@@ -39,6 +39,7 @@ public interface URIConstants {
 	public static final String GET_TOWNSHIP_LIST_BY_ID = "/getTownshipListByProvinence";
 	public static final String GET_DISTRICT_LIST_BY_ID = "/getDistrictListByProvinence";
 	public static final String GET_PROVINCE_LIST = "/getProvinceList";// http://192.168.11.210:8080/ggiwsp/ws/getProvinceList
+	public static final String GET_TSP_SHORTNAME_LIST_BY_PROVINCE = "/getTspShortNameByProvinceNo";
 	public static final String GET_COUNTRY_LIST = "/getCountryList";// http://192.168.11.210:8080/ggiwsp/ws/getCountryList
 	public static final String INSERT_FILE = "/insertFile";
 	public static final String INSERT_PA_PROPOSAL = "/insertPAProposal";
@@ -128,6 +129,7 @@ public interface URIConstants {
 	public static final String IBT_CORE_TO_CLOUD = "/inboundTravelCoreToCloud";
 
 	public static final String POST_OUTBOUND_AGENT_CHECK = "/checkOutboundAgent";
+	public static final String AUTHORIZE_AGENT_CHECK = "/checkAuthorizeAgent";
 
 	/** ThirdParty Driver License **/
 	public static final String THIRDPARTY_DRIVER = "/buyThirdPartyDriver";
@@ -143,6 +145,9 @@ public interface URIConstants {
 	public static final String GET_THIRD_PARTY_DRIVER_RECEIPT_CALLER = "/driver/getThirdPartyDriverReceipt";
 	
 	/** Seaman Product**/
-	
+	/** Seaman **/
+	public static final String GET_SEAMAN_POL_BY_CDCNO = "/getSeamanPolicyByCdcNo";
+	public static final String GET_SEAMAN_NETPREMIUM = "/getSeamanNetPremium";
+	public static final String GET_SEAMAN_POLICY_CERTIFICATE = "/getSeamanPolicyCertificate";
 	public static final String ADD_SEAMAN_PROPOSAL  ="/addSeamanProposal";
 }

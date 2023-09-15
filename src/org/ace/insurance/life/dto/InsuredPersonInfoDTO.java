@@ -77,21 +77,25 @@ public class InsuredPersonInfoDTO {
 	}
 
 	public InsuredPersonInfoDTO(PolicyInsuredPerson pi) {
-		this.age = pi.getAge();
+		this.productId = pi.getProduct().getId();
+		this.planType = pi.getPlans().getPlanType();
 		this.premium = pi.getPremium();
-		this.fatherName = pi.getFatherName();
-		this.dateOfBirth = pi.getDateOfBirth().getTime();
-		this.gender = pi.getGender();
+		this.sumInsured = pi.getSumInsured();
+		this.insuredName = pi.getName().getFirstName();		
 		this.idType = pi.getIdType();
 		this.fullIdNo = pi.getIdNo();
-		this.insuResidentAddress = pi.getResidentAddress().getResidentAddress();
-		this.name = pi.getName();
-		this.productId = pi.getProduct().getId();
 		this.passportNo = pi.getPassportNo();
-		this.oceanlinerName=pi.getOceanlinerName();
-		this.vesselName=pi.getVesselName();
+		this.dateOfBirth = pi.getDateOfBirth().getTime();
+		this.age = pi.getAge();
+		this.gender = pi.getGender();		   
+		this.insuResidentAddress = pi.getResidentAddress().getResidentAddress();
+		this.fatherName  = pi.getFatherName();			
+		this.oceanlinerName = pi.getOceanlinerName();
+		this.vesselName = pi.getVesselName();
+		this.position = pi.getPosition();		
+									 
 		this.cdcNo = pi.getCdcNo();
-		this.position = pi.getPosition();
+								   
 		for (PolicyInsuredPersonKeyFactorValue kfv : pi.getPolicyInsuredPersonkeyFactorValueList()) {
 			addPolicyInsuredPersonKeyFactorValue(kfv);
 		}

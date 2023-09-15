@@ -29,4 +29,11 @@ public class JasperTemplate {
 	public static final String OUTBOUND_SPECIAL_TRAVEL_BUY_PRINT0010_MMK = "document-template/outboundtravelterms10_MMK.jrxml";
 	public static final String OUTBOUND_SPECIAL_TRAVEL_BUY_PRINT0011 = "document-template/outboundtravelterms11.jrxml";
 	public static final String THIRD_PARTY_DRIVER_BUY_CERTIFICATE = "document-template/thirdPartyDriverReceipt.jrxml";
+	public static final String SEAMAN_ONLINE_POLICY_CERTIFICATE = "document-template/SEAMEN_ONLINE_PL.jrxml";
+	public static final String SEAMAN_ONLINE_POLICY_BENE_ATTACH_CERTIFICATE = "document-template/SEAMEN_ONLINE_PL_ATT.jrxml";
+	public static final String SEAMEN_ONLINE_TAndC = "document-template/SEAMEN_ONLINE_T&C.jrxml";
+
+
+
+	
 }

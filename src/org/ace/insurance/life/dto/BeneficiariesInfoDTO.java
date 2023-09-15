@@ -43,13 +43,14 @@ public class BeneficiariesInfoDTO {
 	}
 
 	public BeneficiariesInfoDTO(PolicyInsuredPersonBeneficiaries policyInsuredPersonBeneficiaries) {
-		this.percentage = policyInsuredPersonBeneficiaries.getPercentage();
+		this.beneName = policyInsuredPersonBeneficiaries.getName().getFirstName();
+		this.fullIdNo = policyInsuredPersonBeneficiaries.getIdNo();
 		this.gender = policyInsuredPersonBeneficiaries.getGender();
 		this.idType = policyInsuredPersonBeneficiaries.getIdType();
-		this.fullIdNo = policyInsuredPersonBeneficiaries.getIdNo();
-		this.residentAddress = policyInsuredPersonBeneficiaries.getResidentAddress();
-		this.name = policyInsuredPersonBeneficiaries.getName();
+		this.beneResidentAddress = policyInsuredPersonBeneficiaries.getResidentAddress().getResidentAddress();																		   
+		this.relationShipName = policyInsuredPersonBeneficiaries.getRelationship().getName();
 		this.relationshipId = policyInsuredPersonBeneficiaries.getRelationship().getId();
+		this.percentage = policyInsuredPersonBeneficiaries.getPercentage();
 
 	}
 

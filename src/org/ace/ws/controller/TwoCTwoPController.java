@@ -146,7 +146,7 @@ public class TwoCTwoPController extends BaseController {
 		if (twoC2PRecords.getPayment_status().equals("000")) {
 			logger.info("Product Type : " + typeRecords.getProductType());
 			switch (typeRecords.getProductType()) {		
-				case "SEAMEN LIFE INSURANCE(Online)":
+				case "SEAMAN LIFE INSURANCE(Online)":
 					if(lifeProposal != null) {
 						lifeProposalService.paymentLifeProposal(lifeProposal);
 					}
