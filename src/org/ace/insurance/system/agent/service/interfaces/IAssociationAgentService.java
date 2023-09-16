@@ -12,5 +12,6 @@ public interface IAssociationAgentService {
     OutboundAssociationAgent findById(String id) throws DAOException;
 	List<OutboundAssociationAgent> getAssociationAgentList();
 	public boolean checkExistingAgent(String licenceNo);
+	OutboundAssociationAgent checkAuthorizeAgent(String name, String password)throws DAOException;
 
 }

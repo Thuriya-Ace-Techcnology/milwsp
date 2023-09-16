@@ -88,6 +88,24 @@ public class AssociationAgentDAO extends BasicDAO implements IAssociationAgentDA
 		}
 		return result;
 	}
+	
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public OutboundAssociationAgent checkAuthorizeAgent(String name, String password) throws DAOException {
+		OutboundAssociationAgent result = null;
+        try {
+        	Query q = em.createNamedQuery("OutboundAssociationAgent.checkAuthorizeAgent");
+			q.setParameter("name", name.trim());
+			q.setParameter("password", password);
+			result = (OutboundAssociationAgent) q.getSingleResult();
+			em.flush();
+        }  catch (NoResultException e) {
+			return null;
+		} catch (PersistenceException pe) {
+			throw translate("Failed to find Agent: " + name, pe);
+		}
+		return result;
+	}
 
 
 }

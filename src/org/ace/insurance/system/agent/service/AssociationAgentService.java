@@ -87,4 +87,12 @@ public class AssociationAgentService extends BaseService implements IAssociation
 		return result;
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public OutboundAssociationAgent checkAuthorizeAgent(String name, String password){
+		try {
+            return associationAgentDAO.checkAuthorizeAgent(name,password);
+           } catch (DAOException e) {
+               throw new SystemException(e.getErrorCode(), "Failed to find Authorize agent", e);
+          }
+	}
 }

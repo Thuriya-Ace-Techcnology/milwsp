@@ -46,7 +46,8 @@ import org.ace.java.component.idgen.service.IDInterceptor;
 @Table(name = TableName.OUTBOUND_ASSOCIATION_AGENT)
 @TableGenerator(name = "OUTBOUND_ASSOCIATION_AGENT_GEN", table = "ID_GEN", pkColumnName = "GEN_NAME", valueColumnName = "GEN_VAL", pkColumnValue = "OUTBOUND_ASSOCIATION_AGENT_GEN", allocationSize = 10)
 @NamedQueries(value = { @NamedQuery(name = "OutboundAssociationAgent.findAll", query = "SELECT a FROM OutboundAssociationAgent a ORDER BY a.name ASC"),
-		@NamedQuery(name = "OutboundAssociationAgent.findById", query = "SELECT a FROM OutboundAssociationAgent a WHERE a.id = :id") })
+		@NamedQuery(name = "OutboundAssociationAgent.findById", query = "SELECT a FROM OutboundAssociationAgent a WHERE a.id = :id"),
+		@NamedQuery(name = "OutboundAssociationAgent.checkAuthorizeAgent", query = "SELECT a FROM OutboundAssociationAgent a WHERE a.name = :name AND a.password = :password")})
 @EntityListeners(IDInterceptor.class)
 public class OutboundAssociationAgent implements Serializable {
 	private static final long serialVersionUID = 1L;

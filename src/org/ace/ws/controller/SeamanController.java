@@ -101,68 +101,62 @@ public class SeamanController extends BaseController {
 			throws IOException, JRException {
 		logger.info("Start Print Receipt function");
 		byte[] bb = null;
-		LifePolicyDTO policyDTO = lifePolicyService.findByPolicyId(policyId);
-		if (policyDTO != null) {
+		LifePolicyDTO policyDTO = lifePolicyService.findByPolicyId(policyId);			
+		if (policyDTO.getPolicyNo() != null) {
 			logger.info("Receipt object is not null");
 			Map<String, Object> policyParam = new HashMap<>();
 			ArrayList<LifePolicyDTO> policy = new ArrayList<>();
 			policy.add(policyDTO);
+			List<BeneficiariesInfoDTO> beneifitPersonDTOList = policyDTO.getPolicyInsuredPersonDTOList().get(0).getBeneficiariesInfoDTOList();
+				int size = beneifitPersonDTOList.size();
+				policyParam.put("milogo", "document-template/images/MI-logo.png");
+				policyParam.put("policyNo", policyDTO.getPolicyNo());
+				policyParam.put("startDate", Utils.formattedDate(new Date(policyDTO.getPolicyStartDate())));
+				policyParam.put("endDate", Utils.formattedDate(new Date(policyDTO.getPolicyEndDate())));
+				policyParam.put("paymentType", policyDTO.getPaymentType());
+				policyParam.put("periodOfYear", policyDTO.getPeriodOfYear());
+				policyParam.put("size", size);
 
-			List<BeneficiariesInfoDTO> beneifitPersonDTOList = policyDTO.getPolicyInsuredPersonDTOList().get(0)
-					.getBeneficiariesInfoDTOList();
-			int size = beneifitPersonDTOList.size();
-			policyParam.put("milogo", "document-template/images/MI-logo.png");
-			policyParam.put("policyNo", policyDTO.getPolicyNo());
-			policyParam.put("startDate", Utils.formattedDate(new Date(policyDTO.getPolicyStartDate())));
-			policyParam.put("endDate", Utils.formattedDate(new Date(policyDTO.getPolicyEndDate())));
-			policyParam.put("paymentType", policyDTO.getPaymentType());
-			policyParam.put("periodOfYear", policyDTO.getPeriodOfYear());
-			policyParam.put("size", size);
+				/* InsuredPerson Information */
+				policyParam.put("premium",
+						Utils.getCurrencyFormatString(policyDTO.getPolicyInsuredPersonDTOList().get(0).getPremium()));
+				policyParam.put("sumInsured",
+						Utils.getCurrencyFormatString(policyDTO.getPolicyInsuredPersonDTOList().get(0).getSumInsured()));
+				policyParam.put("insuredName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getInsuredName());
+				policyParam.put("passportNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPassportNo());
+				policyParam.put("dateOfBirth", Utils.formattedDate(new Date(policyDTO.getPolicyInsuredPersonDTOList().get(0).getDateOfBirth())));
+				policyParam.put("age", policyDTO.getPolicyInsuredPersonDTOList().get(0).getAge());
+				policyParam.put("insuredAddress", policyDTO.getPolicyInsuredPersonDTOList().get(0).getInsuResidentAddress());
+				policyParam.put("cdcNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getCdcNo());
+				policyParam.put("planType", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPlanType());
+				policyParam.put("insuredId", policyDTO.getPolicyInsuredPersonDTOList().get(0).getFullIdNo());
+				policyParam.put("cdcNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getCdcNo());
+				policyParam.put("oceanlinerName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getOceanlinerName());
+				policyParam.put("vesselName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getVesselName());
+				policyParam.put("position", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPosition());
 
-			/* InsuredPerson Information */
-			policyParam.put("premium",
-					Utils.getCurrencyFormatString(policyDTO.getPolicyInsuredPersonDTOList().get(0).getPremium()));
-			policyParam.put("sumInsured",
-					Utils.getCurrencyFormatString(policyDTO.getPolicyInsuredPersonDTOList().get(0).getSumInsured()));
-			policyParam.put("insuredName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getInsuredName());
-			policyParam.put("passportNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPassportNo());
-			policyParam.put("dateOfBirth", Utils.formattedDate(new Date(policyDTO.getPolicyInsuredPersonDTOList().get(0).getDateOfBirth())));
-			policyParam.put("age", policyDTO.getPolicyInsuredPersonDTOList().get(0).getAge());
-			policyParam.put("insuredAddress", policyDTO.getPolicyInsuredPersonDTOList().get(0).getInsuResidentAddress());
-			policyParam.put("cdcNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getCdcNo());
-			policyParam.put("planType", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPlanType());
-			policyParam.put("insuredId", policyDTO.getPolicyInsuredPersonDTOList().get(0).getFullIdNo());
-			policyParam.put("cdcNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getCdcNo());
-			policyParam.put("oceanlinerName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getOceanlinerName());
-			policyParam.put("vesselName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getVesselName());
-			policyParam.put("position", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPosition());
+				List<BeneficiariesInfoDTO> benefitPersonList = policyDTO.getPolicyInsuredPersonDTOList().get(0).getBeneficiariesInfoDTOList();
+				policyParam.put("listDataSource", new JRBeanCollectionDataSource(benefitPersonList));
+				
+				List<JasperPrint> jasperPrintList = new ArrayList<JasperPrint>();
+				JasperPrint polJasper = JasperFactory.generateJasperPrint(policyParam, JasperTemplate.SEAMAN_ONLINE_POLICY_CERTIFICATE, new JREmptyDataSource());
+				jasperPrintList.add(polJasper);
+				
+				if(size >1) {
+					JasperPrint polAttJasper = JasperFactory.generateJasperPrint(policyParam, JasperTemplate.SEAMAN_ONLINE_POLICY_BENE_ATTACH_CERTIFICATE, new JREmptyDataSource());
+					jasperPrintList.add(polAttJasper);
+				}
+				
+				JasperPrint termsAndConJasper = JasperFactory.generateJasperPrint(policyParam, JasperTemplate.SEAMEN_ONLINE_TAndC, new JREmptyDataSource());
+				jasperPrintList.add(termsAndConJasper);
 
-			List<BeneficiariesInfoDTO> benefitPersonList = policyDTO.getPolicyInsuredPersonDTOList().get(0).getBeneficiariesInfoDTOList();
-			policyParam.put("listDataSource", new JRBeanCollectionDataSource(benefitPersonList));
-			
-			List<JasperPrint> jasperPrintList = new ArrayList<JasperPrint>();
-			JasperPrint polJasper = JasperFactory.generateJasperPrint(policyParam, JasperTemplate.SEAMAN_ONLINE_POLICY_CERTIFICATE, new JREmptyDataSource());
-			jasperPrintList.add(polJasper);
-			
-			if(size >1) {
-				JasperPrint polAttJasper = JasperFactory.generateJasperPrint(policyParam, JasperTemplate.SEAMAN_ONLINE_POLICY_BENE_ATTACH_CERTIFICATE, new JREmptyDataSource());
-				jasperPrintList.add(polAttJasper);
-			}
-			
-			JasperPrint termsAndConJasper = JasperFactory.generateJasperPrint(policyParam, JasperTemplate.SEAMEN_ONLINE_TAndC, new JREmptyDataSource());
-			jasperPrintList.add(termsAndConJasper);
-
-			bb = generateReport(jasperPrintList);
-			
-			response.setContentType(MediaType.APPLICATION_PDF_VALUE);
-			response.setHeader("Content-Disposition", "inline; filename=myanma_insurnace.pdf");
-			logger.info("printRecipt Function End");
-
-		}
-
-		ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bb, HttpStatus.NOT_ACCEPTABLE);
-
-		return responseEntity;
+				bb = generateReport(jasperPrintList);
+				response.setContentType(MediaType.APPLICATION_PDF_VALUE);
+				response.setHeader("Content-Disposition", "inline; filename=myanma_insurnace.pdf");
+				logger.info("printRecipt Function End");
+			} 
+			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bb, HttpStatus.NOT_ACCEPTABLE);
+			return responseEntity;
 	}
 
 	public byte[] generateReport(List<JasperPrint> jasperPrintList) throws JRException {

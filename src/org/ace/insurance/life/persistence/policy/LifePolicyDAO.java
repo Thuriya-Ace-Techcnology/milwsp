@@ -92,6 +92,8 @@ public class LifePolicyDAO extends BasicDAO implements ILifePolicyDAO{
 			q.setParameter("lifePolicyId", id.trim());
 			result = (LifePolicy) q.getSingleResult();
 			em.flush();
+		}catch (NoResultException e) {
+			return null;
 		}catch (PersistenceException pe) {
 			throw translate("Failed to find Seaman Policy by id: " + id, pe);
 		}

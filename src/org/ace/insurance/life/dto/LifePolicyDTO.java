@@ -26,15 +26,17 @@ public class LifePolicyDTO {
 	}
 	
 	public LifePolicyDTO(LifePolicy policy) {
-		this.id = policy.getId();
-		this.policyNo = policy.getPolicyNo();
-		this.policyStartDate = policy.getActivedPolicyStartDate().getTime();
-		this.policyEndDate = policy.getActivedPolicyEndDate().getTime();
-		this.paymentType = policy.getPaymentType().getName();
-		this.periodOfYear = policy.getPeriodOfYears();
-		
-		for (PolicyInsuredPerson insured : policy.getPolicyInsuredPersonList()) {
-			addInsuredPersonInfoDTO(new InsuredPersonInfoDTO(insured));
+		if(policy != null) {
+			this.id = policy.getId();
+			this.policyNo = policy.getPolicyNo();
+			this.policyStartDate = policy.getActivedPolicyStartDate().getTime();
+			this.policyEndDate = policy.getActivedPolicyEndDate().getTime();
+			this.paymentType = policy.getPaymentType().getName();
+			this.periodOfYear = policy.getPeriodOfYears();
+			
+			for (PolicyInsuredPerson insured : policy.getPolicyInsuredPersonList()) {
+				addInsuredPersonInfoDTO(new InsuredPersonInfoDTO(insured));
+			}
 		}
 	}
 
