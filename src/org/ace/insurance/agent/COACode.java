@@ -4,9 +4,9 @@ public class COACode {
 	public static final String CASH = "CASH";
 	
 	/* Seaman */
-	public static final String SEAMAN_ONLINE_PREMIUM = "SEAMAN_PREMIUM";
-	public static final String SEAMAN_ONLINE_RECEIVABLE = "SEAMAN_RECEIVABLE";
-	public static final String SEAMAN_ONLINE_SERVICE_CHARGES = "SEAMAN_SERVICE_CHARGES";
+	public static final String SEAMAN_ONLINE_PREMIUM = "SEAMAN_ONLINE_PREMIUM";
+	public static final String SEAMAN_ONLINE_RECEIVABLE = "SEAMAN_ONLINE_RECEIVABLE";
+	public static final String SEAMAN_ONLINE_SERVICE_CHARGES = "SEAMAN_ONLINE_SERVICE_CHARGES";
 
 
 
