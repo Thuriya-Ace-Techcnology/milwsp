@@ -54,9 +54,8 @@ public class PremiumCalculatorDAO extends BasicDAO implements IPremiumCalculator
 
 			Query query = em.createQuery(buffer.toString());
 			query.setParameter("referenceId", referenceId);
-			if (!keyfatorValueMap.isEmpty()) {
+			if (!keyfatorValueMap.isEmpty())
 				query.setParameter("premiumRateId", premiumRateId);
-			}
 			result = (Double) query.getSingleResult();
 
 		} catch (NoResultException e) {
@@ -66,6 +65,7 @@ public class PremiumCalculatorDAO extends BasicDAO implements IPremiumCalculator
 		}
 		return result;
 	}
+	
 
 	@Transactional(propagation = Propagation.REQUIRED)
 	private String findProductPremiumRateId(Map<KeyFactor, String> keyfatorValueMap, String referenceId,
@@ -85,16 +85,12 @@ public class PremiumCalculatorDAO extends BasicDAO implements IPremiumCalculator
 			String keyfactorValue;
 			for (KeyFactor kf : keyfatorValueMap.keySet()) {
 				keyfactorValue = kf.getValue().replace(" ", "");
-				if (keyfactorValue.equals("Weight(Ton)")) {
-					keyfactorValue = "Weight";
-				}
 				keyFactorType = kf.getKeyFactorType();
 				buffer.append(" AND k_" + c + ".keyFactor.id = :" + keyfactorValue + "Id");
 				if (!keyFactorType.equals(KeyFactorType.FROM_TO)) {
 					buffer.append(" AND k_" + c + ".value = :" + keyfactorValue);
 				} else {
-					buffer.append(" AND k_" + c + ".from <= :" + keyfactorValue + " AND k_" + c + ".to >= :"
-							+ keyfactorValue);
+					buffer.append(" AND k_" + c + ".from <= :" + keyfactorValue + " AND k_" + c + ".to >= :" + keyfactorValue);
 				}
 				c++;
 			}
@@ -105,22 +101,16 @@ public class PremiumCalculatorDAO extends BasicDAO implements IPremiumCalculator
 			for (KeyFactor kf : keyfatorValueMap.keySet()) {
 				value = keyfatorValueMap.get(kf);
 				keyfactorValue = kf.getValue().replace(" ", "");
-				if (keyfactorValue.equals("Weight(Ton)")) {
-					keyfactorValue = "Weight";
-				}
 				keyFactorType = kf.getKeyFactorType();
 				query.setParameter(keyfactorValue + "Id", kf.getId());
-				query.setParameter(keyfactorValue,
-						keyFactorType.equals(KeyFactorType.FROM_TO) ? Double.parseDouble(value) : value);
+				query.setParameter(keyfactorValue, keyFactorType.equals(KeyFactorType.FROM_TO) ? Double.parseDouble(value) : value);
 			}
 			query.setParameter("referenceId", referenceId);
 
 			result = (String) query.getSingleResult();
 
 		} catch (NoResultException e) {
-			return result = "0.0";
-			// throw translate("There is no product premium rate for these keyfactors,
-			// insert please!", e);
+			throw translate("There is no product premium rate for these keyfactors, insert please!", e);
 		} catch (PersistenceException pe) {
 			throw translate("Failed to find ProductPremiumRate", pe);
 		}

@@ -180,5 +180,14 @@ public class LifeProposalService implements ILifeProposalService{
 		return result;
 
 	}
+	
+	/* Find Seaman Net Premium */
+	@Transactional(propagation = Propagation.REQUIRED)
+	public double getSeamanNetPremium(double premium) {
+		double netPremium = 0.0;
+		netPremium = premium - (premium * 0.15);
+		
+		return netPremium;
+	}
 
 }

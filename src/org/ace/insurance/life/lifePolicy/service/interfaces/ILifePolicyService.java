@@ -15,8 +15,6 @@ public interface ILifePolicyService {
 
 	public List<LifePolicyDTO> findSeamanPolicyByCDCNo(String cdcNo, String productId);
 
-	public double getSeamanNetPremium(double premium);
-
 	public LifePolicyDTO findByPolicyId(String policyId);
 
 }

@@ -9,5 +9,9 @@ public interface ILifeProposalService{
 	
 	public LifeProposal findLifeProposalByOrderId(String orderId);
 	
+	public double getSeamanNetPremium(double premium);
+	
+	
+	
 
 }

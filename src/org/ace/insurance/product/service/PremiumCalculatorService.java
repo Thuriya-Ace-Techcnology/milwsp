@@ -89,28 +89,9 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 			basedAmount = addOn.getBasedAmount();
 		}
 		switch (type) {
-			case BASED_ON_OWN_SUMINSURED: {
-				premiumRate = (premiumRate * data.getSuminsured()) / basedAmount;
-			}
-				break;
-
-			case BASED_ON_MAINCOVER_SUMINSURED: {
-				premiumRate = (premiumRate * data.getMainCoverSuminsured()) / basedAmount;
-			}
-				break;
-
-			case PER_UNIT: {
-				premiumRate = premiumRate * data.getUnit();
-			}
-				break;
-
-			case BASED_ON_PREMIUM: {
-				premiumRate = (premiumRate * data.getMainCoverPremium()) / basedAmount;
-			}
-				break;
-
 			case USER_DEFINED_PREMIUM:
-			case FIXED:
+				break;
+			default:
 				break;
 		}
 		return premiumRate;

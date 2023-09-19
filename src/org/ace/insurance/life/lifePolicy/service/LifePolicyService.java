@@ -75,18 +75,6 @@ public class LifePolicyService implements ILifePolicyService {
 		}
 		return result;
 	}
-
-	
-	/* Find Seaman Net Premium */
-	@Transactional(propagation = Propagation.REQUIRED)
-	public double getSeamanNetPremium(double premium) {
-		double netPremium = 0.0;
-		netPremium = premium - (premium * 0.15);
-		
-		return netPremium;
-	}	
-	
-	
 	/* Find with Policy Id  to print certificate */
 	@Transactional(propagation = Propagation.REQUIRED)
 	public LifePolicyDTO findByPolicyId(String id) {

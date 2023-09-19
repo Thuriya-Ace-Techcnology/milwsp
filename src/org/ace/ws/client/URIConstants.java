@@ -150,4 +150,5 @@ public interface URIConstants {
 	public static final String GET_SEAMAN_NETPREMIUM = "/getSeamanNetPremium";
 	public static final String GET_SEAMAN_POLICY_CERTIFICATE = "/getSeamanPolicyCertificate";
 	public static final String ADD_SEAMAN_PROPOSAL  ="/addSeamanProposal";
+	public static final String  GET_ALLPLANS ="/getAllPlans";
 }

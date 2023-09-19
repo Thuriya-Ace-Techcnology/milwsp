@@ -1,6 +1,8 @@
 package org.ace.insurance.common.plans.services;
 
+import java.util.ArrayList;
 import java.util.List;
+
 
 
 import javax.annotation.Resource;
@@ -8,6 +10,7 @@ import javax.annotation.Resource;
 import org.ace.insurance.common.plans.Plans;
 import org.ace.insurance.common.plans.persistences.interfaces.IPlansDAO;
 import org.ace.insurance.common.plans.services.interfaces.IPlansService;
+import org.ace.insurance.life.dto.PlansDTO;
 import org.ace.java.component.SystemException;
 import org.ace.java.component.persistence.exception.DAOException;
 import org.ace.java.component.service.BaseService;
@@ -22,10 +25,14 @@ public class PlansService extends BaseService implements IPlansService{
 	private IPlansDAO plansDAO;
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	public List<Plans> getPlanList() {
-		List<Plans> result = null;
+	public List<PlansDTO> getPlanList() {
+		List<PlansDTO> result = new ArrayList<>();
 		try {
-			result = plansDAO.findAll();
+			List<Plans> plansList = plansDAO.findAll();
+			for(Plans plans : plansList) {
+				result.add(new PlansDTO(plans));
+			}
+			
 		} catch (DAOException e) {
 			throw new SystemException(e.getErrorCode(), "Failed to find all of Plans Type)", e);
 		}

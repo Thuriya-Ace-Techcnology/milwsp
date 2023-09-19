@@ -140,7 +140,6 @@ public class TwoCTwoPController extends BaseController {
 		if(order_id != null && !order_id.isEmpty()) {
 			lifeProposal = lifeProposalService.findLifeProposalByOrderId(order_id);	
 		}
-		OnlineBillerBuyer onlineBuyer = null;	
 		
 		ProductTypeRecords typeRecords = productTypeRecordsService.findByOrderId(order_id);
 		if (twoC2PRecords.getPayment_status().equals("000")) {
@@ -152,8 +151,6 @@ public class TwoCTwoPController extends BaseController {
 					}
 					break;
 				default:
-					logger.info("Start update Online Biller Product");
-					onlineBuyer = onlineBillerProposalService.updateByPaymentStatus(order_id);
 					break;
 			}
 		}

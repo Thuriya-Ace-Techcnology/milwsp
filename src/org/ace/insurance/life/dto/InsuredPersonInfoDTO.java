@@ -30,6 +30,7 @@ public class InsuredPersonInfoDTO {
 	private Plans plans;
 	private String planType;
 	private double premium;
+	private double netPremium;
 	private double sumInsured;
 	private Name name;
 	private String insuredName;
@@ -55,7 +56,7 @@ public class InsuredPersonInfoDTO {
 		this.productId = proposalInsuredPerson.getProduct().getId();
 		this.planId = proposalInsuredPerson.getPlans().getId();
 		this.planType = proposalInsuredPerson.getPlans().getPlanType();
-		this.premium = proposalInsuredPerson.getTermPremium();
+		this.netPremium = proposalInsuredPerson.getTermPremium();
 		this.sumInsured = proposalInsuredPerson.getApprovedSumInsured();
 		this.insuredName = proposalInsuredPerson.getName().getFirstName();		
 		this.idType = proposalInsuredPerson.getIdType();
@@ -399,6 +400,16 @@ public class InsuredPersonInfoDTO {
 	public void setPlanType(String planType) {
 		this.planType = planType;
 	}
+
+	public double getNetPremium() {
+		return netPremium;
+	}
+
+	public void setNetPremium(double netPremium) {
+		this.netPremium = netPremium;
+	}
+	
+	
 	
 	
 	
