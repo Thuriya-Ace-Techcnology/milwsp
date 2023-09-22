@@ -10,6 +10,7 @@ import org.ace.insurance.common.ErrorCode;
 import org.ace.insurance.common.ProposalStatus;
 import org.ace.insurance.common.ProposalType;
 import org.ace.insurance.common.SystemConstants;
+import org.ace.insurance.common.Utils;
 import org.ace.insurance.common.bank.service.interfaces.IBankService;
 import org.ace.insurance.life.KeyFactorChecker;
 import org.ace.insurance.life.dao.entities.AgentCommission;
@@ -31,6 +32,7 @@ import org.ace.insurance.life.persistence.payment.interfaces.IPaymentDAO;
 import org.ace.insurance.life.persistence.proposal.interfaces.ILifeProposalDAO;
 import org.ace.insurance.life.policyLog.service.interfaces.ILifePolicyTimeLineLogService;
 import org.ace.insurance.product.Product;
+import org.ace.insurance.product.service.interfaces.IProductService;
 import org.ace.insurance.system.common.branch.Branch;
 import org.ace.insurance.system.common.branch.service.interfaces.IBranchService;
 import org.ace.java.component.SystemException;
@@ -72,6 +74,10 @@ public class LifeProposalService implements ILifeProposalService{
 	
 	@Resource(name="BranchService")
 	private IBranchService branchService;
+	
+	
+	@Resource(name="ProductService")
+	private IProductService productService;
 	
 	@Resource(name="LifePolicyTimeLineLogService")
 	private ILifePolicyTimeLineLogService lifePolicyTimeLineLogService;
@@ -181,13 +187,12 @@ public class LifeProposalService implements ILifeProposalService{
 
 	}
 	
-	/* Find Seaman Net Premium */
+	/* Find  Net Premium */
 	@Transactional(propagation = Propagation.REQUIRED)
-	public double getSeamanNetPremium(double premium) {
-		double netPremium = 0.0;
-		netPremium = premium - (premium * 0.15);
-		
-		return netPremium;
+	public double getNetPremium(double premium,String productId) {
+		Product product = productService.findProductById(productId);		
+		return premium - (Utils.getPercentOf(product.getFirstCommission(),premium));		
+		 
 	}
 
 }

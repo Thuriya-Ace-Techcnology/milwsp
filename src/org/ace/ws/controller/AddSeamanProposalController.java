@@ -109,7 +109,6 @@ public class AddSeamanProposalController extends BaseController {
 	AceResponse aceResponse = new AceResponse();
 	
 	private String productName;
-	private double premium;
 
 	@RequestMapping(value = URIConstants.ADD_SEAMAN_PROPOSAL, method = RequestMethod.POST)
 	public @ResponseBody String addSeamanProposal(@RequestHeader String key,
@@ -119,9 +118,12 @@ public class AddSeamanProposalController extends BaseController {
 		Gson gson = new Gson();
 		LifeProposalDTO proposalDTO = gson.fromJson(dto, LifeProposalDTO.class);
 		List<BeneficiariesInfoDTO> beneficiariesDTOList = null;
-		proposalDTO.setSubmittedDate(concatLongDate(proposalDTO.getSubmittedDate()));
-		proposalDTO.setStartDate(concatLongDate(proposalDTO.getStartDate()));
-		proposalDTO.setEndDate(concatLongDate(proposalDTO.getEndDate()));
+		if(proposalDTO.getBuyerPlatForm().equals(BuyerPlatForm.WEBSITE)) {
+			proposalDTO.setSubmittedDate(concatLongDate(proposalDTO.getSubmittedDate()));
+			proposalDTO.setStartDate(concatLongDate(proposalDTO.getStartDate()));
+			proposalDTO.setEndDate(concatLongDate(proposalDTO.getEndDate()));
+			
+		}
 		proposalDTO.setPaymentType(paymentTypeService.findPaymentTypeById(proposalDTO.getPaymentTypeId()));
 		proposalDTO.setBranch(branchService.findBranchById(proposalDTO.getBranchId()));	
 		proposalDTO.setAuthorizeAssociation(associationAgentService.findById(proposalDTO.getAuthorizeAssociationId()));
@@ -129,10 +131,6 @@ public class AddSeamanProposalController extends BaseController {
 		ResidentAddress residentAddress = null;
 		Name name = null;
 		for(InsuredPersonInfoDTO personInfoDTO : proposalDTO.getProposalInsuredPersonDTOList()) {	
-			premium = personInfoDTO.getPremium();
-			if(proposalDTO.getAuthorizeAssociationId() != null && !proposalDTO.getAuthorizeAssociationId().isEmpty()) {
-				personInfoDTO.setPremium(lifeProposalService.getSeamanNetPremium(premium));
-			}
 			residentAddress = new ResidentAddress();
 			name = new Name();
 			beneficiariesDTOList =  new ArrayList<BeneficiariesInfoDTO>();
@@ -140,7 +138,9 @@ public class AddSeamanProposalController extends BaseController {
 			personInfoDTO.setName(name);
 			residentAddress.setResidentAddress(personInfoDTO.getInsuResidentAddress());
 			personInfoDTO.setResidentAddress(residentAddress);
-			personInfoDTO.setDateOfBirth(concatLongDate(personInfoDTO.getDateOfBirth()));
+			if(proposalDTO.getBuyerPlatForm().equals(BuyerPlatForm.WEBSITE)) {
+				personInfoDTO.setDateOfBirth(concatLongDate(personInfoDTO.getDateOfBirth()));
+			}			
 			personInfoDTO.setCdcNo(personInfoDTO.getCdcNo().trim());
 			personInfoDTO.setProduct(productService.findProductById(personInfoDTO.getProductId()));
 			personInfoDTO.setPlans(plansService.findById(personInfoDTO.getPlanId()));
@@ -171,10 +171,7 @@ public class AddSeamanProposalController extends BaseController {
 						return responseManager.getResponseString(aceResponse);
 					}
 					proposalDTO = new LifeProposalDTO(lifeProposalService.addLifeProposal(
-									new LifeProposal(proposalDTO)));
-					for(InsuredPersonInfoDTO personInfoDTO : proposalDTO.getProposalInsuredPersonDTOList()) {
-						personInfoDTO.setPremium(premium);
-					}					
+									new LifeProposal(proposalDTO)));				
 					ProductTypeRecords productTypeRecords = new ProductTypeRecords();
 					productTypeRecords.setProductType(productName);
 					productTypeRecords.setTwoCtwoPorderId(proposalDTO.getOrderId());
@@ -269,7 +266,7 @@ public class AddSeamanProposalController extends BaseController {
 
 				/* InsuredPerson Information */
 				policyParam.put("premium",
-						Utils.getCurrencyFormatString(policyDTO.getPolicyInsuredPersonDTOList().get(0).getPremium()));
+						Utils.getCurrencyFormatString(policyDTO.getPolicyInsuredPersonDTOList().get(0).getSeamanPremium()));
 				policyParam.put("sumInsured",
 						Utils.getCurrencyFormatString(policyDTO.getPolicyInsuredPersonDTOList().get(0).getSumInsured()));
 				policyParam.put("insuredName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getInsuredName());
@@ -320,6 +317,25 @@ public class AddSeamanProposalController extends BaseController {
 		exporter.setConfiguration(configuration);
 		exporter.exportReport();
 		return baos.toByteArray();
+	}
+
+	/* GET  Net Premium */
+	@RequestMapping(value = URIConstants.GET_NET_PREMIUM, method = RequestMethod.POST)
+	public @ResponseBody String getNetPremium(@RequestHeader String key,@RequestParam(name = "productId") String productId,@RequestParam("premium") double premium)
+			throws ServiceException, UnsupportedEncodingException, SystemException {
+		logger.info("Start get NetPremium.");
+		AceResponse aceResponse = new AceResponse();
+		double netPremium = lifeProposalService.getNetPremium(premium,productId);
+		if (netPremium != 0.0) {
+			aceResponse.setData(netPremium);
+			aceResponse.setMessage("Success");
+			aceResponse.setStatus(HttpStatus.OK);
+		} else {
+			aceResponse.setMessage("Empty Data");
+			aceResponse.setStatus(HttpStatus.NOT_FOUND);
+		}
+		logger.info("End retriving Net Premium.");
+		return responseManager.getResponseString(aceResponse);
 	}
 	
 	

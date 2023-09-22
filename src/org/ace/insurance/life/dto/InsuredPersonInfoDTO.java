@@ -31,6 +31,7 @@ public class InsuredPersonInfoDTO {
 	private String planType;
 	private double premium;
 	private double netPremium;
+	private double seamanPremium;
 	private double sumInsured;
 	private Name name;
 	private String insuredName;
@@ -57,6 +58,7 @@ public class InsuredPersonInfoDTO {
 		this.planId = proposalInsuredPerson.getPlans().getId();
 		this.planType = proposalInsuredPerson.getPlans().getPlanType();
 		this.netPremium = proposalInsuredPerson.getTermPremium();
+		this.premium = proposalInsuredPerson.getSeamanPremium();
 		this.sumInsured = proposalInsuredPerson.getApprovedSumInsured();
 		this.insuredName = proposalInsuredPerson.getName().getFirstName();		
 		this.idType = proposalInsuredPerson.getIdType();
@@ -80,7 +82,9 @@ public class InsuredPersonInfoDTO {
 	public InsuredPersonInfoDTO(PolicyInsuredPerson pi) {
 		this.productId = pi.getProduct().getId();
 		this.planType = pi.getPlans().getPlanType();
-		this.premium = pi.getPremium();
+		this.premium = pi.getSeamanPremium();
+		this.netPremium = pi.getPremium();
+		this.seamanPremium = pi.getSeamanPremium();
 		this.sumInsured = pi.getSumInsured();
 		this.insuredName = pi.getName().getFirstName();		
 		this.idType = pi.getIdType();
@@ -408,6 +412,16 @@ public class InsuredPersonInfoDTO {
 	public void setNetPremium(double netPremium) {
 		this.netPremium = netPremium;
 	}
+
+	public double getSeamanPremium() {
+		return seamanPremium;
+	}
+
+	public void setSeamanPremium(double seamanPremium) {
+		this.seamanPremium = seamanPremium;
+	}
+	
+	
 	
 	
 	

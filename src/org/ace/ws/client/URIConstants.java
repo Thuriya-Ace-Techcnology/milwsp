@@ -147,7 +147,7 @@ public interface URIConstants {
 	/** Seaman Product**/
 	/** Seaman **/
 	public static final String GET_SEAMAN_POL_BY_CDCNO = "/getSeamanPolicyByCdcNo";
-	public static final String GET_SEAMAN_NETPREMIUM = "/getSeamanNetPremium";
+	public static final String GET_NET_PREMIUM = "/getNetPremium";
 	public static final String GET_SEAMAN_POLICY_CERTIFICATE = "/getSeamanPolicyCertificate";
 	public static final String ADD_SEAMAN_PROPOSAL  ="/addSeamanProposal";
 	public static final String  GET_ALLPLANS ="/getAllPlans";

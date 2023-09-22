@@ -256,6 +256,8 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 	@JoinColumn(name = "OFFICE_ID")
 	private Office office;
 	
+	private double seamanPremium;
+	
 
 	public PolicyInsuredPerson() {
 	}
@@ -266,6 +268,7 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 		this.product = insuredPerson.getProduct();
 		this.premium = insuredPerson.getProposedPremium();
 		this.basicTermPremium = insuredPerson.getBasicTermPremium();
+		this.seamanPremium = insuredPerson.getSeamanPremium();
 		this.idNo = insuredPerson.getIdNo();
 		this.idType = insuredPerson.getIdType();
 		this.name = insuredPerson.getName();
@@ -1530,6 +1533,16 @@ public class PolicyInsuredPerson implements IInsuredItem, Serializable {
 	public void setPlans(Plans plans) {
 		this.plans = plans;
 	}
+
+	public double getSeamanPremium() {
+		return seamanPremium;
+	}
+
+	public void setSeamanPremium(double seamanPremium) {
+		this.seamanPremium = seamanPremium;
+	}
+	
+	
 	
 	
 

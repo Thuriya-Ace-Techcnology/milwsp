@@ -9,7 +9,7 @@ public interface ILifeProposalService{
 	
 	public LifeProposal findLifeProposalByOrderId(String orderId);
 	
-	public double getSeamanNetPremium(double premium);
+	public double getNetPremium(double premium, String productId);
 	
 	
 	

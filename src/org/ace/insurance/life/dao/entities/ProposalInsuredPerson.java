@@ -257,6 +257,8 @@ public class ProposalInsuredPerson {
 	@Version
 	private int version;
 	
+	private double seamanPremium;
+	
 	
 	private boolean armyOfficer;
 	
@@ -266,10 +268,10 @@ public class ProposalInsuredPerson {
 
 	public ProposalInsuredPerson(InsuredPersonInfoDTO dto) {
 		this.age = dto.getAge();
-		this.proposedPremium = dto.getPremium();
+		this.proposedPremium = dto.getNetPremium();
 		this.proposedSumInsured = dto.getSumInsured();
 		this.approvedSumInsured = dto.getSumInsured();
-		this.basicTermPremium = dto.getPremium();
+		this.basicTermPremium = dto.getNetPremium();
 		this.idNo = dto.getFullIdNo();
 		this.fatherName = dto.getFatherName();
 		this.dateOfBirth = new Date(dto.getDateOfBirth());
@@ -284,6 +286,7 @@ public class ProposalInsuredPerson {
 		this.oceanlinerName=dto.getOceanlinerName();
 		this.vesselName=dto.getVesselName();
 		this.plans = dto.getPlans();
+		this.seamanPremium = dto.getPremium();
 
 		for (InsuredPersonKeyFactorValue kfv : dto.getKeyFactorValueList()) {
 			addLifeKeyFactorValue(new InsuredPersonKeyFactorValue(kfv.getValue(), kfv.getKeyFactor()));
@@ -1561,6 +1564,16 @@ public class ProposalInsuredPerson {
 	public void setPlans(Plans plans) {
 		this.plans = plans;
 	}
+
+	public double getSeamanPremium() {
+		return seamanPremium;
+	}
+
+	public void setSeamanPremium(double seamanPremium) {
+		this.seamanPremium = seamanPremium;
+	}
+	
+	
 	
 	
 	
