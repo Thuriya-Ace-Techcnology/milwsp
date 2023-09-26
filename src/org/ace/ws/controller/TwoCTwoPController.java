@@ -8,7 +8,9 @@ import javax.annotation.Resource;
 
 import org.ace.insurance.common.KeyFactorIDConfig;
 import org.ace.insurance.common.ProposalStatus;
+import org.ace.insurance.life.dao.entities.LifePolicy;
 import org.ace.insurance.life.dao.entities.LifeProposal;
+import org.ace.insurance.life.lifePolicy.service.interfaces.ILifePolicyService;
 import org.ace.insurance.life.lifeProposal.service.interfaces.ILifeProposalService;
 import org.ace.insurance.onlineBiller.OnlineBillerBuyer;
 import org.ace.insurance.onlineBiller.service.interfaces.IOnlineBillerProposalService;
@@ -41,8 +43,6 @@ public class TwoCTwoPController extends BaseController {
 	
 	@Resource(name = "LifeProposalService")
 	private ILifeProposalService lifeProposalService;
-
-
 
 	@Resource(name = "OnlineBillerProposalService")
 	private IOnlineBillerProposalService onlineBillerProposalService;
@@ -145,13 +145,13 @@ public class TwoCTwoPController extends BaseController {
 		if (twoC2PRecords.getPayment_status().equals("000")) {
 			logger.info("Product Type : " + typeRecords.getProductType());
 			switch (typeRecords.getProductType()) {		
-				case "SEAMAN LIFE INSURANCE(Online)":
-					if(lifeProposal != null) {
-						lifeProposalService.paymentLifeProposal(lifeProposal);
-					}
-					break;
-				default:
-					break;
+			case "SEAMAN LIFE INSURANCE(Online)":
+				if(lifeProposal != null) {
+					lifeProposalService.paymentLifeProposal(lifeProposal);
+				}
+				break;
+			default:
+				break;
 			}
 		}
 	}
@@ -170,37 +170,20 @@ public class TwoCTwoPController extends BaseController {
 		TwoCTwoPResponseDTO dto = twoC2pRecordsService.findByOrderId(order_id);
 		dto.setPrintReceipt(true);
 		ProductTypeRecords typeRecords = productTypeRecordsService.findByOrderId(order_id);
-		switch (typeRecords.getProductType()) {
-		/*
-		 * case "TPL Online": ThirdPartyPremiumReceipt tpResult =
-		 * thirdPartyPremiumReceiptSerivce.findRecordsByOrderId(order_id); ps =
-		 * tpResult.getPaymentStatus(); if (tpResult != null) {
-		 * dto.setVehicleNo(tpResult.getVehicle_no()); } break;
-		 */
-		
-		/*
-		 * case "PA": MobilePersonalAccidentProposal pAPropo =
-		 * mobilePersonalAccidentProposalService.findByOrderId(order_id) .get(0); ps =
-		 * pAPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ?
-		 * PaymentStatus.SUCCESS : PaymentStatus.PENDING; break;
-		 */
-		/*
-		 * case "Medical": MobileMedicalProposal medicalPropo =
-		 * mobileMedicalProposalService.findByOrderId(order_id).get(0); ps =
-		 * medicalPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ?
-		 * PaymentStatus.SUCCESS : PaymentStatus.PENDING; break;
-		 */
+		switch (typeRecords.getProductType()) {		
+		case "SEAMAN LIFE INSURANCE(Online)":
+				LifeProposal lifeProposal = lifeProposalService.findLifeProposalByOrderId(order_id);
+				ps = lifeProposal.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
+						: PaymentStatus.PENDING;
+				dto.setId(lifeProposal.getId());
+				break;
 		
 		default:
-			OnlineBillerBuyer onlineBillerPropo = onlineBillerProposalService.findByOrderId(order_id);
-			ps = onlineBillerPropo.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
-					: PaymentStatus.PENDING;
-			dto.setPrintReceipt(false);
 			break;
 
 		}
 		if (dto != null && ps != null) {
-			logger.info("twoc2precors and thirdpartyPremium is not null");
+			logger.info("twoc2precors");
 			if (ps == PaymentStatus.SUCCESS && dto.getChannel_response_code() != null && dto.getPayment_status() != null
 					&& dto.getChannel_response_code().equals("00") && dto.getPayment_status().equals("000")) {
 				logger.info("Payment Success!!!");
