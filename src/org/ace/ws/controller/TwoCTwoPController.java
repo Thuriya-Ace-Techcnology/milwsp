@@ -161,7 +161,7 @@ public class TwoCTwoPController extends BaseController {
 	public ResponseEntity<String> paymentResponse(@RequestParam(name = "order_id") String order_id) {
 		logger.info("Start PaymentResult method");
 		AceResponse response = new AceResponse();
-		if (order_id == null || order_id == "") {
+		if (order_id == null || order_id.isEmpty()) {
 			response.setStatus(HttpStatus.BAD_REQUEST);
 			response.setMessage("OrderId isn't empty");
 			return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.BAD_REQUEST);
