@@ -302,7 +302,7 @@ public class AddSeamanProposalController extends BaseController {
 				response.setHeader("Content-Disposition", "inline; filename=myanma_insurnace.pdf");
 				logger.info("printRecipt Function End");
 			} 
-			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bb, HttpStatus.NOT_ACCEPTABLE);
+			ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(bb, HttpStatus.OK);
 			return responseEntity;
 	}
 

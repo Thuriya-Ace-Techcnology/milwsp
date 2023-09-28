@@ -16,5 +16,7 @@ public interface ILifePolicyService {
 	public List<LifePolicyDTO> findSeamanPolicyByCDCNo(String cdcNo, String productId);
 
 	public LifePolicyDTO findByPolicyId(String policyId);
+	
+	public LifePolicy findPolicyByProposalId(String lifeProposaId);
 
 }

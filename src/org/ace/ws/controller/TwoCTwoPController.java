@@ -43,6 +43,9 @@ public class TwoCTwoPController extends BaseController {
 	
 	@Resource(name = "LifeProposalService")
 	private ILifeProposalService lifeProposalService;
+	
+	@Resource(name = "LifePolicyService")
+	private ILifePolicyService lifePolicyService;
 
 	@Resource(name = "OnlineBillerProposalService")
 	private IOnlineBillerProposalService onlineBillerProposalService;
@@ -175,9 +178,10 @@ public class TwoCTwoPController extends BaseController {
 				LifeProposal lifeProposal = lifeProposalService.findLifeProposalByOrderId(order_id);
 				ps = lifeProposal.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
 						: PaymentStatus.PENDING;
-				dto.setId(lifeProposal.getId());
-				break;
-		
+				if(ps.equals(PaymentStatus.SUCCESS)) {
+					dto.setId(lifePolicyService.findPolicyByProposalId(lifeProposal.getId()).getId());
+				}				
+				break; 		
 		default:
 			break;
 

@@ -88,4 +88,15 @@ public class LifePolicyService implements ILifePolicyService {
 		
 	}
 	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public LifePolicy findPolicyByProposalId(String lifeProposaId) {
+		LifePolicy result = null;
+		try {
+			result = lifePolicyDAO.findByProposalId(lifeProposaId);
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to find LifePolicy", e);
+		}
+		return result;
+	}
+	
 }
