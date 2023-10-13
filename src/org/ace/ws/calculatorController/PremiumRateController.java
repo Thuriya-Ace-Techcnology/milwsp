@@ -17,6 +17,7 @@ import org.ace.insurance.product.Product;
 import org.ace.insurance.product.service.interfaces.IPremiumCalculatorService;
 import org.ace.insurance.product.service.interfaces.IProductService;
 import org.ace.insurance.system.common.keyfactor.KeyFactor;
+import org.ace.insurance.system.common.keyfactor.service.interfaces.IKeyFactorService;
 import org.ace.ws.client.URIConstants;
 import org.ace.ws.controller.common.BaseController;
 import org.ace.ws.model.AceResponse;
@@ -44,6 +45,9 @@ public class PremiumRateController extends BaseController {
 	@Resource(name = "PlansService")
 	private IPlansService plansService;
 	
+	@Resource(name = "KeyFactorService")
+	private IKeyFactorService keyFactorService;
+	
 	List<InsuredPersonKeyFactorValue> keyFactorValueList = null;
 
 	@CrossOrigin
@@ -66,11 +70,11 @@ public class PremiumRateController extends BaseController {
 			}
 		}		
 		setKeyFactorValue(planId , age);
-		Map<KeyFactor, String> keyfatorValueMap = new HashMap<KeyFactor, String>();
+		Map<KeyFactor, String> keyfactorValueMap = new HashMap<KeyFactor, String>();
 		for (InsuredPersonKeyFactorValue insukf : keyFactorValueList) {
-			keyfatorValueMap.put(insukf.getKeyFactor(), insukf.getValue());
+			keyfactorValueMap.put(insukf.getKeyFactor(), insukf.getValue());
 		}	
-		premiumRate = premiumCalculatorService.findPremiumRate(keyfatorValueMap, product);
+		premiumRate = premiumCalculatorService.findPremiumRate(keyfactorValueMap, product);
 		premium = premiumCalculatorService.calulatePremium(premiumRate, product, new PremiumCalData(null, null, null,null));
 		aceResponse.setMessage("Success");
 		aceResponse.setStatus(HttpStatus.OK);
@@ -78,6 +82,33 @@ public class PremiumRateController extends BaseController {
 		return responseManager.getResponseString(aceResponse);
 		
 	} 
+	
+	@CrossOrigin
+	@RequestMapping(value = URIConstants.GET_LIFE_PREMIUM, method = RequestMethod.POST)
+	@ResponseBody
+	private String getLifeProductPremium(@RequestBody PRO001 pro001) {
+		List<ResultPremium> resultList = premiumCalculatorService.calculatePremium(pro001);
+		if(resultList.size()>0) {
+			if(resultList.get(0).getPremium()== 0.0) {
+				return responseManager.getResponseString(new ArrayList<ResultPremium>());
+			}
+		}
+		return responseManager.getResponseString(resultList);
+	}
+	
+	@CrossOrigin
+	@RequestMapping(value = URIConstants.GET_HEALTH_PREMIUM, method = RequestMethod.POST)
+	@ResponseBody
+	private String getHealthProductPremium(@RequestBody PRO001 pro001) {
+		List<ResultPremium> resultList = premiumCalculatorService.calculateHealthPremium(pro001);
+		if(resultList.size()>0) {
+			if(resultList.get(0).getPremium()== 0.0) {
+				return responseManager.getResponseString(new ArrayList<ResultPremium>());
+			}
+		}
+		return responseManager.getResponseString(resultList);
+	}
+
 
 	private void setKeyFactorValue(String planId , int age) {
 		for (InsuredPersonKeyFactorValue vehKF : keyFactorValueList) {
@@ -89,13 +120,7 @@ public class PremiumRateController extends BaseController {
 			}
 		}
 	}
-
-
-
-
-
-
-
-
-
+	
+	
+	
 }

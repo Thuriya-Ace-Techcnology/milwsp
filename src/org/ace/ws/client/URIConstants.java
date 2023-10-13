@@ -88,7 +88,9 @@ public interface URIConstants {
 	public static final String ROUTE_LIST = "/getRouteList";// http://192.168.11.210:8080/ggiwsp/ws/getRouteList
 	public static final String CURRENCY_LIST = "/getCurrencyList";// http://192.168.11.210:8080/ggiwsp/ws/getCurrencyList
 	public static final String PAYMENT_TYPE_LIST = "/getPaymentTypeList";// http://192.168.11.210:8080/ggiwsp/ws/getPaymentTypeList
-	public static final String GET_PREMIUM = "/getPremium";// http://192.168.11.210:8080/fnigwsp/ws/getPremium
+	public static final String GET_PREMIUM = "/getPremium";// http://192.168.11.210:8080/fnigwsp/ws/getPremium	
+	public static final String GET_LIFE_PREMIUM = "/getLifeProductPremium";
+	public static final String GET_HEALTH_PREMIUM = "/getHealthProductPremium";
 	public static final String GET_ALLRELATIONSHIP = "/getAllRelationShip";
 	public static final String GET_PAERATE_BY_CLASS_AGE = "/getPAERate";// http://192.168.11.210:8080/fnigwsp/ws/getPAERate
 	public static final String ROUTE_BY_INSURANCETYPE_LIST = "/getRouteListByInsuranceType";

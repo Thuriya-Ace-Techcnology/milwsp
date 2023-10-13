@@ -1,5 +1,7 @@
 package org.ace.insurance.product.persistence;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.persistence.NoResultException;
@@ -68,8 +70,7 @@ public class PremiumCalculatorDAO extends BasicDAO implements IPremiumCalculator
 	
 
 	@Transactional(propagation = Propagation.REQUIRED)
-	private String findProductPremiumRateId(Map<KeyFactor, String> keyfatorValueMap, String referenceId,
-			boolean isProduct) throws DAOException {
+	private String findProductPremiumRateId(Map<KeyFactor, String> keyfatorValueMap, String referenceId, boolean isProduct) throws DAOException {
 		String result = null;
 		try {
 			KeyFactorType keyFactorType = null;
@@ -115,6 +116,31 @@ public class PremiumCalculatorDAO extends BasicDAO implements IPremiumCalculator
 			throw translate("Failed to find ProductPremiumRate", pe);
 		}
 
+		return result;
+	}
+
+	
+	
+	@Transactional(propagation = Propagation.REQUIRED, readOnly = true)
+	public <T> List<Double> findShoreJobPremiumRate(Product product) throws DAOException {
+		List<Double> result = new ArrayList<>();
+		try {
+			
+			String referenceId = product.getId();
+			
+			StringBuffer buffer = new StringBuffer(" SELECT r.premiumRate FROM ProductPremiumRate r ");
+			buffer.append(" WHERE r.product.id = :referenceId ORDER BY r.premiumRate ASC");
+			
+			Query query = em.createQuery(buffer.toString());
+			query.setParameter("referenceId", referenceId);
+			
+			result = query.getResultList();
+			
+		} catch (NoResultException e) {
+			return null;
+		} catch (PersistenceException pe) {
+			throw translate("Failed to find ProductPremiumRate", pe);
+		}
 		return result;
 	}
 }

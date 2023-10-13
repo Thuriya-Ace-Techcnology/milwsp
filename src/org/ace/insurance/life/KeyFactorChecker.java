@@ -34,6 +34,7 @@ public class KeyFactorChecker {
 	private static String PUBLIC_TERM_LIFE = "PUBLIC_TERM_LIFE";
 	private static String GROUP_LIFE = "GROUP_LIFE";
 	private static String SPORT_MAN = "SPORT_MAN";
+	private static String SPORT_MAN_ABROAD = "SPORT_MAN_ABROAD";
 	private static String SHORT_TERM_ENDOWMNENT = "SHORT_TERM_ENDOWMNENT";
 	private static String GOVERNMENT_SHORT_TERM_ENDOWMNENT = "GOVERNMENT_SHORT_TERM_ENDOWMNENT";
 	private static String SEAMEN_LIFE = "SEAMEN_LIFE";
@@ -115,6 +116,13 @@ public class KeyFactorChecker {
 
 	public static boolean isSportMan(Product product) {
 		if (product.getId().trim().equals(idConfig.getProperty(SPORT_MAN).trim())) {
+			return true;
+		}
+		return false;
+	}
+	
+	public static boolean isSportManAbroad(Product product) {
+		if (product.getId().trim().equals(idConfig.getProperty(SPORT_MAN_ABROAD).trim())) {
 			return true;
 		}
 		return false;

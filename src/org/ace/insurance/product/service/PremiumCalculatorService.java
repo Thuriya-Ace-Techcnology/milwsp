@@ -10,6 +10,9 @@ import javax.annotation.Resource;
 import org.ace.insurance.common.ErrorCode;
 import org.ace.insurance.common.InsuranceType;
 import org.ace.insurance.common.KeyFactorIDConfig;
+import org.ace.insurance.common.Utils;
+import org.ace.insurance.life.KeyFactorChecker;
+import org.ace.insurance.life.dao.entities.PolicyInsuredPersonAddon;
 import org.ace.insurance.product.PremiumCalData;
 import org.ace.insurance.product.PremiumRateType;
 import org.ace.insurance.product.Product;
@@ -79,8 +82,9 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 	public <T> Double calulatePremium(double premiumRate, T param, PremiumCalData data) throws SystemException {
 		PremiumRateType type = null;
 		Double basedAmount = null;
+		Product product = null;
 		if (param instanceof Product) {
-			Product product = (Product) param;
+			product = (Product) param;
 			type = product.getPremiumRateType();
 			basedAmount = product.getBasedAmount();
 		} else if (param instanceof AddOn) {
@@ -89,9 +93,33 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 			basedAmount = addOn.getBasedAmount();
 		}
 		switch (type) {
-			case USER_DEFINED_PREMIUM:
+			case BASED_ON_OWN_SUMINSURED: {
+				premiumRate = (premiumRate * data.getSuminsured()) / basedAmount;
+			}
 				break;
-			default:
+
+			case BASED_ON_MAINCOVER_SUMINSURED: {
+				if(KeyFactorChecker.isGovernmentShortTermEndowment(product.getId())) {
+					// calculating to get one month premium according to SI
+					premiumRate = premiumRate * 12;
+				} else {
+					premiumRate = (premiumRate * data.getMainCoverSuminsured()) / basedAmount;
+				}
+			}
+				break;
+
+			case PER_UNIT: {
+				premiumRate = premiumRate * data.getUnit();
+			}
+				break;
+
+			case BASED_ON_PREMIUM: {
+				premiumRate = (premiumRate * data.getMainCoverPremium()) / basedAmount;
+			}
+				break;
+
+			case USER_DEFINED_PREMIUM:
+			case FIXED:
 				break;
 		}
 		return premiumRate;
@@ -107,6 +135,20 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 			}
 		} catch (DAOException e) {
 			throw new SystemException(e.getErrorCode(), "Faield to find a ProductPremiumRate", e);
+		}
+		return result;
+	}
+	
+	@Transactional(propagation = Propagation.REQUIRED)
+	public <T> List<Double> findShoreJobPremiumRate(Product param) throws SystemException {
+		List<Double> result = null;
+		try {
+			result = premiumCalculatorDAO.findShoreJobPremiumRate(param);
+			if (result == null) {
+				throw new SystemException(ErrorCode.NO_PREMIUM_RATE, "There is no premiumn.");
+			}
+		} catch (DAOException e) {
+			throw new SystemException(e.getErrorCode(), "Failed to find a ProductPremiumRate", e);
 		}
 		return result;
 	}
@@ -140,63 +182,72 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 	@Override
 	public List<ResultPremium> calculatePremium(PRO001 pro001) {
 		List<ResultPremium> resultList = new ArrayList<ResultPremium>();
-		Double basicPremium = 0.0;
+		Double premium = 0.0;
+		Double premiumRate = 0.0;
 		Double addonPremium = 0.0;
-		double mainCoverSumInsured = 0;
-		int unit = 1;
+		double sumInsured = 0.0;
+		List<Double> premiumRateList;
 		Product product = productSerivce.findProductById(pro001.getProductId());
 		if (product == null) {
 			return resultList;
-		}
+		}		
 		Map<KeyFactor, String> keyfactorValueMap = new HashMap<KeyFactor, String>();
-		Map<String, String> keyFactorDTOMap = pro001.getKeyFactorMap();
-
-		// If public life do these function
-		if (product.getId().trim().equals(KeyFactorIDConfig.getPublicLifeId())) {
-			// int weight =
-			// Integer.parseInt(keyFactorDTOMap.get(KeyFactorIDConfig.getWeightId()));
-			// int feet =
-			// Integer.parseInt(keyFactorDTOMap.get(KeyFactorIDConfig.getFeetId()));
-			// int inches =
-			// Integer.parseInt(keyFactorDTOMap.get(KeyFactorIDConfig.getInchesId()));
-			// int height = feet * 12 + inches;
-			// int age =
-			// Integer.parseInt(keyFactorDTOMap.get(KeyFactorIDConfig.getFixedAgeId()));
-			// String pounds = calculatePounds(weight, height, age);
-			keyFactorDTOMap.put(KeyFactorIDConfig.getPoundId(), "1");
-			keyFactorDTOMap.remove(KeyFactorIDConfig.getFeetId());
-			keyFactorDTOMap.remove(KeyFactorIDConfig.getInchesId());
-			keyFactorDTOMap.remove(KeyFactorIDConfig.getWeightId());
-		}
-
-		KeyFactor keyfactor = null;
-		InsuranceType insuranceType = product.getInsuranceType();
-		for (String keyfactorId : keyFactorDTOMap.keySet()) {
-			if (insuranceType.equals(InsuranceType.MOTOR) || insuranceType.equals(InsuranceType.TRAVEL_INSURANCE)) {
+		Map<String, String> keyFactorDTOMap = pro001.getKeyFactorMap();		
+		KeyFactor keyfactor = null;	
+		int age = 0;
+		if(keyFactorDTOMap != null) {			
+			for (String keyfactorId : keyFactorDTOMap.keySet()) {
 				keyfactor = keyFactorService.findKeyFactorById(keyfactorId);
-				keyfactorValueMap.put(keyfactor, keyFactorDTOMap.get(keyfactorId));
-				
-			}
-			else if (!KeyFactorIDConfig.getSumInsuredId().trim().equals(keyfactorId) && !KeyFactorIDConfig.getUnitKFId().trim().equals(keyfactorId)) {
-				keyfactor = keyFactorService.findKeyFactorById(keyfactorId);
-				keyfactorValueMap.put(keyfactor, keyFactorDTOMap.get(keyfactorId));
-			}
+				keyfactorValueMap.put(keyfactor, keyFactorDTOMap.get(keyfactorId));	
+				if(KeyFactorChecker.isPublicLife(product) && KeyFactorChecker.isFixedAge(keyfactor)) {
+					age =  Integer.parseInt(keyFactorDTOMap.get(KeyFactorIDConfig.getFixedAgeId()));
+				}
+			}		
 		}
+		if(KeyFactorChecker.isPublicLife(product)) {
+			int height = pro001.getFeet() * 12 + pro001.getInches();
+			keyfactor = keyFactorService.findKeyFactorById(KeyFactorIDConfig.getPoundId());
+			keyfactorValueMap.put(keyfactor, String.valueOf(calculatePounds(height,pro001.getWeight(),age)));
+			
+		}
+		if (KeyFactorChecker.isSportMan(product) || KeyFactorChecker.isSnakeBite(product.getId()) || KeyFactorChecker.isSeaMenLife(product.getId())) {
+			premiumRate = premiumCalculatorService.findPremiumRate(keyfactorValueMap, product);
+			premium = premiumCalculatorService.calulatePremium(premiumRate, product, new PremiumCalData(null, null, null, (double) pro001.getUnit()));
 
-		if (product.getPremiumRateType().equals(PremiumRateType.PER_UNIT)) {
-			unit = Integer.parseInt(keyFactorDTOMap.get(KeyFactorIDConfig.getUnitKFId()));
-			basicPremium = premiumCalculatorService.calculatePremium(keyfactorValueMap, product, new PremiumCalData(null, null, null, (double) unit));
+		} else if (KeyFactorChecker.isShoreJobLife(product.getId())) {
+			premiumRateList = premiumCalculatorService.findShoreJobPremiumRate(product);
+			premiumRate = (pro001.getPeriodTerm() == 6) ? premiumRateList.get(0) : premiumRateList.get(1);
+			premium = premiumCalculatorService.calulatePremium(premiumRate, product,
+					new PremiumCalData(null, null, null,(double)pro001.getUnit()));
+
+			if (!(pro001.getPeriodTerm() == 6)) {
+				premium = premium * pro001.getPeriodTerm();
+			} 
+		} else if (KeyFactorChecker.isGovernmentShortTermEndowment(product.getId())) {
+			premiumRate = premiumCalculatorService.findPremiumRate(keyfactorValueMap, product);		
+			
+			// calculating to get one month premium according to SI
+			premiumRate = (pro001.getSumInsured() / product.getBasedAmount()) * premiumRate;
+			premium = premiumCalculatorService.calulatePremium(premiumRate, product,
+					new PremiumCalData(null, pro001.getSumInsured(), null, null));
+			premium = premiumCalculatorService.calulateTermPremium(premium,paymentTypeService.findPaymentTypeById(pro001.getPaymentType()).getMonth());		
 
 		} else {
-			if (keyFactorDTOMap.get(KeyFactorIDConfig.getSumInsuredId()) != null) {
-				mainCoverSumInsured = Double.parseDouble(keyFactorDTOMap.get(KeyFactorIDConfig.getSumInsuredId()));
+			if(KeyFactorChecker.isPublicTermLife(product.getId())) {
+				sumInsured = Double.parseDouble(keyFactorDTOMap.get(KeyFactorIDConfig.getSumInsuredId()));						
+			}else {
+				sumInsured = pro001.getSumInsured();
 			}
-			basicPremium = premiumCalculatorService.calculatePremium(keyfactorValueMap, product, new PremiumCalData(null, mainCoverSumInsured, null, null));
+			premiumRate = premiumCalculatorService.findPremiumRate(keyfactorValueMap, product);
+			premium = premiumCalculatorService.calulatePremium(premiumRate, product,
+					new PremiumCalData(null,sumInsured, null, null));
+			if(KeyFactorChecker.isShortTermEndowment(product.getId()) || KeyFactorChecker.isPublicLife(product) || KeyFactorChecker.isGovernmentPersonal(product.getId()) ) {
+				premium = premiumCalculatorService.calulateTermPremium(premium, paymentTypeService.findPaymentTypeById(pro001.getPaymentType()).getMonth());
+			}
 		}
-
-		ResultPremium productPremium = new ResultPremium(product.getId().trim(), product.getName(), basicPremium,0.0);
+		ResultPremium productPremium = new ResultPremium(product.getId().trim(), product.getName(), premium,0.0);
 		resultList.add(productPremium);
-
+		
 		/** Addon Premium */
 		ResultPremium resultAddonPremium = null;
 		AddOn addon = null;
@@ -207,41 +258,71 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 				addOnKeyfactorMap = new HashMap<KeyFactor, String>();
 				addOnKeyfactorDTOMap = new HashMap<String, String>();
 				addon = addOnService.findAddOnById(addon001.getAddOnId());
-				if (addon.isBaseOnKeyFactor()) {
-					addOnKeyfactorDTOMap = addon001.getKeyFactorMap();
-					for (String keyfactorID : addOnKeyfactorDTOMap.keySet()) {
-						if (!KeyFactorIDConfig.getSumInsuredId().trim().equals(keyfactorID) && !KeyFactorIDConfig.getUnitKFId().trim().equals(keyfactorID)) {
-							keyfactor = keyFactorService.findKeyFactorById(keyfactorID);
-							addOnKeyfactorMap.put(keyfactor, addOnKeyfactorDTOMap.get(keyfactorID));
-						}
-					}
-				}
-
-				if (addon.getPremiumRateType().equals(PremiumRateType.PER_UNIT)) {
-					addOnKeyfactorDTOMap = addon001.getKeyFactorMap();
-					unit = Integer.parseInt(addOnKeyfactorDTOMap.get(KeyFactorIDConfig.getUnitKFId()));
-					addonPremium = premiumCalculatorService.calculatePremium(addOnKeyfactorMap, addon, new PremiumCalData(null, mainCoverSumInsured, basicPremium, (double) unit));
-				} else {
-					String sumInsuredStr = addOnKeyfactorDTOMap.get(KeyFactorIDConfig.getSumInsuredId());
-					double sumInsured = 0;
-					if (sumInsuredStr != null)
-						sumInsured = Double.parseDouble(addOnKeyfactorDTOMap.get(KeyFactorIDConfig.getSumInsuredId()));
-					addonPremium = premiumCalculatorService.calculatePremium(addOnKeyfactorMap, addon, new PremiumCalData(sumInsured, mainCoverSumInsured, basicPremium, null));
-				}
-
+				addOnKeyfactorDTOMap = addon001.getKeyFactorMap();
+				for (String keyfactorID : addOnKeyfactorDTOMap.keySet()) {						
+					keyfactor = keyFactorService.findKeyFactorById(keyfactorID);
+					addOnKeyfactorMap.put(keyfactor, addOnKeyfactorDTOMap.get(keyfactorID));						
+				}	
+				addonPremium = premiumCalculatorService.calculatePremium(addOnKeyfactorMap, addon, new PremiumCalData(null, null, null, 1.0));				
 				resultAddonPremium = new ResultPremium(addon.getId().trim(), addon.getName(), addonPremium,0.0);
 				resultList.add(resultAddonPremium);
 			}
 		}
+		
 		return resultList;
 	}
-
-	private String calculatePounds(int weight, int height, int age) {
-		int pounds = 0;
-
+	
+	
+	@Override
+	public List<ResultPremium> calculateHealthPremium(PRO001 pro001) {
+		List<ResultPremium> resultList = new ArrayList<ResultPremium>();
+		Double premium = 0.0;
+		Double addonPremium = 0.0;
+		Product product = productSerivce.findProductById(pro001.getProductId());
+		if (product == null) {
+			return resultList;
+		}		
+		Map<KeyFactor, String> keyfactorValueMap = new HashMap<KeyFactor, String>();
+		Map<String, String> keyFactorDTOMap = pro001.getKeyFactorMap();		
+		KeyFactor keyfactor = null;	
+		if(keyFactorDTOMap != null) {			
+			for (String keyfactorId : keyFactorDTOMap.keySet()) {
+				keyfactor = keyFactorService.findKeyFactorById(keyfactorId);
+				keyfactorValueMap.put(keyfactor, keyFactorDTOMap.get(keyfactorId));	
+			}		
+		}		
+		premium = premiumCalculatorService.calculatePremium(keyfactorValueMap, product, new PremiumCalData(null, null, null, (double) pro001.getUnit())); 
+		ResultPremium productPremium = new ResultPremium(product.getId().trim(), product.getName(), premium,0.0);
+		resultList.add(productPremium);
+		
+		/** Addon Premium */
+		ResultPremium resultAddonPremium = null;
+		AddOn addon = null;
+		if (pro001.getAddOnList() != null) {
+			Map<KeyFactor, String> addOnKeyfactorMap = null;
+			Map<String, String> addOnKeyfactorDTOMap = null;
+			for (ADO001 addon001 : pro001.getAddOnList()) {
+				addOnKeyfactorMap = new HashMap<KeyFactor, String>();
+				addOnKeyfactorDTOMap = new HashMap<String, String>();
+				addon = addOnService.findAddOnById(addon001.getAddOnId());
+				addOnKeyfactorDTOMap = addon001.getKeyFactorMap();
+				for (String keyfactorID : addOnKeyfactorDTOMap.keySet()) {						
+					keyfactor = keyFactorService.findKeyFactorById(keyfactorID);
+					addOnKeyfactorMap.put(keyfactor, addOnKeyfactorDTOMap.get(keyfactorID));						
+				}	
+				addonPremium = premiumCalculatorService.calculatePremium(addOnKeyfactorMap, addon, new PremiumCalData(null, null, null,Double.parseDouble(addon001.getValue())));				
+				resultAddonPremium = new ResultPremium(addon.getId().trim(), addon.getName(), addonPremium,0.0);
+				resultList.add(resultAddonPremium);
+			}
+		}
+		
+		return resultList;
+	}
+	
+	public int calculatePounds(int height, int weight, int age ) {
 		if (height < 58) {
 			height = 58;
-		} else if (height > 72) {
+		} else if (height  > 72) {
 			height = 72;
 		}
 		if (age < 20) {
@@ -249,35 +330,39 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 		} else if (age > 45) {
 			age = 45;
 		}
-		int bmiWeight = bmiService.findPoundByAgeAndHeight(age, height);
-		int calPound = 0;
-		if (bmiWeight > 0) {
-			if (weight == bmiWeight) {
-				pounds = weight - bmiWeight;
-			} else if (weight > bmiWeight) {
-				calPound = bmiWeight * 20 / 100;
-				calPound = bmiWeight + calPound;
-
-				if (calPound >= weight) {
-					bmiWeight = 0;
+		int pounds =  bmiService.findPoundByAgeAndHeight(age,height);
+			int calPound;
+			if (pounds > 0) {
+				if (weight == pounds) {
+					pounds = weight - pounds;
+				} else if (weight > pounds) {
+					calPound = pounds * 20 / 100;
+					calPound = pounds + calPound;
+					if (calPound >= weight) {
+						pounds = 0;
+					} else {
+						pounds = weight - calPound;
+					}
 				} else {
-					bmiWeight = weight - calPound;
+					calPound = pounds * 15 / 100;
+					calPound = pounds - calPound;
+					if (calPound <= weight) {
+						pounds = 0;
+					} else {
+						pounds = weight - calPound;
+					}
+					pounds = calPound - weight;
 				}
-			} else {
-				calPound = bmiWeight * 15 / 100;
-				calPound = bmiWeight - calPound;
-				if (calPound <= weight) {
-					bmiWeight = 0;
-				} else {
-					bmiWeight = weight - calPound;
-				}
-				bmiWeight = calPound - weight;
 			}
-		}
-		bmiWeight = Math.abs(bmiWeight);
-		pounds = (int) Math.ceil(bmiWeight);
+			pounds = Math.abs(pounds);
+			pounds = (int) Math.ceil(pounds);			
+			return pounds;
+	}
 
-		return pounds + "";
+
+	@Override
+	public Double calulateTermPremium(double premium, int paymentType) throws SystemException {
+		return (paymentType * premium) / 12;		
 	}
 
 }
