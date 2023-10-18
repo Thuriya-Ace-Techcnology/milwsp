@@ -644,7 +644,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
-				<text><![CDATA[ကို  ခံစားခြင့္  ေပးသြားမည္ျဖစ္ေၾကာင္း  အတည္ျပဳ]]></text>
+				<text><![CDATA[ကို  ခံစားခြင့္ေပးသြားမည္ ျဖစ္ပါသည္။]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="350" y="475" width="183" height="23" uuid="06152c4a-bbec-41a9-b9d6-19121489ab9a">
@@ -733,15 +733,6 @@
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[ခဲ့ေသာ အထက္ေဖာ္ျပပါ အက်ိဳးခံစားခြင့္ရွိသူ(မ်ား)သို႔ သတ္မွတ္ထားေသာ အက်ိဳးခံစားခြင့္ႏႈန္းထားမ်ား အရ (]]></text>
-			</staticText>
-			<staticText>
-				<reportElement x="2" y="615" width="138" height="23" uuid="f3cbf83a-f15f-41a4-a578-c70a6727d0ba">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement verticalAlignment="Middle">
-					<font fontName="Zawgyi-One" size="11"/>
-				</textElement>
-				<text><![CDATA[လက္မွတ္ ေရးထိုးပါသည္။]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="519" y="569" width="14" height="23" uuid="45a97705-4160-451a-8683-8eb09ec6a9c3">

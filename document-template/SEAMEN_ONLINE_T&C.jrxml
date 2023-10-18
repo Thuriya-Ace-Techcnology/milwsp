@@ -26,134 +26,134 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="171" width="280" height="23" uuid="bbc32aab-3381-4d45-b687-00f6989db3c8"/>
+				<reportElement x="0" y="190" width="280" height="23" uuid="bbc32aab-3381-4d45-b687-00f6989db3c8"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[အက်ိဳးခံစားခြင့္အက်ဳံးမဝင္သည့္အခ်က္မ်ား]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="116" width="19" height="23" uuid="804c1ea8-8fc5-448d-b683-78402060b145"/>
+				<reportElement x="0" y="131" width="19" height="23" uuid="804c1ea8-8fc5-448d-b683-78402060b145"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="218" width="534" height="23" uuid="31287056-d110-4645-9eac-b680e2e48433"/>
+				<reportElement x="20" y="237" width="534" height="23" uuid="31287056-d110-4645-9eac-b680e2e48433"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
-				<text><![CDATA[မူးယစ္ေဆးဝါးသုံးစြဲျခင္းေၾကာင့္ ေသဆုံးျခင္းႏွင့္ထိခိုက္ဒဏ္ရာရျခင္း]]></text>
+				<text><![CDATA[မူးယစ္ေဆးဝါးသုံးစြဲျခင္းေၾကာင့္ ေသဆုံးျခင္း၊ ထာဝစဥ္မသန္စြမ္းျဖစ္ျခင္းႏွင့္ ထိခိုက္ဒဏ္ရာရျခင္း]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="195" width="19" height="23" uuid="30569175-b1e3-412d-8061-473dba63fbee"/>
+				<reportElement x="0" y="214" width="19" height="23" uuid="30569175-b1e3-412d-8061-473dba63fbee"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[(၁)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="264" width="534" height="23" uuid="e1270db7-4749-4bca-b583-8afb6471fdd7"/>
+				<reportElement x="20" y="283" width="534" height="23" uuid="e1270db7-4749-4bca-b583-8afb6471fdd7"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
-				<text><![CDATA[မိမိကိုယ္တိုင္ ရာဇဝတ္မႈက်ဴးလြန္ျခင္းေၾကာင့္ ေသဆုံးျခင္းႏွင့္ထိခိုက္ဒဏ္ရာရျခင္း]]></text>
+				<text><![CDATA[မိမိကိုယ္တိုင္ ရာဇဝတ္မႈက်ဴးလြန္ျခင္းေၾကာင့္ ေသဆုံးျခင္း ထာဝစဥ္မသန္စြမ္းျဖစ္ျခင္းႏွင့္ ထိခိုက္ဒဏ္ရာရျခင္း]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="195" width="534" height="23" uuid="002b7926-7297-4eec-b562-a5671ef29d7c"/>
+				<reportElement x="20" y="214" width="534" height="23" uuid="002b7926-7297-4eec-b562-a5671ef29d7c"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[အာမခံထားသူသေဘၤာသားသည္ သေဘၤာမွထြက္ေျပးျခင္း]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="241" width="534" height="23" uuid="f5887094-5157-4996-add8-4c0af7ac564b"/>
+				<reportElement x="20" y="260" width="534" height="23" uuid="f5887094-5157-4996-add8-4c0af7ac564b"/>
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
-				<text><![CDATA[မိမိကိုယ္ကိုသတ္ေသျခင္းေၾကာင့္ ေသဆုံးျခင္းႏွင့္ထိခိုက္ဒဏ္ရာရျခင္း]]></text>
+				<text><![CDATA[မိမိကိုယ္ကိုသတ္ေသျခင္းေၾကာင့္ ေသဆုံးျခင္း၊ ထာဝစဥ္မသန္စြမ္းျဖစ္ျခင္းႏွင့္ ထိခိုက္ဒဏ္ရာရျခင္း]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="218" width="19" height="23" uuid="7bb12250-98a3-4c72-8246-8657beefb211"/>
+				<reportElement x="0" y="237" width="19" height="23" uuid="7bb12250-98a3-4c72-8246-8657beefb211"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[(၂)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="241" width="19" height="23" uuid="8f765d28-c92a-4e52-a601-d7271bfbd913"/>
+				<reportElement x="0" y="260" width="19" height="23" uuid="8f765d28-c92a-4e52-a601-d7271bfbd913"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[(၃)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="264" width="19" height="23" uuid="7c2b85fb-bbdf-45f9-9a01-12594591319e"/>
+				<reportElement x="0" y="283" width="19" height="23" uuid="7c2b85fb-bbdf-45f9-9a01-12594591319e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11" isBold="true"/>
 				</textElement>
 				<text><![CDATA[(၄)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="294" width="110" height="23" uuid="3807108a-336b-4568-801e-3b9e6c89410c"/>
+				<reportElement x="0" y="313" width="110" height="23" uuid="3807108a-336b-4568-801e-3b9e6c89410c"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[အေထြေထြ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="320" width="19" height="23" uuid="a9bd512b-9ff2-48da-a32f-cef3872fe89b"/>
+				<reportElement x="1" y="339" width="19" height="23" uuid="a9bd512b-9ff2-48da-a32f-cef3872fe89b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="389" width="19" height="23" uuid="9623d640-4e2d-440a-8b9d-6bce5d0b7aa9"/>
+				<reportElement x="0" y="408" width="19" height="23" uuid="9623d640-4e2d-440a-8b9d-6bce5d0b7aa9"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="479" width="19" height="23" uuid="84cf8e70-1f50-4e78-9281-361acd86a35b"/>
+				<reportElement x="0" y="498" width="19" height="23" uuid="84cf8e70-1f50-4e78-9281-361acd86a35b"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="529" width="21" height="23" uuid="42b2a8b3-2c1c-417d-8db3-ae60f1e92e50"/>
+				<reportElement x="0" y="548" width="21" height="23" uuid="42b2a8b3-2c1c-417d-8db3-ae60f1e92e50"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="529" width="534" height="23" uuid="ba90582b-580a-47d9-98ef-f52e6f413de8"/>
+				<reportElement x="20" y="548" width="534" height="23" uuid="ba90582b-580a-47d9-98ef-f52e6f413de8"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[အာမခံထားသူ ေသဆုံးရာတြင္ အေလာင္းမရရွိပါက (၁) ႏွစ္ ဆိုင္းငံ့ ၿပီးမွ အက်ိဳးခံစားခြင့္ကို ရရွိမည္ျဖစ္သည္။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="553" width="538" height="136" uuid="1730a1ef-4743-48c1-9451-de4d0dbaa683"/>
+				<reportElement x="20" y="572" width="538" height="136" uuid="1730a1ef-4743-48c1-9451-de4d0dbaa683"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<text><![CDATA[သေဘၤာတြင္  (၁)  ႏွစ္ထက္ပို၍   တာဝန္ထမ္းေဆာင္ေနရသျဖင့ ္ သက္တမ္းတိုးရာတြင္  သေဘၤာသားသည္ က်န္းမာစြာျဖင့္ တာဝန္   ထမ္းေဆာင္လ်က္ရွိေၾကာင္း  သေဘၤာကုမၸဏီႏွင့ ္ အက်ိဳးခံစားခြင့္ရွိသူတို႔၏  ေထာက္ခံခ်က္  ပါရွိရမည္။ သို႔ရာတြင္ ပရီမီယံေပးသြင္းၿပီး ျဖစ္ေစကာမူ အထက္ပါစည္းကမ္းခ်က္မ်ားႏွင့္ မညီၫြတ္လွ်င္ အာမခံပ်က္ျပယ္ၿပီးျဖစ္သည္။သက္တမ္းတိုး  အာမခံလက္မွတ္သက္တမ္းသည္   မူလအာမခံလက္မွတ္၏  သက္တမ္း  ကုန္ဆုံးၿပီး  ေနာက္တစ္ေန႔မွ  စတင္မည္ျဖစ္သည္။ သက္တမ္းတိုး  အာမခံသက္တမ္း မစမီ  ျမန္မာႏိုင္ငံ သို႔ ျပန္လည္ေရာက္ရွိေနပါက  သက္တမ္းတိုး  အာမခံသက္တမ္းသည္ ေနာက္တစ္ႀကိမ္ သေဘၤာသားအသက္ အာမခံလက္မွတ္ကို ဝယ္ယူသည့္ေန႔မွ စတင္မည္ျဖစ္သည္။]]></text>
+				<text><![CDATA[သေဘၤာတြင္  (၁)  ႏွစ္ထက္ပို၍   တာဝန္ထမ္းေဆာင္ေနရသျဖင့္ သက္တမ္းတိုးရာတြင္  သေဘၤာသားသည္ က်န္းမာစြာျဖင့္ တာဝန္   ထမ္းေဆာင္လ်က္ရွိေၾကာင္း  သေဘၤာကုမၸဏီႏွင့္္ အက်ိဳးခံစားခြင့္ရွိသူတို႔၏  ေထာက္ခံခ်က္  ပါရွိရမည္။ သို႔ရာတြင္ ပရီမီယံေပးသြင္းၿပီး ျဖစ္ေစကာမူအထက္ပါစည္းကမ္းခ်က္မ်ားႏွင့္ မညီၫြတ္လွ်င္ အာမခံပ်က္ျပယ္ၿပီးျဖစ္သည္။သက္တမ္းတိုး  အာမခံလက္မွတ္သက္တမ္းသည္   မူလအာမခံလက္မွတ္၏  သက္တမ္း  ကုန္ဆုံးၿပီး  ေနာက္တစ္ေန႔မွ  စတင္မည္ျဖစ္သည္။ သက္တမ္းတိုး  အာမခံသက္တမ္း မစမီ  ျမန္မာႏိုင္ငံ သို႔ ျပန္လည္ေရာက္ရွိေနပါက  သက္တမ္းတိုး  အာမခံသက္တမ္းသည္ ေနာက္တစ္ႀကိမ္ သေဘၤာသားအသက္ အာမခံလက္မွတ္ကို ဝယ္ယူသည့္ေန႔မွ စတင္မည္ျဖစ္သည္။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="553" width="19" height="23" uuid="fcd42740-0a1d-499a-a0e0-cd6e9e422c0e"/>
+				<reportElement x="0" y="572" width="19" height="23" uuid="fcd42740-0a1d-499a-a0e0-cd6e9e422c0e"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="13" isBold="true"/>
 				</textElement>
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="-1" y="690" width="19" height="25" uuid="94aa4098-7e28-4389-9209-088938e8d1cc">
+				<reportElement x="-1" y="709" width="19" height="25" uuid="94aa4098-7e28-4389-9209-088938e8d1cc">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -163,7 +163,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="20" y="690" width="538" height="50" uuid="b5dcbe09-75f1-4ade-a9ac-3bf205fcc0ce">
+				<reportElement x="20" y="709" width="538" height="50" uuid="b5dcbe09-75f1-4ade-a9ac-3bf205fcc0ce">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -173,15 +173,15 @@
 				<text><![CDATA[အထက္ေဖာ္ျပပါ  စည္းကမ္းခ်က္မ်ားႏွင့္  ညီၫြတ္မႈမရွိပါက ေလ်ာ္ေၾကးေပးေခ်ျခင္းကို  ျငင္းပယ္သည္အထိ အေရးယူျခင္း  ခံရမည္။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="21" y="24" width="533" height="90" uuid="368a3ee7-fdcc-4c52-9664-02ea820b8bfa"/>
-				<textElement verticalAlignment="Middle">
+				<reportElement x="21" y="24" width="533" height="104" uuid="368a3ee7-fdcc-4c52-9664-02ea820b8bfa"/>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph lineSpacing="1_1_2"/>
 				</textElement>
-				<text><![CDATA[အာမခံထားသူ   သေဘၤာသားသည္   အာမခံသက္တမ္းအတြင္း  ေအာက္ပါအက်ဳံးမဝင္သည့္   အေၾကာင္းမ်ားမွလြဲ၍  အျခား  အေၾကာင္းမ်ားေၾကာင့္ ေသဆုံးျခင္း၊ ထိခိုက္ ဒဏ္ရာရရွိျခင္း ျဖစ္ပါက တစ္ဖက္စာမ်က္ႏွာပါ အက်ိဳးခံစား ခြင့္ရွိသူ(မ်ား)သည္ ဤအာမခံ၏ အက်ိဳးခံစားခြင့္မ်ားကို ခံစားခြင့္ရွိသည္။ ေသဆုံးပါက အမ်ားဆုံး အာမခံထားေငြအထိ ရရွိမည္ ျဖစ္ၿပီး ၊  ထိခိုက္  ဒဏ္ရာရရွိပါက သတ္မွတ္ထားသည့္ ႏႈန္းထားမ်ား အတိုင္း အက်ိဳးခံစားခြင့္ ရရွိမည္ ျဖစ္သည္။]]></text>
+				<text><![CDATA[အာမခံထားသူ    သေဘၤာသားသည္    အာမခံသက္တမ္း    အတြင္း    ေအာက္ပါအက်ဳံးမဝင္သည့္    အေၾကာင္းမ်ားမွလြဲ၍ အျခားအေၾကာင္းမ်ားေၾကာင့္ ေသဆုံးျခင္း၊ ထိခိုက္ဒဏ္ရာရရွိျခင္း ျဖစ္ပါက အာမခံထားသူသေဘၤာသား   ကိုယ္တိုင္ျဖစ္ေစ သေဘၤာသား      အသက္အာမခံလက္မွတ္ပါ     အက်ိဳးခံစားခြင့္ရွိသူ(မ်ား)သည္      ဤအာမခံ၏    အက်ိဳးခံစားခြင့္မ်ားကို ခံစားခြင့္ရွိသည္။  ေသဆုံးပါက အမ်ားဆုံး အာမခံထားေငြအထိ  ရရွိမည္ျဖစ္ၿပီး၊ ထိခိုက္ဒဏ္ရာရရွိပါကသတ္မွတ္ထားသည့္  ႏႈန္းထားမ်ား အတိုင္း အက်ိဳးခံစားခြင့္ ရရွိမည္ ျဖစ္သည္။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="19" y="114" width="535" height="48" uuid="cb165eb5-b477-41a1-b596-13b47d425e3c"/>
+				<reportElement x="19" y="129" width="535" height="48" uuid="cb165eb5-b477-41a1-b596-13b47d425e3c"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph lineSpacing="1_1_2"/>
@@ -189,7 +189,7 @@
 				<text><![CDATA[အာမခံသက္တမ္းအတြင္း အာမခံထားသူသေဘၤာသား ေသဆုံးျခင္း၊ ထိခိုက္ဒဏ္ရာရရွိျခင္း ျဖစ္သည့္ေန႔မွစ၍ (၁) ႏွစ္အတြင္း အက်ိဳးခံစားခြင့္ကို ေတာင္းခံရမည္။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="19" y="318" width="539" height="70" uuid="971f723d-a380-499a-9112-4fef28d98b6b"/>
+				<reportElement x="19" y="337" width="539" height="70" uuid="971f723d-a380-499a-9112-4fef28d98b6b"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph lineSpacing="1_1_2"/>
@@ -197,7 +197,7 @@
 				<text><![CDATA[ႏိုင္ငံျခားသေဘၤာတြင္  (၁)  ႏွစ္ထက္ပို၍  တာဝန္ထမ္းေဆာင္ေနရသူမ်ားသည္  မိမိ ဝယ္ယူထားသည့္  သေဘၤာသားအသက္  အာမခံလက္မွတ္ သက္တမ္း (၁) ႏွစ္မကုန္မီ သက္ဆိုင္ရာကုမၸဏီ/ SD (Seaman Division) သို႔ ဆက္သြယ္၍ စည္းကမ္းခ်က္  ႏွင့္အညီ သက္တမ္း (၁) ႏွစ္ ထပ္တိုးထားရွိ ႏိုင္သည္။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="19" y="389" width="540" height="87" uuid="aa048f41-dd9f-4fa5-9a9f-95e6fbad30c4"/>
+				<reportElement x="19" y="408" width="540" height="87" uuid="aa048f41-dd9f-4fa5-9a9f-95e6fbad30c4"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph lineSpacing="1_1_2"/>
@@ -205,7 +205,7 @@
 				<text><![CDATA[သေဘၤာသားအသက္အာမခံသက္တမ္းသည္ အာမခံဝယ္ယူသည့္ေန႔မွစ၍(၁)ႏွစ္တိတိ ျဖစ္ၿပီး၊ သက္တမ္း ကုန္ဆုံးသည့္ေန႔၏ ည  (၁၂)  နာရီတိတိ တြင္သက္တမ္းကုန္ဆုံးမည္  ျဖစ္သည္။ အာမခံလက္မွတ္ ဝယ္ယူၿပီး ေနာက္ သေဘၤာမတက္ႏိုင္ခဲ့ေသာ္ ျမန္မာႏိုင္ငံတြင္ရွိေနေသာကာလအတြက္ အာမခံအကာအကြယ္ ရရွိမည္။ မည္သည့္အေၾကာင္းႏွင့္မွ် ပရီမီယံကို ျပန္အမ္းမည္ မဟုတ္ပါ။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="19" y="476" width="531" height="50" uuid="732cc231-b388-48dc-a152-5a7bcdc199e6"/>
+				<reportElement x="19" y="495" width="531" height="50" uuid="732cc231-b388-48dc-a152-5a7bcdc199e6"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph lineSpacing="1_1_2"/>
