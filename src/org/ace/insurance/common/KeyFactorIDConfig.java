@@ -110,6 +110,7 @@ public class KeyFactorIDConfig {
 	private static String TWOCTWOP_USD_PROD_SECRETKEY= "TWOCTWOP_USD_PROD_SECRETKEY";
 	private static String TWOCTWOP_OUTBOUND_USD_UAT_SECRETKEY= "TWOCTWOP_OUTBOUND_USD_UAT_SECRETKEY";
 	private static String TWOCTWOP_OUTBOUND_USD_PROD_SECRETKEY= "TWOCTWOP_OUTBOUND_USD_PROD_SECRETKEY";
+	private static String TWOCTWOP_LIFE_UAT_SECRETKEY= "TWOCTWOP_LIFE_UAT_SECRETKEY";
 	private static String PORT_OVERDUE = "PORT_OVERDUE";
 	private static String SRCC_CARGO = "SRCC_CARGO";
 	private static String MED_ADDON1 = "MED_ADDON1";
@@ -633,6 +634,10 @@ public class KeyFactorIDConfig {
 	public static String getTwoCTwoPSecKey() {
 		return idConfig.getProperty(TWOCTWOP_UAT_SECRETKEY);
 	}
+	public static String getTwoCTwoPLifeSecKey() {
+		return idConfig.getProperty(TWOCTWOP_LIFE_UAT_SECRETKEY);
+	}
+	
 	public static String getTwoCTwoPUSDSecKey() {
 		return idConfig.getProperty(TWOCTWOP_USD_UAT_SECRETKEY);
 	}

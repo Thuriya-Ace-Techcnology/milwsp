@@ -241,7 +241,7 @@ public class TwoCTwoPController extends BaseController {
 	public ResponseEntity<String> getSecretKey() {
 		logger.info("start merchant key");
 		AceResponse response = new AceResponse();
-		String merchantKey = KeyFactorIDConfig.getTwoCTwoPSecKey();
+		String merchantKey = KeyFactorIDConfig.getTwoCTwoPLifeSecKey();
 		response.setStatus(HttpStatus.OK);
 		response.setMessage("Success");
 		logger.info(merchantKey);

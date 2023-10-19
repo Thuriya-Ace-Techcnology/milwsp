@@ -10,6 +10,7 @@
 		<class>org.ace.java.component.idgen.IDGen</class>
 		<class>org.ace.insurance.common.UserRecorder</class>
 		<class>org.ace.insurance.user.User</class>
+		<class>org.ace.insurance.userlog.UserLog</class>
 		<class>org.ace.accounting.system.chartaccount.BfRate</class>
  		<class>org.ace.accounting.system.chartaccount.BfSrcRate</class>
 		<class>org.ace.accounting.system.chartaccount.LymSrcRate</class>
