@@ -84,6 +84,7 @@
 	<parameter name="benisize" class="java.lang.Integer"/>
 	<parameter name="listDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
 	<parameter name="size" class="java.lang.Integer"/>
+	<parameter name="insuredNrcNo" class="java.lang.String"/>
 	<detail>
 		<band height="638" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -114,7 +115,7 @@
 				<text><![CDATA[အာမခံထားသူသေဘၤာသား၏အမည္]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="176" width="202" height="23" uuid="3de9f535-ce99-4750-9a09-79736c7ce7de">
+				<reportElement positionType="Float" x="0" y="199" width="202" height="23" uuid="3de9f535-ce99-4750-9a09-79736c7ce7de">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -123,7 +124,7 @@
 				<text><![CDATA[က်သင့္ပရီမီယံေငြ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement positionType="Float" x="1" y="222" width="201" height="23" uuid="0f30d5d0-0bcb-49ff-87b6-b47719077f4e"/>
+				<reportElement positionType="Float" x="1" y="245" width="201" height="23" uuid="0f30d5d0-0bcb-49ff-87b6-b47719077f4e"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
@@ -149,7 +150,7 @@
 				<textFieldExpression><![CDATA[$P{passportNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="270" y="176" width="265" height="23" uuid="df12278c-5020-4401-a31e-c5edc6c4dd87">
+				<reportElement positionType="Float" x="270" y="199" width="265" height="23" uuid="df12278c-5020-4401-a31e-c5edc6c4dd87">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -159,7 +160,7 @@
 				<textFieldExpression><![CDATA[$P{premium} + " Kyats"]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="270" y="222" width="60" height="23" uuid="dd9d63ab-6cde-4dff-a44a-b545c4e7d78f"/>
+				<reportElement positionType="Float" x="270" y="245" width="60" height="23" uuid="dd9d63ab-6cde-4dff-a44a-b545c4e7d78f"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -177,7 +178,7 @@
 				<textFieldExpression><![CDATA[$P{policyNo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="330" y="222" width="201" height="23" uuid="b2414ad9-e0e3-4931-a2f3-bde9cc9df846"/>
+				<reportElement positionType="Float" x="330" y="245" width="201" height="23" uuid="b2414ad9-e0e3-4931-a2f3-bde9cc9df846"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -209,7 +210,7 @@
 				<text><![CDATA[သေဘၤာသားမွတ္ပုံတင္အမွတ္ (CDC)]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="60" width="265" height="23" isRemoveLineWhenBlank="true" uuid="9e2cceca-60f8-4500-b115-c856d8864700"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="83" width="265" height="23" isRemoveLineWhenBlank="true" uuid="9e2cceca-60f8-4500-b115-c856d8864700"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -217,21 +218,21 @@
 				<textFieldExpression><![CDATA[$P{position}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="60" width="189" height="23" isRemoveLineWhenBlank="true" uuid="8bb3520e-d68e-4145-9a0a-9fadb352201e"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="83" width="189" height="23" isRemoveLineWhenBlank="true" uuid="8bb3520e-d68e-4145-9a0a-9fadb352201e"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[ရာထူး]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="37" width="248" height="23" uuid="f8575f0a-16b1-46a8-a243-a72dfdb4b7f5"/>
+				<reportElement x="1" y="60" width="248" height="23" uuid="f8575f0a-16b1-46a8-a243-a72dfdb4b7f5"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[ေမြးသကၠရာဇ္(လာမည့္ေမြးေန႔တြင္ျပည့္မည့္အသက္)]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="270" y="37" width="265" height="23" uuid="872bc1ef-4fe5-4c46-9432-a2bf7bc27cf0"/>
+				<reportElement x="270" y="60" width="265" height="23" uuid="872bc1ef-4fe5-4c46-9432-a2bf7bc27cf0"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -239,7 +240,7 @@
 				<textFieldExpression><![CDATA[$P{dateOfBirth}+"  ("+ $P{age}+") ႏွစ္ "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="106" width="249" height="23" isRemoveLineWhenBlank="true" uuid="dcc49953-1fe8-43cd-ad39-819a3e39e770">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="129" width="249" height="23" isRemoveLineWhenBlank="true" uuid="dcc49953-1fe8-43cd-ad39-819a3e39e770">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -248,7 +249,7 @@
 				<text><![CDATA[သြားေရာက္အမႈထမ္းသည့္သေဘၤာအမည္]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="83" width="265" height="23" isRemoveLineWhenBlank="true" uuid="d2cddb50-fe05-4c67-9ca8-04664f436698"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="106" width="265" height="23" isRemoveLineWhenBlank="true" uuid="d2cddb50-fe05-4c67-9ca8-04664f436698"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -256,14 +257,14 @@
 				<textFieldExpression><![CDATA[$P{oceanlinerName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="83" width="249" height="23" isRemoveLineWhenBlank="true" uuid="7b1ccbd6-e46d-482e-88a5-5a659f74b7c2"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="1" y="106" width="249" height="23" isRemoveLineWhenBlank="true" uuid="7b1ccbd6-e46d-482e-88a5-5a659f74b7c2"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[သြားေရာက္အမႈထမ္းသည့္သေဘၤာကုမၸဏီအမည္]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="106" width="265" height="23" isRemoveLineWhenBlank="true" uuid="e6a19df6-bf1c-4ffb-9212-6a2452800a35"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="129" width="265" height="23" isRemoveLineWhenBlank="true" uuid="e6a19df6-bf1c-4ffb-9212-6a2452800a35"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -271,7 +272,7 @@
 				<textFieldExpression><![CDATA[$P{vesselName}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="1" y="130" width="201" height="23" uuid="f96f92c9-9157-4170-aa4f-49ae2b9ae938">
+				<reportElement x="1" y="153" width="201" height="23" uuid="f96f92c9-9157-4170-aa4f-49ae2b9ae938">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -280,7 +281,7 @@
 				<text><![CDATA[ဝယ္ယူမည့္ Plan အမ်ိဳးအစား]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="199" width="201" height="23" uuid="d3ace16c-e988-4c6f-b1c4-35455d689d7c">
+				<reportElement x="1" y="222" width="201" height="23" uuid="d3ace16c-e988-4c6f-b1c4-35455d689d7c">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -307,7 +308,7 @@
 				<text><![CDATA[အသက္အာမခံဌာန]]></text>
 			</staticText>
 			<textField>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="130" width="265" height="23" isRemoveLineWhenBlank="true" uuid="8a63c451-b796-482f-a081-007e55f52a03"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="153" width="265" height="23" isRemoveLineWhenBlank="true" uuid="8a63c451-b796-482f-a081-007e55f52a03"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -315,7 +316,7 @@
 				<textFieldExpression><![CDATA[$P{planType}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="199" width="265" height="23" isRemoveLineWhenBlank="true" uuid="7245495c-8329-464a-b792-1c9edc2d54d7"/>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="222" width="265" height="23" isRemoveLineWhenBlank="true" uuid="7245495c-8329-464a-b792-1c9edc2d54d7"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -323,7 +324,7 @@
 				<textFieldExpression><![CDATA[$P{startDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement positionType="Float" x="270" y="153" width="265" height="23" uuid="100c78c7-26f4-447e-baac-e42fb8f3c77d"/>
+				<reportElement positionType="Float" x="270" y="176" width="265" height="23" uuid="100c78c7-26f4-447e-baac-e42fb8f3c77d"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
@@ -331,7 +332,7 @@
 				<textFieldExpression><![CDATA[$P{sumInsured} + " Kyats"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" x="0" y="153" width="202" height="23" uuid="903d77a7-06ab-4d93-b765-7430a0965ff2">
+				<reportElement positionType="Float" x="0" y="176" width="202" height="23" uuid="903d77a7-06ab-4d93-b765-7430a0965ff2">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement verticalAlignment="Middle">
@@ -376,7 +377,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="37" width="20" height="23" uuid="921094aa-5713-4191-80b0-1b8a017289ac">
+				<reportElement x="250" y="60" width="20" height="23" uuid="921094aa-5713-4191-80b0-1b8a017289ac">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -385,7 +386,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="60" width="20" height="23" uuid="845a7f36-894f-40d6-80db-35914a4d9b21">
+				<reportElement x="250" y="83" width="20" height="23" uuid="845a7f36-894f-40d6-80db-35914a4d9b21">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -394,7 +395,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="83" width="20" height="23" uuid="8ab6eabe-5d37-42c9-bfb6-0dda07f5aebe">
+				<reportElement x="250" y="106" width="20" height="23" uuid="8ab6eabe-5d37-42c9-bfb6-0dda07f5aebe">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -403,7 +404,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="106" width="20" height="23" uuid="3f78b14d-3dd3-4934-af69-45ea1d258703">
+				<reportElement x="250" y="129" width="20" height="23" uuid="3f78b14d-3dd3-4934-af69-45ea1d258703">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -412,7 +413,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="130" width="20" height="23" uuid="0f1fb8a8-b905-4eac-ae4b-ccac1c6bfb01">
+				<reportElement x="250" y="153" width="20" height="23" uuid="0f1fb8a8-b905-4eac-ae4b-ccac1c6bfb01">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -421,7 +422,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="153" width="20" height="23" uuid="90005b27-e53d-4d51-808e-b8682e7a3930">
+				<reportElement x="250" y="176" width="20" height="23" uuid="90005b27-e53d-4d51-808e-b8682e7a3930">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -430,7 +431,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="176" width="20" height="23" uuid="7961d96e-2479-4267-b76f-73c451cea3f6">
+				<reportElement x="250" y="199" width="20" height="23" uuid="7961d96e-2479-4267-b76f-73c451cea3f6">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -439,7 +440,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="199" width="20" height="23" uuid="21ba3cfe-81c9-4c80-bbce-01870b09d20b">
+				<reportElement x="250" y="222" width="20" height="23" uuid="21ba3cfe-81c9-4c80-bbce-01870b09d20b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -448,7 +449,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="250" y="222" width="20" height="23" uuid="0bc868cb-e738-4f4e-a300-0c91413072db">
+				<reportElement x="250" y="245" width="20" height="23" uuid="0bc868cb-e738-4f4e-a300-0c91413072db">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -457,7 +458,7 @@
 				<text><![CDATA[-]]></text>
 			</staticText>
 			<componentElement>
-				<reportElement isPrintRepeatedValues="false" x="2" y="300" width="532" height="143" isRemoveLineWhenBlank="true" uuid="f6b65fa9-99ad-458c-8373-39effccba8eb">
+				<reportElement isPrintRepeatedValues="false" x="2" y="323" width="532" height="143" isRemoveLineWhenBlank="true" uuid="f6b65fa9-99ad-458c-8373-39effccba8eb">
 					<property name="com.jaspersoft.studio.layout" value="com.jaspersoft.studio.editor.layout.VerticalRowLayout"/>
 					<property name="com.jaspersoft.studio.table.style.table_header" value="Table_TH"/>
 					<property name="com.jaspersoft.studio.table.style.column_header" value="Table_CH"/>
@@ -609,7 +610,7 @@
 				<text><![CDATA[သေဘၤာသားအသက္အာမခံလက္မွတ္]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="1" y="263" width="389" height="23" uuid="42068c1b-024c-4968-a412-a0853e4ef64a">
+				<reportElement x="1" y="286" width="389" height="23" uuid="42068c1b-024c-4968-a412-a0853e4ef64a">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -618,7 +619,7 @@
 				<text><![CDATA[အာမခံထားသူသေဘၤာသား၏ဆႏၵအရသတ္မွတ္ေသာအက်ိဳးခံစားခြင့္ရွိသူ(မ်ား)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="100" y="499" width="434" height="23" uuid="e588a225-c839-411f-afb5-561acbd055d3">
+				<reportElement x="100" y="522" width="434" height="23" uuid="e588a225-c839-411f-afb5-561acbd055d3">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -627,7 +628,7 @@
 				<text><![CDATA[ကို  ေပးသြင္းၿပီး   ျဖစ္ပါသည္။  သို႔ပါ၍  အာမခံထားသူသေဘၤာသားက   အာမခံသက္တမ္း  အတြင္း ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="471" y="569" width="47" height="23" uuid="b8a8e42d-ac49-4af4-8e21-76935e7a1df2">
+				<reportElement x="471" y="592" width="47" height="23" uuid="b8a8e42d-ac49-4af4-8e21-76935e7a1df2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -637,7 +638,7 @@
 				<textFieldExpression><![CDATA[$P{planType}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="299" y="592" width="234" height="23" uuid="d4a7c8fd-d93c-40b0-bc7f-813e68d22908">
+				<reportElement x="299" y="615" width="234" height="23" uuid="d4a7c8fd-d93c-40b0-bc7f-813e68d22908">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -647,7 +648,7 @@
 				<text><![CDATA[ကို  ခံစားခြင့္ေပးသြားမည္ ျဖစ္ပါသည္။]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="350" y="475" width="183" height="23" uuid="06152c4a-bbec-41a9-b9d6-19121489ab9a">
+				<reportElement x="350" y="498" width="183" height="23" uuid="06152c4a-bbec-41a9-b9d6-19121489ab9a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -656,7 +657,7 @@
 				<text><![CDATA[တိတိ  ထားရွိၿပီး၊  က်သင့္ပရီမီယံ က်ပ္]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="2" y="499" width="98" height="23" uuid="723e7cd1-0be6-4291-b7d0-a7931770acf0">
+				<reportElement x="2" y="522" width="98" height="23" uuid="723e7cd1-0be6-4291-b7d0-a7931770acf0">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -666,7 +667,7 @@
 				<textFieldExpression><![CDATA[$P{premium}+"  /- "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="475" width="218" height="23" uuid="171196e0-5282-4ee2-a6bd-47fa990e4fd3">
+				<reportElement x="2" y="498" width="218" height="23" uuid="171196e0-5282-4ee2-a6bd-47fa990e4fd3">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -676,14 +677,14 @@
 				<text><![CDATA[အတြက္ သေဘၤာသားအသက္အာမခံထားေငြ က်ပ္  ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="592" width="178" height="23" uuid="64423aa2-ce9d-46b9-afe6-4e45a18a120c"/>
+				<reportElement x="2" y="615" width="178" height="23" uuid="64423aa2-ce9d-46b9-afe6-4e45a18a120c"/>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[အတြက္ အမ်ားဆုံး အာမခံထားေငြ က်ပ္]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="220" y="475" width="130" height="23" uuid="eeab4dc3-6e76-417b-ad48-ea8149f7c277">
+				<reportElement x="220" y="498" width="130" height="23" uuid="eeab4dc3-6e76-417b-ad48-ea8149f7c277">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -693,21 +694,21 @@
 				<textFieldExpression><![CDATA[$P{sumInsured}+"/-  "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="2" y="522" width="532" height="23" uuid="e37d1d18-2576-4581-8fc9-1c6d2a6e9bbb"/>
+				<reportElement x="2" y="545" width="532" height="23" uuid="e37d1d18-2576-4581-8fc9-1c6d2a6e9bbb"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[( ပူးတြဲပါ  သေဘၤာသားအသက္အာမခံ  သတ္မွတ္စည္းကမ္းခ်က္မ်ားႏွင့္အညီ )  အေၾကာင္းအမ်ိဳးမ်ိဳးေၾကာင့္  ေသဆုံးျခင္း၊ ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="545" width="532" height="23" uuid="fde3948b-3f96-47f9-909e-e58dd22d322c"/>
+				<reportElement x="2" y="568" width="532" height="23" uuid="fde3948b-3f96-47f9-909e-e58dd22d322c"/>
 				<textElement verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
 				<text><![CDATA[ထိခိုက္ဒဏ္ရာရရွိျခင္းျဖစ္ပါက အာမခံထားသူသေဘၤာသား ကိုယ္တိုင္ျဖစ္ေစ၊ အာမခံထားသူသေဘၤာသား၏ဆႏၵျဖင့္ လႊဲအပ္]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="180" y="592" width="119" height="23" uuid="e4a9c2e0-5637-40e5-81bb-15b73872cb30">
+				<reportElement x="180" y="615" width="119" height="23" uuid="e4a9c2e0-5637-40e5-81bb-15b73872cb30">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -717,7 +718,7 @@
 				<textFieldExpression><![CDATA[$P{sumInsured}+"/- "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="2" y="452" width="533" height="23" uuid="efb914b8-20da-4374-98d4-a5d05987ff84">
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="2" y="475" width="533" height="23" uuid="efb914b8-20da-4374-98d4-a5d05987ff84">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -726,7 +727,7 @@
 				<text><![CDATA[အထက္ပါ  အာမခံထားသူသည္  သေဘၤာသားအသက္အာမခံလက္မွတ္  စတင္ဝယ္ယူသည့္ေန႔မွစ၍ တစ္ႏွစ္တိတိ  ကာလ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="2" y="569" width="468" height="23" uuid="ec7141a9-bba8-4df2-b5cb-d8bf95ed5cdb">
+				<reportElement x="2" y="592" width="468" height="23" uuid="ec7141a9-bba8-4df2-b5cb-d8bf95ed5cdb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
@@ -735,7 +736,7 @@
 				<text><![CDATA[ခဲ့ေသာ အထက္ေဖာ္ျပပါ အက်ိဳးခံစားခြင့္ရွိသူ(မ်ား)သို႔ သတ္မွတ္ထားေသာ အက်ိဳးခံစားခြင့္ႏႈန္းထားမ်ား အရ (]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="519" y="569" width="14" height="23" uuid="45a97705-4160-451a-8683-8eb09ec6a9c3">
+				<reportElement x="519" y="592" width="14" height="23" uuid="45a97705-4160-451a-8683-8eb09ec6a9c3">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -744,7 +745,7 @@
 				<text><![CDATA[ ) ]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="344" y="263" width="110" height="23" isRemoveLineWhenBlank="true" uuid="93ee4953-6969-4a5c-8463-595986cad3a0">
+				<reportElement x="344" y="286" width="110" height="23" isRemoveLineWhenBlank="true" uuid="93ee4953-6969-4a5c-8463-595986cad3a0">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<printWhenExpression><![CDATA[$P{size} != 1]]></printWhenExpression>
 				</reportElement>
@@ -753,6 +754,30 @@
 				</textElement>
 				<text><![CDATA[ပူးတြဲပါဇယားအတိုင္း]]></text>
 			</staticText>
+			<staticText>
+				<reportElement x="250" y="37" width="20" height="23" uuid="b62de553-3089-4726-a0a0-393a1189aad0">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="37" width="214" height="23" uuid="9b3ee062-e1b5-4b71-a825-1e901f4a63ef"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="11"/>
+				</textElement>
+				<text><![CDATA[ႏိုင္ငံသားစိစစ္ေရးကတ္ျပားအမွတ္]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="270" y="37" width="265" height="23" uuid="a1340571-d9a9-4c4a-b2a5-504a1fe1a1be"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="11"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{insuredNrcNo}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

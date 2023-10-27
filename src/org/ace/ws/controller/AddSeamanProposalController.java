@@ -281,6 +281,7 @@ public class AddSeamanProposalController extends BaseController {
 				policyParam.put("oceanlinerName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getOceanlinerName());
 				policyParam.put("vesselName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getVesselName());
 				policyParam.put("position", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPosition());
+				policyParam.put("insuredNrcNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getFullIdNo());
 
 				List<BeneficiariesInfoDTO> benefitPersonList = policyDTO.getPolicyInsuredPersonDTOList().get(0).getBeneficiariesInfoDTOList();
 				policyParam.put("listDataSource", new JRBeanCollectionDataSource(benefitPersonList));
