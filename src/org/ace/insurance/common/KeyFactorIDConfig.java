@@ -10,6 +10,7 @@ import org.ace.insurance.system.common.keyfactor.KeyFactor;
 import org.ace.java.component.SystemException;
 
 public class KeyFactorIDConfig {
+	
 	private static String SUM_INSURED = "SUM_INSURED";
 	private static String BUILDINGOCCUPATION = "BUILDINGOCCUPATION";
 	private static String BUILDINGCLASS = "BUILDINGCLASS";
@@ -111,6 +112,7 @@ public class KeyFactorIDConfig {
 	private static String TWOCTWOP_OUTBOUND_USD_UAT_SECRETKEY= "TWOCTWOP_OUTBOUND_USD_UAT_SECRETKEY";
 	private static String TWOCTWOP_OUTBOUND_USD_PROD_SECRETKEY= "TWOCTWOP_OUTBOUND_USD_PROD_SECRETKEY";
 	private static String TWOCTWOP_LIFE_UAT_SECRETKEY= "TWOCTWOP_LIFE_UAT_SECRETKEY";
+	private static String TWOCTWOP_LIFE_PROD_SECRETKEY = "TWOCTWOP_LIFE_PROD_SECRETKEY";
 	private static String PORT_OVERDUE = "PORT_OVERDUE";
 	private static String SRCC_CARGO = "SRCC_CARGO";
 	private static String MED_ADDON1 = "MED_ADDON1";
@@ -632,20 +634,20 @@ public class KeyFactorIDConfig {
 		return idConfig.getProperty(WAR_RISK_CARGO);
 	}
 	public static String getTwoCTwoPSecKey() {
-		return idConfig.getProperty(TWOCTWOP_UAT_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_PROD_SECRETKEY);
 	}
 	public static String getTwoCTwoPLifeSecKey() {
-		return idConfig.getProperty(TWOCTWOP_LIFE_UAT_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_LIFE_PROD_SECRETKEY);
 	}
 	
 	public static String getTwoCTwoPUSDSecKey() {
-		return idConfig.getProperty(TWOCTWOP_USD_UAT_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_USD_PROD_SECRETKEY);
 	}
 	public static String getTwoCTwoPOutboundUSDSecKey() {
-		return idConfig.getProperty(TWOCTWOP_OUTBOUND_USD_UAT_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_OUTBOUND_USD_PROD_SECRETKEY);
 	}
 	public static String getTwoCTwoPOutboundMMKSecKey() {
-		return idConfig.getProperty(TWOCTWOP_OUTBOUND_MMK_UAT_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_OUTBOUND_MMK_PROD_SECRETKEY);
 	}
 	public static String getSrccCargoId() {
 		return idConfig.getProperty(SRCC_CARGO);
