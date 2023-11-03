@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import javax.annotation.Resource;
+
+import org.ace.insurance.common.ProposalStatus;
 import org.ace.insurance.common.SystemConstants;
 import org.ace.insurance.life.dao.entities.LifePolicy;
 import org.ace.insurance.life.dao.entities.LifeProposal;
@@ -67,8 +69,9 @@ public class LifePolicyService implements ILifePolicyService {
 		try {
 			List<LifePolicy> seamanPolicyList = lifePolicyDAO.findSeamanPolicyByCdcNo(cdcNo, productId);			
 			for(LifePolicy policy : seamanPolicyList) {
-				result.add(new LifePolicyDTO(policy));
-				
+				if(policy.getLifeProposal().getComplete() == true) {
+						result.add(new LifePolicyDTO(policy));					
+				}				
 			}
 		} catch (DAOException e) {
 			throw new SystemException(e.getErrorCode(), "Faield to find a Seaman Policy by mobileUser (cdcNo : " + cdcNo + ")", e);

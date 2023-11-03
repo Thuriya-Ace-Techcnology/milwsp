@@ -242,6 +242,47 @@ public class AddSeamanProposalController extends BaseController {
 	}
 	
 	
+	/* Check Maximum SumInsured For Seaman */
+	@SuppressWarnings("unlikely-arg-type")
+	@RequestMapping(value = URIConstants.CHECK_MAX_SI_FOR_SEAMAN, method = RequestMethod.POST)
+	public @ResponseBody String checkMaxSIForSeaman(@RequestHeader String key, @RequestParam(name = "cdcNo") String cdcNo,
+			@RequestParam(name = "policyStartDate") long policyStartDate,
+			@RequestParam(name = "buyerPlatForm") String buyerPlatForm)
+			throws ServiceException, UnsupportedEncodingException, SystemException {
+		logger.info("Start to check maximum SI for Seaman.");
+		AceResponse aceResponse = new AceResponse();
+		List<LifePolicyDTO> seamanPolicyList = lifePolicyService.findSeamanPolicyByCDCNo(cdcNo, null);
+		List<LifePolicyDTO> policyDTOList = new ArrayList<LifePolicyDTO>();
+		Date policyEndDate = null;
+		Date startDate = null;
+		if(BuyerPlatForm.WEBSITE.equals(buyerPlatForm)) {			
+			policyStartDate = concatLongDate(policyStartDate);			
+		}	
+		
+		if(seamanPolicyList != null) {
+			for(LifePolicyDTO policyDTO : seamanPolicyList) {
+				policyEndDate = new Date(policyDTO.getPolicyEndDate());
+				startDate = new Date(policyStartDate);
+				if(policyEndDate.after(startDate) || policyEndDate.equals(startDate)) {
+					policyDTOList.add(policyDTO);
+				}			
+			}
+		}
+		
+		double totalSI = 0.0;		
+		if(policyDTOList != null) {
+			for(LifePolicyDTO policyDTO : policyDTOList) {
+				totalSI += policyDTO.getPolicyInsuredPersonDTOList().get(0).getSumInsured();
+			}
+		}
+		aceResponse.setData(100000000 - totalSI);
+		aceResponse.setMessage("Success");
+		aceResponse.setStatus(HttpStatus.OK);
+		logger.info("End to check maximum SI for Seaman");
+		return responseManager.getResponseString(aceResponse);
+	}
+	
+	
 	/* Print Seaman Policy Certificate and T&C */
 	@RequestMapping(value = URIConstants.GET_SEAMAN_POLICY_CERTIFICATE, method = RequestMethod.GET)
 	public ResponseEntity<byte[]> printReceipt(HttpServletResponse response, @QueryParam("policyId") String policyId)
