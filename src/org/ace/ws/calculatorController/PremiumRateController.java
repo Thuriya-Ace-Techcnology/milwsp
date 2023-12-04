@@ -55,7 +55,8 @@ public class PremiumRateController extends BaseController {
 	@ResponseBody
 	private String getPremium(@RequestParam(name = "productId") String productId,
 			@RequestParam(name = "planId") String planId,
-			@RequestParam(name = "age") int age) {	
+			@RequestParam(name = "age") int age,
+			@RequestParam(name = "month") int month) {	
 		
  		AceResponse aceResponse = new AceResponse();
 		Double premium = null;
@@ -76,6 +77,9 @@ public class PremiumRateController extends BaseController {
 		}	
 		premiumRate = premiumCalculatorService.findPremiumRate(keyfactorValueMap, product);
 		premium = premiumCalculatorService.calulatePremium(premiumRate, product, new PremiumCalData(null, null, null,null));
+		if(month == 6) {
+			premium = premium * 0.75;
+		}
 		aceResponse.setMessage("Success");
 		aceResponse.setStatus(HttpStatus.OK);
 		aceResponse.setData(premium);

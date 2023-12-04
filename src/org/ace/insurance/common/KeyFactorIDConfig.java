@@ -634,20 +634,20 @@ public class KeyFactorIDConfig {
 		return idConfig.getProperty(WAR_RISK_CARGO);
 	}
 	public static String getTwoCTwoPSecKey() {
-		return idConfig.getProperty(TWOCTWOP_PROD_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_UAT_SECRETKEY);
 	}
 	public static String getTwoCTwoPLifeSecKey() {
-		return idConfig.getProperty(TWOCTWOP_LIFE_PROD_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_LIFE_UAT_SECRETKEY);
 	}
 	
 	public static String getTwoCTwoPUSDSecKey() {
-		return idConfig.getProperty(TWOCTWOP_USD_PROD_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_USD_UAT_SECRETKEY);
 	}
 	public static String getTwoCTwoPOutboundUSDSecKey() {
-		return idConfig.getProperty(TWOCTWOP_OUTBOUND_USD_PROD_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_OUTBOUND_USD_UAT_SECRETKEY);
 	}
 	public static String getTwoCTwoPOutboundMMKSecKey() {
-		return idConfig.getProperty(TWOCTWOP_OUTBOUND_MMK_PROD_SECRETKEY);
+		return idConfig.getProperty(TWOCTWOP_OUTBOUND_MMK_UAT_SECRETKEY);
 	}
 	public static String getSrccCargoId() {
 		return idConfig.getProperty(SRCC_CARGO);
