@@ -17,6 +17,7 @@ public class LifePolicyDTO {
 	private long policyEndDate; 
     private String paymentType;
 	private int periodOfYear;
+	private int periodOfMonths;
 	private LifeProposal proposal;
 	private InsuredPersonInfoDTO policyInsuredPersonDTO;
 	private List<InsuredPersonInfoDTO> policyInsuredPersonDTOList;
@@ -33,7 +34,7 @@ public class LifePolicyDTO {
 			this.policyEndDate = policy.getActivedPolicyEndDate().getTime();
 			this.paymentType = policy.getPaymentType().getName();
 			this.periodOfYear = policy.getPeriodOfYears();
-			
+			this.periodOfMonths = policy.getPeriodMonth();
 			for (PolicyInsuredPerson insured : policy.getPolicyInsuredPersonList()) {
 				addInsuredPersonInfoDTO(new InsuredPersonInfoDTO(insured));
 			}
@@ -118,4 +119,14 @@ public class LifePolicyDTO {
 		
 	}
 
+	public int getPeriodOfMonths() {
+		return periodOfMonths;
+	}
+
+	public void setPeriodOfMonths(int periodOfMonths) {
+		this.periodOfMonths = periodOfMonths;
+	}
+
+	
+	
 }

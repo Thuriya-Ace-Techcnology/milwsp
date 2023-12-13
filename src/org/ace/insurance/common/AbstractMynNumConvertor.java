@@ -228,4 +228,25 @@ public abstract class AbstractMynNumConvertor {
 		}
 		return genName;
 	}
+	
+	public static String getPeriodWithMyanmar(int value) {
+		String genName = "";
+			switch (value) {
+				case 6:
+					genName += (String) mymNumberConfig.getProperty(MymNumConstant.MYANMAR_FONT_SIX_MONTH);
+					break;
+				case 12:
+					genName += (String) mymNumberConfig.getProperty(MymNumConstant.MYANMAR_FONT_ONE_YEAR);
+					break;
+				case 24:
+					genName += (String) mymNumberConfig.getProperty(MymNumConstant.MYANMAR_FONT_TWO_YEAR);
+					break;
+				case 36:
+					genName += (String) mymNumberConfig.getProperty(MymNumConstant.MYANMAR_FONT_THREE_YEAR);
+					break;
+				default:
+					genName += "";
+			}
+		return genName;
+	}
 }

@@ -33,4 +33,9 @@ public class MymNumConstant {
 	public static final String MYANMAR_FONT_NUMBER_SEVEN = "MYANMAR_FONT_NUMBER_SEVEN";
 	public static final String MYANMAR_FONT_NUMBER_EIGHT = "MYANMAR_FONT_NUMBER_EIGHT";
 	public static final String MYANMAR_FONT_NUMBER_NINE = "MYANMAR_FONT_NUMBER_NINE";
+	
+	public static final String MYANMAR_FONT_SIX_MONTH= "MYANMAR_FONT_SIX_MONTH";
+	public static final String MYANMAR_FONT_ONE_YEAR= "MYANMAR_FONT_ONE_YEAR";
+	public static final String MYANMAR_FONT_TWO_YEAR= "MYANMAR_FONT_TWO_YEAR";
+	public static final String MYANMAR_FONT_THREE_YEAR= "MYANMAR_FONT_THREE_YEAR";
 }

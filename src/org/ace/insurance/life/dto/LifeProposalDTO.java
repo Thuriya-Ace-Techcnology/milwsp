@@ -24,6 +24,7 @@ public class LifeProposalDTO {
 	private String authorizeAssociationId;
     private long startDate;
     private long endDate;
+    private int periodMonth;
     private BuyerPlatForm buyerPlatForm;
 
 	private List<InsuredPersonInfoDTO> proposalInsuredPersonDTOList;
@@ -39,6 +40,7 @@ public class LifeProposalDTO {
 		}		
 		this.startDate = lifeProposal.getStartDate().getTime();
 		this.endDate = lifeProposal.getEndDate().getTime();
+		this.periodMonth = lifeProposal.getPeriodMonth();
 		this.buyerPlatForm = lifeProposal.getBuyerPlatForm();
 		for(ProposalInsuredPerson proposalInsuredPerson : lifeProposal.getProposalInsuredPersonList()) {
 			addInsuredPersonInfoDTO(new InsuredPersonInfoDTO(proposalInsuredPerson));
@@ -90,7 +92,15 @@ public class LifeProposalDTO {
 		this.endDate = endDate;
 	}
 	
-    public List<InsuredPersonInfoDTO> getProposalInsuredPersonDTOList() {
+    public int getPeriodMonth() {
+		return periodMonth;
+	}
+
+	public void setPeriodMonth(int periodMonth) {
+		this.periodMonth = periodMonth;
+	}
+
+	public List<InsuredPersonInfoDTO> getProposalInsuredPersonDTOList() {
 		return proposalInsuredPersonDTOList;
 	}
 	public void setProposalInsuredPersonDTO(List<InsuredPersonInfoDTO> proposalInsuredPersonDTOList) {

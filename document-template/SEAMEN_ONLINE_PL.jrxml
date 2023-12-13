@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Created with Jaspersoft Studio version 6.19.1.final using JasperReports Library version 6.5.1  -->
+<!-- Created with Jaspersoft Studio version 6.20.0.final using JasperReports Library version 6.5.1  -->
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SPTM_PL" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="144" bottomMargin="60" resourceBundle="LANGUAGE_en" uuid="64c5bb6c-7326-4cf6-9458-f62c73923aba">
 	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
 	<property name="ireport.zoom" value="1.7715610000000017"/>
@@ -85,6 +85,7 @@
 	<parameter name="listDataSource" class="net.sf.jasperreports.engine.JRDataSource"/>
 	<parameter name="size" class="java.lang.Integer"/>
 	<parameter name="insuredNrcNo" class="java.lang.String"/>
+	<parameter name="periodOfMonths" class="java.lang.String"/>
 	<detail>
 		<band height="638" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -165,7 +166,7 @@
 					<font fontName="Zawgyi-One" size="11"/>
 					<paragraph leftIndent="5"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{periodOfYear}+" Year"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{periodOfMonths}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="270" y="-56" width="265" height="23" uuid="2c4d66ba-1e26-4ab5-882f-f2b7ef71b82c">
@@ -261,7 +262,7 @@
 				<textElement textAlignment="Left" verticalAlignment="Middle">
 					<font fontName="Zawgyi-One" size="11"/>
 				</textElement>
-				<text><![CDATA[သြားေရာက္အမႈထမ္းသည့္သေဘၤာကုမၸဏီအမည္]]></text>
+				<text><![CDATA[ေစလႊတ္သည့္ကုမၸဏီအမည္]]></text>
 			</staticText>
 			<textField>
 				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="270" y="129" width="265" height="23" isRemoveLineWhenBlank="true" uuid="e6a19df6-bf1c-4ffb-9212-6a2452800a35"/>
@@ -718,15 +719,6 @@
 				<textFieldExpression><![CDATA[$P{sumInsured}+"/- "]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="2" y="475" width="533" height="23" uuid="efb914b8-20da-4374-98d4-a5d05987ff84">
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Zawgyi-One" size="11"/>
-				</textElement>
-				<text><![CDATA[အထက္ပါ  အာမခံထားသူသည္  သေဘၤာသားအသက္အာမခံလက္မွတ္  စတင္ဝယ္ယူသည့္ေန႔မွစ၍ တစ္ႏွစ္တိတိ  ကာလ]]></text>
-			</staticText>
-			<staticText>
 				<reportElement x="2" y="592" width="468" height="23" uuid="ec7141a9-bba8-4df2-b5cb-d8bf95ed5cdb">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -777,6 +769,15 @@
 					<paragraph leftIndent="5"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$P{insuredNrcNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="470" width="534" height="23" uuid="f2baeca7-3800-4ffe-a02e-cebff91fe048">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Bottom">
+					<font fontName="Zawgyi-One" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA["အထက္ပါ  အာမခံထားသူသည္  သေဘၤာသားအသက္အာမခံလက္မွတ္  စတင္ဝယ္ယူသည့္ေန႔မွစ၍ "+ $P{periodOfMonths}+"တိတိ ကာလ"]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

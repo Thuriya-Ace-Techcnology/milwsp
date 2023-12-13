@@ -16,6 +16,7 @@ import javax.xml.rpc.ServiceException;
 
 import com.google.gson.Gson;
 
+import org.ace.insurance.common.AbstractMynNumConvertor;
 import org.ace.insurance.common.BuyerPlatForm;
 import org.ace.insurance.common.Name;
 import org.ace.insurance.common.OutboundAgentInfo;
@@ -323,7 +324,7 @@ public class AddSeamanProposalController extends BaseController {
 				policyParam.put("vesselName", policyDTO.getPolicyInsuredPersonDTOList().get(0).getVesselName());
 				policyParam.put("position", policyDTO.getPolicyInsuredPersonDTOList().get(0).getPosition());
 				policyParam.put("insuredNrcNo", policyDTO.getPolicyInsuredPersonDTOList().get(0).getFullIdNo());
-
+				policyParam.put("periodOfMonths", AbstractMynNumConvertor.getPeriodWithMyanmar(policyDTO.getPeriodOfMonths()));
 				List<BeneficiariesInfoDTO> benefitPersonList = policyDTO.getPolicyInsuredPersonDTOList().get(0).getBeneficiariesInfoDTOList();
 				policyParam.put("listDataSource", new JRBeanCollectionDataSource(benefitPersonList));
 				
