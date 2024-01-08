@@ -205,6 +205,7 @@ public class LifeProposal implements Serializable, IDataModel, IProposal {
 		this.submittedDate = new Date (proposalDTO.getSubmittedDate());
 		this.startDate = new Date( proposalDTO.getStartDate());
 		this.endDate = new Date( proposalDTO.getEndDate());
+		this.periodMonth = proposalDTO.getPeriodMonth();
 		this.associationAgent = proposalDTO.getAuthorizeAssociation();				
 		this.orderId = proposalDTO.getOrderId();
 		this.buyerPlatForm = proposalDTO.getBuyerPlatForm();

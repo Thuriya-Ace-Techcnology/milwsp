@@ -88,9 +88,6 @@ public class LifeProposalService implements ILifeProposalService{
 		try {			
 			lifeProposal.setCurrencyRate(1.0);
 			lifeProposal.setProposalType(ProposalType.UNDERWRITING);
-			if(KeyFactorChecker.isSeamanOnline(lifeProposal.getProposalInsuredPersonList().get(0).getProduct().getId())) {
-				lifeProposal.setPeriodMonth(12);
-			}			
 			setProposalNo(lifeProposal);	
 			lifeProposal.setProposalStatus(ProposalStatus.PENDING);
 			lifeProposal = lifeProposalDAO.insert(lifeProposal);
