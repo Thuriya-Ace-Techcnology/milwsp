@@ -194,21 +194,11 @@ public class PremiumCalculatorService extends BaseService implements IPremiumCal
 		Map<KeyFactor, String> keyfactorValueMap = new HashMap<KeyFactor, String>();
 		Map<String, String> keyFactorDTOMap = pro001.getKeyFactorMap();		
 		KeyFactor keyfactor = null;	
-		int age = 0;
 		if(keyFactorDTOMap != null) {			
 			for (String keyfactorId : keyFactorDTOMap.keySet()) {
 				keyfactor = keyFactorService.findKeyFactorById(keyfactorId);
 				keyfactorValueMap.put(keyfactor, keyFactorDTOMap.get(keyfactorId));	
-				if(KeyFactorChecker.isPublicLife(product) && KeyFactorChecker.isFixedAge(keyfactor)) {
-					age =  Integer.parseInt(keyFactorDTOMap.get(KeyFactorIDConfig.getFixedAgeId()));
-				}
 			}		
-		}
-		if(KeyFactorChecker.isPublicLife(product)) {
-			int height = pro001.getFeet() * 12 + pro001.getInches();
-			keyfactor = keyFactorService.findKeyFactorById(KeyFactorIDConfig.getPoundId());
-			keyfactorValueMap.put(keyfactor, String.valueOf(calculatePounds(height,pro001.getWeight(),age)));
-			
 		}
 		if (KeyFactorChecker.isSportMan(product) || KeyFactorChecker.isSnakeBite(product.getId()) || KeyFactorChecker.isSeaMenLife(product.getId())) {
 			premiumRate = premiumCalculatorService.findPremiumRate(keyfactorValueMap, product);
