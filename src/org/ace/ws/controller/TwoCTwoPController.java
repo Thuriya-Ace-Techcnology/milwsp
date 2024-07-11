@@ -162,78 +162,87 @@ public class TwoCTwoPController extends BaseController {
 	@RequestMapping(value = "/paymentResult", method = RequestMethod.POST)
 	@ResponseBody
 	public ResponseEntity<String> paymentResponse(@RequestParam(name = "order_id") String order_id) {
-		logger.info("Start PaymentResult method");
+		logger.info("Start PaymentResult method");		
 		AceResponse response = new AceResponse();
-		if (order_id == null || order_id.isEmpty()) {
-			response.setStatus(HttpStatus.BAD_REQUEST);
-			response.setMessage("OrderId isn't empty");
-			return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.BAD_REQUEST);
-		}
-		PaymentStatus ps = null;
-		TwoCTwoPResponseDTO dto = twoC2pRecordsService.findByOrderId(order_id);
-		dto.setPrintReceipt(true);
-		ProductTypeRecords typeRecords = productTypeRecordsService.findByOrderId(order_id);
-		switch (typeRecords.getProductType()) {		
-		case "SEAMAN LIFE INSURANCE(Online)":
-				LifeProposal lifeProposal = lifeProposalService.findLifeProposalByOrderId(order_id);
-				ps = lifeProposal.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
-						: PaymentStatus.PENDING;
-				if(ps.equals(PaymentStatus.SUCCESS)) {
-					dto.setId(lifePolicyService.findPolicyByProposalId(lifeProposal.getId()).getId());
-				}				
-				break; 		
-		default:
-			break;
-
-		}
-		if (dto != null && ps != null) {
-			logger.info("twoc2precors");
-			if (ps == PaymentStatus.SUCCESS && dto.getChannel_response_code() != null && dto.getPayment_status() != null
-					&& dto.getChannel_response_code().equals("00") && dto.getPayment_status().equals("000")) {
-				logger.info("Payment Success!!!");
-				dto.setRecordsState(PaymentStatus.SUCCESS.toString());
-				response.setStatus(HttpStatus.ACCEPTED);
-				response.setMessage("Payment Success!!!");
-				response.setData(dto);
-				return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.OK);
-			} else if (ps == PaymentStatus.PENDING) {
-				response.setStatus(HttpStatus.NOT_FOUND);
-				response.setMessage("Payment process is pending!!!");
-				dto.setRecordsState(PaymentStatus.PENDING.toString());
-				response.setData(dto);
-				return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.NOT_FOUND);
+		try {
+			if (order_id == null || order_id.isEmpty()) {
+				response.setStatus(HttpStatus.BAD_REQUEST);
+				response.setMessage("OrderId isn't empty");
+				return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.BAD_REQUEST);
 			}
-			switch (dto.getPayment_status()) {
-			case "001":
-				response.setStatus(HttpStatus.PROCESSING);
-				response.setMessage("Payment Pending!!!");
-				response.setData(dto);
-				break;
-			case "002":
-				response.setStatus(HttpStatus.UNAUTHORIZED);
-				response.setMessage("Payment Rejected!!!");
-				response.setData(new TwoCTwoPResponseDTO());
-				break;
-			case "003":
-				response.setStatus(HttpStatus.FORBIDDEN);
-				response.setMessage("Payment was canceled by user!!!");
-				response.setData(new TwoCTwoPResponseDTO());
-				break;
-			case "999":
-				response.setStatus(HttpStatus.NOT_ACCEPTABLE);
-				response.setMessage("Payment Failed!!!");
-				response.setData(new TwoCTwoPResponseDTO());
-				break;
+			PaymentStatus ps = null;
+			TwoCTwoPResponseDTO dto = twoC2pRecordsService.findByOrderId(order_id);
+			dto.setPrintReceipt(true);
+			ProductTypeRecords typeRecords = productTypeRecordsService.findByOrderId(order_id);
+			switch (typeRecords.getProductType()) {		
+			case "SEAMAN LIFE INSURANCE(Online)":
+					LifeProposal lifeProposal = lifeProposalService.findLifeProposalByOrderId(order_id);
+					ps = lifeProposal.getProposalStatus().equals(ProposalStatus.ISSUED) ? PaymentStatus.SUCCESS
+							: PaymentStatus.PENDING;
+					if(ps.equals(PaymentStatus.SUCCESS)) {
+						dto.setId(lifePolicyService.findPolicyByProposalId(lifeProposal.getId()).getId());
+					}				
+					break; 		
 			default:
 				break;
+
 			}
-			response = checkChannelResponseCode(dto);
-		} else {
+			if (dto != null && ps != null) {
+				logger.info("twoc2precors");
+				if (ps == PaymentStatus.SUCCESS && dto.getChannel_response_code() != null && dto.getPayment_status() != null
+						&& dto.getChannel_response_code().equals("00") && dto.getPayment_status().equals("000")) {
+					logger.info("Payment Success!!!");
+					dto.setRecordsState(PaymentStatus.SUCCESS.toString());
+					response.setStatus(HttpStatus.ACCEPTED);
+					response.setMessage("Payment Success!!!");
+					response.setData(dto);
+					return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.OK);
+				} else if (ps == PaymentStatus.PENDING) {
+					response.setStatus(HttpStatus.NOT_FOUND);
+					response.setMessage("Payment process is pending!!!");
+					dto.setRecordsState(PaymentStatus.PENDING.toString());
+					response.setData(dto);
+					return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.NOT_FOUND);
+				}
+				switch (dto.getPayment_status()) {
+				case "001":
+					response.setStatus(HttpStatus.PROCESSING);
+					response.setMessage("Payment Pending!!!");
+					response.setData(dto);
+					break;
+				case "002":
+					response.setStatus(HttpStatus.UNAUTHORIZED);
+					response.setMessage("Payment Rejected!!!");
+					response.setData(new TwoCTwoPResponseDTO());
+					break;
+				case "003":
+					response.setStatus(HttpStatus.FORBIDDEN);
+					response.setMessage("Payment was canceled by user!!!");
+					response.setData(new TwoCTwoPResponseDTO());
+					break;
+				case "999":
+					response.setStatus(HttpStatus.NOT_ACCEPTABLE);
+					response.setMessage("Payment Failed!!!");
+					response.setData(new TwoCTwoPResponseDTO());
+					break;
+				default:
+					break;
+				}
+				response = checkChannelResponseCode(dto);
+			} else {
+				response.setStatus(HttpStatus.BAD_REQUEST);
+				response.setMessage("Payment Fail!!! Please contact to support team.");
+			}
+			logger.info("End paymentResponse method");
+			return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.OK);
+			
+		} catch(Exception ex) {
 			response.setStatus(HttpStatus.BAD_REQUEST);
-			response.setMessage("Payment Fail!!! Please contact to support team.");
+			response.setMessage("Still processing!!! Please refresh this page.");
+			return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.OK);
 		}
-		logger.info("End paymentResponse method");
-		return new ResponseEntity<>(responseManager.getResponseString(response), HttpStatus.OK);
+		
+
 	}
 
 	@RequestMapping(value = "/merchantKey", method = RequestMethod.POST)
